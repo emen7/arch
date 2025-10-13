@@ -181,6 +181,7 @@ export default function AcceleratedTimeContent() {
           universe he still lives. That which you observe is the mortal transit of Jesus of
           Nazareth from life in the flesh to life in the morontia"<sup>⁵</sup>.
         </blockquote>
+
         <p>
           The declaration continued with unequivocal authority:
         </p>
@@ -192,8 +193,9 @@ export default function AcceleratedTimeContent() {
           morontia, into the status of true spirit existence. A certain phase of this experience
           you are about to observe, but you may not participate in it"<sup>⁶</sup>.
         </blockquote>
+
         <p>
-          Then came the crucial mandate:
+          The Personalized Adjuster continued:
         </p>
         <blockquote>
           "A Creator Son has within himself the power to bestow himself in the likeness of
