@@ -183,8 +183,9 @@ export default function AcceleratedTimeContent() {
         </blockquote>
 
         <p>
-          The declaration continued with unequivocal authority:
+          The declaration continued with unequivocal authority.
         </p>
+
         <blockquote>
           "The spirit transit of this Jesus was completed at the time I separated myself from
           his personality and became your temporary director. Your Creator-father has
@@ -195,8 +196,9 @@ export default function AcceleratedTimeContent() {
         </blockquote>
 
         <p>
-          The Personalized Adjuster continued:
+          The Personalized Adjuster continued.
         </p>
+
         <blockquote>
           "A Creator Son has within himself the power to bestow himself in the likeness of
           any of his created sons; he has within himself the power to lay down his
