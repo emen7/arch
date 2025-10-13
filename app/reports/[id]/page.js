@@ -57,22 +57,21 @@ export default function ReportPage({ params }) {
 
   return (
     <article className="max-w-[65ch] mx-auto">
+      {/* TTS Controls - Sticky positioned above content */}
+      <div className="sticky top-[57px] z-50 mb-4 flex justify-end">
+        <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-2 rounded-lg border border-gray-300 dark:border-gray-700 shadow-sm">
+          <ReadAloud contentId="report-content" reportId={params.id} />
+        </div>
+      </div>
+
       {/* Report Header */}
       <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
-              {report.title}
-            </h1>
-            <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">
-              {report.subtitle}
-            </p>
-          </div>
-          {/* TTS Controls - Sticky positioned */}
-          <div className="sticky top-[57px] z-10">
-            <ReadAloud contentId="report-content" reportId={params.id} />
-          </div>
-        </div>
+        <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
+          {report.title}
+        </h1>
+        <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">
+          {report.subtitle}
+        </p>
         <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
           <span>{report.date}</span>
           <span>•</span>
