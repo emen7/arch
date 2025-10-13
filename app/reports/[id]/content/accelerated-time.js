@@ -175,7 +175,7 @@ export default function AcceleratedTimeContent() {
           Shortly after midnight, as Saturday gave way to Sunday, the Personalized Adjuster
           addressed the assembled hosts:
         </p>
-        <blockquote className="border-l-4 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#0F1419] pl-6 pr-4 py-4 my-6">
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#0F1419] pl-6 pr-4 py-4 my-6">
           "Not one of you can do aught to assist your Creator-father in the return to life. As a
           mortal of the realm he has experienced mortal death; as the Sovereign of a
           universe he still lives. That which you observe is the mortal transit of Jesus of
