@@ -47,10 +47,10 @@ export default function ReportPage({ params }) {
   const ContentComponent = report.ContentComponent
 
   return (
-    <article className="max-w-[65ch] mx-auto pt-8">
+    <article className="max-w-[65ch] mx-auto">
       {/* Report Header */}
       <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-        <h1 className="text-3xl font-bold mb-3 text-text-light dark:text-text-dark">
+        <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
           {report.title}
         </h1>
         <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark">
         <Header />
-        <main className="container mx-auto px-4 py-8 max-w-[65ch]">
+        <main className="container mx-auto px-4 py-4 max-w-[65ch]">
           {children}
         </main>
         <footer className="mt-16 py-8 border-t border-light-border dark:border-dark-border">
