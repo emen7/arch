@@ -47,15 +47,7 @@ export default function ReportPage({ params }) {
   const ContentComponent = report.ContentComponent
 
   return (
-    <article className="max-w-[65ch] mx-auto">
-      {/* Back Button */}
-      <Link
-        href="/"
-        className="inline-flex items-center text-text-light dark:text-text-dark hover:text-black dark:hover:text-white mb-8 transition-colors"
-      >
-        ← Back to Reports
-      </Link>
-
+    <article className="max-w-[65ch] mx-auto pt-8">
       {/* Report Header */}
       <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
         <h1 className="text-3xl font-bold mb-3 text-text-light dark:text-text-dark">
@@ -91,14 +83,11 @@ export default function ReportPage({ params }) {
         <ContentComponent />
       </div>
 
-      {/* Footer Navigation */}
+      {/* Footer */}
       <footer className="mt-16 pt-8 border-t border-light-border dark:border-dark-border">
-        <Link
-          href="/"
-          className="inline-flex items-center text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors"
-        >
-          ← Back to All Reports
-        </Link>
+        <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+          End of Report
+        </p>
       </footer>
     </article>
   )
