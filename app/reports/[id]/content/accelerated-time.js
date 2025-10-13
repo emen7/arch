@@ -175,35 +175,19 @@ export default function AcceleratedTimeContent() {
           Shortly after midnight, as Saturday gave way to Sunday, the Personalized Adjuster
           addressed the assembled hosts:
         </p>
-        <blockquote>
+        <blockquote className="border-l-4 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#0F1419] pl-6 pr-4 py-4 my-6">
           "Not one of you can do aught to assist your Creator-father in the return to life. As a
           mortal of the realm he has experienced mortal death; as the Sovereign of a
           universe he still lives. That which you observe is the mortal transit of Jesus of
-          Nazareth from life in the flesh to life in the morontia"<sup>⁵</sup>.
-        </blockquote>
-
-        <p>
-          The declaration continued with unequivocal authority.
-        </p>
-
-        <blockquote>
-          "The spirit transit of this Jesus was completed at the time I separated myself from
+          Nazareth from life in the flesh to life in the morontia. The spirit transit of this Jesus was completed at the time I separated myself from
           his personality and became your temporary director. Your Creator-father has
           elected to pass through the whole of the experience of his mortal creatures, from
           birth on the material worlds, on through natural death and the resurrection of the
           morontia, into the status of true spirit existence. A certain phase of this experience
-          you are about to observe, but you may not participate in it"<sup>⁶</sup>.
-        </blockquote>
-
-        <p>
-          The Personalized Adjuster continued.
-        </p>
-
-        <blockquote>
-          "A Creator Son has within himself the power to bestow himself in the likeness of
+          you are about to observe, but you may not participate in it. A Creator Son has within himself the power to bestow himself in the likeness of
           any of his created sons; he has within himself the power to lay down his
           observable life and to take it up again; and he has this power because of the direct
-          command of the Paradise Father, and I know whereof I speak"<sup>⁷</sup>.
+          command of the Paradise Father, and I know whereof I speak"<sup>⁵⁶⁷</sup>.
         </blockquote>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Anxious Expectancy</h3>
