@@ -1,0 +1,156 @@
+{
+  "terms": {
+    "Urantia": {
+      "pronunciation": "yur-ANN-sha",
+      "ipa": "[ju'rænʃə]",
+      "ariaLabel": "yur-ANN-sha"
+    },
+    "Caligastia": {
+      "pronunciation": "kal-ih-GAS-tee-uh",
+      "ipa": "[kælɪ'ɡæstiə]",
+      "ariaLabel": "kal-ih-GAS-tee-uh"
+    },
+    "Jerusem": {
+      "pronunciation": "jeh-ROO-sem",
+      "ipa": "[dʒə'rusɛm]",
+      "ariaLabel": "jeh-ROO-sem"
+    },
+    "Edentia": {
+      "pronunciation": "eh-DEN-shuh",
+      "ipa": "[I'dɛnʃə]",
+      "ariaLabel": "eh-DEN-shuh"
+    },
+    "Nebadon": {
+      "pronunciation": "NEB-uh-don",
+      "ipa": "['nɛbədɑn]",
+      "ariaLabel": "NEB-uh-don"
+    },
+    "Havona": {
+      "pronunciation": "huh-VOH-nuh",
+      "ipa": "[hə'vonə]",
+      "ariaLabel": "huh-VOH-nuh"
+    },
+    "Melchizedek": {
+      "pronunciation": "mel-KIZ-uh-dek",
+      "ipa": "[mɛl'kɪzədɛk]",
+      "ariaLabel": "mel-KIZ-uh-dek"
+    },
+    "Machiventa": {
+      "pronunciation": "mak-ih-VEN-tuh",
+      "ipa": "[mækɪ'vɛntə]",
+      "ariaLabel": "mak-ih-VEN-tuh"
+    },
+    "Salvington": {
+      "pronunciation": "SAL-ving-tun",
+      "ipa": "['sælvɪŋtən]",
+      "ariaLabel": "SAL-ving-tun"
+    },
+    "Satania": {
+      "pronunciation": "suh-TAY-nee-uh",
+      "ipa": "[sə'tenia]",
+      "ariaLabel": "suh-TAY-nee-uh"
+    },
+    "Orvonton": {
+      "pronunciation": "or-VON-ton",
+      "ipa": "[ɔr'vɑntɑn]",
+      "ariaLabel": "or-VON-ton"
+    },
+    "Norlatiadek": {
+      "pronunciation": "nor-LASH-uh-dek",
+      "ipa": "[nɔr'læʃədɛk]",
+      "ariaLabel": "nor-LASH-uh-dek"
+    },
+    "Morontia": {
+      "pronunciation": "moh-RON-shuh",
+      "ipa": "[mo'rɑnʃə]",
+      "ariaLabel": "moh-RON-shuh"
+    },
+    "Finaliter": {
+      "pronunciation": "fi-NAL-ih-ter",
+      "ipa": "[fai'nælɪtɚ]",
+      "ariaLabel": "fi-NAL-ih-ter"
+    },
+    "Lanonandek": {
+      "pronunciation": "luh-NON-un-dek",
+      "ipa": "[lə'nɑnəndɛk]",
+      "ariaLabel": "luh-NON-un-dek"
+    },
+    "Vorondadek": {
+      "pronunciation": "voh-RON-duh-dek",
+      "ipa": "[vo'rɑndədɛk]",
+      "ariaLabel": "voh-RON-duh-dek"
+    },
+    "Andon": {
+      "pronunciation": "AN-don",
+      "ipa": "['ændɑn]",
+      "ariaLabel": "AN-don"
+    },
+    "Fonta": {
+      "pronunciation": "FON-tuh",
+      "ipa": "['fɑntə]",
+      "ariaLabel": "FON-tuh"
+    },
+    "Amadon": {
+      "pronunciation": "AM-uh-don",
+      "ipa": "['æmədɑn]",
+      "ariaLabel": "AM-uh-don"
+    },
+    "Van": {
+      "pronunciation": "van",
+      "ipa": "[væn]",
+      "ariaLabel": "van"
+    },
+    "Dalamatia": {
+      "pronunciation": "dal-uh-MAY-shuh",
+      "ipa": "[dælə'meʃə]",
+      "ariaLabel": "dal-uh-MAY-shuh"
+    },
+    "Nodites": {
+      "pronunciation": "NOD-ites",
+      "ipa": "['nɑdaits]",
+      "ariaLabel": "NOD-ites"
+    },
+    "Andites": {
+      "pronunciation": "AN-dites",
+      "ipa": "['ændaits]",
+      "ariaLabel": "AN-dites"
+    },
+    "Sangik": {
+      "pronunciation": "SAN-gik",
+      "ipa": "['sænɡɪk]",
+      "ariaLabel": "SAN-gik"
+    }
+  },
+  "homographs": {
+    "wound": {
+      "injury": {
+        "ariaLabel": "woond",
+        "ipa": "[wund]"
+      },
+      "past-wind": {
+        "ariaLabel": "wownd",
+        "ipa": "[waʊnd]"
+      }
+    },
+    "lead": {
+      "metal": {
+        "ariaLabel": "led",
+        "ipa": "[lɛd]"
+      },
+      "guide": {
+        "ariaLabel": "leed",
+        "ipa": "[lid]"
+      }
+    },
+    "read": {
+      "present": {
+        "ariaLabel": "reed",
+        "ipa": "[rid]"
+      },
+      "past": {
+        "ariaLabel": "red",
+        "ipa": "[rɛd]"
+      }
+    }
+  }
+}
