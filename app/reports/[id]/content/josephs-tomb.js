@@ -1,16 +1,9 @@
 import Image from 'next/image'
-import ReadAloud from '@/components/ReadAloud'
 import Citation from '@/components/Citation'
 
 export default function JosephsTombContent() {
   return (
     <>
-      {/* Read Aloud Controls */}
-      <div className="mb-8">
-        <ReadAloud contentId="report-content" />
-      </div>
-
-      <div id="report-content">
       {/* Figure 1 - Opening Image */}
       <figure className="my-8">
         <Image
@@ -506,7 +499,6 @@ export default function JosephsTombContent() {
           and explicit notation.
         </p>
       </section>
-      </div>
     </>
   )
 }

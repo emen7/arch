@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import ReadAloud from '@/components/ReadAloud'
 import JosephsTombContent from './content/josephs-tomb'
 import JosephsTombAccessibleContent from './content/josephs-tomb-accessible'
 import AcceleratedTimeContent from './content/accelerated-time'
@@ -58,12 +59,20 @@ export default function ReportPage({ params }) {
     <article className="max-w-[65ch] mx-auto">
       {/* Report Header */}
       <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-        <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
-          {report.title}
-        </h1>
-        <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">
-          {report.subtitle}
-        </p>
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div className="flex-1">
+            <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
+              {report.title}
+            </h1>
+            <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">
+              {report.subtitle}
+            </p>
+          </div>
+          {/* TTS Controls - Sticky positioned */}
+          <div className="sticky top-[57px] z-10">
+            <ReadAloud contentId="report-content" reportId={params.id} />
+          </div>
+        </div>
         <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
           <span>{report.date}</span>
           <span>•</span>
@@ -78,7 +87,7 @@ export default function ReportPage({ params }) {
       </header>
 
       {/* Report Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none
+      <div id="report-content" className="prose prose-lg dark:prose-invert max-w-none
                       prose-headings:text-text-light dark:prose-headings:text-text-dark
                       prose-h3:text-[#3B82C8] dark:prose-h3:text-[#60A5FA]
                       prose-p:text-text-light dark:prose-p:text-text-dark

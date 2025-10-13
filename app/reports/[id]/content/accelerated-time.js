@@ -1,15 +1,8 @@
-import ReadAloud from '@/components/ReadAloud'
 import Citation from '@/components/Citation'
 
 export default function AcceleratedTimeContent() {
   return (
     <>
-      {/* Read Aloud Controls */}
-      <div className="mb-8">
-        <ReadAloud contentId="report-content" />
-      </div>
-
-      <div id="report-content">
       <section className="mb-12">
         <h2>Abstract</h2>
         <p>
@@ -931,7 +924,6 @@ export default function AcceleratedTimeContent() {
           "Joseph's Tomb: Evidence of Location."
         </p>
       </section>
-      </div>
     </>
   )
 }
