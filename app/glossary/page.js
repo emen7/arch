@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 export default function GlossaryPage() {
   const [content, setContent] = useState('')
   const [activeLetters, setActiveLetters] = useState([])
+  const [isNavExpanded, setIsNavExpanded] = useState(true)
 
   useEffect(() => {
     // Fetch the markdown content
@@ -27,6 +28,8 @@ export default function GlossaryPage() {
     const element = document.getElementById(letter)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Collapse navigation after selecting a letter
+      setIsNavExpanded(false)
     }
   }
 
@@ -44,23 +47,36 @@ export default function GlossaryPage() {
 
       {/* Alphabet Navigation */}
       <div className="sticky top-[57px] z-40 bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border">
-        <div className="container mx-auto px-4 py-3 max-w-[65ch]">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {alphabet.map(letter => (
-              <button
-                key={letter}
-                onClick={() => scrollToLetter(letter)}
-                disabled={!activeLetters.includes(letter)}
-                className={`w-8 h-8 rounded flex items-center justify-center text-sm font-medium transition-colors ${
-                  activeLetters.includes(letter)
-                    ? 'text-text-light dark:text-text-dark hover:bg-light-card dark:hover:bg-dark-card cursor-pointer'
-                    : 'text-text-muted-light dark:text-text-muted-dark opacity-40 cursor-not-allowed'
-                }`}
-              >
-                {letter}
-              </button>
-            ))}
-          </div>
+        <div className="container mx-auto px-4 max-w-[65ch]">
+          {isNavExpanded ? (
+            // Expanded view - full alphabet
+            <div className="py-3">
+              <div className="flex flex-wrap gap-2 justify-center">
+                {alphabet.map(letter => (
+                  <button
+                    key={letter}
+                    onClick={() => scrollToLetter(letter)}
+                    disabled={!activeLetters.includes(letter)}
+                    className={`w-8 h-8 rounded flex items-center justify-center text-sm font-medium transition-colors ${
+                      activeLetters.includes(letter)
+                        ? 'text-text-light dark:text-text-dark hover:bg-light-card dark:hover:bg-dark-card cursor-pointer'
+                        : 'text-text-muted-light dark:text-text-muted-dark opacity-40 cursor-not-allowed'
+                    }`}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            // Collapsed view - single line toggle
+            <button
+              onClick={() => setIsNavExpanded(true)}
+              className="w-full py-2 text-sm text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors text-center"
+            >
+              Jump to Letter ▼
+            </button>
+          )}
         </div>
       </div>
 
@@ -85,7 +101,7 @@ export default function GlossaryPage() {
                         prose-blockquote:border-l-4 prose-blockquote:border-light-border dark:prose-blockquote:border-dark-border
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
-                        prose-h2:scroll-mt-32">
+                        prose-h2:scroll-mt-[100px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
