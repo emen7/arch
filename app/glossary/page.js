@@ -36,7 +36,7 @@ export default function GlossaryPage() {
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
       {/* Alphabet Navigation - positioned right below header */}
-      <div className="sticky top-[57px] z-40 bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border">
+      <div className="sticky top-[60px] z-40 bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border">
         <div className="container mx-auto px-4 max-w-[65ch]">
           {isNavExpanded ? (
             // Expanded view - full alphabet
@@ -93,7 +93,7 @@ export default function GlossaryPage() {
                         prose-blockquote:border-l-4 prose-blockquote:border-light-border dark:prose-blockquote:border-dark-border
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
-                        prose-h2:scroll-mt-[120px]">
+                        prose-h2:scroll-mt-[115px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
