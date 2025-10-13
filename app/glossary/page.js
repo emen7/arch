@@ -27,7 +27,16 @@ export default function GlossaryPage() {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Calculate offset for header + sticky alphabet bar
+      const offset = 120 // Adjust this value to position content below sticky elements
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+
       // Collapse navigation after selecting a letter
       setIsNavExpanded(false)
     }
@@ -93,7 +102,7 @@ export default function GlossaryPage() {
                         prose-blockquote:border-l-4 prose-blockquote:border-light-border dark:prose-blockquote:border-dark-border
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
-                        prose-h2:scroll-mt-[130px]">
+                        prose-h2:scroll-mt-[150px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
