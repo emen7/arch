@@ -43,10 +43,18 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
 
-      // Prefer English voices
-      const englishVoice = availableVoices.find(v => v.lang.startsWith('en-'));
-      if (englishVoice) {
-        setSelectedVoice(englishVoice);
+      // Voice priority for Edge/Chromium:
+      // 1. Guy Online (Natural) - preferred
+      // 2. Any other English voice
+      const guyVoice = availableVoices.find(v =>
+        v.name.includes('Guy') && v.lang.startsWith('en-')
+      );
+      const anyEnglishVoice = availableVoices.find(v => v.lang.startsWith('en-'));
+
+      if (guyVoice) {
+        setSelectedVoice(guyVoice);
+      } else if (anyEnglishVoice) {
+        setSelectedVoice(anyEnglishVoice);
       } else if (availableVoices.length > 0) {
         setSelectedVoice(availableVoices[0]);
       }
