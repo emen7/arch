@@ -5,6 +5,13 @@ export const metadata = {
   title: 'Architecture of the Master Universe | Revelationary Research',
   description: 'Research reports exploring Urantia Book revelations through scientific and forensic analysis.',
   keywords: 'Urantia Book, research, science, archaeology',
+  manifest: '/manifest.json',
+  themeColor: '#1A1D23',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Rev Research',
+  },
 }
 
 export default function RootLayout({ children }) {
