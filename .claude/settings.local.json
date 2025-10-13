@@ -13,7 +13,9 @@
       "WebFetch(domain:webaim.org)",
       "Bash(git --version)",
       "Bash(gh:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -65,6 +65,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Resources Section */}
+      <section className="ml-12">
+        <h2 className="text-2xl font-bold mb-4 mt-0 text-text-light dark:text-text-dark">
+          Resources
+        </h2>
+
+        <div className="ml-6 space-y-3 flex flex-col items-start">
+          <Link
+            href="/glossary"
+            className="inline-block px-3 py-2 rounded-lg bg-light-card dark:bg-dark-card border-2 border-dashed border-light-border dark:border-dark-border hover:border-text-muted-light dark:hover:border-text-muted-dark transition-all group"
+          >
+            <h3 className="text-xl font-semibold mb-0.5 mt-0 text-text-light dark:text-text-dark group-hover:text-black dark:group-hover:text-white transition-colors">
+              Glossary
+            </h3>
+            <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+              Definitions and Concept Guide
+            </p>
+          </Link>
+        </div>
+      </section>
+
       {/* Footer Info */}
       <section className="pt-8 border-t border-light-border dark:border-dark-border">
         <div className="space-y-3 text-sm text-text-light dark:text-text-dark">
