@@ -33,8 +33,8 @@ export default function GlossaryPage() {
 
       // Calculate offset: sticky bar's bottom position + small buffer
       // Falls back to 120px if sticky bar not found (shouldn't happen)
-      // Smaller buffer for desktop, but dynamic calculation handles mobile properly
-      const offset = stickyBarRect ? stickyBarRect.bottom + 8 : 120
+      // Buffer ensures selected heading appears at top of reading area
+      const offset = stickyBarRect ? stickyBarRect.bottom + 12 : 120
 
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
@@ -52,7 +52,7 @@ export default function GlossaryPage() {
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
       {/* Alphabet Navigation - positioned right below header with proper spacing */}
-      <div data-alphabet-sticky className="sticky top-0 z-40 bg-light-bg dark:bg-dark-bg pt-20 pb-1">
+      <div data-alphabet-sticky className="sticky top-0 z-40 bg-light-bg dark:bg-dark-bg pt-[4.5rem] pb-1">
         <div className="container mx-auto px-4 max-w-[65ch] border-b border-light-border dark:border-dark-border">
           {isNavExpanded ? (
             // Expanded view - full alphabet
