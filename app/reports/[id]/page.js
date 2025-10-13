@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import JosephsTombContent from './content/josephs-tomb'
+import JosephsTombAccessibleContent from './content/josephs-tomb-accessible'
 import AcceleratedTimeContent from './content/accelerated-time'
 
 // Report data structure
@@ -11,6 +12,13 @@ const reports = {
     date: 'November 2025',
     readTime: '30 min read',
     ContentComponent: JosephsTombContent,
+  },
+  'josephs-tomb-accessible': {
+    title: "Joseph's Tomb: Evidence of Location (Accessible)",
+    subtitle: 'A Forensic Reconstruction Through Revelatory Documentation',
+    date: 'November 2025',
+    readTime: '30 min read',
+    ContentComponent: JosephsTombAccessibleContent,
   },
   'accelerated-time-tomb': {
     title: 'Accelerated Time of the Tomb',
