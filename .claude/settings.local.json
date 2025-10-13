@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(taskkill:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(dir:*)",
+      "Bash(npm run dev)",
+      "WebFetch(domain:localhost)",
+      "Read(//d/neufe/Downloads/**)",
+      "WebSearch",
+      "WebFetch(domain:webaim.org)",
+      "Bash(git --version)",
+      "Bash(gh:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
