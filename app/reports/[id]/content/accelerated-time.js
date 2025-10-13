@@ -269,6 +269,7 @@ export default function AcceleratedTimeContent() {
           for immediate dissolution. We do not propose to employ our technique of
           dematerialization; we merely wish to invoke the process of accelerated time"<sup>⁶</sup>.
         </blockquote>
+
         <p>
           The archangels sought to spare the celestial hosts from "enduring the sight of the
           slow decay of the human form of the Creator and Upholder of a universe." Speaking
