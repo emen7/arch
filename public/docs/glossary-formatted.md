@@ -1,9 +1,3 @@
-# Glossary - Accelerated Time of the Tomb
-
-*Terms marked with (H) indicate analytical hypotheses extending beyond explicit revelatory text*
-
----
-
 ## A
 
 **Accelerated Time**  

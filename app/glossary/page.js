@@ -35,23 +35,13 @@ export default function GlossaryPage() {
 
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
-      {/* Back Button */}
-      <div className="container mx-auto px-4 py-4 max-w-[65ch]">
-        <Link
-          href="/"
-          className="inline-flex items-center text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors"
-        >
-          ← Back to Home
-        </Link>
-      </div>
-
-      {/* Alphabet Navigation */}
+      {/* Alphabet Navigation - positioned right below header */}
       <div className="sticky top-[57px] z-40 bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border">
         <div className="container mx-auto px-4 max-w-[65ch]">
           {isNavExpanded ? (
             // Expanded view - full alphabet
             <div className="py-3">
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-wrap gap-2 justify-start">
                 {alphabet.map(letter => (
                   <button
                     key={letter}
@@ -72,9 +62,11 @@ export default function GlossaryPage() {
             // Collapsed view - A B C toggle
             <button
               onClick={() => setIsNavExpanded(true)}
-              className="w-full py-2 text-sm text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors text-center tracking-widest"
+              className="w-full py-2 text-sm text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors text-left flex gap-2"
             >
-              A B C
+              <span>A</span>
+              <span>B</span>
+              <span>C</span>
             </button>
           )}
         </div>
