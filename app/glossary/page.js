@@ -69,12 +69,12 @@ export default function GlossaryPage() {
               </div>
             </div>
           ) : (
-            // Collapsed view - single line toggle
+            // Collapsed view - A B C toggle
             <button
               onClick={() => setIsNavExpanded(true)}
-              className="w-full py-2 text-sm text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors text-center"
+              className="w-full py-2 text-sm text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors text-center tracking-widest"
             >
-              Jump to Letter ▼
+              A B C
             </button>
           )}
         </div>
@@ -101,7 +101,7 @@ export default function GlossaryPage() {
                         prose-blockquote:border-l-4 prose-blockquote:border-light-border dark:prose-blockquote:border-dark-border
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
-                        prose-h2:scroll-mt-[100px]">
+                        prose-h2:scroll-mt-[120px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
