@@ -72,14 +72,14 @@ export default function ReportPage({ params }) {
       {/* Report Content */}
       <div className="prose prose-lg dark:prose-invert max-w-none
                       prose-headings:text-text-light dark:prose-headings:text-text-dark
+                      prose-h3:text-[#3B82C8] dark:prose-h3:text-[#60A5FA]
                       prose-p:text-text-light dark:prose-p:text-text-dark
                       prose-a:text-text-light dark:prose-a:text-text-dark prose-a:underline hover:prose-a:text-black dark:hover:prose-a:text-white
                       prose-strong:text-text-light dark:prose-strong:text-text-dark
                       prose-li:text-text-light dark:prose-li:text-text-dark
                       prose-blockquote:text-text-muted-light dark:prose-blockquote:text-text-muted-dark
                       prose-code:text-text-light dark:prose-code:text-text-dark
-                      [&_p]:mb-4 [&_p]:leading-relaxed
-                      [&_h3]:ml-6">
+                      [&_p]:mb-4 [&_p]:leading-relaxed">
         <ContentComponent />
       </div>
 
