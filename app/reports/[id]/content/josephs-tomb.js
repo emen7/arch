@@ -1,8 +1,16 @@
 import Image from 'next/image'
+import ReadAloud from '@/components/ReadAloud'
+import Citation from '@/components/Citation'
 
 export default function JosephsTombContent() {
   return (
     <>
+      {/* Read Aloud Controls */}
+      <div className="mb-8">
+        <ReadAloud contentId="report-content" />
+      </div>
+
+      <div id="report-content">
       {/* Figure 1 - Opening Image */}
       <figure className="my-8">
         <Image
@@ -46,25 +54,25 @@ export default function JosephsTombContent() {
         <h2>Crucifixion Route and Timing</h2>
         <p>
           Just before nine o'clock on that Friday morning, Roman soldiers led Jesus from the
-          praetorium toward Golgotha<sup>¹</sup>. The route selection tells us something important—while
+          praetorium toward Golgotha<Citation num={1} />. The route selection tells us something important—while
           condemned criminals typically paraded through Jerusalem's longest streets for maximum
           public viewing, on this day they took "the most direct route to the Damascus gate, which
-          led out of the city to the north"<sup>²</sup>.
+          led out of the city to the north"<Citation num={2} />.
         </p>
         <p>
           This northward procession passed through Damascus Gate and continued along the road
           leading toward Samaria. Following this road, they "soon arrived at Golgotha," Jerusalem's
-          official crucifixion site<sup>³</sup>.
+          official crucifixion site<Citation num={3} />.
         </p>
         <p>
           One detail proves particularly significant: Jesus collapsed from exhaustion "shortly after
-          passing through the gate"<sup>⁴</sup>. At this precise location outside the city walls, the soldiers
-          conscripted Simon of Cyrene, who happened to be stopping there with other Cyrenians<sup>⁵</sup>.
+          passing through the gate"<Citation num={4} />. At this precise location outside the city walls, the soldiers
+          conscripted Simon of Cyrene, who happened to be stopping there with other Cyrenians<Citation num={5} />.
           Simon carried the crossbeam the remaining distance.
         </p>
         <p>
           The journey's timeline gives us our first measurement. Departing just before nine o'clock,
-          the procession arrived at Golgotha "shortly after nine o'clock"<sup>⁶</sup>—less than one hour total,
+          the procession arrived at Golgotha "shortly after nine o'clock"<Citation num={6} />—less than one hour total,
           with most of the distance covered after Jesus collapsed at Damascus Gate. This places
           Golgotha north of Damascus Gate, along the northward road, within a one-hour walking
           distance.
@@ -75,8 +83,8 @@ export default function JosephsTombContent() {
         <h2>Guard Flight Pattern</h2>
         <p>
           The tomb's security arrangement involved both Roman and Jewish guards—ten soldiers
-          provided by Pilate, supplemented by ten temple guards<sup>⁷</sup>. These professional soldiers
-          maintained watch through standard military shifts until "the hour of the resurrection"<sup>⁸</sup>.
+          provided by Pilate, supplemented by ten temple guards<Citation num={7} />. These professional soldiers
+          maintained watch through standard military shifts until "the hour of the resurrection"<Citation num={8} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Critical Timing Sequence</h3>
@@ -94,32 +102,32 @@ export default function JosephsTombContent() {
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Morontia emergence</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:02 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Jesus emerges from tomb in morontia form<sup>⁹</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Jesus emerges from tomb in morontia form<Citation num={9} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Archangel request</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:10 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Chief requests custody of physical remains<sup>¹⁰</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Chief requests custody of physical remains<Citation num={10} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Stone rolling begins</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Midwayers commence operation<sup>¹¹</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Midwayers commence operation<Citation num={11} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Guards flee</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10-3:15 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Witness stone moving "of its own accord"<sup>¹²</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Witness stone moving "of its own accord"<Citation num={12} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Damascus Gate encounter</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:20-3:25 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Women meet fleeing guards<sup>¹³</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Women meet fleeing guards<Citation num={13} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Women reach tomb</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:30 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Find stone rolled away<sup>¹⁴</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Find stone rolled away<Citation num={14} /></td>
               </tr>
             </tbody>
           </table>
@@ -130,10 +138,10 @@ export default function JosephsTombContent() {
 
         <p>
           The stone-rolling operation provides our forensic anchor. Secondary midwayers received
-          the assignment to roll away the tomb stones<sup>¹⁵</sup>. When the guards on duty witnessed "this
+          the assignment to roll away the tomb stones<Citation num={15} />. When the guards on duty witnessed "this
           huge stone begin to roll away from the entrance of the tomb, apparently of its own
           accord—without any visible means to account for such motion—they were seized with
-          fear and panic, and they fled in haste from the scene"<sup>¹⁶</sup>.
+          fear and panic, and they fled in haste from the scene"<Citation num={16} />.
         </p>
         <p>
           These were soldiers who had installed the sealing system themselves. They knew the
@@ -155,7 +163,7 @@ export default function JosephsTombContent() {
         <p>
           Five women departed for the tomb "a little before three o'clock" that Sunday morning.
           Mary Magdalene, Mary the mother of the Alpheus twins, Salome, Joanna, and Susanna,
-          carried special embalming lotions and additional linen bandages<sup>¹⁷</sup>. Their purpose: to
+          carried special embalming lotions and additional linen bandages<Citation num={17} />. Their purpose: to
           complete the burial preparations interrupted by the Sabbath.
         </p>
         <p>
@@ -165,11 +173,11 @@ export default function JosephsTombContent() {
           "As they passed out of the Damascus gate, they encountered a number of
           soldiers fleeing into the city more or less panic-stricken, and this caused
           them to pause for a few minutes; but when nothing more developed, they
-          resumed their journey"<sup>¹⁸</sup>
+          resumed their journey"<Citation num={18} />
         </blockquote>
         <p>
           After this brief pause, the women continued and arrived at the tomb "about half past three
-          o'clock"<sup>¹⁹</sup>. This timing perfectly aligns with the guards' flight pattern—the soldiers had
+          o'clock"<Citation num={19} />. This timing perfectly aligns with the guards' flight pattern—the soldiers had
           just enough time to reach Damascus Gate before the women passed through.
         </p>
 
@@ -193,30 +201,30 @@ export default function JosephsTombContent() {
         <p>
           The revelation provides precise details about the burial site. Joseph and Nicodemus had
           selected "Joseph's new family tomb, hewn out of solid rock, located a short distance north
-          of Golgotha and across the road leading to Samaria"<sup>²⁰</sup>.
+          of Golgotha and across the road leading to Samaria"<Citation num={20} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Physical Dimensions and Features:</h3>
         <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
-          <li>Chamber "about ten feet square" (~100 square feet)<sup>²¹</sup></li>
-          <li>Interior shelf for body placement<sup>²²</sup></li>
-          <li>Dual-stone sealing system (large circular + smaller stone)<sup>²³</sup></li>
-          <li>Primary stone "moved in a groove chiseled out of the rock"<sup>²⁴</sup></li>
-          <li>Located "in his garden on the hillside"<sup>²⁵</sup></li>
-          <li>Tomb "faced toward the east"<sup>²⁶</sup> (burial chamber orientation)</li>
+          <li>Chamber "about ten feet square" (~100 square feet)<Citation num={21} /></li>
+          <li>Interior shelf for body placement<Citation num={22} /></li>
+          <li>Dual-stone sealing system (large circular + smaller stone)<Citation num={23} /></li>
+          <li>Primary stone "moved in a groove chiseled out of the rock"<Citation num={24} /></li>
+          <li>Located "in his garden on the hillside"<Citation num={25} /></li>
+          <li>Tomb "faced toward the east"<Citation num={26} /> (burial chamber orientation)</li>
         </ul>
 
         <p className="mt-6">
           The architectural arrangement proved significant for the discovery. The eastern
           orientation of the burial chamber allowed natural dawn illumination when Mary looked
           inside: "By this hour there was just enough of the dawn of a new day to enable Mary to
-          look back to the place where the Master's body had lain and to discern that it was gone"<sup>²⁷</sup>.
+          look back to the place where the Master's body had lain and to discern that it was gone"<Citation num={27} />.
           The eastern-facing chamber permitted morning light to reveal the empty shelf where Jesus
           had been placed.
         </p>
         <p>
           The burial procession confirm accessibility. They "started from Golgotha for Joseph's tomb
-          across the way" at approximately 4:30 PM Friday<sup>²⁸</sup>, demonstrating reasonable proximity
+          across the way" at approximately 4:30 PM Friday<Citation num={28} />, demonstrating reasonable proximity
           for those bearing a body.
         </p>
 
@@ -241,11 +249,11 @@ export default function JosephsTombContent() {
           A revealing detail emerges from the cover-up attempt. After Joseph and David Zebedee
           inspected the empty tomb Sunday morning, confirming what the women reported, "they
           were the last to so view the sepulchre, for the high priest sent the captain of the temple
-          guards to the tomb at half past seven o'clock to remove the grave cloths"<sup>²⁹</sup>.
+          guards to the tomb at half past seven o'clock to remove the grave cloths"<Citation num={29} />.
         </p>
         <p>
           The disposal method proves geologically significant: "The captain wrapped them all up in
-          the linen sheet and threw them over a near-by cliff"<sup>³⁰</sup>.
+          the linen sheet and threw them over a near-by cliff"<Citation num={30} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Geographic Requirements:</h3>
@@ -498,6 +506,7 @@ export default function JosephsTombContent() {
           and explicit notation.
         </p>
       </section>
+      </div>
     </>
   )
 }

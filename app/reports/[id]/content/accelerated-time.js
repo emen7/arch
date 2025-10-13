@@ -1,6 +1,15 @@
+import ReadAloud from '@/components/ReadAloud'
+import Citation from '@/components/Citation'
+
 export default function AcceleratedTimeContent() {
   return (
     <>
+      {/* Read Aloud Controls */}
+      <div className="mb-8">
+        <ReadAloud contentId="report-content" />
+      </div>
+
+      <div id="report-content">
       <section className="mb-12">
         <h2>Abstract</h2>
         <p>
@@ -40,15 +49,15 @@ export default function AcceleratedTimeContent() {
           Just before three o'clock on Friday afternoon, April 7, AD 30, Jesus of Nazareth died
           on the cross at Golgotha. "It was just before three o'clock when Jesus, with a loud
           voice, cried out, 'It is finished! Father, into your hands I commend my spirit.' And
-          when he had thus spoken, he bowed his head and gave up the life struggle"<sup>¹</sup>. "In
+          when he had thus spoken, he bowed his head and gave up the life struggle"<Citation num={1} />. "In
           the midst of the darkness of the sandstorm, about half past three o'clock, David
           Zebedee sent out the last of the messengers carrying the news of the Master's
-          death"<sup>²</sup>. While universe intelligences "shuddered at the shocking spectacle,"<sup>³</sup>
+          death"<Citation num={2} />. While universe intelligences "shuddered at the shocking spectacle,"<Citation num={3} />
           practical matters demanded immediate attention.
         </p>
         <p>
           The rulers of the Jews had planned to cast Jesus' body into Gehenna's open burial
-          pits—the customary fate for crucifixion victims<sup>⁴</sup>. But two members of the
+          pits—the customary fate for crucifixion victims<Citation num={4} />. But two members of the
           Sanhedrin had other intentions.
         </p>
 
@@ -56,11 +65,11 @@ export default function AcceleratedTimeContent() {
         <p>
           Joseph of Arimathea, accompanied by Nicodemus, went directly to Pilate. These
           former Sanhedrists, whose faith in Jesus had long been suspected by their
-          colleagues, now became "the most outspoken disciples of Jesus in all Jerusalem"<sup>⁵</sup>.
+          colleagues, now became "the most outspoken disciples of Jesus in all Jerusalem"<Citation num={5} />.
           Joseph carried a large sum of money, prepared to pay whatever might be required
           to obtain possession of the body. Pilate, however, refused payment. "When he
           heard the request, he quickly signed the order which authorized Joseph to proceed
-          to Golgotha and take immediate and full possession of the Master's body"<sup>⁶</sup>.
+          to Golgotha and take immediate and full possession of the Master's body"<Citation num={6} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Confrontation at Golgotha</h3>
@@ -72,22 +81,22 @@ export default function AcceleratedTimeContent() {
         </p>
         <p>
           "The Jews raised a tumult and clamored for its possession. In their raving they
-          sought violently to take possession of the body"<sup>⁷</sup>. The centurion responded
+          sought violently to take possession of the body"<Citation num={7} />. The centurion responded
           decisively—four soldiers with drawn swords took position around Jesus' body.
           After restoring order, the centurion read Pilate's permit aloud, then stepped aside,
           telling Joseph: "This body is yours to do with as you see fit. I and my soldiers will
-          stand by to see that no man interferes"<sup>⁸</sup>.
+          stand by to see that no man interferes"<Citation num={8} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">The Burial Procession</h3>
         <p>
           At approximately half past four o'clock, the burial procession departed Golgotha.
           The body, wrapped in a linen sheet, was carried by four men: Joseph, Nicodemus,
-          John, and the Roman centurion<sup>⁹</sup>. The faithful women from Galilee followed behind.
+          John, and the Roman centurion<Citation num={9} />. The faithful women from Galilee followed behind.
         </p>
         <p>
           They proceeded to "Joseph's new family tomb, hewn out of solid rock, located a
-          short distance north of Golgotha and across the road leading to Samaria"<sup>¹⁰</sup>. No one
+          short distance north of Golgotha and across the road leading to Samaria"<Citation num={10} />. No one
           had ever lain in this tomb. Joseph believed Jesus would rise from the dead;
           Nicodemus remained doubtful.
         </p>
@@ -98,7 +107,7 @@ export default function AcceleratedTimeContent() {
           Sabbath approached, Joseph and Nicodemus prepared the body according to
           Jewish custom for embalming. "Joseph and Nicodemus had brought with them
           large quantities of myrrh and aloes, and they now wrapped the body with
-          bandages saturated with these solutions"<sup>¹¹</sup>.
+          bandages saturated with these solutions"<Citation num={11} />.
         </p>
         <p>
           When the embalming was complete, they tied a napkin about the face, wrapped the
@@ -111,7 +120,7 @@ export default function AcceleratedTimeContent() {
         <p>
           While the men worked, the women from Galilee—Mary Magdalene, Mary the wife
           of Clopas, Martha, another sister of Jesus' mother, and Rebecca of Sepphoris—
-          watched from hiding nearby<sup>¹²</sup>. They observed everything: where the Master was
+          watched from hiding nearby<Citation num={12} />. They observed everything: where the Master was
           laid, how the stone sealed the entrance, the gathering darkness of approaching
           Sabbath.
         </p>
@@ -143,14 +152,14 @@ export default function AcceleratedTimeContent() {
         <p>
           Early Saturday morning, the temple authorities acted on their fears. "The chief
           priests, Pharisees, and Sadducees recalled that they had received reports of his
-          saying he would rise from the dead"<sup>¹</sup>. A committee of Sanhedrists visited Pilate,
+          saying he would rise from the dead"<Citation num={1} />. A committee of Sanhedrists visited Pilate,
           requesting guards for the tomb.
         </p>
         <p>
           Pilate provided ten soldiers under the command of a captain. The Jews added ten
           of their own guards. Together, these twenty men proceeded to Joseph's tomb
           where they "rolled yet another stone before the tomb and set the seal of Pilate on
-          and around these stones"<sup>²</sup>. There they would remain through the Sabbath,
+          and around these stones"<Citation num={2} />. There they would remain through the Sabbath,
           unaware that the body they guarded had no further connection with the
           personality of Jesus.
         </p>
@@ -161,11 +170,11 @@ export default function AcceleratedTimeContent() {
           The revelation states: "We can narrate the burial of the Son of Man and put in this
           record the events associated with his resurrection, but we cannot supply much
           information of an authentic nature about what really transpired during this epoch
-          of about thirty-six hours"<sup>³</sup>.
+          of about thirty-six hours"<Citation num={3} />.
         </p>
         <p>
           The assembled celestial hosts waited. Jesus' Personalized Adjuster maintained
-          command of all universe personalities gathered on Urantia<sup>⁴</sup>. This same divine
+          command of all universe personalities gathered on Urantia<Citation num={4} />. This same divine
           Monitor who had guided Jesus through his mortal life now held sovereign
           authority over the waiting observers.
         </p>
@@ -187,13 +196,13 @@ export default function AcceleratedTimeContent() {
           you are about to observe, but you may not participate in it. A Creator Son has within himself the power to bestow himself in the likeness of
           any of his created sons; he has within himself the power to lay down his
           observable life and to take it up again; and he has this power because of the direct
-          command of the Paradise Father, and I know whereof I speak"<sup>⁵⁶⁷</sup>.
+          command of the Paradise Father, and I know whereof I speak"<Citation num={567} />.
         </blockquote>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Anxious Expectancy</h3>
         <p>
           "When they heard the Personalized Adjuster so speak, they all assumed the
-          attitude of anxious expectancy, from Gabriel down to the most humble cherubim"<sup>⁸</sup>.
+          attitude of anxious expectancy, from Gabriel down to the most humble cherubim"<Citation num={8} />.
           They understood now: the resurrection would occur through Creator prerogatives
           alone. They could observe but not assist.
         </p>
@@ -214,13 +223,13 @@ export default function AcceleratedTimeContent() {
         <h3 className="text-2xl font-semibold mt-8 mb-4">Paradise Personalities Arrive</h3>
         <p>
           At two forty-five Sunday morning, April 9, AD 30, seven unidentified Paradise
-          personalities arrived and "immediately deployed themselves about the tomb"<sup>¹</sup>.
+          personalities arrived and "immediately deployed themselves about the tomb"<Citation num={1} />.
           These beings from Paradise took positions around the sepulchre. Their purpose
           remained undisclosed to all other universe personalities present.
         </p>
         <p>
           Shortly after, "intense vibrations of commingled material and morontia activities
-          began to issue from Joseph's new tomb"<sup>²</sup>. These vibrations emanated during Jesus'
+          began to issue from Joseph's new tomb"<Citation num={2} />. These vibrations emanated during Jesus'
           self-resurrection process—physical phenomena that would later be described in
           Matthew's Gospel as an earthquake.
         </p>
@@ -228,12 +237,12 @@ export default function AcceleratedTimeContent() {
         <h3 className="text-2xl font-semibold mt-8 mb-4">The Morontia Resurrection</h3>
         <p>
           At two minutes past three o'clock, "the resurrected morontia form and personality
-          of Jesus of Nazareth came forth from the tomb"<sup>³</sup>.
+          of Jesus of Nazareth came forth from the tomb"<Citation num={3} />.
         </p>
         <p>
           The physical body remained behind, "still lying there in the sepulchre niche,
           undisturbed and wrapped in the linen sheet, just as it had been laid to rest by
-          Joseph and his associates on Friday afternoon"<sup>⁴</sup>. The stone before the entrance
+          Joseph and his associates on Friday afternoon"<Citation num={4} />. The stone before the entrance
           remained in place. Pilate's seal was unbroken. The guards continued at their posts,
           likely agitated by the vibrations, unaware that "the object of their vigil had risen to
           a new and higher form of existence."
@@ -242,7 +251,7 @@ export default function AcceleratedTimeContent() {
           Jesus had achieved morontia resurrection through his own Creator prerogatives,
           exactly as the Personalized Adjuster had declared. The Paradise personalities who
           witnessed this transit immediately "signalized their intention of immediate
-          departure for Uversa"<sup>⁵</sup>.
+          departure for Uversa"<Citation num={5} />.
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">The Request for Dissolution</h3>
@@ -255,7 +264,7 @@ export default function AcceleratedTimeContent() {
           "We may not participate in the morontia resurrection of the bestowal experience
           of Michael our sovereign, but we would have his mortal remains put in our custody
           for immediate dissolution. We do not propose to employ our technique of
-          dematerialization; we merely wish to invoke the process of accelerated time"<sup>⁶</sup>.
+          dematerialization; we merely wish to invoke the process of accelerated time"<Citation num={6} />.
         </blockquote>
 
         <p>
@@ -276,12 +285,12 @@ export default function AcceleratedTimeContent() {
         <p>
           The chief of archangels "summoned to his assistance many of his fellows, together
           with a numerous host of the representatives of all orders of celestial
-          personalities"<sup>⁷</sup>. With the aid of Urantia midwayers, they proceeded to take
+          personalities"<Citation num={7} />. With the aid of Urantia midwayers, they proceeded to take
           possession of Jesus' physical body.
         </p>
         <p>
           The body could not be removed from the tomb—"it was a purely material creation;
-          it was physical and literal"<sup>⁸</sup>. The morontia form had passed through the sealed
+          it was physical and literal"<Citation num={8} />. The morontia form had passed through the sealed
           sepulchre without disturbing it, but the dissolution operation required the tomb to
           be opened.
         </p>
@@ -289,7 +298,7 @@ export default function AcceleratedTimeContent() {
           By mandate of certain secondary midwayers, the great stone began to roll away
           from the entrance. The Roman and Jewish guards on duty watched in terror as
           "this huge stone began slowly to roll away from the entrance of the tomb without
-          any visible means to account for such motion"<sup>⁹</sup>.
+          any visible means to account for such motion"<Citation num={9} />.
         </p>
         <p>
           The guards "were seized with fear and panic." Without waiting to look into the
@@ -309,12 +318,12 @@ export default function AcceleratedTimeContent() {
           "The mortal remains of Jesus underwent the same natural process of elemental
           disintegration as characterizes all human bodies on earth except that, in point of
           time, this natural mode of dissolution was greatly accelerated, hastened to that
-          point where it became well-nigh instantaneous"<sup>¹⁰</sup>.
+          point where it became well-nigh instantaneous"<Citation num={10} />.
         </blockquote>
         <p>
           The physical body had been converted to its constituent energies. The burial cloths
           remained in position—"the bandages wherewith he had been wrapped lying intact
-          and as they had rested on the stone before the celestial hosts removed the body"<sup>¹¹</sup>.
+          and as they had rested on the stone before the celestial hosts removed the body"<Citation num={11} />.
           The napkin that had covered his face area lay separately, "rolled up in a place by
           itself."
         </p>
@@ -336,7 +345,7 @@ export default function AcceleratedTimeContent() {
           The archangel chief's request at 3:10 AM revealed a choice between the standard
           dematerialization technique and a variant specifically designed for this situation:
           "We do not propose to employ our technique of dematerialization; we merely wish
-          to invoke the process of accelerated time"<sup>¹</sup>. The standard dematerialization
+          to invoke the process of accelerated time"<Citation num={1} />. The standard dematerialization
           technique would not suffice. Accelerated time dematerialization would maintain
           natural law while compressing temporal duration.
         </p>
@@ -345,7 +354,7 @@ export default function AcceleratedTimeContent() {
           mortal remains of Jesus underwent the same natural process of elemental
           disintegration as characterizes all human bodies on earth except that, in point of
           time, this natural mode of dissolution was greatly accelerated, hastened to that
-          point where it became well-nigh instantaneous"<sup>²</sup>. The body would decompose
+          point where it became well-nigh instantaneous"<Citation num={2} />. The body would decompose
           naturally—tissues breaking down, molecules dissociating, atoms reducing to
           fundamental particles. The body became a temporal containment where time itself
           would alter, compressing geological ages into moments.
@@ -360,7 +369,7 @@ export default function AcceleratedTimeContent() {
           revelation explains, "The ultimatons are capable of accelerating revolutionary
           velocity to the point of partial antigravity behavior, but they cannot, independent
           of force organizers or power directors, attain the critical escape velocity of
-          deindividuation, return to the puissant-energy stage"<sup>³</sup>.
+          deindividuation, return to the puissant-energy stage"<Citation num={3} />.
         </p>
         <p>
           This technical description illuminates the operational pathway. When ultimatonic
@@ -375,7 +384,7 @@ export default function AcceleratedTimeContent() {
         <p>
           The revelation establishes a fundamental principle underlying these operations:
           "Mind universally dominates matter, even as it is in turn responsive to the ultimate
-          overcontrol of spirit"<sup>⁴</sup>. Master Physical Controllers exemplify this principle
+          overcontrol of spirit"<Citation num={4} />. Master Physical Controllers exemplify this principle
           continuously, without rest or play—they are conscious beings who direct physical
           reality through thought-energy modulation rather than mechanical manipulation,
           much like how a singer can shatter a glass without force, only through vibration.
@@ -392,22 +401,22 @@ export default function AcceleratedTimeContent() {
         <p>
           The assembled celestial personalities brought precisely calibrated capabilities to
           this operation. Frandalanks—those "living and automatic presence, pressure, and
-          velocity gauges"<sup>⁵</sup>—would establish baseline measurements across all thirty forms
+          velocity gauges"<Citation num={5} />—would establish baseline measurements across all thirty forms
           of universe energy. Among them, the chronoldeks would track temporal
           parameters with "ultimacy of precision," monitoring both the accelerating field
           containment and time within the tomb.
         </p>
         <p>
           Mechanical Controllers, possessing "living endowment of antigravity in excess of
-          all other beings"<sup>⁶</sup>, would initiate the critical process. As they synchronized
+          all other beings"<Citation num={6} />, would initiate the critical process. As they synchronized
           acceleration of ultimatonic revolutionary velocities throughout the body's atomic
-          structure, the particles would approach "partial antigravity behavior"<sup>⁷</sup>. When
+          structure, the particles would approach "partial antigravity behavior"<Citation num={7} />. When
           trillions of ultimatons achieve this state simultaneously, their collective effects
           would generate a localized temporal void.
         </p>
         <p>
           The revelation provides the theoretical foundation for this phenomenon: "Time
-          and space are inseparable only in the time-space creations"<sup>⁸</sup>, and gravity affects
+          and space are inseparable only in the time-space creations"<Citation num={8} />, and gravity affects
           temporal perception<sup>ᵃ</sup>. By removing gravitational influence through antigravity
           generation, the controllers create conditions where time progresses at radically
           different rates. Within this void, billions of years of natural decomposition could
@@ -418,7 +427,7 @@ export default function AcceleratedTimeContent() {
         <p>
           As ultimatons accelerated through increasing frequencies, the dissolving body
           would emit energy across the electromagnetic spectrum. At octave 47—
-          corresponding to ultraviolet radiation or "the chemical rays of sunlight"<sup>⁹</sup>—the
+          corresponding to ultraviolet radiation or "the chemical rays of sunlight"<Citation num={9} />—the
           controllers made a deliberate choice. They permitted uncontained emission at this
           frequency, creating what modern physics recognizes as the exact parameters
           needed for superficial fiber oxidation on linen fabric. For mere nanoseconds, the
@@ -436,15 +445,15 @@ export default function AcceleratedTimeContent() {
         <p>
           Secondary Dissociators—those beings of "enormous antigravity endowment"
           whom the revelation calls "the alchemists of space and the wonder-workers of
-          time"<sup>¹⁰</sup>—facilitated the final transition. As ultimatons achieved "the critical escape
-          velocity of deindividuation"<sup>¹¹</sup>, matter returned to its puissant energy state. This
-          process, which naturally occurs only during "the terminal disruptions of suns"<sup>¹²</sup>,
+          time"<Citation num={10} />—facilitated the final transition. As ultimatons achieved "the critical escape
+          velocity of deindividuation"<Citation num={11} />, matter returned to its puissant energy state. This
+          process, which naturally occurs only during "the terminal disruptions of suns"<Citation num={12} />,
           was achieved locally through thought-directed operations.
         </p>
         <p>
-          Primary Associators—those "masterly energy conservators and custodians"<sup>¹³</sup>—
+          Primary Associators—those "masterly energy conservators and custodians"<Citation num={13} />—
           would store this massive energy release. Energy Transmitters, described as
-          "marvelous dispatchers of energy as manifested on the individual worlds"<sup>¹⁴</sup>, could
+          "marvelous dispatchers of energy as manifested on the individual worlds"<Citation num={14} />, could
           then distribute the energy safely through established planetary circuits or reserve
           it for a special purpose. Universal economy wastes nothing—even the material
           form of the Creator Son was transformed into useful energy.
@@ -453,7 +462,7 @@ export default function AcceleratedTimeContent() {
         <h3 className="text-2xl font-semibold mt-8 mb-4">The Archangel Circuit Activation</h3>
         <p>
           Seventy-five minutes after the dissolution, at 4:30 AM, "the circuit of the
-          archangels then operated for the first time from Urantia"<sup>¹⁵</sup>. This timing raises an
+          archangels then operated for the first time from Urantia"<Citation num={15} />. This timing raises an
           intriguing possibility. The body's possession had passed from the Romans under
           Pilate to Joseph of Arimathea, and then by Gabriel's executive order to the
           archangels for dissolution. Having been granted this custody, the archangels may
@@ -519,7 +528,7 @@ export default function AcceleratedTimeContent() {
           Joseph and Nicodemus prepared the body according to Jewish custom: "They now
           wrapped the body with bandages saturated with these solutions. When the
           embalming was completed, they tied a napkin about the face, wrapped the
-          body in a linen sheet, and reverently placed it on a shelf in the tomb"<sup>¹</sup>.
+          body in a linen sheet, and reverently placed it on a shelf in the tomb"<Citation num={1} />.
         </p>
         <p>Multiple cloths were involved:</p>
         <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
@@ -541,7 +550,7 @@ export default function AcceleratedTimeContent() {
         <blockquote className="border-l-4 border-light-border dark:border-dark-border pl-4 my-6 italic text-text-muted-light dark:text-text-muted-dark">
           "In the recess of stone where they had laid Jesus, Mary saw only the folded napkin
           where his head had rested and the bandages wherewith he had been wrapped lying intact
-          and as they had rested on the stone before the celestial hosts removed the body"<sup>²</sup>.
+          and as they had rested on the stone before the celestial hosts removed the body"<Citation num={2} />.
         </blockquote>
         <p>The scene presented an apparent physical impossibility:</p>
         <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
@@ -573,25 +582,25 @@ export default function AcceleratedTimeContent() {
             <tbody>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Scourging</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Abusive scourgings"<sup>³</sup> "Knotted whips"<sup>⁴</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Abusive scourgings"<Citation num={3} /> "Knotted whips"<Citation num={4} /></td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Over 100 marks in dumbbell pattern characteristic of Roman flagrum (Faccini 2008<sup>ᵃ</sup>). Blood chemistry shows elevated bilirubin consistent with severe trauma (Fanti 2024<sup>ᵇ</sup>)</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Specific flagrum pattern documented through modern forensic analysis</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Crown of Thorns</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Plaiting a crown of thorns, they placed it upon his brow"<sup>⁵</sup> "His face bloodstained"<sup>⁶</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Plaiting a crown of thorns, they placed it upon his brow"<Citation num={5} /> "His face bloodstained"<Citation num={6} /></td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Approximately 30 puncture wounds around the entire head circumference, with flow patterns consistent with upright and supine positions</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Full cap configuration covering the entire scalp</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Hand/Wrist Nailing</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"They nailed his hands to the wood"<sup>⁷</sup><sup>ᶜ</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"They nailed his hands to the wood"<Citation num={7} /><sup>ᶜ</sup></td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Wound through the wrist area (Space of Destot). Thumb retraction is visible from median nerve damage (Zugibe 2005<sup>ᵈ</sup>).</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Anatomically correct for supporting body weight</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Spear Wound</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"One of the soldiers pierced his left side with his spear"<sup>⁸</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"One of the soldiers pierced his left side with his spear"<Citation num={8} /></td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Wound visible on image's right side (correctly showing Jesus's left side)<sup>ᵉ</sup>. Blood and clear fluid separation evident.</td>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Post-mortem wound with serum separation</td>
               </tr>
@@ -667,7 +676,7 @@ export default function AcceleratedTimeContent() {
         <h3 className="text-2xl font-semibold mt-8 mb-4">Cloth Positioning and Operational Sequence</h3>
         <p>
           The revelation states the "celestial hosts removed the body" while the bandages
-          remained "intact and as they had rested on the stone"<sup>⁹</sup>. This presents a physical
+          remained "intact and as they had rested on the stone"<Citation num={9} />. This presents a physical
           paradox—removing the body without unwrapping it.
         </p>
 
@@ -749,7 +758,7 @@ export default function AcceleratedTimeContent() {
         <p className="mt-4">
           The archangels retained possession through dissolution, converting physical
           matter to energy. Seventy-five minutes later, "the circuit of the archangels then
-          operated for the first time from Urantia"<sup>¹⁰</sup>. We cannot know for certain, but this
+          operated for the first time from Urantia"<Citation num={10} />. We cannot know for certain, but this
           first operation from Urantia suggests that the dissolution energy didn't merely
           dissipate but was instead incorporated into the permanent universe
           infrastructure—the body's essence transformed into lasting cosmic architecture.
@@ -816,7 +825,7 @@ export default function AcceleratedTimeContent() {
         <p>
           At half past three o'clock that Sunday morning, five women approached the tomb
           in Joseph's garden carrying embalming lotions. They had agreed among
-          themselves that Jesus "had not been properly prepared for burial"<sup>¹</sup> and came to
+          themselves that Jesus "had not been properly prepared for burial"<Citation num={1} /> and came to
           complete their ministry to the Master's body.
         </p>
         <p>
@@ -827,7 +836,7 @@ export default function AcceleratedTimeContent() {
         <p>
           In her distress, Mary addressed a figure she thought might be the garden's
           caretaker: "Where have you taken the Master? Where have they laid him? Tell us
-          that we may go and get him"<sup>²</sup>.
+          that we may go and get him"<Citation num={2} />.
         </p>
         <p>
           The figure spoke: "Whom do you seek?"
@@ -839,7 +848,7 @@ export default function AcceleratedTimeContent() {
         </p>
         <p>
           Still unrecognized in his morontia form, the Master then "addressed the Magdalene
-          with a familiar voice, saying, 'Mary'"<sup>³</sup>.
+          with a familiar voice, saying, 'Mary'"<Citation num={3} />.
         </p>
         <p>
           That single word connected. She rushed toward him, exclaiming, "My Lord, and my
@@ -847,7 +856,7 @@ export default function AcceleratedTimeContent() {
         </p>
         <p>
           "Touch me not, Mary," Jesus said, "for I am not as you knew me in the flesh. In this
-          form will I tarry with you for a season before I ascend to the Father"<sup>⁴</sup>.
+          form will I tarry with you for a season before I ascend to the Father"<Citation num={4} />.
         </p>
         <p>
           The technical precision documented in this study—the accelerated time, the
@@ -922,6 +931,7 @@ export default function AcceleratedTimeContent() {
           "Joseph's Tomb: Evidence of Location."
         </p>
       </section>
+      </div>
     </>
   )
 }

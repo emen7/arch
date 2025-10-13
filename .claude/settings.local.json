@@ -18,7 +18,8 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nMake glossary alphabet navigation collapsible\n\n- Alphabet navigation now collapses to single line after selecting a letter\n- Saves vertical reading space while keeping navigation accessible\n- Shows \"Jump to Letter ▼\" toggle when collapsed\n- Adjusted scroll offset to 100px for proper content positioning\n- Prevents alphabet from covering selected letter content\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(npx @pwa-asset-generator/cli:*)",
-      "Bash(npx pwa-asset-generator:*)"
+      "Bash(npx pwa-asset-generator:*)",
+      "Bash(python scripts/convert-superscripts.py:*)"
     ],
     "deny": [],
     "ask": []
