@@ -27,8 +27,14 @@ export default function GlossaryPage() {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
     if (element) {
-      // Calculate offset for header + sticky alphabet bar
-      const offset = 120 // Adjust this value to position content below sticky elements
+      // Get the actual sticky bar element and calculate its bottom position dynamically
+      const stickyBar = document.querySelector('[data-alphabet-sticky]')
+      const stickyBarRect = stickyBar?.getBoundingClientRect()
+
+      // Calculate offset: sticky bar's bottom position + small buffer
+      // Falls back to 120px if sticky bar not found (shouldn't happen)
+      const offset = stickyBarRect ? stickyBarRect.bottom + 16 : 120
+
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
 
@@ -45,7 +51,7 @@ export default function GlossaryPage() {
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
       {/* Alphabet Navigation - positioned right below header with proper spacing */}
-      <div className="sticky top-0 z-40 bg-light-bg dark:bg-dark-bg pt-[72px]">
+      <div data-alphabet-sticky className="sticky top-0 z-40 bg-light-bg dark:bg-dark-bg pt-16">
         <div className="container mx-auto px-4 max-w-[65ch] border-b border-light-border dark:border-dark-border">
           {isNavExpanded ? (
             // Expanded view - full alphabet
