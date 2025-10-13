@@ -27,9 +27,13 @@ export default function GlossaryPage() {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
     if (element) {
-      // Use fixed offset for collapsed sticky bar height
-      // pt-[4.5rem] (72px) + collapsed content (~32px) + pb-1 (4px) + small buffer (12px) = ~120px
-      const offset = 120
+      // Measure the actual rendered height of the sticky bar before scrolling
+      // This works across all devices and browsers by measuring real dimensions
+      const stickyBar = document.querySelector('[data-alphabet-sticky]')
+      const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 120
+
+      // Add small buffer for comfortable spacing
+      const offset = stickyBarHeight + 10
 
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
