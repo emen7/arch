@@ -27,14 +27,9 @@ export default function GlossaryPage() {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
     if (element) {
-      // Get the actual sticky bar element and calculate its bottom position dynamically
-      const stickyBar = document.querySelector('[data-alphabet-sticky]')
-      const stickyBarRect = stickyBar?.getBoundingClientRect()
-
-      // Calculate offset: sticky bar's bottom position + small buffer
-      // Falls back to 120px if sticky bar not found (shouldn't happen)
-      // Buffer ensures selected heading appears at top of reading area
-      const offset = stickyBarRect ? stickyBarRect.bottom + 12 : 120
+      // Use fixed offset for collapsed sticky bar height
+      // pt-[4.5rem] (72px) + collapsed content (~32px) + pb-1 (4px) + small buffer (12px) = ~120px
+      const offset = 120
 
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
