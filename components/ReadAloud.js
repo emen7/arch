@@ -112,6 +112,65 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
     return paragraphsData;
   };
 
+  // Add click-to-read listeners to paragraphs
+  const addClickListeners = (paragraphsData) => {
+    paragraphsData.forEach((para, index) => {
+      // Make paragraphs clickable
+      para.element.style.cursor = 'pointer';
+      para.element.title = 'Click to read from here';
+
+      // Add hover effect
+      para.element.addEventListener('mouseenter', () => {
+        if (!isPlaying || currentParagraphIndex !== index) {
+          para.element.style.backgroundColor = document.documentElement.classList.contains('dark')
+            ? 'rgba(96, 165, 250, 0.1)'
+            : 'rgba(252, 231, 243, 0.4)';
+        }
+      });
+
+      para.element.addEventListener('mouseleave', () => {
+        if (!isPlaying || currentParagraphIndex !== index) {
+          para.element.style.backgroundColor = '';
+        }
+      });
+
+      // Click to start reading from this paragraph
+      para.element.addEventListener('click', () => {
+        handleJumpToParagraph(index);
+      });
+    });
+  };
+
+  // Remove click listeners
+  const removeClickListeners = (paragraphsData) => {
+    if (!paragraphsData) return;
+    paragraphsData.forEach(para => {
+      para.element.style.cursor = '';
+      para.element.title = '';
+      para.element.replaceWith(para.element.cloneNode(true)); // Remove all listeners
+    });
+  };
+
+  // Jump to specific paragraph and start reading
+  const handleJumpToParagraph = (index) => {
+    if (paragraphs.length === 0) {
+      // First time - extract paragraphs
+      const extractedParagraphs = extractParagraphs();
+      setParagraphs(extractedParagraphs);
+      addClickListeners(extractedParagraphs);
+    }
+
+    // Stop current reading
+    window.speechSynthesis.cancel();
+
+    // Start from clicked paragraph
+    currentUtteranceIndexRef.current = index;
+    setCurrentParagraphIndex(index);
+    setIsPlaying(true);
+    setIsPaused(false);
+    speakParagraph(index);
+  };
+
   // Find paragraph closest to current scroll position
   const findParagraphAtScrollPosition = () => {
     if (paragraphs.length === 0) return 0;
@@ -207,6 +266,7 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
       // Start fresh
       const extractedParagraphs = extractParagraphs();
       setParagraphs(extractedParagraphs);
+      addClickListeners(extractedParagraphs);
 
       if (extractedParagraphs.length === 0) return;
 
