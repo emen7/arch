@@ -93,7 +93,7 @@ export default function ReportPage({ params }) {
         <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
           {report.title}
         </h1>
-        <p className="text-2xl text-text-muted-light dark:text-text-muted-dark italic mb-4">
+        <p className={`text-2xl mb-4 ${params.id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
           {report.subtitle}
         </p>
         <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">

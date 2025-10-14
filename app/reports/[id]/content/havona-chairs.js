@@ -18,7 +18,7 @@ export default function HavonaChairsContent() {
           unoptimized={false}
         />
         <figcaption className="text-sm text-text-muted-light dark:text-text-muted-dark mt-2 text-center italic">
-          The seven circuits of Havona
+          The Sphere Orvonton and the Seven Circuits of Havona
         </figcaption>
       </figure>
 
@@ -96,7 +96,7 @@ export default function HavonaChairsContent() {
         Using his Texas Instruments calculator, he punched in numbers and wrote...
       </p>
 
-      <div className="my-6 bg-light-card dark:bg-dark-card p-6 rounded-lg border border-light-border dark:border-dark-border">
+      <div className="my-6 bg-light-card dark:bg-dark-card p-6 rounded-lg border border-light-border dark:border-dark-border" aria-hidden="true">
         <p className="font-bold mb-4">Pattern A</p>
         <ul className="list-none space-y-1 ml-4">
           <li>Circuit 1: 35 + 2 = 37 M</li>
@@ -206,9 +206,6 @@ export default function HavonaChairsContent() {
           className="rounded-lg"
           unoptimized={false}
         />
-        <figcaption className="text-sm text-text-muted-light dark:text-text-muted-dark mt-2 text-center italic">
-          Professor Occam's actual destination: Havana, Cuba
-        </figcaption>
       </figure>
 
       <div className="mt-6 pt-6 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark italic">
