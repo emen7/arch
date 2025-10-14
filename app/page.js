@@ -23,6 +23,13 @@ export default function Home() {
 
   const revelationReports = [
     {
+      id: 'havona-chairs',
+      title: 'Havona and the Twenty Chairs',
+      subtitle: 'An Allegory',
+      date: 'April 2025',
+      readTime: '8 min read',
+    },
+    {
       id: 'nuclear-isle',
       title: 'The Nuclear Isle',
       subtitle: 'Understanding Paradise as Nucleus',

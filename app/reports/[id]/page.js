@@ -6,6 +6,7 @@ import JosephsTombAccessibleContent from './content/josephs-tomb-accessible'
 import AcceleratedTimeContent from './content/accelerated-time'
 import NuclearIsleContent from './content/nuclear-isle'
 import CircuitArchitectureContent from './content/circuit-architecture'
+import HavonaChairsContent from './content/havona-chairs'
 
 // Report data structure
 const reports = {
@@ -43,6 +44,13 @@ const reports = {
     date: 'November 2025',
     readTime: '20 min read',
     ContentComponent: CircuitArchitectureContent,
+  },
+  'havona-chairs': {
+    title: 'Havona and the Twenty Chairs',
+    subtitle: 'An Allegory',
+    date: 'April 2025',
+    readTime: '8 min read',
+    ContentComponent: HavonaChairsContent,
   },
 }
 
