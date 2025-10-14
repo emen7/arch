@@ -60,7 +60,7 @@ export default function ReportPage({ params }) {
       {/* TTS Controls - Sticky positioned above content */}
       <div className="sticky top-[70px] z-50 mb-4 flex justify-end">
         <div className="bg-white/60 dark:bg-gray-900/60 hover:bg-white/100 hover:dark:bg-gray-900/100 backdrop-blur-md p-2 rounded-lg border border-gray-300 dark:border-gray-700 shadow-sm transition-all duration-200">
-          <ReadAloud contentId="report-content" reportId={params.id} />
+          <ReadAloud contentId="report-content" />
         </div>
       </div>
 

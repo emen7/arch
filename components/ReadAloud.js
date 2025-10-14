@@ -6,15 +6,13 @@ import { useState, useEffect, useRef } from 'react';
  * ReadAloud component provides text-to-speech functionality for reports
  * Features:
  * - Sticky controls in report header
- * - Resume from scroll position or last saved position
+ * - Reads from current scroll position
  * - Visual highlight of currently reading paragraph
- * - LocalStorage persistence of reading position
  * - Compact UI with expandable settings
  *
  * @param {string} contentId - ID of the content element to read
- * @param {string} reportId - Unique ID for this report (for localStorage)
  */
-export default function ReadAloud({ contentId = 'report-content', reportId }) {
+export default function ReadAloud({ contentId = 'report-content' }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [rate, setRate] = useState(1.0);
@@ -27,9 +25,6 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
 
   const utteranceRef = useRef(null);
   const currentUtteranceIndexRef = useRef(0);
-
-  // Storage key for this report's position
-  const storageKey = reportId ? `tts-position-${reportId}` : null;
 
   useEffect(() => {
     // Check if Web Speech API is supported
@@ -63,18 +58,10 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
     loadVoices();
     window.speechSynthesis.onvoiceschanged = loadVoices;
 
-    // Load saved position
-    if (storageKey) {
-      const savedPosition = localStorage.getItem(storageKey);
-      if (savedPosition) {
-        setCurrentParagraphIndex(parseInt(savedPosition, 10));
-      }
-    }
-
     return () => {
       window.speechSynthesis.cancel();
     };
-  }, [storageKey]);
+  }, []);
 
   // Extract paragraphs from content
   const extractParagraphs = () => {
@@ -179,11 +166,6 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
     utterance.onstart = () => {
       setCurrentParagraphIndex(index);
       highlightParagraph(index);
-
-      // Save position
-      if (storageKey) {
-        localStorage.setItem(storageKey, index.toString());
-      }
     };
 
     utterance.onend = () => {
@@ -213,22 +195,8 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
 
       if (extractedParagraphs.length === 0) return;
 
-      // Determine start position
-      let startIndex = 0;
-
-      // Check if we have a saved position
-      if (storageKey) {
-        const savedPosition = localStorage.getItem(storageKey);
-        if (savedPosition) {
-          startIndex = parseInt(savedPosition, 10);
-        }
-      }
-
-      // If no saved position or at beginning, start from scroll position
-      if (startIndex === 0) {
-        startIndex = findParagraphAtScrollPosition();
-      }
-
+      // Start from current scroll position
+      const startIndex = findParagraphAtScrollPosition();
       currentUtteranceIndexRef.current = startIndex;
       setCurrentParagraphIndex(startIndex);
       setIsPlaying(true);
@@ -251,11 +219,6 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
     paragraphs.forEach(para => {
       para.element.style.backgroundColor = '';
     });
-
-    // Save position
-    if (storageKey) {
-      localStorage.setItem(storageKey, currentParagraphIndex.toString());
-    }
   };
 
   const handleRateChange = (newRate) => {
@@ -269,16 +232,6 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
         setIsPlaying(true);
         speakParagraph(currentIndex);
       }, 100);
-    }
-  };
-
-  const handleResetPosition = () => {
-    if (storageKey) {
-      localStorage.removeItem(storageKey);
-    }
-    setCurrentParagraphIndex(0);
-    if (isPlaying || isPaused) {
-      handleStop();
     }
   };
 
@@ -399,16 +352,6 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
                     ))}
                 </select>
               </div>
-            )}
-
-            {/* Reset Position */}
-            {storageKey && (
-              <button
-                onClick={handleResetPosition}
-                className="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                Reset Saved Position
-              </button>
             )}
 
             {/* Close Button */}
