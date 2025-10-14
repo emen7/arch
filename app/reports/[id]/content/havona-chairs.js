@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import Citation from '../../../../components/Citation'
-import PaperRef from '../../../../components/PaperRef'
 
 export default function HavonaChairsContent() {
   return (
@@ -12,15 +10,15 @@ export default function HavonaChairsContent() {
       {/* Hero Image */}
       <figure className="my-8">
         <Image
-          src="/images/havona-chairs/beach-and-cars.png"
-          alt="Beach scene with antique cars - representing Professor Occam's journey to Havana"
+          src="/images/havona-chairs/havona-worlds.webp"
+          alt="Havona worlds - the seven circuits surrounding Paradise"
           width={800}
           height={600}
           className="rounded-lg"
           unoptimized={false}
         />
         <figcaption className="text-sm text-text-muted-light dark:text-text-muted-dark mt-2 text-center italic">
-          Professor Occam's destination (Havana, not Havona)
+          The seven circuits of Havona
         </figcaption>
       </figure>
 
@@ -70,7 +68,7 @@ export default function HavonaChairsContent() {
         "The billion worlds of Havona are arranged in seven concentric circuits immediately
         surrounding the three circuits of Paradise satellites. There are upwards of thirty-five
         million worlds in the innermost Havona circuit and over two hundred and forty-five million
-        in the outermost, with proportionate numbers intervening."<Citation num={1} />
+        in the outermost, with proportionate numbers intervening." (14:1.9)
       </blockquote>
 
       <p>
@@ -142,9 +140,9 @@ export default function HavonaChairsContent() {
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        <strong>The local universes are in closer proximity as they approach Havona; the circuits
+        "The local universes are in closer proximity as they approach Havona; the circuits
         are greater in number, and there is increased superimposition, layer upon layer. But
-        farther out from the eternal center...</strong>
+        farther out from the eternal center...
       </blockquote>
 
       <p className="italic">
@@ -152,7 +150,7 @@ export default function HavonaChairsContent() {
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        <strong>...there are fewer and fewer systems, layers, circuits, and universes.</strong><Citation num={2} />
+        ...there are fewer and fewer systems, layers, circuits, and universes." (15:3.16)
       </blockquote>
 
       <p>
@@ -160,8 +158,8 @@ export default function HavonaChairsContent() {
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        <strong>But about one-half million light-years beyond the periphery of the present grand
-        universe...</strong>
+        "But about one-half million light-years beyond the periphery of the present grand
+        universe...
       </blockquote>
 
       <p className="italic">
@@ -169,8 +167,8 @@ export default function HavonaChairsContent() {
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        <strong>...we observe the beginnings of a zone of an unbelievable energy action which
-        increases in volume and intensity for over twenty-five million light-years</strong>.<Citation num={3} />
+        ...we observe the beginnings of a zone of an unbelievable energy action which
+        increases in volume and intensity for over twenty-five million light-years." (12:1.14)
       </blockquote>
 
       <h2 className="text-2xl font-bold mb-4 mt-8 text-text-light dark:text-text-dark">
@@ -198,13 +196,20 @@ export default function HavonaChairsContent() {
         then put our heads on the seven tables until he returns.
       </p>
 
-      {/* Citations */}
-      <div className="mt-12 pt-6 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
-        <p className="mb-2 font-semibold">Citations:</p>
-        <p>
-          <Citation num={1} /><PaperRef reference="14:1.9" /> | <Citation num={2} /><PaperRef reference="15:3.16" /> | <Citation num={3} /><PaperRef reference="12:1.14" />
-        </p>
-      </div>
+      {/* Cuba Scene Image */}
+      <figure className="my-8">
+        <Image
+          src="/images/havona-chairs/cuba-scene.png"
+          alt="Beach scene with antique cars in Havana, Cuba"
+          width={800}
+          height={600}
+          className="rounded-lg"
+          unoptimized={false}
+        />
+        <figcaption className="text-sm text-text-muted-light dark:text-text-muted-dark mt-2 text-center italic">
+          Professor Occam's actual destination: Havana, Cuba
+        </figcaption>
+      </figure>
 
       <div className="mt-6 pt-6 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark italic">
         <p>
