@@ -94,10 +94,10 @@ export default function GlossaryPage() {
       <article className="container mx-auto px-4 py-8 max-w-[65ch]">
         <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
           <h1 className="text-3xl font-bold mb-3 text-text-light dark:text-text-dark">
-            Glossary
+            Glossary for Reports
           </h1>
-          <p className="text-xl text-text-muted-light dark:text-text-muted-dark italic">
-            Definitions and Concept Guide
+          <p className="text-base text-text-muted-light dark:text-text-muted-dark">
+            This Glossary relates to the Tomb Operation Reports. <span className="text-green-700 dark:text-green-400">(H)</span> indicates hypothesis not directly stated in the revelation.
           </p>
         </header>
 
@@ -123,6 +123,18 @@ export default function GlossaryPage() {
                     {children}
                   </h2>
                 )
+              },
+              strong: ({ node, children, ...props }) => {
+                // Check if this strong element contains (H)
+                const text = children?.toString() || ''
+                if (text.startsWith('(H) ')) {
+                  return (
+                    <strong {...props}>
+                      <span className="text-green-700 dark:text-green-400">(H)</span> {text.slice(4)}
+                    </strong>
+                  )
+                }
+                return <strong {...props}>{children}</strong>
               },
             }}
           >
