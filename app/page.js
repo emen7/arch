@@ -139,9 +139,6 @@ export default function Home() {
             applying rigorous analytical methods to understand complex phenomena described
             in the text.
           </p>
-          <p className="text-text-muted-light dark:text-text-muted-dark">
-            Tomb Operations reports prepared for the Urantia Science Symposium 2025
-          </p>
         </div>
       </section>
     </div>

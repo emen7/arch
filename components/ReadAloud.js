@@ -89,6 +89,15 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     const paragraphsData = [];
 
     elements.forEach((element, index) => {
+      // Skip elements that are inside aria-hidden containers
+      let parent = element.parentElement;
+      while (parent && parent !== contentElement) {
+        if (parent.getAttribute('aria-hidden') === 'true') {
+          return; // Skip this element
+        }
+        parent = parent.parentElement;
+      }
+
       // Get text, respecting aria-labels
       const getText = (el) => {
         let text = '';
