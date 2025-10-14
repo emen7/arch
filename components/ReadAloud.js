@@ -112,26 +112,29 @@ export default function ReadAloud({ contentId = 'report-content', reportId }) {
     return paragraphsData;
   };
 
-  // Find paragraph closest to current scroll position
+  // Find first visible paragraph at top of viewport
   const findParagraphAtScrollPosition = () => {
     if (paragraphs.length === 0) return 0;
 
-    const scrollY = window.scrollY + window.innerHeight / 3; // Top third of viewport
-    let closestIndex = 0;
-    let closestDistance = Infinity;
+    // Find first paragraph that's visible in the viewport
+    // Account for sticky header (70px) + some buffer (50px) = 120px from top
+    const topOffset = 120;
 
-    paragraphs.forEach((para, index) => {
-      const rect = para.element.getBoundingClientRect();
-      const elementY = rect.top + window.scrollY;
-      const distance = Math.abs(scrollY - elementY);
+    for (let i = 0; i < paragraphs.length; i++) {
+      const rect = paragraphs[i].element.getBoundingClientRect();
 
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
+      // If paragraph top is visible (below the header offset)
+      if (rect.top >= topOffset && rect.top < window.innerHeight) {
+        return i;
       }
-    });
 
-    return closestIndex;
+      // If paragraph contains the top offset (we're in the middle of it)
+      if (rect.top < topOffset && rect.bottom > topOffset) {
+        return i;
+      }
+    }
+
+    return 0;
   };
 
   // Highlight current paragraph
