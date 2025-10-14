@@ -333,13 +333,20 @@ export default function ReadAloud({ contentId = 'report-content' }) {
   }
 
   return (
-    <div className="flex items-center gap-2">
-      {/* Compact Play/Pause/Stop Controls */}
+    <div className="flex items-center justify-end gap-2">
+      {/* Reading Status */}
+      {(isPlaying || isPaused) && paragraphs.length > 0 && (
+        <span className="text-xs text-gray-500 dark:text-gray-400">
+          {currentParagraphIndex + 1} / {paragraphs.length}
+        </span>
+      )}
+
+      {/* Compact Play/Pause/Stop Controls - Smaller icons */}
       <div className="flex gap-1">
         {!isPlaying && !isPaused && (
           <button
             onClick={handlePlay}
-            className="p-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
+            className="p-1 text-sm leading-none bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
             aria-label="Read Aloud"
             title="Read from here"
           >
@@ -350,7 +357,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
         {isPlaying && (
           <button
             onClick={handlePause}
-            className="p-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
+            className="p-1 text-sm leading-none bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
             aria-label="Pause"
             title="Pause reading"
           >
@@ -361,7 +368,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
         {isPaused && (
           <button
             onClick={handlePlay}
-            className="p-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
+            className="p-1 text-sm leading-none bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
             aria-label="Resume"
             title="Resume reading"
           >
@@ -372,7 +379,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
         {(isPlaying || isPaused) && (
           <button
             onClick={handleStop}
-            className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+            className="p-1 text-sm leading-none border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
             aria-label="Stop"
             title="Stop reading"
           >
@@ -385,7 +392,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       <div className="relative">
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+          className="p-1 text-sm leading-none border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
           aria-label="TTS Settings"
           title="Reading settings"
         >
@@ -394,7 +401,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
         {/* Settings Panel */}
         {showSettings && (
-          <div className="absolute top-full right-0 mt-2 p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-50 min-w-[250px]">
+          <div className="absolute top-full right-0 mt-2 p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-50 w-[250px] max-w-[calc(100vw-2rem)]">
             <h3 className="text-sm font-semibold mb-3">Reading Settings</h3>
 
             {/* Speed Control */}
@@ -457,13 +464,6 @@ export default function ReadAloud({ contentId = 'report-content' }) {
           </div>
         )}
       </div>
-
-      {/* Reading Status */}
-      {(isPlaying || isPaused) && paragraphs.length > 0 && (
-        <span className="text-xs text-gray-500 dark:text-gray-400">
-          {currentParagraphIndex + 1} / {paragraphs.length}
-        </span>
-      )}
     </div>
   );
 }
