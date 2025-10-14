@@ -95,6 +95,9 @@ export default function ReportPage({ params }) {
         <article>
           {/* Report Metadata */}
           <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
+            <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
+              {report.title}
+            </h1>
             <p className={`text-2xl mb-4 ${params.id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
               {report.subtitle}
             </p>
