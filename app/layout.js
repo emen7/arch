@@ -1,5 +1,6 @@
 import './globals.css'
 import Header from '../components/Header'
+import AppStateManager from '../components/AppStateManager'
 
 export const metadata = {
   title: 'Architecture of the Master Universe | Revelationary Research',
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark">
+        <AppStateManager />
         <Header />
         <main className="container mx-auto px-4 py-4 max-w-[65ch]">
           {children}
