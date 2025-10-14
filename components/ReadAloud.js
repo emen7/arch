@@ -447,7 +447,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
                     .filter(v => v.lang.startsWith('en-'))
                     .map((voice) => (
                       <option key={voice.name} value={voice.name}>
-                        {voice.name.replace(/Microsoft|Google|Apple/gi, '').trim()}
+                        {voice.name}
                       </option>
                     ))}
                 </select>
