@@ -156,11 +156,27 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       paragraphs[index].element.style.backgroundColor = bgColor;
       paragraphs[index].element.style.transition = 'background-color 0.3s ease';
 
-      // Scroll to paragraph if not in view
+      // Scroll to paragraph ONLY if it's actually out of view
       const rect = paragraphs[index].element.getBoundingClientRect();
-      if (rect.top < 100 || rect.bottom > window.innerHeight - 100) {
+      const headerHeight = 120; // Account for sticky header
+      const bottomMargin = 100;
+
+      // Only scroll if element is:
+      // 1. Above the viewport (hidden by header) - top < headerHeight
+      // 2. Below the viewport (off screen) - bottom > window height
+      const isAboveView = rect.top < headerHeight;
+      const isBelowView = rect.bottom > window.innerHeight - bottomMargin;
+      const isCompletelyAbove = rect.bottom < headerHeight;
+
+      if (isCompletelyAbove || isBelowView) {
+        // Element is completely hidden, scroll to center
         paragraphs[index].element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (isAboveView && rect.top < headerHeight - 50) {
+        // Element is partially hidden by header (but more than 50px above)
+        // Scroll just enough to show it
+        paragraphs[index].element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+      // If element is already visible, don't scroll at all
     }
   };
 
