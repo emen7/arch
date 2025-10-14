@@ -37,8 +37,25 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     // Load available voices
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
-      setVoices(availableVoices);
 
+      // Android workaround: Sometimes voices aren't loaded yet
+      // If we get an empty array, retry after a short delay
+      if (availableVoices.length === 0) {
+        setTimeout(() => {
+          const retryVoices = window.speechSynthesis.getVoices();
+          if (retryVoices.length > 0) {
+            setVoices(retryVoices);
+            selectDefaultVoice(retryVoices);
+          }
+        }, 100);
+        return;
+      }
+
+      setVoices(availableVoices);
+      selectDefaultVoice(availableVoices);
+    };
+
+    const selectDefaultVoice = (availableVoices) => {
       // Check for saved voice preference
       const savedVoiceName = localStorage.getItem('tts-voice-preference');
       let voiceToUse = null;
@@ -391,7 +408,27 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       {/* Settings Toggle */}
       <div className="relative">
         <button
-          onClick={() => setShowSettings(!showSettings)}
+          onClick={() => {
+            setShowSettings(!showSettings);
+            // Android workaround: Try loading voices on user interaction
+            if (!showSettings && voices.length === 0) {
+              setTimeout(() => {
+                const availableVoices = window.speechSynthesis.getVoices();
+                if (availableVoices.length > 0) {
+                  setVoices(availableVoices);
+                  // Set default voice if none selected
+                  if (!selectedVoice) {
+                    const anyEnglishVoice = availableVoices.find(v => v.lang.startsWith('en-'));
+                    if (anyEnglishVoice) {
+                      setSelectedVoice(anyEnglishVoice);
+                    } else if (availableVoices.length > 0) {
+                      setSelectedVoice(availableVoices[0]);
+                    }
+                  }
+                }
+              }, 50);
+            }
+          }}
           className="p-1 text-sm leading-none border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
           aria-label="TTS Settings"
           title="Reading settings"
@@ -425,7 +462,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
             </div>
 
             {/* Voice Selection */}
-            {voices.length > 0 && (
+            {voices.length > 0 ? (
               <div className="mb-3">
                 <label htmlFor="voice" className="text-xs block mb-1">
                   Voice:
@@ -451,6 +488,10 @@ export default function ReadAloud({ contentId = 'report-content' }) {
                       </option>
                     ))}
                 </select>
+              </div>
+            ) : (
+              <div className="mb-3 p-2 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded">
+                Loading voices... If voices don't appear, try closing and reopening this panel.
               </div>
             )}
 
