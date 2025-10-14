@@ -452,12 +452,14 @@ export default function ReadAloud({ contentId = 'report-content' }) {
                 onChange={(e) => handleRateChange(parseFloat(e.target.value))}
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
               >
-                <option value="0.5">0.5x (Slow)</option>
-                <option value="0.75">0.75x</option>
-                <option value="1">1x (Normal)</option>
-                <option value="1.25">1.25x</option>
-                <option value="1.5">1.5x (Fast)</option>
-                <option value="2">2x (Very Fast)</option>
+                <option value="0.8">0.8x</option>
+                <option value="0.9">0.9x</option>
+                <option value="1">1.0x (Normal)</option>
+                <option value="1.1">1.1x</option>
+                <option value="1.2">1.2x</option>
+                <option value="1.3">1.3x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2.0x</option>
               </select>
             </div>
 
