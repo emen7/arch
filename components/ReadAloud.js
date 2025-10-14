@@ -25,6 +25,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
   const utteranceRef = useRef(null);
   const currentUtteranceIndexRef = useRef(0);
+  const paragraphsRef = useRef([]);
 
   useEffect(() => {
     // Check if Web Speech API is supported
@@ -165,13 +166,15 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
   // Speak a paragraph
   const speakParagraph = (index) => {
-    if (index >= paragraphs.length) {
+    const currentParagraphs = paragraphsRef.current;
+
+    if (index >= currentParagraphs.length) {
       // Finished reading
       handleStop();
       return;
     }
 
-    const para = paragraphs[index];
+    const para = currentParagraphs[index];
     const utterance = new SpeechSynthesisUtterance(para.text);
     utterance.rate = rate;
     if (selectedVoice) {
@@ -206,9 +209,11 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     } else {
       // Start fresh
       const extractedParagraphs = extractParagraphs();
-      setParagraphs(extractedParagraphs);
 
-      if (extractedParagraphs.length === 0) return;
+      if (extractedParagraphs.length === 0) {
+        console.log('No paragraphs found');
+        return;
+      }
 
       // Start from current scroll position - use extractedParagraphs directly
       // since state update is asynchronous
@@ -227,14 +232,25 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       };
 
       const startIndex = findStartIndex();
+
+      // Update both state and ref immediately
+      paragraphsRef.current = extractedParagraphs;
+      setParagraphs(extractedParagraphs);
       currentUtteranceIndexRef.current = startIndex;
       setCurrentParagraphIndex(startIndex);
       setIsPlaying(true);
 
-      // Speak after setting state
-      setTimeout(() => {
-        speakParagraph(startIndex);
-      }, 0);
+      // Highlight immediately
+      if (extractedParagraphs[startIndex]) {
+        const bgColor = document.documentElement.classList.contains('dark')
+          ? 'rgba(96, 165, 250, 0.2)'
+          : 'rgba(252, 231, 243, 0.8)';
+        extractedParagraphs[startIndex].element.style.backgroundColor = bgColor;
+        extractedParagraphs[startIndex].element.style.transition = 'background-color 0.3s ease';
+      }
+
+      // Start speaking (will use paragraphsRef.current)
+      speakParagraph(startIndex);
     }
   };
 
