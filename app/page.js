@@ -23,11 +23,11 @@ export default function Home() {
 
   const revelationReports = [
     {
-      id: 'havona-chairs',
-      title: 'Havona and the Twenty Chairs',
-      subtitle: 'An Allegory',
-      date: 'April 2025',
-      readTime: '8 min read',
+      id: 'circuit-architecture',
+      title: 'Complete Circuit Architecture',
+      subtitle: 'The Revealed Cosmology',
+      date: 'November 2025',
+      readTime: '20 min read',
     },
     {
       id: 'nuclear-isle',
@@ -37,11 +37,11 @@ export default function Home() {
       readTime: '5 min read',
     },
     {
-      id: 'circuit-architecture',
-      title: 'Complete Circuit Architecture',
-      subtitle: 'The Revealed Cosmology',
-      date: 'November 2025',
-      readTime: '20 min read',
+      id: 'havona-chairs',
+      title: 'Havona and the Twenty Chairs',
+      subtitle: 'An Allegory',
+      date: 'April 2025',
+      readTime: '8 min read',
     },
   ]
 
