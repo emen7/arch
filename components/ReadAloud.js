@@ -146,8 +146,8 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     if (paragraphs.length === 0) return 0;
 
     // Find first paragraph that's visible in the viewport
-    // Account for sticky header (70px) + some buffer (50px) = 120px from top
-    const topOffset = 120;
+    // Account for sticky header: ~93px + buffer (35px) = 128px from top
+    const topOffset = 128;
 
     for (let i = 0; i < paragraphs.length; i++) {
       const rect = paragraphs[i].element.getBoundingClientRect();
@@ -184,7 +184,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
       // Scroll to paragraph ONLY if it's actually out of view
       const rect = paragraphs[index].element.getBoundingClientRect();
-      const headerHeight = 120; // Account for sticky header
+      const headerHeight = 128; // Account for sticky header (~93px) + buffer
       const bottomMargin = 100;
 
       // Only scroll if element is:
@@ -260,7 +260,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       // Start from current scroll position - use extractedParagraphs directly
       // since state update is asynchronous
       const findStartIndex = () => {
-        const topOffset = 120;
+        const topOffset = 128;
 
         // Look for elements that are visible or just above the viewport
         // This helps catch section titles (h2, h3) that may be just above
