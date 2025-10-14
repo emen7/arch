@@ -36,10 +36,10 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Research Reports Section */}
+      {/* Tomb Operations Section */}
       <section className="ml-12">
         <h2 className="text-2xl font-bold mb-4 mt-0 text-text-light dark:text-text-dark">
-          Research Reports
+          Tomb Operations
         </h2>
 
         <div className="ml-6 space-y-3 flex flex-col items-start">
@@ -62,16 +62,8 @@ export default function Home() {
               </div>
             </Link>
           ))}
-        </div>
-      </section>
 
-      {/* Resources Section */}
-      <section className="ml-12">
-        <h2 className="text-2xl font-bold mb-4 mt-0 text-text-light dark:text-text-dark">
-          Resources
-        </h2>
-
-        <div className="ml-6 space-y-3 flex flex-col items-start">
+          {/* Glossary - grouped with Tomb Operations */}
           <Link
             href="/glossary"
             className="inline-block px-3 py-2 rounded-lg bg-light-card dark:bg-dark-card border-2 border-dashed border-light-border dark:border-dark-border hover:border-text-muted-light dark:hover:border-text-muted-dark transition-all group"
