@@ -4,6 +4,8 @@ import ReadAloud from '@/components/ReadAloud'
 import JosephsTombContent from './content/josephs-tomb'
 import JosephsTombAccessibleContent from './content/josephs-tomb-accessible'
 import AcceleratedTimeContent from './content/accelerated-time'
+import NuclearIsleContent from './content/nuclear-isle'
+import CircuitArchitectureContent from './content/circuit-architecture'
 
 // Report data structure
 const reports = {
@@ -27,6 +29,20 @@ const reports = {
     date: 'November 2025',
     readTime: '45 min read',
     ContentComponent: AcceleratedTimeContent,
+  },
+  'nuclear-isle': {
+    title: 'The Nuclear Isle',
+    subtitle: 'Understanding Paradise as Nucleus',
+    date: 'November 2025',
+    readTime: '5 min read',
+    ContentComponent: NuclearIsleContent,
+  },
+  'circuit-architecture': {
+    title: 'Complete Circuit Architecture',
+    subtitle: 'The Revealed Cosmology',
+    date: 'November 2025',
+    readTime: '20 min read',
+    ContentComponent: CircuitArchitectureContent,
   },
 }
 
