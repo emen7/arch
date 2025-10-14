@@ -134,16 +134,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer Info */}
-      <section className="pt-8 border-t border-light-border dark:border-dark-border">
-        <div className="space-y-3 text-sm text-text-light dark:text-text-dark">
-          <p>
-            These reports explore tangentially revealed information in the Urantia Papers,
-            applying rigorous analytical methods to understand complex phenomena described
-            in the text.
-          </p>
-        </div>
-      </section>
     </div>
   )
 }
