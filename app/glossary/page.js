@@ -80,7 +80,7 @@ export default function GlossaryPage() {
             // Collapsed view - A B C toggle
             <button
               onClick={() => setIsNavExpanded(true)}
-              className="w-full py-2 text-sm text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors text-left flex gap-2"
+              className="w-full py-3 text-sm text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors text-left flex gap-2 items-center"
             >
               <span>A</span>
               <span>B</span>
