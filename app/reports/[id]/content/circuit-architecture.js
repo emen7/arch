@@ -82,7 +82,7 @@ export default function CircuitArchitectureContent() {
         3. Mystery Monitor Circuit (Secret)
       </h3>
       <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
-        <li><strong>Origin</strong>: Routed through Divinington to Universal Father<Citation num={21} /></li>
+        <li><strong>Origin</strong>: Routed through <span aria-label="dih-VIN-ing-ton">Divinington</span> to Universal Father<Citation num={21} /></li>
         <li><strong>Function</strong>: Direct communication of Thought Adjusters with Paradise<Citation num={22} /></li>
         <li><strong>Scope</strong>: All Adjuster-indwelt beings<Citation num={23} /></li>
       </ul>
@@ -246,7 +246,7 @@ export default function CircuitArchitectureContent() {
       </h3>
       <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
         <li><strong>Function</strong>: Special communication for archangel corps<Citation num={63} /></li>
-        <li><strong>Note</strong>: Recently functional on isolated worlds like Urantia</li>
+        <li><strong>Note</strong>: Recently functional on isolated worlds like <span aria-label="yoo-RAN-shuh">Urantia</span></li>
       </ul>
 
       <h3 className="text-xl font-semibold mb-3 mt-6 text-text-light dark:text-text-dark">
