@@ -59,10 +59,7 @@ export default function RootLayout({ children }) {
         {children}
         <footer className="mt-16 py-8 border-t border-light-border dark:border-dark-border">
           <div className="container mx-auto px-4 text-center text-text-muted-light dark:text-text-muted-dark max-w-[65ch]">
-            <p className="text-sm italic">
-              "There is an artistry in the intelligent assembly and co-ordination of related data..." (48:6.30)
-            </p>
-            <p className="mt-2 text-xs text-right">&copy; {new Date().getFullYear()} David Neufer</p>
+            <p className="text-xs text-right">&copy; {new Date().getFullYear()} David Neufer</p>
           </div>
         </footer>
       </body>

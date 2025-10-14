@@ -51,8 +51,8 @@ export default function Home() {
       <Header />
       <main className="container mx-auto px-4 py-4 max-w-[65ch]">
         <div className="space-y-8">
-          {/* Main Title Card */}
-      <div className="inline-block px-4 py-2 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border">
+          {/* Main Title */}
+      <div>
         <h1 className="text-2xl font-bold mb-1 mt-0 text-text-light dark:text-text-dark">
           Architecture of the Master&nbsp;Universe
         </h1>
@@ -138,6 +138,13 @@ export default function Home() {
         </div>
       </section>
 
+        </div>
+
+        {/* Tagline - Home page only */}
+        <div className="mt-12 pt-6 border-t border-light-border dark:border-dark-border text-center">
+          <p className="text-sm italic text-text-muted-light dark:text-text-muted-dark">
+            "There is an artistry in the intelligent assembly and co-ordination of related data..." (48:6.30)
+          </p>
         </div>
       </main>
     </>
