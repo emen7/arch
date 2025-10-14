@@ -26,28 +26,39 @@ export default function GlossaryPage() {
 
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
-    if (element) {
-      // Collapse navigation first so we measure the correct final height
+    if (!element) return
+
+    // If navigation is expanded, collapse it first
+    if (isNavExpanded) {
       setIsNavExpanded(false)
-
-      // Wait for state update and DOM to settle before calculating scroll
+      // Wait for collapse to complete before scrolling
       setTimeout(() => {
-        const stickyBar = document.querySelector('[data-alphabet-sticky]')
-        const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 120
-
-        // Header height (57px) + collapsed nav height + buffer
-        const headerHeight = 57
-        const offset = headerHeight + stickyBarHeight + 10
-
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-        const offsetPosition = elementPosition - offset
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }, 50) // Small delay to let the collapse animation complete
+        performScroll(letter)
+      }, 100)
+    } else {
+      // Already collapsed, scroll immediately
+      performScroll(letter)
     }
+  }
+
+  const performScroll = (letter) => {
+    const element = document.getElementById(letter)
+    if (!element) return
+
+    const stickyBar = document.querySelector('[data-alphabet-sticky]')
+    const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 60
+
+    // Header height (57px) + collapsed nav height + buffer
+    const headerHeight = 57
+    const offset = headerHeight + stickyBarHeight + 10
+
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+    const offsetPosition = elementPosition - offset
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    })
   }
 
   return (
