@@ -253,7 +253,7 @@ export default function AcceleratedTimeContent() {
           fraternized with assembled morontia personalities from Satania's mansion worlds,
           the chief of archangels approached Gabriel with a specific request:
         </p>
-        <blockquote>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
           "We may not participate in the morontia resurrection of the bestowal experience
           of Michael our sovereign, but we would have his mortal remains put in our custody
           for immediate dissolution. We do not propose to employ our technique of
@@ -307,7 +307,7 @@ export default function AcceleratedTimeContent() {
           shortly thereafter, the operation transformed Jesus' physical body through the
           process of accelerated time.
         </p>
-        <blockquote>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
           "The mortal remains of Jesus underwent the same natural process of elemental
           disintegration as characterizes all human bodies on earth except that, in point of
           time, this natural mode of dissolution was greatly accelerated, hastened to that
