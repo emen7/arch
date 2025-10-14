@@ -27,24 +27,26 @@ export default function GlossaryPage() {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(letter)
     if (element) {
-      // Measure the actual rendered height of the sticky bar before scrolling
-      // This works across all devices and browsers by measuring real dimensions
-      const stickyBar = document.querySelector('[data-alphabet-sticky]')
-      const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 120
-
-      // Add small buffer for comfortable spacing
-      const offset = stickyBarHeight + 10
-
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-
-      // Collapse navigation after selecting a letter
+      // Collapse navigation first so we measure the correct final height
       setIsNavExpanded(false)
+
+      // Wait for state update and DOM to settle before calculating scroll
+      setTimeout(() => {
+        const stickyBar = document.querySelector('[data-alphabet-sticky]')
+        const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 120
+
+        // Header height (57px) + collapsed nav height + buffer
+        const headerHeight = 57
+        const offset = headerHeight + stickyBarHeight + 10
+
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - offset
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }, 50) // Small delay to let the collapse animation complete
     }
   }
 
