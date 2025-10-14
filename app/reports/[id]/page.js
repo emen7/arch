@@ -37,6 +37,7 @@ const reports = {
     date: 'November 2025',
     readTime: '5 min read',
     ContentComponent: NuclearIsleContent,
+    publication: 'Published in the Urantia Fellowship Mini-Messenger, April 16, 2025',
   },
   'circuit-architecture': {
     title: 'Complete Circuit Architecture',
@@ -51,6 +52,7 @@ const reports = {
     date: 'April 2025',
     readTime: '8 min read',
     ContentComponent: HavonaChairsContent,
+    publication: 'Originally published in the Urantia Fellowship\'s Mini-Messenger, April 1, 2025',
   },
 }
 
@@ -104,9 +106,16 @@ export default function ReportPage({ params }) {
         <p className="mt-4 text-text-light dark:text-text-dark">
           Researcher: <strong>David Neufer</strong>
         </p>
-        <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-          For the Urantia Science Symposium 2025
-        </p>
+        {report.publication && (
+          <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
+            {report.publication}
+          </p>
+        )}
+        {!report.publication && params.id !== 'nuclear-isle' && params.id !== 'circuit-architecture' && params.id !== 'havona-chairs' && (
+          <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+            For the Urantia Science Symposium 2025
+          </p>
+        )}
       </header>
 
       {/* Report Content */}

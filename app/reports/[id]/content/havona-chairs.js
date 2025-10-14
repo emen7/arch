@@ -207,12 +207,6 @@ export default function HavonaChairsContent() {
           unoptimized={false}
         />
       </figure>
-
-      <div className="mt-6 pt-6 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark italic">
-        <p>
-          Originally published in the Urantia Fellowship's Mini-Messenger, April 1, 2025
-        </p>
-      </div>
     </>
   )
 }
