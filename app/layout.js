@@ -32,6 +32,25 @@ export default function RootLayout({ children }) {
                   document.documentElement.classList.add('dark');
                 }
               } catch (e) {}
+
+              // PWA State Restoration - runs immediately before React hydration
+              try {
+                const savedRoute = localStorage.getItem('app-last-route');
+                const savedScroll = localStorage.getItem('app-scroll-position');
+
+                // Only restore if we're on home page (app just opened)
+                if (savedRoute && savedRoute !== '/' && window.location.pathname === '/') {
+                  // Navigate to saved route
+                  window.location.replace(savedRoute);
+                } else if (savedScroll && window.location.pathname !== '/') {
+                  // Restore scroll position for current page
+                  window.addEventListener('load', function() {
+                    setTimeout(function() {
+                      window.scrollTo(0, parseInt(savedScroll, 10));
+                    }, 100);
+                  });
+                }
+              } catch (e) {}
             `,
           }}
         />

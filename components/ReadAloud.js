@@ -219,11 +219,25 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       // since state update is asynchronous
       const findStartIndex = () => {
         const topOffset = 120;
+
+        // Look for elements that are visible or just above the viewport
+        // This helps catch section titles (h2, h3) that may be just above
         for (let i = 0; i < extractedParagraphs.length; i++) {
           const rect = extractedParagraphs[i].element.getBoundingClientRect();
+          const element = extractedParagraphs[i].element;
+          const isHeading = element.tagName === 'H2' || element.tagName === 'H3';
+
+          // If this is a heading just above the fold, include it
+          if (isHeading && rect.bottom > topOffset - 100 && rect.top < topOffset) {
+            return i;
+          }
+
+          // If paragraph is visible below header
           if (rect.top >= topOffset && rect.top < window.innerHeight) {
             return i;
           }
+
+          // If we're in the middle of reading this paragraph
           if (rect.top < topOffset && rect.bottom > topOffset) {
             return i;
           }
