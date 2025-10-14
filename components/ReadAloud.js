@@ -84,8 +84,8 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     const contentElement = document.getElementById(contentId);
     if (!contentElement) return [];
 
-    // Get all paragraph elements and headings
-    const elements = contentElement.querySelectorAll('p, h2, h3, li');
+    // Get all paragraph elements, headings, and blockquotes
+    const elements = contentElement.querySelectorAll('p, h2, h3, li, blockquote');
     const paragraphsData = [];
 
     elements.forEach((element, index) => {
