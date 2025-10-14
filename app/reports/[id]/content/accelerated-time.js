@@ -540,7 +540,7 @@ export default function AcceleratedTimeContent() {
           When Mary Magdalene entered the empty sepulchre on Sunday morning, she
           found:
         </p>
-        <blockquote className="border-l-4 border-light-border dark:border-dark-border pl-4 my-6 italic text-text-muted-light dark:text-text-muted-dark">
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
           "In the recess of stone where they had laid Jesus, Mary saw only the folded napkin
           where his head had rested and the bandages wherewith he had been wrapped lying intact
           and as they had rested on the stone before the celestial hosts removed the body"<Citation num={2} />.
