@@ -38,20 +38,35 @@ export default function ReadAloud({ contentId = 'report-content' }) {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
 
-      // Voice priority for Edge/Chromium:
-      // 1. Guy Online (Natural) - preferred
-      // 2. Any other English voice
-      const guyVoice = availableVoices.find(v =>
-        v.name.includes('Guy') && v.lang.startsWith('en-')
-      );
-      const anyEnglishVoice = availableVoices.find(v => v.lang.startsWith('en-'));
+      // Check for saved voice preference
+      const savedVoiceName = localStorage.getItem('tts-voice-preference');
+      let voiceToUse = null;
 
-      if (guyVoice) {
-        setSelectedVoice(guyVoice);
-      } else if (anyEnglishVoice) {
-        setSelectedVoice(anyEnglishVoice);
-      } else if (availableVoices.length > 0) {
-        setSelectedVoice(availableVoices[0]);
+      if (savedVoiceName) {
+        // Try to find the saved voice
+        voiceToUse = availableVoices.find(v => v.name === savedVoiceName);
+      }
+
+      // If no saved voice or saved voice not found, use default priority:
+      // 1. Mark - English (United States)
+      // 2. Any other English voice
+      if (!voiceToUse) {
+        const markVoice = availableVoices.find(v =>
+          v.name.includes('Mark') && v.lang.startsWith('en-US')
+        );
+        const anyEnglishVoice = availableVoices.find(v => v.lang.startsWith('en-'));
+
+        if (markVoice) {
+          voiceToUse = markVoice;
+        } else if (anyEnglishVoice) {
+          voiceToUse = anyEnglishVoice;
+        } else if (availableVoices.length > 0) {
+          voiceToUse = availableVoices[0];
+        }
+      }
+
+      if (voiceToUse) {
+        setSelectedVoice(voiceToUse);
       }
     };
 
@@ -195,12 +210,31 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
       if (extractedParagraphs.length === 0) return;
 
-      // Start from current scroll position
-      const startIndex = findParagraphAtScrollPosition();
+      // Start from current scroll position - use extractedParagraphs directly
+      // since state update is asynchronous
+      const findStartIndex = () => {
+        const topOffset = 120;
+        for (let i = 0; i < extractedParagraphs.length; i++) {
+          const rect = extractedParagraphs[i].element.getBoundingClientRect();
+          if (rect.top >= topOffset && rect.top < window.innerHeight) {
+            return i;
+          }
+          if (rect.top < topOffset && rect.bottom > topOffset) {
+            return i;
+          }
+        }
+        return 0;
+      };
+
+      const startIndex = findStartIndex();
       currentUtteranceIndexRef.current = startIndex;
       setCurrentParagraphIndex(startIndex);
       setIsPlaying(true);
-      speakParagraph(startIndex);
+
+      // Speak after setting state
+      setTimeout(() => {
+        speakParagraph(startIndex);
+      }, 0);
     }
   };
 
@@ -340,6 +374,10 @@ export default function ReadAloud({ contentId = 'report-content' }) {
                   onChange={(e) => {
                     const voice = voices.find(v => v.name === e.target.value);
                     setSelectedVoice(voice);
+                    // Save user's voice preference
+                    if (voice) {
+                      localStorage.setItem('tts-voice-preference', voice.name);
+                    }
                   }}
                   className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
                 >
