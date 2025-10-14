@@ -4,7 +4,7 @@ export default function HavonaChairsContent() {
   return (
     <>
       <p className="text-lg text-text-muted-light dark:text-text-muted-dark italic mb-6">
-        An allegorical exploration of <span aria-label="huh-VO-nuh">Havona</span>'s world distribution pattern
+        An allegorical exploration of <span aria-label="huh VOE nuh">Havona</span>'s world distribution pattern
       </p>
 
       {/* Hero Image */}
@@ -18,7 +18,7 @@ export default function HavonaChairsContent() {
           unoptimized={false}
         />
         <figcaption className="text-sm text-text-muted-light dark:text-text-muted-dark mt-2 text-center italic">
-          The Sphere <span aria-label="or-VON-ton">Orvonton</span> and the Seven Circuits of <span aria-label="huh-VO-nuh">Havona</span>
+          The Sphere <span aria-label="or-VON-ton">Orvonton</span> and the Seven Circuits of <span aria-label="huh VOE nuh">Havona</span>
         </figcaption>
       </figure>
 
@@ -55,19 +55,19 @@ export default function HavonaChairsContent() {
       </p>
 
       <h2 className="text-2xl font-bold mb-4 mt-8 text-text-light dark:text-text-dark">
-        The <span aria-label="huh-VO-nuh">Havona</span> Connection
+        The <span aria-label="huh VOE nuh">Havona</span> Connection
       </h2>
 
       <p>
         Somebody texted the professor about the patterns. Occam texted back a single word:{' '}
-        <strong><span aria-label="huh-VO-nuh">Havona</span></strong>. Luckily, Bill, a revelation major, knew what <span aria-label="huh-VO-nuh">Havona</span> was. He looked
-        up the seven circuits of the <span aria-label="huh-VO-nuh">Havona</span> worlds and found a quote:
+        <strong><span aria-label="huh VOE nuh">Havona</span></strong>. Luckily, Bill, a revelation major, knew what <span aria-label="huh VOE nuh">Havona</span> was. He looked
+        up the seven circuits of the <span aria-label="huh VOE nuh">Havona</span> worlds and found a quote:
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        "The billion worlds of <span aria-label="huh-VO-nuh">Havona</span> are arranged in seven concentric circuits immediately
+        "The billion worlds of <span aria-label="huh VOE nuh">Havona</span> are arranged in seven concentric circuits immediately
         surrounding the three circuits of <span aria-label="PAIR-uh-dice">Paradise</span> satellites. There are upwards of thirty-five
-        million worlds in the innermost <span aria-label="huh-VO-nuh">Havona</span> circuit and over two hundred and forty-five million
+        million worlds in the innermost <span aria-label="huh VOE nuh">Havona</span> circuit and over two hundred and forty-five million
         in the outermost, with proportionate numbers intervening." (14:1.9)
       </blockquote>
 
@@ -134,13 +134,13 @@ export default function HavonaChairsContent() {
       </h2>
 
       <p>
-        "<span aria-label="huh-VO-nuh">Havona</span> serves as the pattern creation for all other universes. So, how are the other
-        universes arranged? If we figure that out, then we can reverse-engineer <span aria-label="huh-VO-nuh">Havona</span>. For the
+        "<span aria-label="huh VOE nuh">Havona</span> serves as the pattern creation for all other universes. So, how are the other
+        universes arranged? If we figure that out, then we can reverse-engineer <span aria-label="huh VOE nuh">Havona</span>. For the
         superuniverse level, they say..."
       </p>
 
       <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
-        "The local universes are in closer proximity as they approach <span aria-label="huh-VO-nuh">Havona</span>; the circuits
+        "The local universes are in closer proximity as they approach <span aria-label="huh VOE nuh">Havona</span>; the circuits
         are greater in number, and there is increased superimposition, layer upon layer. But
         farther out from the eternal center...
       </blockquote>
@@ -180,7 +180,7 @@ export default function HavonaChairsContent() {
         toward the maximum kernel. And going outward from the first outer space level's inner edge,
         things get increasingly intense before reaching the level's maximum kernel. Presumably, the
         intensity decreases as it approaches its outermost edge. That sounds Gaussian-like to me.
-        Bell-curvy. <span aria-label="huh-VO-nuh">Havona</span> must resemble Pattern B! The Gaussian-like <span aria-label="huh-VO-nuh">Havona</span> is the definitive
+        Bell-curvy. <span aria-label="huh VOE nuh">Havona</span> must resemble Pattern B! The Gaussian-like <span aria-label="huh VOE nuh">Havona</span> is the definitive
         pattern for the universe of universes... probably."
       </p>
 
@@ -191,7 +191,7 @@ export default function HavonaChairsContent() {
       <p>
         Excitedly, Bill called Professor Occam with the breathtaking news about the chair and table
         arrangement. However, the professor sounded annoyed. He said he meant to text{' '}
-        <em><span aria-label="huh-VA-nuh">Havana</span></em>, not <em><span aria-label="huh-VO-nuh">Havona</span></em>. He likes antique cars and a simple life, so he's
+        <em><span aria-label="huh-VA-nuh">Havana</span></em>, not <em><span aria-label="huh VOE nuh">Havona</span></em>. He likes antique cars and a simple life, so he's
         packed and on his way to Cuba. He advised us to arrange the twenty chairs, sit on them,
         then put our heads on the seven tables until he returns.
       </p>
