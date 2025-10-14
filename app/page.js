@@ -62,9 +62,12 @@ export default function Home() {
 
       {/* Tomb Operations Section */}
       <section className="ml-12">
-        <h2 className="text-2xl font-bold mb-4 mt-0 text-text-light dark:text-text-dark">
+        <h2 className="text-2xl font-bold mb-2 mt-0 text-text-light dark:text-text-dark">
           Tomb Operations
         </h2>
+        <p className="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">
+          Reports for the Urantia Science Symposium IV 2025
+        </p>
 
         <div className="ml-6 space-y-3 flex flex-col items-start">
           {tombReports.map((report) => (
