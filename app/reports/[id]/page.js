@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Header from '@/components/Header'
 import ReadAloud from '@/components/ReadAloud'
 import JosephsTombContent from './content/josephs-tomb'
 import JosephsTombAccessibleContent from './content/josephs-tomb-accessible'
@@ -81,42 +82,41 @@ export default function ReportPage({ params }) {
 
   const ContentComponent = report.ContentComponent
 
-  return (
-    <article className="max-w-[65ch] mx-auto">
-      {/* TTS Controls - Sticky positioned above content */}
-      <div className="sticky top-[70px] z-50 mb-4 flex justify-end">
-        <div className="bg-white/60 dark:bg-gray-900/60 hover:bg-white/100 hover:dark:bg-gray-900/100 backdrop-blur-md p-2 rounded-lg border border-gray-300 dark:border-gray-700 shadow-sm transition-all duration-200">
-          <ReadAloud contentId="report-content" />
-        </div>
-      </div>
+  // TTS Controls Component for Header
+  const ttsControls = (
+    <ReadAloud contentId="report-content" />
+  )
 
-      {/* Report Header */}
-      <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-        <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
-          {report.title}
-        </h1>
-        <p className={`text-2xl mb-4 ${params.id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
-          {report.subtitle}
-        </p>
-        <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
-          <span>{report.date}</span>
-          <span>•</span>
-          <span>{report.readTime}</span>
-        </div>
-        <p className="mt-4 text-text-light dark:text-text-dark">
-          Researcher: <strong>David Neufer</strong>
-        </p>
-        {report.publication && (
-          <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
-            {report.publication}
-          </p>
-        )}
-        {!report.publication && params.id !== 'nuclear-isle' && params.id !== 'circuit-architecture' && params.id !== 'havona-chairs' && (
-          <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-            For the Urantia Science Symposium 2025
-          </p>
-        )}
-      </header>
+  return (
+    <>
+      <Header title={report.title} ttsControls={ttsControls} />
+
+      <main className="container mx-auto px-4 py-4 max-w-[65ch]">
+        <article>
+          {/* Report Metadata */}
+          <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
+            <p className={`text-2xl mb-4 ${params.id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
+              {report.subtitle}
+            </p>
+            <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+              <span>{report.date}</span>
+              <span>•</span>
+              <span>{report.readTime}</span>
+            </div>
+            <p className="mt-4 text-text-light dark:text-text-dark">
+              Researcher: <strong>David Neufer</strong>
+            </p>
+            {report.publication && (
+              <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
+                {report.publication}
+              </p>
+            )}
+            {!report.publication && params.id !== 'nuclear-isle' && params.id !== 'circuit-architecture' && params.id !== 'havona-chairs' && (
+              <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+                For the Urantia Science Symposium 2025
+              </p>
+            )}
+          </header>
 
       {/* Report Content */}
       <div id="report-content" className="prose prose-lg dark:prose-invert max-w-none
@@ -132,12 +132,14 @@ export default function ReportPage({ params }) {
         <ContentComponent />
       </div>
 
-      {/* Footer */}
-      <footer className="mt-16 pt-8 border-t border-light-border dark:border-dark-border">
-        <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-          End of Report
-        </p>
-      </footer>
-    </article>
+          {/* Footer */}
+          <footer className="mt-16 pt-8 border-t border-light-border dark:border-dark-border">
+            <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+              End of Report
+            </p>
+          </footer>
+        </article>
+      </main>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Header from '../components/Header'
 
 export default function Home() {
 
@@ -46,8 +47,11 @@ export default function Home() {
   ]
 
   return (
-    <div className="max-w-[65ch] mx-auto space-y-8">
-      {/* Main Title Card */}
+    <>
+      <Header />
+      <main className="container mx-auto px-4 py-4 max-w-[65ch]">
+        <div className="space-y-8">
+          {/* Main Title Card */}
       <div className="inline-block px-4 py-2 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border">
         <h1 className="text-2xl font-bold mb-1 mt-0 text-text-light dark:text-text-dark">
           Architecture of the Master&nbsp;Universe
@@ -134,6 +138,8 @@ export default function Home() {
         </div>
       </section>
 
-    </div>
+        </div>
+      </main>
+    </>
   )
 }

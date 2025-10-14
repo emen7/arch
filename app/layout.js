@@ -1,5 +1,4 @@
 import './globals.css'
-import Header from '../components/Header'
 import AppStateManager from '../components/AppStateManager'
 
 export const metadata = {
@@ -57,10 +56,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark">
         <AppStateManager />
-        <Header />
-        <main className="container mx-auto px-4 py-4 max-w-[65ch]">
-          {children}
-        </main>
+        {children}
         <footer className="mt-16 py-8 border-t border-light-border dark:border-dark-border">
           <div className="container mx-auto px-4 text-center text-text-muted-light dark:text-text-muted-dark max-w-[65ch]">
             <p className="text-sm italic">

@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import Header from '@/components/Header'
 
 export default function GlossaryPage() {
   const [content, setContent] = useState('')
@@ -49,10 +49,13 @@ export default function GlossaryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
-      {/* Alphabet Navigation - positioned right below header with proper spacing */}
-      <div data-alphabet-sticky className="sticky top-0 z-40 bg-light-bg dark:bg-dark-bg pt-[4.5rem] pb-1">
-        <div className="container mx-auto px-4 max-w-[65ch] border-b border-light-border dark:border-dark-border">
+    <>
+      <Header />
+
+      <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
+        {/* Alphabet Navigation - positioned right below header */}
+        <div data-alphabet-sticky className="sticky top-[57px] z-40 bg-light-bg dark:bg-dark-bg pb-1">
+          <div className="container mx-auto px-4 max-w-[65ch] border-b border-light-border dark:border-dark-border">
           {isNavExpanded ? (
             // Expanded view - full alphabet
             <div className="py-3">
@@ -108,7 +111,7 @@ export default function GlossaryPage() {
                         prose-blockquote:border-l-4 prose-blockquote:border-light-border dark:prose-blockquote:border-dark-border
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
-                        prose-h2:scroll-mt-[150px]">
+                        prose-h2:scroll-mt-[120px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -127,6 +130,7 @@ export default function GlossaryPage() {
           </ReactMarkdown>
         </div>
       </article>
-    </div>
+      </div>
+    </>
   )
 }
