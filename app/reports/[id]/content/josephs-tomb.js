@@ -82,18 +82,50 @@ export default function JosephsTombContent() {
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Critical Timing Sequence</h3>
 
-        <div className="my-8 p-6 bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg">
-          <p className="text-sm text-center mb-4 text-text-muted-light dark:text-text-muted-dark font-semibold">
+        <div className="my-8 overflow-x-auto">
+          <table className="min-w-full border border-light-border dark:border-dark-border">
+            <thead className="bg-light-card dark:bg-dark-card">
+              <tr>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Event</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Time</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Significance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Morontia emergence</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:02 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Jesus emerges from tomb in morontia form<Citation num={9} /></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Archangel request</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:10 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Chief requests custody of physical remains<Citation num={10} /></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Stone rolling begins</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Midwayers commence operation<Citation num={11} /></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Guards flee</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10-3:15 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Witness stone moving "of its own accord"<Citation num={12} /></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Damascus Gate encounter</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:20-3:25 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Women meet fleeing guards<Citation num={13} /></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Women reach tomb</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">3:30 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Find stone rolled away<Citation num={14} /></td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="text-sm text-center mt-2 text-text-muted-light dark:text-text-muted-dark font-semibold">
             FIGURE 2. SEQUENCE OF EVENTS
-          </p>
-          <p className="mb-3">
-            <strong>Figure 2. Sequence of Events shows:</strong>
-          </p>
-          <p className="mb-3">
-            At <strong>3:02 AM</strong>, Jesus emerged from the tomb in morontia form<Citation num={9} />. Eight minutes later, at <strong>3:10 AM</strong>, the archangel chief requested custody of the physical remains<Citation num={10} />. Shortly after 3:10 AM, the midwayers commenced the operation to roll away the stone<Citation num={11} />, and the guards, witnessing the stone moving "of its own accord," fled in panic<Citation num={12} />.
-          </p>
-          <p>
-            Around <strong>3:20-3:25 AM</strong>, the five women encountered these fleeing guards as they passed through Damascus Gate<Citation num={13} />. The women continued on and reached the tomb at <strong>3:30 AM</strong>, where they found the stone already rolled away<Citation num={14} />.
           </p>
         </div>
 
@@ -292,18 +324,55 @@ export default function JosephsTombContent() {
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Specification Compliance Assessment</h3>
-        <div className="my-8 p-6 bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg">
-          <p className="text-sm text-center mb-4 text-text-muted-light dark:text-text-muted-dark font-semibold">
+        <div className="my-8 overflow-x-auto">
+          <table className="min-w-full border border-light-border dark:border-dark-border">
+            <thead className="bg-light-card dark:bg-dark-card">
+              <tr>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Constraint</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Garden Tomb Reality</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Match</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Distance from Damascus Gate</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">0.7 miles northeast</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Within 1.25 mile limit</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Chamber dimensions</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">8 ft × 11 ft = 88 sq ft</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ 88% correlation</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Rock-hewn construction</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Carved from limestone cliff</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Confirmed</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Tomb architecture</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Vestibule entrance (north), burial chamber (east)</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Dawn illumination into chamber</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Garden setting</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Historical garden designation</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Documented</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Nearby cliff</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Multiple ravines and cliffs</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Disposal capability</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Groove system</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Visible channel for rolling stone</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">✓ Preserved</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="text-sm text-center mt-2 text-text-muted-light dark:text-text-muted-dark font-semibold">
             FIGURE 7. GARDEN TOMB COMPLIANCE CHART
-          </p>
-          <p className="mb-3">
-            <strong>Figure 7. Garden Tomb Compliance Chart shows:</strong>
-          </p>
-          <p className="mb-3">
-            The Garden Tomb's distance from Damascus Gate measures <strong>0.7 miles northeast</strong>, well within the required 1.25 mile limit established by the guards' flight pattern. The chamber dimensions of <strong>8 feet by 11 feet, totaling 88 square feet</strong>, provide an 88% correlation with the revealed specification of "about ten feet square." The rock-hewn construction, carved from limestone cliff, confirms the requirement for solid rock chambers.
-          </p>
-          <p>
-            The tomb's architecture features a vestibule entrance facing north with the burial chamber facing east, enabling dawn illumination into the chamber precisely as described. The site's historical garden designation documents the garden setting requirement. Multiple nearby ravines and cliffs provide the disposal capability needed for the temple captain's actions. Finally, a visible channel for the rolling stone preserves the groove system specified in the revelation.
           </p>
         </div>
 
