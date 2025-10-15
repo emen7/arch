@@ -596,10 +596,14 @@ export default function AcceleratedTimeContent() {
           ordered process rather than arbitrary power.
         </p>
 
+        {/* Citations - hidden from TTS */}
         <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
-          <p className="mb-3"><strong>Urantia Book Citations:</strong> ¹189:2.1 | ²189:2.8 | ³42:6.3 | ⁴42:12.14 | ⁵29:4.37 | ⁶29:4.19 | ⁷42:6.3 | ⁸15:6.13 | ⁹42:5.9 | ¹⁰29:4.35 | ¹¹42:6.3 | ¹²41:7.14 | ¹³29:4.32 | ¹⁴29:4.27 | ¹⁵189:3.2</p>
+          <p><strong>Urantia Book Citations:</strong> ¹189:2.1 | ²189:2.8 | ³42:6.3 | ⁴42:12.14 | ⁵29:4.37 | ⁶29:4.19 | ⁷42:6.3 | ⁸15:6.13 | ⁹42:5.9 | ¹⁰29:4.35 | ¹¹42:6.3 | ¹²41:7.14 | ¹³29:4.32 | ¹⁴29:4.27 | ¹⁵189:3.2</p>
+        </div>
 
-          <p className="mt-3"><strong>Notations:</strong></p>
+        {/* Notations - readable by TTS */}
+        <div className="mt-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="mb-2"><strong>Notations:</strong></p>
           <p className="mt-2">a. Contemporary physicist David Wiltshire's timescape cosmology demonstrates this principle, showing that cosmic voids experience accelerated time relative to matter-dense regions—with clock rates varying by 38% or more. See: Wiltshire, D.L. (2007), "Cosmic clocks, cosmic variance and cosmic averages," <em>New J. Phys.</em> 9, 377. David Wiltshire's TimeScape cosmological model demonstrates that a clock in a cosmic void runs 38% faster than in gravitational wells. The tomb operation would require an extreme case where this differential approaches infinity, which is achievable through complete antigravity generation at the ultimatonic level.</p>
           <p className="mt-2">b. Using Einstein's mass-energy equivalence E=mc², where m=70kg and c=299,792,458 m/s. This energy release equals approximately 30 million times the largest nuclear device ever tested.</p>
         </div>
