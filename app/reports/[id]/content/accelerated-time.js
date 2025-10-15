@@ -8,14 +8,17 @@ const scrollToSection = (e, sectionId) => {
   const element = document.getElementById(sectionId)
   if (!element) return
 
-  // Header height calculation:
-  // - Main header: 57px
-  // - Report title + TTS controls: ~75px
-  // - Additional buffer to position text touching TTS line: ~38px
-  // Total: ~170px (adjusted for both mobile and desktop)
-  const headerOffset = 190
+  // Dynamically calculate the sticky header height
+  const reportHeader = document.querySelector('header')
+  const headerHeight = reportHeader ? reportHeader.offsetHeight : 93
+
+  // Add buffer to ensure text lands below TTS reading line
+  // This positions the target element just below where TTS will start reading
+  const buffer = 40
+  const totalOffset = headerHeight + buffer
+
   const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-  const offsetPosition = elementPosition - headerOffset
+  const offsetPosition = elementPosition - totalOffset
 
   window.scrollTo({
     top: offsetPosition,
