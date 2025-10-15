@@ -21,7 +21,10 @@
       "Bash(npx pwa-asset-generator:*)",
       "Bash(python scripts/convert-superscripts.py:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nAdd ''Havona and the Twenty Chairs'' allegory to Revelation Research\n\nNew Report:\n- Havona and the Twenty Chairs: Allegorical exploration of Havona world distribution\n- Originally published in Urantia Fellowship''s Mini-Messenger, April 1, 2025\n\nContent:\n- The Twenty Chairs Problem: Seven tables, proportional distribution\n- Two patterns (oscillating vs Gaussian) for distributing 20 million worlds\n- Reverse-engineering from universal patterns (superuniverse and outer space)\n- Conclusion: Gaussian Pattern B matches observed cosmic density patterns\n- Humorous twist: Professor meant Havana (Cuba), not Havona\n\nFeatures:\n- Hero image near top (beach scene with antique cars)\n- 3 citations properly formatted\n- Publication credit footer\n- Structured with clear sections and visual pattern displays\n- ~8 minute read\n\nAdded to home page as first item in Revelation Research section\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(awk:*)",
+      "Bash(sort:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []

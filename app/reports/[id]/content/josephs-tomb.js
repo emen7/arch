@@ -37,8 +37,8 @@ export default function JosephsTombContent() {
           orientation.
         </p>
         <p>
-          Each evidence trail narrows the possibilities. Combined, they converge on less than 0.05
-          square miles of Jerusalem terrain. The Urantia Papers didn't merely describe a tomb; they
+          Each evidence trail narrows the possibilities. Combined, they converge on less than 30
+          acres of Jerusalem terrain. The Urantia Papers didn't merely describe a tomb; they
           provided forensic coordinates for those willing to carefully map the evidence.
         </p>
       </section>
@@ -450,10 +450,10 @@ export default function JosephsTombContent() {
           administration achieves its purposes through ordered processes.
         </p>
         <p>
-          The irony is profound: Mary addressed her question to one she thought was the garden's
+          Mary addressed her question to one she thought was the garden's
           caretaker, not realizing she had spoken to the risen Master himself. Today, through the
           forensic reconstruction of revealed evidence, that garden can be identified—transforming
-          her desperate question into a geographic fact, mystery into a mappable reality.
+          her desperate question into a geographic understanding, mystery into a mappable reality.
         </p>
 
         {/* Figure 9 - Tomb Diagram */}
