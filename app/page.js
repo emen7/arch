@@ -57,7 +57,7 @@ export default function Home() {
           Architecture of the Master&nbsp;Universe
         </h1>
         <p className="text-text-muted-light dark:text-text-muted-dark mb-1">
-          Living documentation of deep study into Urantia Book revelations
+          Living documentation of deep study into Urantia Book revelations. This will change as more is known and more reports are added.
         </p>
         <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
           Researcher: David Neufer
