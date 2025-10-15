@@ -8,8 +8,12 @@ const scrollToSection = (e, sectionId) => {
   const element = document.getElementById(sectionId)
   if (!element) return
 
-  // Header height (~93px for two-line header with title + TTS) + buffer + 1em for TTS reading position
-  const headerOffset = 156
+  // Header height calculation for desktop:
+  // - Main header: 57px
+  // - Report title + TTS controls: ~75px
+  // - Additional buffer for TTS reading cursor: ~20px
+  // Total: ~152px
+  const headerOffset = 170
   const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
   const offsetPosition = elementPosition - headerOffset
 
