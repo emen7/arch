@@ -448,9 +448,9 @@ export default function AcceleratedTimeContent() {
           mortal remains of Jesus underwent the same natural process of elemental
           disintegration as characterizes all human bodies on earth except that, in point of
           time, this natural mode of dissolution was greatly accelerated, hastened to that
-          point where it became well-nigh instantaneous"<Citation num={2} />. The body would decompose
+          point where it became well-nigh instantaneous"<Citation num={2} />. The abandoned physical form would decompose
           naturally—tissues breaking down, molecules dissociating, atoms reducing to
-          fundamental particles. The body became a temporal containment where time itself
+          fundamental particles. The Master Son's former mortal body became a temporal containment where time itself
           would alter, compressing geological ages into moments.
         </p>
 
@@ -519,7 +519,7 @@ export default function AcceleratedTimeContent() {
 
         <h3 id="controlled-dissolution" className="text-2xl font-semibold mt-8 mb-4">The Controlled Dissolution</h3>
         <p>
-          As ultimatons accelerated through increasing frequencies, the dissolving body
+          As ultimatons accelerated through increasing frequencies, the physical remains
           would emit energy across the electromagnetic spectrum. At octave 47—
           corresponding to ultraviolet radiation or "the chemical rays of sunlight"<Citation num={9} />—the
           controllers made a deliberate choice. They permitted uncontained emission at this
@@ -566,8 +566,8 @@ export default function AcceleratedTimeContent() {
           administration.
         </p>
         <p>
-          This presents a beautiful possibility: the Creator Son's physical form, having served
-          its purpose of demonstrating full mortal experience and advancing Godconsciousness, may have been transformed into lasting spiritual infrastructure. If
+          This presents a beautiful possibility: Jesus' abandoned physical body, having served
+          its purpose of demonstrating the Master Son's full mortal experience, may have been transformed into lasting spiritual infrastructure. If
           true, the empty tomb represents transformation. Matter was converted to energy,
           potentially reformed as the permanent archangel circuit that will serve Urantia
           and Nebadon throughout future ages.
@@ -872,8 +872,8 @@ export default function AcceleratedTimeContent() {
         </ul>
         <p className="mt-4">
           Whether this constitutes the actual burial shroud remains undetermined. What
-          stands documented is that if celestial beings managing Jesus' dissolution chose to
-          preserve electromagnetic remains through controlled UV emission, the resulting
+          stands documented is that if celestial beings managing the dissolution of Jesus' mortal remains chose to
+          preserve electromagnetic documentation through controlled UV emission, the resulting
           artifact would exhibit exactly the characteristics found on the Shroud of Turin.
         </p>
         <p className="mt-4">
@@ -955,8 +955,8 @@ export default function AcceleratedTimeContent() {
         <p>
           The technical precision documented in this study—the accelerated time, the
           controlled energy release, the electromagnetic imaging—all served this moment.
-          The universe administration, which managed cosmic energies with such
-          sophistication, did so to preserve both the reality of death and the certainty of
+          The sovereign Master Son, having achieved full universe authority and completed his bestowal mission, left behind mortal remains that the universe administration dissolved with exquisite care. They managed cosmic energies with such
+          sophistication to preserve both the reality of death and the certainty of
           resurrection. The empty bandages testified to genuine dissolution. The image on
           the Shroud reveals the physical body of a man who lived, died, and was
           transformed.
