@@ -587,13 +587,11 @@ export default function AcceleratedTimeContent() {
           beginning.
         </p>
         <p>
-          The accelerated time of the tomb shows that even the most extraordinary universe
-          events operate within consistent universal law. No physical principle was violated,
-          no cosmic rule suspended. Time compressed but maintained its nature. Matter
-          transformed but conserved its energy. The body dissolved but left its story.
-          Through it all, the universal truth remained constant: mind dominates matter,
-          consciousness directs energy, and divine purpose achieves its ends through
-          ordered process rather than arbitrary power.
+          The accelerated time of the tomb shows that even extraordinary universe
+          events operate within universal law. No physical principle was violated,
+          Cosmic rule was maintained. Time compressed and maintained its nature. Matter transformed and conserved its energy. The body dissolved and it left us its story on fabric.
+          
+          Through it all, the universal truth remained constant: mind controls matter, spirit ennobles life, and death precedes transition.
         </p>
 
         {/* Citations - hidden from TTS */}
