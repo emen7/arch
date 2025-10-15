@@ -22,12 +22,20 @@ export default function ReadAloud({ contentId = 'report-content' }) {
   const [showSettings, setShowSettings] = useState(false);
   const [currentParagraphIndex, setCurrentParagraphIndex] = useState(0);
   const [paragraphs, setParagraphs] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const utteranceRef = useRef(null);
   const currentUtteranceIndexRef = useRef(0);
   const paragraphsRef = useRef([]);
 
   useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    };
+    setIsMobile(checkMobile());
+
     // Check if Web Speech API is supported
     if (!window.speechSynthesis) {
       setIsSupported(false);
@@ -441,60 +449,78 @@ export default function ReadAloud({ contentId = 'report-content' }) {
           <div className="absolute top-full right-0 mt-2 p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-50 w-[250px] max-w-[calc(100vw-2rem)]">
             <h3 className="text-sm font-semibold mb-3">Reading Settings</h3>
 
-            {/* Speed Control */}
-            <div className="mb-3">
-              <label htmlFor="speed" className="text-xs block mb-1">
-                Speed: {rate}x
-              </label>
-              <select
-                id="speed"
-                value={rate}
-                onChange={(e) => handleRateChange(parseFloat(e.target.value))}
-                className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
-              >
-                <option value="0.8">0.8x</option>
-                <option value="0.9">0.9x</option>
-                <option value="1">1.0x (Normal)</option>
-                <option value="1.1">1.1x</option>
-                <option value="1.2">1.2x</option>
-                <option value="1.3">1.3x</option>
-                <option value="1.5">1.5x</option>
-                <option value="2">2.0x</option>
-              </select>
-            </div>
-
-            {/* Voice Selection */}
-            {voices.length > 0 ? (
-              <div className="mb-3">
-                <label htmlFor="voice" className="text-xs block mb-1">
-                  Voice:
-                </label>
-                <select
-                  id="voice"
-                  value={selectedVoice?.name || ''}
-                  onChange={(e) => {
-                    const voice = voices.find(v => v.name === e.target.value);
-                    setSelectedVoice(voice);
-                    // Save user's voice preference
-                    if (voice) {
-                      localStorage.setItem('tts-voice-preference', voice.name);
-                    }
-                  }}
-                  className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
-                >
-                  {voices
-                    .filter(v => v.lang.startsWith('en-'))
-                    .map((voice) => (
-                      <option key={voice.name} value={voice.name}>
-                        {voice.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
+            {isMobile ? (
+              // Mobile: Show informational message
+              <>
+                <div className="mb-3">
+                  <label className="text-xs block mb-1">Voice:</label>
+                  <div className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                    System
+                  </div>
+                </div>
+                <div className="mb-3 p-2 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded">
+                  Voice and speed settings are controlled by your device's text-to-speech settings. To modify these options, please adjust them in your phone's system settings.
+                </div>
+              </>
             ) : (
-              <div className="mb-3 p-2 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded">
-                Loading voices... If voices don't appear, try closing and reopening this panel.
-              </div>
+              // Desktop: Show functional controls
+              <>
+                {/* Speed Control */}
+                <div className="mb-3">
+                  <label htmlFor="speed" className="text-xs block mb-1">
+                    Speed: {rate}x
+                  </label>
+                  <select
+                    id="speed"
+                    value={rate}
+                    onChange={(e) => handleRateChange(parseFloat(e.target.value))}
+                    className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
+                  >
+                    <option value="0.8">0.8x</option>
+                    <option value="0.9">0.9x</option>
+                    <option value="1">1.0x (Normal)</option>
+                    <option value="1.1">1.1x</option>
+                    <option value="1.2">1.2x</option>
+                    <option value="1.3">1.3x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2.0x</option>
+                  </select>
+                </div>
+
+                {/* Voice Selection */}
+                {voices.length > 0 ? (
+                  <div className="mb-3">
+                    <label htmlFor="voice" className="text-xs block mb-1">
+                      Voice:
+                    </label>
+                    <select
+                      id="voice"
+                      value={selectedVoice?.name || ''}
+                      onChange={(e) => {
+                        const voice = voices.find(v => v.name === e.target.value);
+                        setSelectedVoice(voice);
+                        // Save user's voice preference
+                        if (voice) {
+                          localStorage.setItem('tts-voice-preference', voice.name);
+                        }
+                      }}
+                      className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
+                    >
+                      {voices
+                        .filter(v => v.lang.startsWith('en-'))
+                        .map((voice) => (
+                          <option key={voice.name} value={voice.name}>
+                            {voice.name}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                ) : (
+                  <div className="mb-3 p-2 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded">
+                    Loading voices... If voices don't appear, try closing and reopening this panel.
+                  </div>
+                )}
+              </>
             )}
 
             {/* Close Button */}
