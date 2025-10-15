@@ -470,7 +470,7 @@ export default function JosephsTombContent() {
           </figcaption>
         </figure>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p><strong>CITATIONS:</strong> ¹ 187:0.4 | ² 187:1.4 | ³ 187:1.4 | ⁴ 187:1.9 | ⁵ 187:1.10 | ⁶ 187:1.11 | ⁷ 188:2.3 | ⁸ 188:2.3 | ⁹ 189:1.1 | ¹⁰ 189:2.1 | ¹¹ 189:2.4 | ¹² 189:2.4 | ¹³ 189:4.5 | ¹⁴ 189:4.5 | ¹⁵ 189:2.4 | ¹⁶ 189:2.4 | ¹⁷ 189:4.3 | ¹⁸ 189:4.5 | ¹⁹ 189:4.5 | ²⁰ 188:1.2 | ²¹ 188:1.4 | ²² 188:1.4 | ²³ 189:2.4, 189:4.6 | ²⁴ 189:2.4 | ²⁵ 189:4.6 | ²⁶ 189:4.6 | ²⁷ 189:4.6 | ²⁸ 188:1.3 | ²⁹ 190:1.2 | ³⁰ 190:1.2</p>
         </div>
       </section>

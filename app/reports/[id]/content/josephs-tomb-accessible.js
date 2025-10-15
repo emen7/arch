@@ -187,7 +187,7 @@ export default function JosephsTombContent() {
             her desperate question into a geographic fact, mystery into a mappable reality.
           </p>
 
-          <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
             <p><strong>CITATIONS:</strong> <Citation num={1} /><PaperRef short>187:0.4</PaperRef> | <Citation num={2} /><PaperRef short>187:1.4</PaperRef> | <Citation num={3} /><PaperRef short>187:1.4</PaperRef> | <Citation num={4} /><PaperRef short>187:1.9</PaperRef> | <Citation num={5} /><PaperRef short>187:1.10</PaperRef> | <Citation num={6} /><PaperRef short>187:1.11</PaperRef> | <Citation num={7} /><PaperRef short>188:2.3</PaperRef> | <Citation num={8} /><PaperRef short>188:2.3</PaperRef> | <Citation num={9} /><PaperRef short>189:1.1</PaperRef> | <Citation num={10} /><PaperRef short>189:2.1</PaperRef> | <Citation num={11} /><PaperRef short>189:2.4</PaperRef> | <Citation num={12} /><PaperRef short>189:2.4</PaperRef> | <Citation num={13} /><PaperRef short>189:4.5</PaperRef> | <Citation num={14} /><PaperRef short>189:4.5</PaperRef> | <Citation num={15} /><PaperRef short>189:2.4</PaperRef> | <Citation num={16} /><PaperRef short>189:2.4</PaperRef></p>
           </div>
         </section>

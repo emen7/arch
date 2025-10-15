@@ -230,7 +230,7 @@ export default function AcceleratedTimeContent() {
           third day. His enemies, however, remembered it well.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p><strong>Urantia Book Citations:</strong> ¹187:5.5 | ²187:6.1 | ³187:6.3 | ⁴188:0.2 | ⁵188:1.2 | ⁶188:0.3 | ⁷188:1.1 | ⁸188:1.1 | ⁹188:1.3 | ¹⁰188:1.2 | ¹¹188:1.4 | ¹²188:1.7</p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function AcceleratedTimeContent() {
           personalities would arrive with purposes known only to themselves.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p><strong>Urantia Book Citations:</strong> ¹188:2.1 | ²188:2.3 | ³188:0.1 | ⁴188:3.4 | ⁵189:0.2 | ⁶189:0.2 | ⁷189:0.2 | ⁸189:0.3</p>
         </div>
       </section>
@@ -424,7 +424,7 @@ export default function AcceleratedTimeContent() {
           occurred.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p><strong>Urantia Book Citations:</strong> ¹189:1.1 | ²189:1.1 | ³189:1.1 | ⁴189:1.2 | ⁵189:1.5 | ⁶189:2.1 | ⁷189:2.3 | ⁸189:2.4 | ⁹189:2.4 | ¹⁰189:2.8 | ¹¹189:4.6</p>
         </div>
       </section>
@@ -596,7 +596,7 @@ export default function AcceleratedTimeContent() {
           ordered process rather than arbitrary power.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p className="mb-3"><strong>Urantia Book Citations:</strong> ¹189:2.1 | ²189:2.8 | ³42:6.3 | ⁴42:12.14 | ⁵29:4.37 | ⁶29:4.19 | ⁷42:6.3 | ⁸15:6.13 | ⁹42:5.9 | ¹⁰29:4.35 | ¹¹42:6.3 | ¹²41:7.14 | ¹³29:4.32 | ¹⁴29:4.27 | ¹⁵189:3.2</p>
 
           <p className="mt-3"><strong>Notations:</strong></p>
@@ -881,7 +881,7 @@ export default function AcceleratedTimeContent() {
           time.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p className="mb-3"><strong>Urantia Book Citations:</strong> ¹188:1.4 | ²189:4.6 | ³187:2.7 | ⁴187:2.9 | ⁵187:2.9 | ⁶187:1.1 | ⁷187:2.10 | ⁸187:5.6 | ⁹189:4.6 | ¹⁰189:3.2</p>
 
           <details className="mt-4">
@@ -969,7 +969,7 @@ export default function AcceleratedTimeContent() {
           that death is only the beginning.
         </p>
 
-        <div className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p><strong>Urantia Book Citations:</strong> ¹188:1.7 | ²189:4.13 | ³189:4.13 | ⁴189:4.13</p>
         </div>
       </section>
