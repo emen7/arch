@@ -75,7 +75,7 @@ export default function AcceleratedTimeContent() {
           </div>
           <div>
             <a href="#section-2" onClick={(e) => scrollToSection(e, 'section-2')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
-              Section 2: The Mandate
+              Section 2: Saturday - The Mandate
             </a>
             <ul className="ml-6 mt-1 space-y-1">
               <li><a href="#guards-arrive" onClick={(e) => scrollToSection(e, 'guards-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Guards Arrive</a></li>
@@ -86,7 +86,7 @@ export default function AcceleratedTimeContent() {
           </div>
           <div>
             <a href="#section-3" onClick={(e) => scrollToSection(e, 'section-3')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
-              Section 3: The Dissolution
+              Section 3: Sunday - Resurrection and Dissolution
             </a>
             <ul className="ml-6 mt-1 space-y-1">
               <li><a href="#paradise-personalities-arrive" onClick={(e) => scrollToSection(e, 'paradise-personalities-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Paradise Personalities Arrive</a></li>
@@ -240,7 +240,7 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2 id="section-2">Section 2: The Mandate</h2>
+        <h2 id="section-2">Section 2: Saturday - The Mandate</h2>
 
         <h3 id="guards-arrive" className="text-2xl font-semibold mt-8 mb-4">The Guards Arrive</h3>
         <p>
@@ -312,7 +312,7 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2 id="section-3">Section 3: The Dissolution</h2>
+        <h2 id="section-3">Section 3: Sunday - Resurrection and Dissolution</h2>
 
         <h3 id="paradise-personalities-arrive" className="text-2xl font-semibold mt-8 mb-4">Paradise Personalities Arrive</h3>
         <p>
