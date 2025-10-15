@@ -27,6 +27,7 @@ export default function ReadAloud({ contentId = 'report-content' }) {
   const utteranceRef = useRef(null);
   const currentUtteranceIndexRef = useRef(0);
   const paragraphsRef = useRef([]);
+  const wakeLockRef = useRef(null);
 
   useEffect(() => {
     // Detect mobile device
@@ -101,8 +102,38 @@ export default function ReadAloud({ contentId = 'report-content' }) {
 
     return () => {
       window.speechSynthesis.cancel();
+      releaseWakeLock();
     };
   }, []);
+
+  // Wake Lock API functions to keep screen on during reading
+  const requestWakeLock = async () => {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLockRef.current = await navigator.wakeLock.request('screen');
+        console.log('Wake Lock activated');
+
+        // Listen for wake lock release (e.g., if user switches tabs)
+        wakeLockRef.current.addEventListener('release', () => {
+          console.log('Wake Lock released');
+        });
+      }
+    } catch (err) {
+      console.log('Wake Lock request failed:', err.message);
+    }
+  };
+
+  const releaseWakeLock = async () => {
+    if (wakeLockRef.current) {
+      try {
+        await wakeLockRef.current.release();
+        wakeLockRef.current = null;
+        console.log('Wake Lock manually released');
+      } catch (err) {
+        console.log('Wake Lock release failed:', err.message);
+      }
+    }
+  };
 
   // Extract paragraphs from content
   const extractParagraphs = () => {
@@ -251,6 +282,9 @@ export default function ReadAloud({ contentId = 'report-content' }) {
   };
 
   const handlePlay = () => {
+    // Request wake lock to keep screen on during reading
+    requestWakeLock();
+
     if (isPaused) {
       // Resume from pause
       window.speechSynthesis.resume();
@@ -322,6 +356,8 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     window.speechSynthesis.pause();
     setIsPaused(true);
     setIsPlaying(false);
+    // Release wake lock when paused
+    releaseWakeLock();
   };
 
   const handleStop = () => {
@@ -333,6 +369,9 @@ export default function ReadAloud({ contentId = 'report-content' }) {
     paragraphs.forEach(para => {
       para.element.style.backgroundColor = '';
     });
+
+    // Release wake lock when stopped
+    releaseWakeLock();
   };
 
   const handleRateChange = (newRate) => {
