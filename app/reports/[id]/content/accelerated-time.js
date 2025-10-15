@@ -3,19 +3,20 @@
 import Citation from '@/components/Citation'
 
 // Helper function to scroll to section with proper offset
+// Uses same pattern as glossary: measure sticky element + buffer
 const scrollToSection = (e, sectionId) => {
-  e.preventDefault() // Prevent default anchor behavior
+  e.preventDefault()
   const element = document.getElementById(sectionId)
   if (!element) return
 
-  // Dynamically calculate the sticky header height
-  const reportHeader = document.querySelector('header')
-  const headerHeight = reportHeader ? reportHeader.offsetHeight : 93
+  // Measure the sticky header (which includes Home nav + Report title + TTS when present)
+  const stickyHeader = document.querySelector('header.sticky')
+  const stickyHeight = stickyHeader ? stickyHeader.offsetHeight : 93
 
-  // Add buffer to ensure text lands below TTS reading line
-  // This positions the target element just below where TTS will start reading
-  const buffer = 40
-  const totalOffset = headerHeight + buffer
+  // Small buffer like glossary uses (glossary uses 10px)
+  const buffer = 10
+
+  const totalOffset = stickyHeight + buffer
 
   const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
   const offsetPosition = elementPosition - totalOffset
