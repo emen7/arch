@@ -82,7 +82,8 @@ export default function JosephsTombContent() {
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Critical Timing Sequence</h3>
 
-        <div className="my-8 overflow-x-auto">
+        {/* Visual table for sighted users */}
+        <div className="my-8 overflow-x-auto" aria-hidden="true">
           <table className="min-w-full border border-light-border dark:border-dark-border">
             <thead className="bg-light-card dark:bg-dark-card">
               <tr>
@@ -126,6 +127,19 @@ export default function JosephsTombContent() {
           </table>
           <p className="text-sm text-center mt-2 text-text-muted-light dark:text-text-muted-dark font-semibold">
             FIGURE 2. SEQUENCE OF EVENTS
+          </p>
+        </div>
+
+        {/* Screen reader / TTS alternative */}
+        <div className="sr-only" role="region" aria-label="Figure 2 data description">
+          <p>Figure 2. Sequence of Events shows:</p>
+          <p>
+            At 3:02 AM, Jesus emerged from the tomb in morontia form. Eight minutes later, at 3:10 AM,
+            the archangel chief requested custody of the physical remains. Shortly after 3:10 AM,
+            midwayers commenced the stone-rolling operation. The guards witnessed the massive stone
+            moving "of its own accord" and fled in panic. Between 3:20 and 3:25 AM, the five women
+            encountered these fleeing guards at Damascus Gate. The women arrived at the tomb at
+            3:30 AM and found the stone already rolled away.
           </p>
         </div>
 
@@ -324,7 +338,9 @@ export default function JosephsTombContent() {
         </p>
 
         <h3 className="text-2xl font-semibold mt-8 mb-4">Specification Compliance Assessment</h3>
-        <div className="my-8 overflow-x-auto">
+
+        {/* Visual table for sighted users */}
+        <div className="my-8 overflow-x-auto" aria-hidden="true">
           <table className="min-w-full border border-light-border dark:border-dark-border">
             <thead className="bg-light-card dark:bg-dark-card">
               <tr>
@@ -373,6 +389,21 @@ export default function JosephsTombContent() {
           </table>
           <p className="text-sm text-center mt-2 text-text-muted-light dark:text-text-muted-dark font-semibold">
             FIGURE 7. GARDEN TOMB COMPLIANCE CHART
+          </p>
+        </div>
+
+        {/* Screen reader / TTS alternative */}
+        <div className="sr-only" role="region" aria-label="Figure 7 data description">
+          <p>Figure 7. Garden Tomb Compliance Chart shows:</p>
+          <p>
+            The Garden Tomb is located 0.7 miles northeast of Damascus Gate, well within the 1.25 mile limit.
+            The chamber dimensions measure 8 feet by 11 feet, equaling 88 square feet—an 88% correlation
+            with the specified "about ten feet square." The tomb is confirmed to be carved from a limestone cliff
+            with rock-hewn construction. Its architecture features a vestibule entrance facing north and a burial
+            chamber facing east, allowing dawn illumination into the chamber as described. The site has a
+            documented historical garden designation. Multiple nearby ravines and cliffs provide disposal capability
+            for the burial cloths. A visible channel for the rolling stone remains preserved in the groove system.
+            All seven specifications match the Garden Tomb's physical reality.
           </p>
         </div>
 
