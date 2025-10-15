@@ -1,4 +1,23 @@
+'use client'
+
 import Citation from '@/components/Citation'
+
+// Helper function to scroll to section with proper offset
+const scrollToSection = (e, sectionId) => {
+  e.preventDefault() // Prevent default anchor behavior
+  const element = document.getElementById(sectionId)
+  if (!element) return
+
+  // Header height (~93px for two-line header with title + TTS) + buffer
+  const headerOffset = 140
+  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+  const offsetPosition = elementPosition - headerOffset
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  })
+}
 
 export default function AcceleratedTimeContent() {
   return (
@@ -38,74 +57,74 @@ export default function AcceleratedTimeContent() {
         <h2 id="table-of-contents">Table of Contents</h2>
         <nav className="ml-6 space-y-2 text-sm">
           <div>
-            <a href="#section-1" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#section-1" onClick={(e) => scrollToSection(e, 'section-1')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Section 1: Friday - The Preparation
             </a>
             <ul className="ml-6 mt-1 space-y-1">
-              <li><a href="#death-and-aftermath" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Death and Its Aftermath</a></li>
-              <li><a href="#josephs-bold-request" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Joseph's Bold Request</a></li>
-              <li><a href="#confrontation-at-golgotha" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Confrontation at Golgotha</a></li>
-              <li><a href="#burial-procession" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Burial Procession</a></li>
-              <li><a href="#preparation-of-body" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Preparation of the Body</a></li>
-              <li><a href="#womens-vigil" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Women's Vigil</a></li>
+              <li><a href="#death-and-aftermath" onClick={(e) => scrollToSection(e, 'death-and-aftermath')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Death and Its Aftermath</a></li>
+              <li><a href="#josephs-bold-request" onClick={(e) => scrollToSection(e, 'josephs-bold-request')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Joseph's Bold Request</a></li>
+              <li><a href="#confrontation-at-golgotha" onClick={(e) => scrollToSection(e, 'confrontation-at-golgotha')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Confrontation at Golgotha</a></li>
+              <li><a href="#burial-procession" onClick={(e) => scrollToSection(e, 'burial-procession')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Burial Procession</a></li>
+              <li><a href="#preparation-of-body" onClick={(e) => scrollToSection(e, 'preparation-of-body')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Preparation of the Body</a></li>
+              <li><a href="#womens-vigil" onClick={(e) => scrollToSection(e, 'womens-vigil')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Women's Vigil</a></li>
             </ul>
           </div>
           <div>
-            <a href="#section-2" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#section-2" onClick={(e) => scrollToSection(e, 'section-2')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Section 2: The Mandate
             </a>
             <ul className="ml-6 mt-1 space-y-1">
-              <li><a href="#guards-arrive" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Guards Arrive</a></li>
-              <li><a href="#silent-sabbath" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Silent Sabbath</a></li>
-              <li><a href="#midnight-declaration" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Midnight Declaration</a></li>
-              <li><a href="#anxious-expectancy" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Anxious Expectancy</a></li>
+              <li><a href="#guards-arrive" onClick={(e) => scrollToSection(e, 'guards-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Guards Arrive</a></li>
+              <li><a href="#silent-sabbath" onClick={(e) => scrollToSection(e, 'silent-sabbath')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Silent Sabbath</a></li>
+              <li><a href="#midnight-declaration" onClick={(e) => scrollToSection(e, 'midnight-declaration')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Midnight Declaration</a></li>
+              <li><a href="#anxious-expectancy" onClick={(e) => scrollToSection(e, 'anxious-expectancy')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Anxious Expectancy</a></li>
             </ul>
           </div>
           <div>
-            <a href="#section-3" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#section-3" onClick={(e) => scrollToSection(e, 'section-3')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Section 3: The Dissolution
             </a>
             <ul className="ml-6 mt-1 space-y-1">
-              <li><a href="#paradise-personalities-arrive" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Paradise Personalities Arrive</a></li>
-              <li><a href="#morontia-resurrection" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Morontia Resurrection</a></li>
-              <li><a href="#request-for-dissolution" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Request for Dissolution</a></li>
-              <li><a href="#stone-rolled-away" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Stone Rolled Away</a></li>
-              <li><a href="#dissolution-accomplished" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Dissolution Accomplished</a></li>
+              <li><a href="#paradise-personalities-arrive" onClick={(e) => scrollToSection(e, 'paradise-personalities-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Paradise Personalities Arrive</a></li>
+              <li><a href="#morontia-resurrection" onClick={(e) => scrollToSection(e, 'morontia-resurrection')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Morontia Resurrection</a></li>
+              <li><a href="#request-for-dissolution" onClick={(e) => scrollToSection(e, 'request-for-dissolution')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Request for Dissolution</a></li>
+              <li><a href="#stone-rolled-away" onClick={(e) => scrollToSection(e, 'stone-rolled-away')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Stone Rolled Away</a></li>
+              <li><a href="#dissolution-accomplished" onClick={(e) => scrollToSection(e, 'dissolution-accomplished')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Dissolution Accomplished</a></li>
             </ul>
           </div>
           <div>
-            <a href="#section-4" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#section-4" onClick={(e) => scrollToSection(e, 'section-4')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Section 4: The Physics of Accelerated Time
             </a>
             <ul className="ml-6 mt-1 space-y-1">
-              <li><a href="#ultimaton-foundation" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Ultimaton Foundation</a></li>
-              <li><a href="#operational-capabilities" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Operational Capabilities</a></li>
-              <li><a href="#controlled-dissolution" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Controlled Dissolution</a></li>
-              <li><a href="#archangel-circuit-activation" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Archangel Circuit Activation</a></li>
-              <li><a href="#physics-assessment" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Assessment</a></li>
+              <li><a href="#ultimaton-foundation" onClick={(e) => scrollToSection(e, 'ultimaton-foundation')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Ultimaton Foundation</a></li>
+              <li><a href="#operational-capabilities" onClick={(e) => scrollToSection(e, 'operational-capabilities')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Operational Capabilities</a></li>
+              <li><a href="#controlled-dissolution" onClick={(e) => scrollToSection(e, 'controlled-dissolution')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Controlled Dissolution</a></li>
+              <li><a href="#archangel-circuit-activation" onClick={(e) => scrollToSection(e, 'archangel-circuit-activation')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Archangel Circuit Activation</a></li>
+              <li><a href="#physics-assessment" onClick={(e) => scrollToSection(e, 'physics-assessment')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Assessment</a></li>
             </ul>
           </div>
           <div>
-            <a href="#section-5" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#section-5" onClick={(e) => scrollToSection(e, 'section-5')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Section 5: Physical Documentation
             </a>
             <ul className="ml-6 mt-1 space-y-1">
-              <li><a href="#burial-configuration" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Burial Configuration</a></li>
-              <li><a href="#discovery-at-dawn" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Discovery at Dawn</a></li>
-              <li><a href="#wound-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Wound Correspondence Analysis</a></li>
-              <li><a href="#scientific-analysis" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Scientific Analysis of the Shroud</a></li>
-              <li><a href="#uv-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The UV Correspondence</a></li>
-              <li><a href="#cloth-positioning" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Cloth Positioning and Operational Sequence</a></li>
-              <li><a href="#assessment-of-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Assessment of Correspondence</a></li>
+              <li><a href="#burial-configuration" onClick={(e) => scrollToSection(e, 'burial-configuration')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Burial Configuration</a></li>
+              <li><a href="#discovery-at-dawn" onClick={(e) => scrollToSection(e, 'discovery-at-dawn')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Discovery at Dawn</a></li>
+              <li><a href="#wound-correspondence" onClick={(e) => scrollToSection(e, 'wound-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Wound Correspondence Analysis</a></li>
+              <li><a href="#scientific-analysis" onClick={(e) => scrollToSection(e, 'scientific-analysis')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Scientific Analysis of the Shroud</a></li>
+              <li><a href="#uv-correspondence" onClick={(e) => scrollToSection(e, 'uv-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The UV Correspondence</a></li>
+              <li><a href="#cloth-positioning" onClick={(e) => scrollToSection(e, 'cloth-positioning')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Cloth Positioning and Operational Sequence</a></li>
+              <li><a href="#assessment-of-correspondence" onClick={(e) => scrollToSection(e, 'assessment-of-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Assessment of Correspondence</a></li>
             </ul>
           </div>
           <div>
-            <a href="#epilogue" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#epilogue" onClick={(e) => scrollToSection(e, 'epilogue')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Epilogue: Human Discovery
             </a>
           </div>
           <div>
-            <a href="#methodology" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+            <a href="#methodology" onClick={(e) => scrollToSection(e, 'methodology')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
               Methodology and Conclusion
             </a>
           </div>
