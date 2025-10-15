@@ -88,6 +88,31 @@ Report images are stored in `public/images/[report-name]/`:
 - Citation blocks appear at section ends with format: `¹187:1.4 | ²188:2.3 | ³189:4.6`
 - Scientific references can use collapsible `<details>` elements for long lists
 
+**TTS/ARIA Accessibility for Citations and Notations:**
+- IMPORTANT: Citation lists must be hidden from TTS using `aria-hidden="true"`
+- Explanatory notations should be kept readable by TTS (do NOT hide with aria-hidden)
+- Pattern:
+```jsx
+{/* Citations - hidden from TTS */}
+<div aria-hidden="true" className="mt-12 pt-6 border-t...">
+  <p className="mb-2 font-semibold">Citations:</p>
+  <p className="leading-relaxed">
+    <Citation num={1} /><PaperRef>12:3.6</PaperRef> | ...
+  </p>
+</div>
+
+{/* Notations - readable by TTS */}
+<div className="mt-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+  <p className="mb-2"><strong>Notations:</strong></p>
+  <p className="mt-2">a. Explanatory note text...</p>
+  <p className="mt-2">b. Another explanatory note...</p>
+</div>
+```
+- In-text citations (superscript numbers) are read as "citation 1", "citation 2" by the Citation component
+- Citation lists at section/report ends are tedious when read aloud - use aria-hidden to skip them
+- Notations provide valuable context - keep these readable for TTS users
+- The ReadAloud component (`components/ReadAloud.js`) automatically skips any content inside `aria-hidden="true"` containers
+
 **Table of Contents (for long reports):**
 - IMPORTANT: Do NOT use CSS `scroll-mt` alone - it doesn't work reliably across browsers
 - Use JavaScript onClick handlers to control scroll positioning
