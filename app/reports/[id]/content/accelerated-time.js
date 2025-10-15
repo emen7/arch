@@ -1015,7 +1015,7 @@ export default function AcceleratedTimeContent() {
           study—we gain insight into how revealed science and observational science covalidate.
         </p>
 
-        <p className="mt-8 font-semibold">Researcher: David Neufer</p>
+        <p className="mt-8 font-semibold">Researcher: David <span aria-label="Noofer">Neufer</span></p>
         <p className="text-sm italic">
           For a detailed geographic analysis of the tomb location, see the companion study,
           "Joseph's Tomb: Evidence of Location."

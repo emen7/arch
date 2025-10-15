@@ -104,14 +104,9 @@ export default function JosephsTombContent() {
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Chief requests custody of physical remains<Citation num={10} /></td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Stone rolling begins</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Midwayers commence operation<Citation num={11} /></td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Guards flee</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">~3:10-3:15 AM</td>
-                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Witness stone moving "of its own accord"<Citation num={12} /></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Stone rolling begins; Guards flee</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">after 3:10 AM</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Midwayers commence operation; guards witness stone moving "of its own accord" and flee<Citation num={11} /><Citation num={12} /></td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-light-border dark:border-dark-border">Damascus Gate encounter</td>
@@ -135,8 +130,8 @@ export default function JosephsTombContent() {
           <p>Figure 2. Sequence of Events shows:</p>
           <p>
             At 3:02 AM, Jesus emerged from the tomb in morontia form. Eight minutes later, at 3:10 AM,
-            the archangel chief requested custody of the physical remains. Shortly after 3:10 AM,
-            midwayers commenced the stone-rolling operation. The guards witnessed the massive stone
+            the archangel chief requested custody of the physical remains. After 3:10 AM,
+            midwayers commenced the stone-rolling operation and the guards witnessed the massive stone
             moving "of its own accord" and fled in panic. Between 3:20 and 3:25 AM, the five women
             encountered these fleeing guards at Damascus Gate. The women arrived at the tomb at
             3:30 AM and found the stone already rolled away.
@@ -507,14 +502,14 @@ export default function JosephsTombContent() {
       </section>
 
       <section className="mb-12">
-        <h3 className="text-xl font-semibold">Researcher: David Neufer</h3>
+        <h3 className="text-xl font-semibold">Researcher: David <span aria-label="Noofer">Neufer</span></h3>
         <p className="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">
           For the Urantia Science Symposium 2025
         </p>
 
         <h3 className="text-xl font-semibold mt-8">AI Disclosure</h3>
         <p className="text-sm">
-          This forensic investigation was conducted by David Neufer with assistance from Claude AI
+          This forensic investigation was conducted by David <span aria-label="Noofer">Neufer</span> with assistance from Claude AI
           for systematic evidence coordination, citation verification, and document structuring. The
           AI assisted with cross-referencing, identifying relevant passages, organizing constraint
           categories, and ensuring citation accuracy. All forensic methodology, interpretive analysis,
