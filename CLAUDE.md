@@ -67,7 +67,10 @@ Dark mode implementation uses Tailwind's `dark:` modifier with class-based toggl
 **Common patterns:**
 - Report cards: solid border with hover transition
 - Resource cards (like Glossary): dashed border for visual distinction
-- Sticky elements: Account for header height with `top-[57px]`
+- Sticky elements: Account for header height:
+  - Home/Glossary pages (single-line header): `top-[57px]`
+  - Report pages (two-line header with title + TTS): ~93px total
+  - Scroll offsets for navigation: Use 128-140px for reports
 - Section indentation: `ml-12` for sections, `ml-6` for cards within sections
 
 ### Image Management
@@ -84,6 +87,35 @@ Report images are stored in `public/images/[report-name]/`:
 - Superscript numbers in text (¹, ², ³) link to citation blocks
 - Citation blocks appear at section ends with format: `¹187:1.4 | ²188:2.3 | ³189:4.6`
 - Scientific references can use collapsible `<details>` elements for long lists
+
+**Table of Contents (for long reports):**
+- IMPORTANT: Do NOT use CSS `scroll-mt` alone - it doesn't work reliably across browsers
+- Use JavaScript onClick handlers to control scroll positioning
+- Report content component must include `'use client'` directive at top
+- Add scrollToSection helper function with proper header offset calculation
+- Pattern to follow (see accelerated-time.js as reference):
+```javascript
+'use client'
+
+const scrollToSection = (e, sectionId) => {
+  e.preventDefault()
+  const element = document.getElementById(sectionId)
+  if (!element) return
+
+  const headerOffset = 140  // Header (~93px) + buffer (~47px)
+  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+  const offsetPosition = elementPosition - headerOffset
+
+  window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+}
+
+// Then in TOC links:
+<a href="#section-id" onClick={(e) => scrollToSection(e, 'section-id')}
+   className="...cursor-pointer">Link Text</a>
+```
+- Keep href attribute for accessibility/SEO
+- Add `cursor-pointer` to className
+- This matches the proven glossary alphabet navigation pattern
 
 **Lists:**
 - Use explicit Tailwind classes: `list-disc ml-8 space-y-2 mt-4 pl-5`
