@@ -124,7 +124,7 @@ export default function ReportPage({ params }) {
       {/* Report Content */}
       <div id="report-content" className="prose prose-lg dark:prose-invert max-w-none
                       prose-headings:text-text-light dark:prose-headings:text-text-dark
-                      prose-h2:scroll-mt-[140px] prose-h3:scroll-mt-[140px]
+                      prose-h2:scroll-mt-[128px] prose-h3:scroll-mt-[128px]
                       prose-h3:text-[#3B82C8] dark:prose-h3:text-[#60A5FA]
                       prose-p:text-text-light dark:prose-p:text-text-dark
                       prose-a:text-text-light dark:prose-a:text-text-dark prose-a:underline hover:prose-a:text-black dark:hover:prose-a:text-white
