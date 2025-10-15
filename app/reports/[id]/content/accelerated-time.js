@@ -35,9 +35,87 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Section 1: Friday - The Preparation</h2>
+        <h2 id="table-of-contents">Table of Contents</h2>
+        <nav className="ml-6 space-y-2 text-sm">
+          <div>
+            <a href="#section-1" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Section 1: Friday - The Preparation
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#death-and-aftermath" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Death and Its Aftermath</a></li>
+              <li><a href="#josephs-bold-request" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Joseph's Bold Request</a></li>
+              <li><a href="#confrontation-at-golgotha" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Confrontation at Golgotha</a></li>
+              <li><a href="#burial-procession" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Burial Procession</a></li>
+              <li><a href="#preparation-of-body" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Preparation of the Body</a></li>
+              <li><a href="#womens-vigil" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Women's Vigil</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-2" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Section 2: The Mandate
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#guards-arrive" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Guards Arrive</a></li>
+              <li><a href="#silent-sabbath" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Silent Sabbath</a></li>
+              <li><a href="#midnight-declaration" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Midnight Declaration</a></li>
+              <li><a href="#anxious-expectancy" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Anxious Expectancy</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-3" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Section 3: The Dissolution
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#paradise-personalities-arrive" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Paradise Personalities Arrive</a></li>
+              <li><a href="#morontia-resurrection" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Morontia Resurrection</a></li>
+              <li><a href="#request-for-dissolution" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Request for Dissolution</a></li>
+              <li><a href="#stone-rolled-away" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Stone Rolled Away</a></li>
+              <li><a href="#dissolution-accomplished" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Dissolution Accomplished</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-4" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Section 4: The Physics of Accelerated Time
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#ultimaton-foundation" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Ultimaton Foundation</a></li>
+              <li><a href="#operational-capabilities" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Operational Capabilities</a></li>
+              <li><a href="#controlled-dissolution" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Controlled Dissolution</a></li>
+              <li><a href="#archangel-circuit-activation" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Archangel Circuit Activation</a></li>
+              <li><a href="#physics-assessment" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Assessment</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-5" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Section 5: Physical Documentation
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#burial-configuration" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The Burial Configuration</a></li>
+              <li><a href="#discovery-at-dawn" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Discovery at Dawn</a></li>
+              <li><a href="#wound-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Wound Correspondence Analysis</a></li>
+              <li><a href="#scientific-analysis" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Scientific Analysis of the Shroud</a></li>
+              <li><a href="#uv-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">The UV Correspondence</a></li>
+              <li><a href="#cloth-positioning" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Cloth Positioning and Operational Sequence</a></li>
+              <li><a href="#assessment-of-correspondence" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline">Assessment of Correspondence</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#epilogue" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Epilogue: Human Discovery
+            </a>
+          </div>
+          <div>
+            <a href="#methodology" className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold">
+              Methodology and Conclusion
+            </a>
+          </div>
+        </nav>
+      </section>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Death and Its Aftermath</h3>
+      <section className="mb-12">
+        <h2 id="section-1">Section 1: Friday - The Preparation</h2>
+
+        <h3 id="death-and-aftermath" className="text-2xl font-semibold mt-8 mb-4">The Death and Its Aftermath</h3>
         <p>
           Just before three o'clock on Friday afternoon, April 7, AD 30, Jesus of Nazareth died
           on the cross at Golgotha. "It was just before three o'clock when Jesus, with a loud
@@ -54,7 +132,7 @@ export default function AcceleratedTimeContent() {
           Sanhedrin had other intentions.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Joseph's Bold Request</h3>
+        <h3 id="josephs-bold-request" className="text-2xl font-semibold mt-8 mb-4">Joseph's Bold Request</h3>
         <p>
           Joseph of Arimathea, accompanied by Nicodemus, went directly to Pilate. These
           former Sanhedrists, whose faith in Jesus had long been suspected by their
@@ -65,7 +143,7 @@ export default function AcceleratedTimeContent() {
           to Golgotha and take immediate and full possession of the Master's body"<Citation num={6} />.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Confrontation at Golgotha</h3>
+        <h3 id="confrontation-at-golgotha" className="text-2xl font-semibold mt-8 mb-4">Confrontation at Golgotha</h3>
         <p>
           When Joseph and Nicodemus arrived at Golgotha, they found soldiers removing
           Jesus from the cross. At the same time, representatives of the Sanhedrin stood
@@ -81,7 +159,7 @@ export default function AcceleratedTimeContent() {
           stand by to see that no man interferes"<Citation num={8} />.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Burial Procession</h3>
+        <h3 id="burial-procession" className="text-2xl font-semibold mt-8 mb-4">The Burial Procession</h3>
         <p>
           At approximately half past four o'clock, the burial procession departed Golgotha.
           The body, wrapped in a linen sheet, was carried by four men: Joseph, Nicodemus,
@@ -94,7 +172,7 @@ export default function AcceleratedTimeContent() {
           Nicodemus remained doubtful.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Preparation of the Body</h3>
+        <h3 id="preparation-of-body" className="text-2xl font-semibold mt-8 mb-4">Preparation of the Body</h3>
         <p>
           The tomb chamber measured about ten feet square. Working hurriedly as the
           Sabbath approached, Joseph and Nicodemus prepared the body according to
@@ -109,7 +187,7 @@ export default function AcceleratedTimeContent() {
           entrance.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Women's Vigil</h3>
+        <h3 id="womens-vigil" className="text-2xl font-semibold mt-8 mb-4">The Women's Vigil</h3>
         <p>
           While the men worked, the women from Galilee—Mary Magdalene, Mary the wife
           of Clopas, Martha, another sister of Jesus' mother, and Rebecca of Sepphoris—
@@ -139,9 +217,9 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Section 2: The Mandate</h2>
+        <h2 id="section-2">Section 2: The Mandate</h2>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Guards Arrive</h3>
+        <h3 id="guards-arrive" className="text-2xl font-semibold mt-8 mb-4">The Guards Arrive</h3>
         <p>
           Early Saturday morning, the temple authorities acted on their fears. "The chief
           priests, Pharisees, and Sadducees recalled that they had received reports of his
@@ -157,7 +235,7 @@ export default function AcceleratedTimeContent() {
           personality of Jesus.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Silent Sabbath</h3>
+        <h3 id="silent-sabbath" className="text-2xl font-semibold mt-8 mb-4">The Silent Sabbath</h3>
         <p>
           Throughout Saturday, the mortal body of Jesus lay undisturbed in Joseph's tomb.
           The revelation states: "We can narrate the burial of the Son of Man and put in this
@@ -172,7 +250,7 @@ export default function AcceleratedTimeContent() {
           authority over the waiting observers.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Midnight Declaration</h3>
+        <h3 id="midnight-declaration" className="text-2xl font-semibold mt-8 mb-4">The Midnight Declaration</h3>
         <p>
           Shortly after midnight, as Saturday gave way to Sunday, the Personalized Adjuster
           addressed the assembled hosts:
@@ -192,7 +270,7 @@ export default function AcceleratedTimeContent() {
           command of the Paradise Father, and I know whereof I speak"<Citation num={567} />.
         </blockquote>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Anxious Expectancy</h3>
+        <h3 id="anxious-expectancy" className="text-2xl font-semibold mt-8 mb-4">Anxious Expectancy</h3>
         <p>
           "When they heard the Personalized Adjuster so speak, they all assumed the
           attitude of anxious expectancy, from Gabriel down to the most humble cherubim"<Citation num={8} />.
@@ -211,9 +289,9 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Section 3: The Dissolution</h2>
+        <h2 id="section-3">Section 3: The Dissolution</h2>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Paradise Personalities Arrive</h3>
+        <h3 id="paradise-personalities-arrive" className="text-2xl font-semibold mt-8 mb-4">Paradise Personalities Arrive</h3>
         <p>
           At two forty-five Sunday morning, April 9, AD 30, seven unidentified Paradise
           personalities arrived and "immediately deployed themselves about the tomb"<Citation num={1} />.
@@ -227,7 +305,7 @@ export default function AcceleratedTimeContent() {
           Matthew's Gospel as an earthquake.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Morontia Resurrection</h3>
+        <h3 id="morontia-resurrection" className="text-2xl font-semibold mt-8 mb-4">The Morontia Resurrection</h3>
         <p>
           At two minutes past three o'clock, "the resurrected morontia form and personality
           of Jesus of Nazareth came forth from the tomb"<Citation num={3} />.
@@ -247,7 +325,7 @@ export default function AcceleratedTimeContent() {
           departure for Uversa"<Citation num={5} />.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Request for Dissolution</h3>
+        <h3 id="request-for-dissolution" className="text-2xl font-semibold mt-8 mb-4">The Request for Dissolution</h3>
         <p>
           At ten minutes past three, as the resurrected Jesus, now outside the sealed tomb,
           fraternized with assembled morontia personalities from Satania's mansion worlds,
@@ -274,7 +352,7 @@ export default function AcceleratedTimeContent() {
           chief of archangels, preparations for the dissolution began.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Stone Rolled Away</h3>
+        <h3 id="stone-rolled-away" className="text-2xl font-semibold mt-8 mb-4">The Stone Rolled Away</h3>
         <p>
           The chief of archangels "summoned to his assistance many of his fellows, together
           with a numerous host of the representatives of all orders of celestial
@@ -300,7 +378,7 @@ export default function AcceleratedTimeContent() {
           to the Centurion upon his arrival on duty.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Dissolution Accomplished</h3>
+        <h3 id="dissolution-accomplished" className="text-2xl font-semibold mt-8 mb-4">The Dissolution Accomplished</h3>
         <p>
           With the tomb open and the guards fled, the assembled celestial personalities
           proceeded with the dissolution. Between authorization at 3:10 AM and completion
@@ -333,7 +411,7 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Section 4: The Physics of Accelerated Time</h2>
+        <h2 id="section-4">Section 4: The Physics of Accelerated Time</h2>
         <p>
           The archangel chief's request at 3:10 AM revealed a choice between the standard
           dematerialization technique and a variant specifically designed for this situation:
@@ -353,7 +431,7 @@ export default function AcceleratedTimeContent() {
           would alter, compressing geological ages into moments.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Ultimaton Foundation</h3>
+        <h3 id="ultimaton-foundation" className="text-2xl font-semibold mt-8 mb-4">The Ultimaton Foundation</h3>
         <p>
           The mechanism for such temporal compression involves ultimatons, those
           fundamental particles of which one hundred constitute each electron and many
@@ -385,7 +463,7 @@ export default function AcceleratedTimeContent() {
           trillions of ultimatons within a human body.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Operational Capabilities</h3>
+        <h3 id="operational-capabilities" className="text-2xl font-semibold mt-8 mb-4">Operational Capabilities</h3>
         <p className="text-sm italic mb-4">
           The following analysis correlates revealed capabilities with tomb requirements,
           offering reasoned inference about how beings with documented abilities would
@@ -416,7 +494,7 @@ export default function AcceleratedTimeContent() {
           occur while mere moments passed in the surrounding tomb.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Controlled Dissolution</h3>
+        <h3 id="controlled-dissolution" className="text-2xl font-semibold mt-8 mb-4">The Controlled Dissolution</h3>
         <p>
           As ultimatons accelerated through increasing frequencies, the dissolving body
           would emit energy across the electromagnetic spectrum. At octave 47—
@@ -452,7 +530,7 @@ export default function AcceleratedTimeContent() {
           form of the Creator Son was transformed into useful energy.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Archangel Circuit Activation</h3>
+        <h3 id="archangel-circuit-activation" className="text-2xl font-semibold mt-8 mb-4">The Archangel Circuit Activation</h3>
         <p>
           Seventy-five minutes after the dissolution, at 4:30 AM, "the circuit of the
           archangels then operated for the first time from Urantia"<Citation num={15} />. This timing raises an
@@ -472,7 +550,7 @@ export default function AcceleratedTimeContent() {
           and Nebadon throughout future ages.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Assessment</h3>
+        <h3 id="physics-assessment" className="text-2xl font-semibold mt-8 mb-4">Assessment</h3>
         <p>
           The tomb operation exemplifies the administration of an ordered universe,
           achieving divine purposes through cosmic law. Every aspect—from the archangel's
@@ -509,14 +587,14 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Section 5: Physical Documentation</h2>
+        <h2 id="section-5">Section 5: Physical Documentation</h2>
         <p className="text-sm italic mb-4">
           The revelation does not mention the Shroud of Turin or any image on burial cloths.
           This section examines whether characteristics of the Turin Shroud align with the
           revealed wound descriptions and the electromagnetic effects presented in Section 4.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The Burial Configuration</h3>
+        <h3 id="burial-configuration" className="text-2xl font-semibold mt-8 mb-4">The Burial Configuration</h3>
         <p>
           Joseph and Nicodemus prepared the body according to Jewish custom: "They now
           wrapped the body with bandages saturated with these solutions. When the
@@ -535,7 +613,7 @@ export default function AcceleratedTimeContent() {
           inner bandages, not the outer shroud. So, how did the image end up on the shroud?
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Discovery at Dawn</h3>
+        <h3 id="discovery-at-dawn" className="text-2xl font-semibold mt-8 mb-4">Discovery at Dawn</h3>
         <p>
           When Mary Magdalene entered the empty sepulchre on Sunday morning, she
           found:
@@ -556,7 +634,7 @@ export default function AcceleratedTimeContent() {
           inexplicable physical condition.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Wound Correspondence Analysis</h3>
+        <h3 id="wound-correspondence" className="text-2xl font-semibold mt-8 mb-4">Wound Correspondence Analysis</h3>
         <p>
           The Shroud of Turin bears the image of a crucified man displaying wounds that
           correspond precisely to the Urantia Papers' descriptions:
@@ -607,7 +685,7 @@ export default function AcceleratedTimeContent() {
           </table>
         </div>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Scientific Analysis of the Shroud</h3>
+        <h3 id="scientific-analysis" className="text-2xl font-semibold mt-8 mb-4">Scientific Analysis of the Shroud</h3>
         <p>
           The 1978 Shroud of Turin Research Project (STURP) and subsequent
           investigations documented characteristics that defy conventional explanation:
@@ -641,7 +719,7 @@ export default function AcceleratedTimeContent() {
 
         <p className="mt-4">This "blood first, image second" sequencing suggests that the cloth received blood during burial, and then the image formed through a different mechanism.</p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">The UV Correspondence</h3>
+        <h3 id="uv-correspondence" className="text-2xl font-semibold mt-8 mb-4">The UV Correspondence</h3>
         <p>
           Recent experiments by Di Lazzaro and colleagues at ENEA achieved breakthrough
           replication of Shroud-like characteristics using vacuum ultraviolet radiation:
@@ -666,7 +744,7 @@ export default function AcceleratedTimeContent() {
           dissolution.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Cloth Positioning and Operational Sequence</h3>
+        <h3 id="cloth-positioning" className="text-2xl font-semibold mt-8 mb-4">Cloth Positioning and Operational Sequence</h3>
         <p>
           The revelation states the "celestial hosts removed the body" while the bandages
           remained "intact and as they had rested on the stone"<Citation num={9} />. This presents a physical
@@ -757,7 +835,7 @@ export default function AcceleratedTimeContent() {
           infrastructure—the body's essence transformed into lasting cosmic architecture.
         </p>
 
-        <h3 className="text-2xl font-semibold mt-8 mb-4">Assessment of Correspondence</h3>
+        <h3 id="assessment-of-correspondence" className="text-2xl font-semibold mt-8 mb-4">Assessment of Correspondence</h3>
         <p>
           The Shroud of Turin exhibits characteristics that correspond precisely to:
         </p>
@@ -814,7 +892,7 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Epilogue: Human Discovery</h2>
+        <h2 id="epilogue">Epilogue: Human Discovery</h2>
         <p>
           At half past three o'clock that Sunday morning, five women approached the tomb
           in Joseph's garden carrying embalming lotions. They had agreed among
@@ -878,7 +956,7 @@ export default function AcceleratedTimeContent() {
       </section>
 
       <section className="mb-12">
-        <h2>Methodology and Conclusion</h2>
+        <h2 id="methodology">Methodology and Conclusion</h2>
         <p>
           The Urantia Papers hold words composed by knowledgeable beings to help us
           learn. They know things we don't know because we can't. There is no test for the
