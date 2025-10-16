@@ -116,6 +116,19 @@ export default function Home() {
         </h2>
 
         <div className="ml-6 space-y-3 flex flex-col items-start">
+          {/* Wave-Energy Manifestations - Interactive */}
+          <Link
+            href="/wave-energy"
+            className="inline-block px-3 py-2 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-text-light dark:hover:border-text-dark transition-all group"
+          >
+            <h3 className="text-xl font-semibold mb-0.5 mt-0 text-text-light dark:text-text-dark group-hover:text-black dark:group-hover:text-white transition-colors">
+              Wave-Energy Manifestations
+            </h3>
+            <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+              Interactive visualization of energy manifestations from puissant energy to radio waves
+            </p>
+          </Link>
+
           {revelationReports.map((report) => (
             <Link
               key={report.id}
