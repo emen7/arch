@@ -11,7 +11,7 @@ export default function WaveEnergyPage() {
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isPortrait, setIsPortrait] = useState(false)
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -95,80 +95,22 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Detect portrait orientation on mobile
+  // Detect small screens (phones) - tablets and desktop OK
   useEffect(() => {
-    const checkOrientation = () => {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
-      // Use multiple methods to detect orientation
-      let isPortraitMode = false
-
-      // Method 1: Window dimensions
-      if (window.innerHeight > window.innerWidth) {
-        isPortraitMode = true
-      }
-
-      // Method 2: Screen orientation API (if available)
-      if (screen.orientation) {
-        const type = screen.orientation.type
-        if (type.includes('portrait')) {
-          isPortraitMode = true
-        } else if (type.includes('landscape')) {
-          isPortraitMode = false
-        }
-      }
-
-      // Method 3: window.orientation (deprecated but still works on some Android)
-      if (typeof window.orientation !== 'undefined') {
-        // 0 or 180 = portrait, 90 or -90 = landscape
-        isPortraitMode = (window.orientation === 0 || window.orientation === 180)
-      }
-
-      setIsPortrait(isMobile && isPortraitMode)
+    const checkScreenSize = () => {
+      // Screen width less than 1024px is considered too small (phones)
+      // iPads and larger tablets (typically 1024px+) will work fine
+      setIsSmallScreen(window.innerWidth < 1024)
     }
 
     // Initial check
-    checkOrientation()
+    checkScreenSize()
 
-    // Multiple event listeners for better Android support
-    const handleOrientationChange = () => {
-      // Multiple delayed checks for Android (browser needs time to update)
-      checkOrientation()
-      setTimeout(checkOrientation, 50)
-      setTimeout(checkOrientation, 150)
-      setTimeout(checkOrientation, 300)
-      setTimeout(checkOrientation, 500)
-      setTimeout(checkOrientation, 1000)
-    }
-
-    window.addEventListener('resize', handleOrientationChange)
-    window.addEventListener('orientationchange', handleOrientationChange)
-
-    // Also listen to screen orientation API if available
-    if (screen.orientation) {
-      screen.orientation.addEventListener('change', handleOrientationChange)
-    }
-
-    // Use matchMedia as additional trigger
-    const mediaQuery = window.matchMedia('(orientation: portrait)')
-    const mediaHandler = () => handleOrientationChange()
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', mediaHandler)
-    } else {
-      mediaQuery.addListener(mediaHandler) // Older browsers
-    }
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize)
 
     return () => {
-      window.removeEventListener('resize', handleOrientationChange)
-      window.removeEventListener('orientationchange', handleOrientationChange)
-      if (screen.orientation) {
-        screen.orientation.removeEventListener('change', handleOrientationChange)
-      }
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', mediaHandler)
-      } else {
-        mediaQuery.removeListener(mediaHandler)
-      }
+      window.removeEventListener('resize', checkScreenSize)
     }
   }, [])
 
@@ -352,15 +294,27 @@ export default function WaveEnergyPage() {
       color: '#e2e8f0',
       overflow: 'hidden'
     }}>
-      {/* Portrait Orientation Overlay */}
-      {isPortrait && (
+      {/* Small Screen Overlay */}
+      {isSmallScreen && (
         <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">📱</div>
-          <div className="text-2xl font-semibold mb-4 text-gray-200">Please Rotate to Landscape</div>
-          <div className="text-lg text-gray-400 max-w-md">
-            This interactive visualization is designed for landscape orientation for the best experience.
+          <div className="text-6xl mb-6">💻</div>
+          <div className="text-2xl font-semibold mb-6 text-gray-200">Desktop or Tablet Required</div>
+          <div className="text-lg text-gray-300 max-w-md mb-4">
+            This interactive visualization is designed for larger screens.
           </div>
-          <div className="mt-8 text-4xl animate-pulse">↻</div>
+          <div className="text-base text-gray-400 max-w-md mb-8">
+            Please view on:
+          </div>
+          <div className="text-lg text-gray-300 space-y-2 mb-8">
+            <div>• Desktop or laptop computer</div>
+            <div>• iPad or tablet (landscape mode)</div>
+          </div>
+          <Link
+            href="/"
+            className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
+          >
+            ← Return to Home
+          </Link>
         </div>
       )}
 
