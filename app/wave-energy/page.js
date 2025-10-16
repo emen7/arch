@@ -99,7 +99,31 @@ export default function WaveEnergyPage() {
   useEffect(() => {
     const checkOrientation = () => {
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-      const isPortraitMode = window.innerHeight > window.innerWidth
+
+      // Use multiple methods to detect orientation
+      let isPortraitMode = false
+
+      // Method 1: Window dimensions
+      if (window.innerHeight > window.innerWidth) {
+        isPortraitMode = true
+      }
+
+      // Method 2: Screen orientation API (if available)
+      if (screen.orientation) {
+        const type = screen.orientation.type
+        if (type.includes('portrait')) {
+          isPortraitMode = true
+        } else if (type.includes('landscape')) {
+          isPortraitMode = false
+        }
+      }
+
+      // Method 3: window.orientation (deprecated but still works on some Android)
+      if (typeof window.orientation !== 'undefined') {
+        // 0 or 180 = portrait, 90 or -90 = landscape
+        isPortraitMode = (window.orientation === 0 || window.orientation === 180)
+      }
+
       setIsPortrait(isMobile && isPortraitMode)
     }
 
@@ -108,13 +132,13 @@ export default function WaveEnergyPage() {
 
     // Multiple event listeners for better Android support
     const handleOrientationChange = () => {
-      // Immediate check
+      // Multiple delayed checks for Android (browser needs time to update)
       checkOrientation()
-
-      // Delayed check for Android (browser needs time to update dimensions)
-      setTimeout(checkOrientation, 100)
+      setTimeout(checkOrientation, 50)
+      setTimeout(checkOrientation, 150)
       setTimeout(checkOrientation, 300)
       setTimeout(checkOrientation, 500)
+      setTimeout(checkOrientation, 1000)
     }
 
     window.addEventListener('resize', handleOrientationChange)
@@ -125,11 +149,25 @@ export default function WaveEnergyPage() {
       screen.orientation.addEventListener('change', handleOrientationChange)
     }
 
+    // Use matchMedia as additional trigger
+    const mediaQuery = window.matchMedia('(orientation: portrait)')
+    const mediaHandler = () => handleOrientationChange()
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', mediaHandler)
+    } else {
+      mediaQuery.addListener(mediaHandler) // Older browsers
+    }
+
     return () => {
       window.removeEventListener('resize', handleOrientationChange)
       window.removeEventListener('orientationchange', handleOrientationChange)
       if (screen.orientation) {
         screen.orientation.removeEventListener('change', handleOrientationChange)
+      }
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', mediaHandler)
+      } else {
+        mediaQuery.removeListener(mediaHandler)
       }
     }
   }, [])
@@ -149,11 +187,13 @@ export default function WaveEnergyPage() {
       const availableHeight = availableBottom - availableTop
       const textBoxHeight = textAreaRect.height
 
-      // Center the text box in available space
+      // Center the text box in available space, then raise by 10%
       const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
+      const raiseAmount = availableHeight * 0.10 // Raise by 10% of available space
+      const finalPosition = centerPosition - raiseAmount
 
       // Apply the position (ensure it doesn't go above minimum)
-      textAreaRef.current.style.top = `${Math.max(availableTop, centerPosition)}px`
+      textAreaRef.current.style.top = `${Math.max(availableTop, finalPosition)}px`
     }
 
     // Position on mount and when content changes
