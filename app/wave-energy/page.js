@@ -5,9 +5,13 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
+  const textAreaRef = useRef(null)
+  const titleRef = useRef(null)
+  const sphereContainerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isPortrait, setIsPortrait] = useState(false)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -91,22 +95,60 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Lock orientation on mobile
+  // Detect portrait orientation on mobile
   useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
-    if (isMobile && screen.orientation && screen.orientation.lock) {
-      screen.orientation.lock('landscape').catch(err => {
-        console.log('Orientation lock not supported:', err)
-      })
+    const checkOrientation = () => {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      const isPortraitMode = window.innerHeight > window.innerWidth
+      setIsPortrait(isMobile && isPortraitMode)
     }
+
+    checkOrientation()
+    window.addEventListener('resize', checkOrientation)
+    window.addEventListener('orientationchange', checkOrientation)
 
     return () => {
-      if (isMobile && screen.orientation && screen.orientation.unlock) {
-        screen.orientation.unlock()
-      }
+      window.removeEventListener('resize', checkOrientation)
+      window.removeEventListener('orientationchange', checkOrientation)
     }
   }, [])
+
+  // Center text box vertically between title and sphere
+  useEffect(() => {
+    const positionTextBox = () => {
+      if (!textAreaRef.current || !titleRef.current || !sphereContainerRef.current) return
+
+      const titleRect = titleRef.current.getBoundingClientRect()
+      const sphereRect = sphereContainerRef.current.getBoundingClientRect()
+      const textAreaRect = textAreaRef.current.getBoundingClientRect()
+
+      // Calculate available vertical space
+      const availableTop = titleRect.bottom + 32 // Title bottom + margin
+      const availableBottom = sphereRect.top - 20 // Sphere top - margin
+      const availableHeight = availableBottom - availableTop
+      const textBoxHeight = textAreaRect.height
+
+      // Center the text box in available space
+      const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
+
+      // Apply the position
+      textAreaRef.current.style.top = `${Math.max(availableTop, centerPosition)}px`
+    }
+
+    // Position on mount and when content changes
+    positionTextBox()
+
+    // Re-position on window resize
+    window.addEventListener('resize', positionTextBox)
+
+    // Small delay to ensure DOM is fully rendered
+    const timeoutId = setTimeout(positionTextBox, 100)
+
+    return () => {
+      window.removeEventListener('resize', positionTextBox)
+      clearTimeout(timeoutId)
+    }
+  }, [step, textPage]) // Re-position when content changes
 
   // Canvas animation
   useEffect(() => {
@@ -247,6 +289,18 @@ export default function WaveEnergyPage() {
       color: '#e2e8f0',
       overflow: 'hidden'
     }}>
+      {/* Portrait Orientation Overlay */}
+      {isPortrait && (
+        <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
+          <div className="text-6xl mb-6">📱</div>
+          <div className="text-2xl font-semibold mb-4 text-gray-200">Please Rotate to Landscape</div>
+          <div className="text-lg text-gray-400 max-w-md">
+            This interactive visualization is designed for landscape orientation for the best experience.
+          </div>
+          <div className="mt-8 text-4xl animate-pulse">↻</div>
+        </div>
+      )}
+
       {/* Home Link */}
       <Link
         href="/"
@@ -258,7 +312,7 @@ export default function WaveEnergyPage() {
       <div className="w-[95vw] h-[95vh] max-w-[1920px] max-h-[1080px] flex gap-12 p-8 relative">
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
+          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
@@ -302,7 +356,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Sphere */}
-            <div className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
+            <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
               <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
               <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
                 {step === 0 ? (
@@ -325,7 +379,7 @@ export default function WaveEnergyPage() {
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative pb-20">
-          <div className="absolute -left-[15%] right-[15%] flex flex-col items-center">
+          <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
               {/* Navigation Links */}
               {pages.length > 1 && (
