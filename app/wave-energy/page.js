@@ -103,35 +103,56 @@ export default function WaveEnergyPage() {
       setIsPortrait(isMobile && isPortraitMode)
     }
 
+    // Initial check
     checkOrientation()
-    window.addEventListener('resize', checkOrientation)
-    window.addEventListener('orientationchange', checkOrientation)
+
+    // Multiple event listeners for better Android support
+    const handleOrientationChange = () => {
+      // Immediate check
+      checkOrientation()
+
+      // Delayed check for Android (browser needs time to update dimensions)
+      setTimeout(checkOrientation, 100)
+      setTimeout(checkOrientation, 300)
+      setTimeout(checkOrientation, 500)
+    }
+
+    window.addEventListener('resize', handleOrientationChange)
+    window.addEventListener('orientationchange', handleOrientationChange)
+
+    // Also listen to screen orientation API if available
+    if (screen.orientation) {
+      screen.orientation.addEventListener('change', handleOrientationChange)
+    }
 
     return () => {
-      window.removeEventListener('resize', checkOrientation)
-      window.removeEventListener('orientationchange', checkOrientation)
+      window.removeEventListener('resize', handleOrientationChange)
+      window.removeEventListener('orientationchange', handleOrientationChange)
+      if (screen.orientation) {
+        screen.orientation.removeEventListener('change', handleOrientationChange)
+      }
     }
   }, [])
 
-  // Center text box vertically between title and sphere
+  // Center text box vertically between title and sphere canvas
   useEffect(() => {
     const positionTextBox = () => {
-      if (!textAreaRef.current || !titleRef.current || !sphereContainerRef.current) return
+      if (!textAreaRef.current || !titleRef.current || !canvasRef.current) return
 
       const titleRect = titleRef.current.getBoundingClientRect()
-      const sphereRect = sphereContainerRef.current.getBoundingClientRect()
+      const canvasRect = canvasRef.current.getBoundingClientRect()
       const textAreaRect = textAreaRef.current.getBoundingClientRect()
 
       // Calculate available vertical space
       const availableTop = titleRect.bottom + 32 // Title bottom + margin
-      const availableBottom = sphereRect.top - 20 // Sphere top - margin
+      const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
       const availableHeight = availableBottom - availableTop
       const textBoxHeight = textAreaRect.height
 
       // Center the text box in available space
       const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
 
-      // Apply the position
+      // Apply the position (ensure it doesn't go above minimum)
       textAreaRef.current.style.top = `${Math.max(availableTop, centerPosition)}px`
     }
 
@@ -141,12 +162,14 @@ export default function WaveEnergyPage() {
     // Re-position on window resize
     window.addEventListener('resize', positionTextBox)
 
-    // Small delay to ensure DOM is fully rendered
-    const timeoutId = setTimeout(positionTextBox, 100)
+    // Multiple delays to ensure DOM is fully rendered (especially after orientation change)
+    const timeoutId1 = setTimeout(positionTextBox, 100)
+    const timeoutId2 = setTimeout(positionTextBox, 300)
 
     return () => {
       window.removeEventListener('resize', positionTextBox)
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutId1)
+      clearTimeout(timeoutId2)
     }
   }, [step, textPage]) // Re-position when content changes
 
