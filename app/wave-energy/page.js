@@ -334,6 +334,19 @@ export default function WaveEnergyPage() {
           </div>
 
           <div className="relative flex-1">
+            {/* Logarithmic Scale Label - Rotated */}
+            <div
+              className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
+              style={{
+                left: '8px',
+                top: '50%',
+                transform: 'rotate(-90deg) translateX(-50%)',
+                transformOrigin: 'left center'
+              }}
+            >
+              Logarithmic Scale
+            </div>
+
             {/* Scale */}
             <div className="relative h-full">
               <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-slate-700"></div>
@@ -370,6 +383,19 @@ export default function WaveEnergyPage() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Relative Spin Rates Label - Rotated */}
+            <div
+              className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
+              style={{
+                left: '180px',
+                top: '80%',
+                transform: 'rotate(-90deg) translateX(-50%)',
+                transformOrigin: 'left center'
+              }}
+            >
+              Relative Spin Rates
             </div>
 
             {/* Sphere */}
