@@ -45,11 +45,15 @@ export default function AppSettings() {
   }
 
   const handleShare = async () => {
+    // Build the official URL using revelationary.net domain
+    const currentPath = window.location.pathname
+    const shareUrl = `https://revelationary.net${currentPath}`
+
     if (!navigator.share) {
       // Fallback for browsers without Web Share API
-      // Copy current URL to clipboard
+      // Copy official URL to clipboard
       try {
-        await navigator.clipboard.writeText(window.location.href)
+        await navigator.clipboard.writeText(shareUrl)
         alert('Link copied to clipboard!')
       } catch (err) {
         console.error('Failed to copy:', err)
@@ -61,7 +65,7 @@ export default function AppSettings() {
       await navigator.share({
         title: document.title,
         text: 'Check out this research report',
-        url: window.location.href,
+        url: shareUrl,
       })
     } catch (err) {
       // User cancelled or share failed
