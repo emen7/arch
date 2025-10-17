@@ -100,7 +100,7 @@ export default function Home() {
             className="inline-block px-3 py-2 rounded-lg bg-light-card dark:bg-dark-card border-2 border-dashed border-light-border dark:border-dark-border hover:border-text-muted-light dark:hover:border-text-muted-dark transition-all group"
           >
             <h3 className="text-xl font-semibold mb-0.5 mt-0 text-text-light dark:text-text-dark group-hover:text-black dark:group-hover:text-white transition-colors">
-              Glossary for Reports
+              Report Glossary
             </h3>
             <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
               Definitions and Concept Guide
