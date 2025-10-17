@@ -26,7 +26,7 @@ export default function Home() {
       id: 'josephs-tomb-location',
       title: 'Joseph\'s Tomb: Evidence of Location',
       subtitle: 'A Forensic Reconstruction Through Revelatory Documentation',
-      description: 'Following five distinct trails of evidence through the revelatory account: the crucifixion route, guard flight patterns, women\'s encounters, burial cloth disposal, and precise tomb specifications. Each evidence trail narrows possibilities, converging on less than 0.05 square miles of Jerusalem terrain. (In Progress)',
+      description: 'A study of revealed information to help identify the place of resurrection. (In Progress)',
       date: 'November 2025',
       readTime: '30 min read',
     },
