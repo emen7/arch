@@ -12,14 +12,6 @@ export default function Home() {
       date: 'November 2025',
       readTime: '45 min read',
     },
-    {
-      id: 'josephs-tomb-location',
-      title: 'Joseph\'s Tomb: Evidence of Location',
-      subtitle: 'A Forensic Reconstruction Through Revelatory Documentation',
-      description: 'Following five distinct trails of evidence through the revelatory account: the crucifixion route, guard flight patterns, women\'s encounters, burial cloth disposal, and precise tomb specifications. Each evidence trail narrows possibilities, converging on less than 0.05 square miles of Jerusalem terrain.',
-      date: 'November 2025',
-      readTime: '30 min read',
-    },
   ]
 
   const revelationReports = [
@@ -29,6 +21,14 @@ export default function Home() {
       subtitle: 'The Revealed Cosmology',
       date: 'November 2025',
       readTime: '20 min read',
+    },
+    {
+      id: 'josephs-tomb-location',
+      title: 'Joseph\'s Tomb: Evidence of Location',
+      subtitle: 'A Forensic Reconstruction Through Revelatory Documentation',
+      description: 'Following five distinct trails of evidence through the revelatory account: the crucifixion route, guard flight patterns, women\'s encounters, burial cloth disposal, and precise tomb specifications. Each evidence trail narrows possibilities, converging on less than 0.05 square miles of Jerusalem terrain. (In Progress)',
+      date: 'November 2025',
+      readTime: '30 min read',
     },
     {
       id: 'nuclear-isle',
@@ -141,6 +141,11 @@ export default function Home() {
               <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic mb-1">
                 {report.subtitle}
               </p>
+              {report.description && (
+                <p className="text-sm text-text-muted-light dark:text-text-muted-dark mb-2">
+                  {report.description}
+                </p>
+              )}
               <div className="flex items-center gap-3 text-xs text-text-muted-light dark:text-text-muted-dark">
                 <span>{report.date}</span>
                 <span>•</span>
