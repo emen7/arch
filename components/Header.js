@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
+import AppSettings from './AppSettings'
 
 export default function Header({ title, ttsControls }) {
   return (
@@ -20,13 +21,7 @@ export default function Header({ title, ttsControls }) {
           {/* Right: Theme + Settings Icons */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <button
-              title="Settings"
-              className="p-2 text-text-light dark:text-text-dark hover:text-black dark:hover:text-white transition-colors"
-              aria-label="Global Settings"
-            >
-              ⚙
-            </button>
+            <AppSettings />
           </div>
         </div>
 
