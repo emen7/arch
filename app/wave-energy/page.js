@@ -336,9 +336,9 @@ export default function WaveEnergyPage() {
           <div className="relative flex-1">
             {/* Logarithmic Scale Label - Rotated */}
             <div
-              className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
+              className="absolute text-slate-500 text-[13px] tracking-wide whitespace-nowrap"
               style={{
-                left: '8px',
+                left: '2px',
                 top: '50%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
@@ -389,7 +389,7 @@ export default function WaveEnergyPage() {
             <div
               className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
               style={{
-                left: '180px',
+                left: '220px',
                 top: '80%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
