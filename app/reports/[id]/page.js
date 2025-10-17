@@ -27,7 +27,7 @@ const reports = {
   'nuclear-isle': {
     title: 'The Nuclear Isle',
     subtitle: 'Understanding Paradise as Nucleus',
-    date: 'November 2025',
+    date: 'April 2025',
     readTime: '5 min read',
     ContentComponent: NuclearIsleContent,
     publication: 'Published in the Urantia Fellowship Mini-Messenger, April 16, 2025',

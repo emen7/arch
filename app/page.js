@@ -34,7 +34,7 @@ export default function Home() {
       id: 'nuclear-isle',
       title: 'The Nuclear Isle',
       subtitle: 'Understanding Paradise as Nucleus',
-      date: 'November 2025',
+      date: 'April 2025',
       readTime: '5 min read',
     },
     {
