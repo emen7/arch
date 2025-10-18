@@ -1,26 +1,26 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import SlideDeck from '../../../components/SlideDeck'
 import TitleSlide from '../../../components/slides/TitleSlide'
 import TextSlide from '../../../components/slides/TextSlide'
 import BeingInfoSlide from '../../../components/slides/BeingInfoSlide'
 
-// Sample timing data (will be replaced with generated timing.json)
-const sampleTiming = {
-  slides: [
-    { id: 'title', duration: 15, hasAudio: false },
-    { id: 'intro', duration: 25, hasAudio: true, audioPath: '/presentations/symposium-2025/audio/intro-1.mp3' },
-    { id: 'mpc-overview', duration: 20, hasAudio: true, audioPath: '/presentations/symposium-2025/audio/mpc-overview.mp3' },
-    { id: 'mpc-nature', duration: 18, hasAudio: true, audioPath: '/presentations/symposium-2025/audio/mpc-nature.mp3' },
-    { id: 'mechanical', duration: 25, hasAudio: true, audioPath: '/presentations/symposium-2025/audio/mechanical-controllers.mp3' },
-  ]
-}
-
 function PresentationContent() {
   const searchParams = useSearchParams()
   const autoPlay = searchParams.get('autoplay') === 'true'
+  const [timingData, setTimingData] = useState(null)
+
+  // Load timing data
+  useEffect(() => {
+    if (autoPlay) {
+      fetch('/presentations/symposium-2025/timing.json')
+        .then(res => res.json())
+        .then(data => setTimingData(data))
+        .catch(err => console.error('Failed to load timing data:', err))
+    }
+  }, [autoPlay])
 
   // Define slides
   const slides = [
@@ -42,7 +42,14 @@ function PresentationContent() {
       />
     ),
 
-    // Slide 3: MPC Overview
+    // Slide 3: MPC Title (with pause)
+    () => (
+      <TextSlide
+        title="Master Physical Controllers"
+      />
+    ),
+
+    // Slide 4: MPC Overview
     () => (
       <TextSlide
         title="Master Physical Controllers"
@@ -102,7 +109,7 @@ function PresentationContent() {
     <SlideDeck
       slides={slides}
       autoPlay={autoPlay}
-      timingData={autoPlay ? sampleTiming : null}
+      timingData={autoPlay ? timingData : null}
     />
   )
 }
