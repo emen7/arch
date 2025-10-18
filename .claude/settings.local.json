@@ -29,7 +29,9 @@
       "Bash(git revert:*)",
       "Bash(npm run generate-audio:*)",
       "Bash(timeout /t 10)",
-      "Bash(node scripts/generate-audio.js:*)"
+      "Bash(node scripts/generate-audio.js:*)",
+      "Bash(node scripts/parse-ub.js:*)",
+      "Bash(node scripts/verify-quotes.js:*)"
     ],
     "deny": [],
     "ask": []
