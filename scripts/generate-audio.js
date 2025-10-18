@@ -21,6 +21,12 @@ async function generateAudio(client, quote, index, total) {
 
   const voiceConfig = config.voices[quote.voiceType] || config.voices.narrative;
 
+  // Use voice-specific speaking rate if available, otherwise use global rate
+  const audioConfig = {
+    ...config.audioConfig,
+    speakingRate: voiceConfig.speakingRate || config.audioConfig.speakingRate,
+  };
+
   const request = {
     input: { text: quote.text },
     voice: {
@@ -28,7 +34,7 @@ async function generateAudio(client, quote, index, total) {
       name: voiceConfig.name,
       ssmlGender: voiceConfig.ssmlGender,
     },
-    audioConfig: config.audioConfig,
+    audioConfig,
   };
 
   try {

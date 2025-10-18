@@ -12,6 +12,7 @@ module.exports = {
       name: 'en-US-Neural2-F', // Best available female voice
       ssmlGender: 'FEMALE',
       tier: 'Neural2',
+      speakingRate: 0.88, // Slower for gravitas and clarity
     },
 
     // Male voice for theory/intros (researcher voice)
@@ -20,6 +21,7 @@ module.exports = {
       name: 'en-US-Studio-M', // Warm, authoritative male
       ssmlGender: 'MALE',
       tier: 'Studio',
+      speakingRate: 0.95, // Slightly slower than default
     },
   },
 

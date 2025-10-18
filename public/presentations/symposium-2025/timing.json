@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2025-10-18T03:42:53.128Z",
+  "generatedAt": "2025-10-18T03:45:45.278Z",
   "totalSlides": 10,
-  "totalDuration": 62,
+  "totalDuration": 65,
   "slides": [
     {
       "id": "title",
@@ -34,13 +34,13 @@
     },
     {
       "id": "mechanical-controllers",
-      "duration": 7,
+      "duration": 8,
       "hasAudio": true,
       "audioPath": "/presentations/symposium-2025/audio/mechanical-controllers.mp3"
     },
     {
       "id": "frandalanks-intro",
-      "duration": 5,
+      "duration": 6,
       "hasAudio": true,
       "audioPath": "/presentations/symposium-2025/audio/frandalanks-intro.mp3"
     },
@@ -58,7 +58,7 @@
     },
     {
       "id": "tomb-commission",
-      "duration": 7,
+      "duration": 8,
       "hasAudio": true,
       "audioPath": "/presentations/symposium-2025/audio/tomb-commission.mp3"
     }
