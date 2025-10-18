@@ -26,7 +26,9 @@
       "Bash(sort:*)",
       "Bash(git rm:*)",
       "Bash(git push:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "Bash(npm run generate-audio:*)",
+      "Bash(timeout /t 10)"
     ],
     "deny": [],
     "ask": []

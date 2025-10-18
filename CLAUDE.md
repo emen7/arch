@@ -159,6 +159,12 @@ const scrollToSection = (e, sectionId) => {
 - Automatic deploys on push to main branch
 - Large files (PDFs, DOCX) are excluded via `.gitignore`
 
+**Development Workflow:**
+- IMPORTANT: Our practice is to commit and push changes, not test on localhost
+- Testing is done via Vercel automatic deployment at revelationary.net
+- After pushing to main branch, Vercel automatically deploys within 1-2 minutes
+- Test new features at revelationary.net after deployment completes
+
 ## File Locations
 
 - Report content components: `app/reports/[id]/content/`

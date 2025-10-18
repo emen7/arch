@@ -1,0 +1,65 @@
+[
+  {
+    "id": "title",
+    "type": "title",
+    "voiceType": null,
+    "text": null,
+    "duration": 15
+  },
+  {
+    "id": "intro-1",
+    "type": "narrative",
+    "voiceType": "narrative",
+    "text": "Today we present a study of Master Physical Controllers and a case study examining how they use thought to control matter. This investigation draws from the Urantia Book as a revelation database, using the revelators' own words to tell the story.",
+    "citation": null
+  },
+  {
+    "id": "mpc-overview",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "The Master Physical Controllers are the direct offspring of the Supreme Power Centers, and their numbers include the following: Mechanical Controllers, Energy Controllers, Energy Transformers, Energy Transmitters, Primary Associators, Secondary Dissociators, and the Frandalanks.",
+    "citation": "29:4.13"
+  },
+  {
+    "id": "mpc-nature",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "These beings are the mobile subordinates of the Supreme Power Centers. The physical controllers are endowed with capabilities of energy metamorphosis which enable them to engage in a remarkable variety of physical activities.",
+    "citation": "29:4.14"
+  },
+  {
+    "id": "mechanical-controllers",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "Mechanical Controllers are competent to directionize the flow of energy and to facilitate its concentration into the specialized currents or circuits. These mighty beings have much to do with the segregation, directionization, and intensification of the physical energies and with the equalization of the pressures of the interplanetary circuits.",
+    "citation": "29:4.19"
+  },
+  {
+    "id": "frandalanks-intro",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "These are the registering and dispatching organisms of the master physical controllers. These living automatic telepaths are associated with the Supreme Power Centers but function in liaison with each of the seven divisions of controllers.",
+    "citation": "29:4.36"
+  },
+  {
+    "id": "chronoldeks",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "Though not exactly registering time as you comprehend it, the chronoldeks provide understanding for the standard day of Uversa, and they reckon the year of Orvonton as equal to one hundred standard Uversa days.",
+    "citation": "29:4.37"
+  },
+  {
+    "id": "transition-tomb",
+    "type": "narrative",
+    "voiceType": "narrative",
+    "text": "Having learned the nature and capabilities of the Master Physical Controllers, we now turn to a specific application: the tomb operations following the crucifixion of Jesus.",
+    "citation": null
+  },
+  {
+    "id": "tomb-commission",
+    "type": "quotation",
+    "voiceType": "quotations",
+    "text": "At two forty-five Sunday morning, the Paradise incarnation commission, consisting of seven unidentified Paradise personalities, arrived on the scene and deployed themselves about the tomb. At ten minutes before three, intense vibrations of commingled material and morontia activities began to issue from Joseph's new tomb.",
+    "citation": "189:1.1"
+  }
+]

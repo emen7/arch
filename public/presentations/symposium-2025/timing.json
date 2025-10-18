@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2025-10-18T03:03:37.378Z",
+  "totalSlides": 9,
+  "totalDuration": 61,
+  "slides": [
+    {
+      "id": "title",
+      "duration": 15,
+      "hasAudio": false
+    },
+    {
+      "id": "intro-1",
+      "duration": 6,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/intro-1.mp3"
+    },
+    {
+      "id": "mpc-overview",
+      "duration": 7,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/mpc-overview.mp3"
+    },
+    {
+      "id": "mpc-nature",
+      "duration": 5,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/mpc-nature.mp3"
+    },
+    {
+      "id": "mechanical-controllers",
+      "duration": 7,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/mechanical-controllers.mp3"
+    },
+    {
+      "id": "frandalanks-intro",
+      "duration": 5,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/frandalanks-intro.mp3"
+    },
+    {
+      "id": "chronoldeks",
+      "duration": 5,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/chronoldeks.mp3"
+    },
+    {
+      "id": "transition-tomb",
+      "duration": 4,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/transition-tomb.mp3"
+    },
+    {
+      "id": "tomb-commission",
+      "duration": 7,
+      "hasAudio": true,
+      "audioPath": "/presentations/symposium-2025/audio/tomb-commission.mp3"
+    }
+  ]
+}
