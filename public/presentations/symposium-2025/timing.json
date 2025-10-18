@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2025-10-18T03:45:45.278Z",
-  "totalSlides": 10,
-  "totalDuration": 65,
+  "generatedAt": "2025-10-18T05:28:04.033Z",
+  "totalSlides": 11,
+  "totalDuration": 59,
   "slides": [
     {
       "id": "title",
-      "duration": 15,
+      "duration": 7,
       "hasAudio": false
     },
     {
@@ -13,6 +13,11 @@
       "duration": 6,
       "hasAudio": true,
       "audioPath": "/presentations/symposium-2025/audio/intro-1.mp3"
+    },
+    {
+      "id": "mpc-title-pause",
+      "duration": 2,
+      "hasAudio": false
     },
     {
       "id": "mpc-title",

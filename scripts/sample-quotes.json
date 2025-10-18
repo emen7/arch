@@ -4,14 +4,21 @@
     "type": "title",
     "voiceType": null,
     "text": null,
-    "duration": 15
+    "duration": 7
   },
   {
     "id": "intro-1",
     "type": "narrative",
     "voiceType": "narrative",
-    "text": "Today we present a study of Master Physical Controllers and a case study examining how they use thought to control matter. This investigation draws from the Urantia Book as a revelation database, using the revelators' own words to tell the story.",
+    "text": "Today we present an exploration of Master Physical Controllers and a case study examining how they use thought to control matter. This exploration draws from the Urantia Book as a revelation database, using the revelators' own words to tell the story.",
     "citation": null
+  },
+  {
+    "id": "mpc-title-pause",
+    "type": "narrative",
+    "voiceType": null,
+    "text": null,
+    "duration": 2
   },
   {
     "id": "mpc-title",

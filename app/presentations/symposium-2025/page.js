@@ -38,7 +38,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="What We Will Present"
-        content="A study of Master Physical Controllers and a case study examining how they use thought to control matter. This investigation draws from the Urantia Book as a revelation database, using the revelators' own words to tell the story."
+        content="An exploration of Master Physical Controllers and a case study examining how they use thought to control matter. This exploration draws from the Urantia Book as a revelation database, using the revelators' own words to tell the story."
       />
     ),
 
