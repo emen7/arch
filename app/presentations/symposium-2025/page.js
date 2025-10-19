@@ -53,7 +53,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="Master Physical Controllers"
-        content=""The Master Physical Controllers are the direct offspring of the Supreme Power Centers, and their numbers include the following:""
+        content={`"The Master Physical Controllers are the direct offspring of the Supreme Power Centers, and their numbers include the following:"`}
         citation="29:4.4"
       />
     ),
@@ -62,7 +62,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="Physical Controllers"
-        content=""These beings are the mobile subordinates of the Supreme Power Centers. The physical controllers are endowed with capabilities of energy metamorphosis which enable them to engage in a remarkable variety of physical activities.""
+        content={`"These beings are the mobile subordinates of the Supreme Power Centers. The physical controllers are endowed with capabilities of energy metamorphosis which enable them to engage in a remarkable variety of physical activities."`}
         citation="29:4.1"
       />
     ),
@@ -85,7 +85,7 @@ function PresentationContent() {
           'Equalize interplanetary pressures',
           'Segregate and intensify physical energies'
         ]}
-        note=""The mechanical controllers are competent to directionize the flow of energy and to facilitate its concentration into the specialized currents or circuits. These mighty beings have much to do with the segregation, directionization, and intensification of the physical energies and with the equalization of the pressures of the interplanetary circuits.""
+        note={`"The mechanical controllers are competent to directionize the flow of energy and to facilitate its concentration into the specialized currents or circuits. These mighty beings have much to do with the segregation, directionization, and intensification of the physical energies and with the equalization of the pressures of the interplanetary circuits."`}
         citation="29:4.20"
       />
     ),
@@ -94,7 +94,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="The Frandalanks"
-        content=""7. <i>The Frandalanks.</i> These beings are the joint creation of all three orders of energy-control beings: the primary and secondary force organizers and the power directors.""
+        content={`"7. <i>The Frandalanks.</i> These beings are the joint creation of all three orders of energy-control beings: the primary and secondary force organizers and the power directors."`}
         citation="29:4.36"
       />
     ),
@@ -103,7 +103,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="Chronoldeks"
-        content=""The frandalanks that register time in addition to quantitative and qualitative energy presence are called <i>chronoldeks.</i>""
+        content={`"The frandalanks that register time in addition to quantitative and qualitative energy presence are called <i>chronoldeks.</i>"`}
         citation="29:4.37"
       />
     ),
@@ -120,7 +120,7 @@ function PresentationContent() {
     () => (
       <TextSlide
         title="The Tomb Operations"
-        content=""At two forty-five Sunday morning, the Paradise incarnation commission, consisting of seven unidentified Paradise personalities, arrived on the scene and deployed themselves about the tomb. At ten minutes before three, intense vibrations of commingled material and morontia activities began to issue from Joseph's new tomb.""
+        content={`"At two forty-five Sunday morning, the Paradise incarnation commission, consisting of seven unidentified Paradise personalities, arrived on the scene and deployed themselves about the tomb. At ten minutes before three, intense vibrations of commingled material and morontia activities began to issue from Joseph's new tomb."`}
         citation="189:1.1"
       />
     ),
