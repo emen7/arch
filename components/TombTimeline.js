@@ -10,9 +10,9 @@ export default function TombTimeline() {
     title: 'ACCELERATED TIME OF THE TOMB',
 
     phases: [
-      { id: 'phase1', name: 'The 36 Hours', color: '#3b82f6' },
-      { id: 'phase2', name: 'Tomb Operations', color: '#22c55e' },
-      { id: 'phase3', name: 'Beyond the Tomb', color: '#8b5cf6' }
+      { id: 'phase1', name: 'The 36 Hours', color: '#06b6d4' },        // Cyan
+      { id: 'phase2', name: 'Tomb Operations', color: '#f97316' },    // Orange
+      { id: 'phase3', name: 'Beyond the Tomb', color: '#06b6d4' }     // Cyan
     ],
 
     slides: [
@@ -148,6 +148,7 @@ export default function TombTimeline() {
         time: null,
         label: 'Physical Body Remains',
         phase: 'phase1',
+        phaseBreak: true, // Mark phase transition
         citation: '189:1.2',
         content: {
           quote: '"The physical body still lay there in the sepulchre niche, undisturbed and wrapped in the linen sheet, just as it had been laid to rest by Joseph and his associates on Friday afternoon."',
@@ -202,6 +203,7 @@ export default function TombTimeline() {
         time: null,
         label: 'The Dissolution (IG)',
         phase: 'phase2',
+        phaseBreak: true, // Mark phase transition
         citation: '189:2.8',
         content: {
           infographic: 'dissolution',
@@ -315,16 +317,17 @@ export default function TombTimeline() {
     return selectedSlide.phase
   }
 
+  // Get phase color for selected event
+  const getPhaseColor = (phaseId) => {
+    const phase = presentationData.phases.find(p => p.id === phaseId)
+    return phase?.color || '#22c55e'
+  }
+
   // Calculate phase bar segment heights based on slide count
   const getPhaseHeight = (phaseId) => {
     const slideCount = presentationData.slides.filter(s => s.phase === phaseId && s.type !== 'day-header').length
     const totalSlides = presentationData.slides.filter(s => s.type !== 'day-header').length
     return (slideCount / totalSlides) * 100
-  }
-
-  // Get phase info
-  const getPhaseInfo = (phaseId) => {
-    return presentationData.phases.find(p => p.id === phaseId)
   }
 
   return (
@@ -368,16 +371,17 @@ export default function TombTimeline() {
                       boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
                     }}
                   >
-                    {/* Phase label rotated inside bar */}
+                    {/* Phase label rotated inside bar - CORRECTED ROTATION */}
                     <div
                       className="absolute inset-0 flex items-center justify-center"
                       style={{
                         writingMode: 'vertical-rl',
                         textOrientation: 'mixed',
-                        fontSize: '9px',
-                        fontWeight: 600,
+                        transform: 'rotate(180deg)', // Fix upside-down text
+                        fontSize: '11px',
+                        fontWeight: 700,
                         letterSpacing: '0.05em',
-                        color: isActive ? '#ffffff' : '#94a3b8',
+                        color: '#000000', // Black text for readability
                         textTransform: 'uppercase'
                       }}
                     >
@@ -402,13 +406,20 @@ export default function TombTimeline() {
 
                   const isSelected = selectedSlide?.id === slide.id
                   const hasTime = slide.time !== null
+                  const phaseColor = getPhaseColor(slide.phase)
 
-                  // Check if this is first slide of new phase (add spacing)
-                  const prevSlide = presentationData.slides[index - 1]
-                  const isNewPhase = prevSlide && prevSlide.phase !== slide.phase && prevSlide.type !== 'day-header'
+                  // Check for phase break (manual marker)
+                  const hasPhaseBreak = slide.phaseBreak === true
 
                   return (
-                    <div key={slide.id} className={isNewPhase ? 'mt-3' : ''}>
+                    <div key={slide.id}>
+                      {/* Phase break - larger gap with horizontal line */}
+                      {hasPhaseBreak && (
+                        <div className="my-4 flex items-center">
+                          <div className="flex-1 h-px bg-slate-600"></div>
+                        </div>
+                      )}
+
                       <div
                         onClick={() => handleSlideClick(slide)}
                         className="cursor-pointer hover:text-gray-300 transition-colors flex items-center py-0.5 relative"
@@ -419,7 +430,7 @@ export default function TombTimeline() {
                         {/* Time (left of line) */}
                         <span
                           className="w-16 text-right transition-colors text-xs"
-                          style={{ color: isSelected ? '#22c55e' : '#64748b' }}
+                          style={{ color: isSelected ? phaseColor : '#64748b' }}
                         >
                           {hasTime ? slide.time : ''}
                         </span>
@@ -429,7 +440,7 @@ export default function TombTimeline() {
                           className="h-0.5 transition-all mx-1"
                           style={{
                             width: isSelected ? '20px' : '16px',
-                            backgroundColor: isSelected ? '#22c55e' : '#64748b'
+                            backgroundColor: isSelected ? phaseColor : '#64748b'
                           }}
                         />
 
@@ -437,7 +448,7 @@ export default function TombTimeline() {
                         <span
                           className="flex-1 transition-colors text-xs"
                           style={{
-                            color: isSelected ? '#22c55e' : '#94a3b8',
+                            color: isSelected ? phaseColor : '#94a3b8',
                             fontWeight: isSelected ? 600 : 400
                           }}
                         >
@@ -451,8 +462,8 @@ export default function TombTimeline() {
             </div>
           </div>
 
-          {/* Right Side - Content Area */}
-          <div className="flex-1 flex flex-col pb-12">
+          {/* Right Side - Content Area (NO COPYRIGHT FOOTER) */}
+          <div className="flex-1 flex flex-col">
             {selectedSlide ? (
               <div className="flex-1 flex items-center justify-center px-8">
                 <div className="max-w-[700px] w-full space-y-6">
@@ -532,17 +543,6 @@ export default function TombTimeline() {
                 </div>
               </div>
             )}
-
-            {/* Navigation Controls */}
-            <div className="absolute bottom-6 right-8 text-right">
-              <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
-                NAVIGATION
-              </div>
-              <div className="text-slate-500 text-xs leading-relaxed">
-                <div>Click timeline events</div>
-                <div>Phase bar shows progress</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
