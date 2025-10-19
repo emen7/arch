@@ -11,7 +11,7 @@ export default function TombTimeline() {
 
     phases: [
       { id: 'phase1', name: 'The 36 Hours', color: '#3b82f6' },      // Azure Blue
-      { id: 'phase2', name: 'Dissolution', color: '#f97316' },       // Orange
+      { id: 'phase2', name: 'Tomb Operations', color: '#f97316' },   // Orange
       { id: 'phase3', name: 'Beyond the Tomb', color: '#3b82f6' }    // Azure Blue
     ],
 
@@ -77,7 +77,6 @@ export default function TombTimeline() {
         time: null,
         label: 'Tomb Sealed',
         phase: 'phase1',
-        dayBreak: true, // Extra spacing before next day
         citation: '187:6.6',
         content: {
           quote: '"These men rolled yet another stone before the tomb and set the seal of Pilate on and around these stones, lest they be disturbed without their knowledge. And these twenty men remained on watch up to the hour of the resurrection."',
@@ -363,34 +362,75 @@ export default function TombTimeline() {
         </div>
 
         {/* Main Content */}
-        <div className="absolute inset-0 flex gap-6 p-6 pt-16">
+        <div className="absolute inset-0 flex gap-2 p-6 pt-16 pr-8">
 
-          {/* Left Side - Phase Labels (text only) + Event List */}
-          <div className="flex gap-6" style={{ width: '400px' }}>
+          {/* Left Side - Phase Labels (rotated vertical) + Event List */}
+          <div className="flex gap-2" style={{ width: '340px' }}>
 
-            {/* Phase Labels - Text only, gray when inactive, colored when active */}
-            <div className="flex flex-col justify-center gap-8" style={{ width: '120px' }}>
-              {presentationData.phases.map((phase) => {
-                const isActive = getActivePhase() === phase.id
+            {/* Phase Labels - Rotated 90deg counterclockwise, centered on events */}
+            <div className="relative flex-shrink-0" style={{ width: '24px', height: '100%' }}>
+              {/* Phase 1: The 36 Hours - centered on phase1 events */}
+              <div
+                onClick={() => handlePhaseClick('phase1')}
+                className="absolute cursor-pointer transition-all duration-300"
+                style={{
+                  top: '10%',
+                  left: '50%',
+                  transform: 'translateX(-50%) rotate(-90deg)',
+                  transformOrigin: 'center',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  color: getActivePhase() === 'phase1' ? '#3b82f6' : '#64748b',
+                  textTransform: 'uppercase',
+                  textShadow: getActivePhase() === 'phase1' ? '0 0 8px #3b82f660' : 'none',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                The 36 Hours
+              </div>
 
-                return (
-                  <div
-                    key={phase.id}
-                    onClick={() => handlePhaseClick(phase.id)}
-                    className="cursor-pointer transition-all duration-300 text-center"
-                    style={{
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      letterSpacing: '0.05em',
-                      color: isActive ? phase.color : '#64748b',
-                      textTransform: 'uppercase',
-                      textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none'
-                    }}
-                  >
-                    {phase.name}
-                  </div>
-                )
-              })}
+              {/* Phase 2: Tomb Operations - centered on phase2 events */}
+              <div
+                onClick={() => handlePhaseClick('phase2')}
+                className="absolute cursor-pointer transition-all duration-300"
+                style={{
+                  top: '52%',
+                  left: '50%',
+                  transform: 'translateX(-50%) rotate(-90deg)',
+                  transformOrigin: 'center',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  color: getActivePhase() === 'phase2' ? '#f97316' : '#64748b',
+                  textTransform: 'uppercase',
+                  textShadow: getActivePhase() === 'phase2' ? '0 0 8px #f9731660' : 'none',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Tomb Operations
+              </div>
+
+              {/* Phase 3: Beyond the Tomb - centered on phase3 events */}
+              <div
+                onClick={() => handlePhaseClick('phase3')}
+                className="absolute cursor-pointer transition-all duration-300"
+                style={{
+                  top: '82%',
+                  left: '50%',
+                  transform: 'translateX(-50%) rotate(-90deg)',
+                  transformOrigin: 'center',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  color: getActivePhase() === 'phase3' ? '#3b82f6' : '#64748b',
+                  textTransform: 'uppercase',
+                  textShadow: getActivePhase() === 'phase3' ? '0 0 8px #3b82f660' : 'none',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Beyond the Tomb
+              </div>
             </div>
 
             {/* Event List - Days above events, bullets, times on right */}
