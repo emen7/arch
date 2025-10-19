@@ -10,9 +10,9 @@ export default function TombTimeline() {
     title: 'ACCELERATED TIME OF THE TOMB',
 
     phases: [
-      { id: 'phase1', name: 'The 36 Hours', color: '#06b6d4' },        // Cyan
-      { id: 'phase2', name: 'Tomb Operations', color: '#f97316' },    // Orange
-      { id: 'phase3', name: 'Beyond the Tomb', color: '#06b6d4' }     // Cyan
+      { id: 'phase1', name: 'The 36 Hours', color: '#3b82f6' },      // Azure Blue
+      { id: 'phase2', name: 'Dissolution', color: '#f97316' },       // Orange (renamed)
+      { id: 'phase3', name: 'Beyond the Tomb', color: '#3b82f6' }    // Azure Blue
     ],
 
     slides: [
@@ -156,14 +156,14 @@ export default function TombTimeline() {
         }
       },
 
-      // PHASE 2: TOMB OPERATIONS (phase break BEFORE this)
+      // PHASE 2: DISSOLUTION (renamed from Tomb Operations)
       {
         id: 'stone-rolling',
         type: 'slide',
         time: null,
         label: 'Stone Rolling',
         phase: 'phase2',
-        phaseBreak: true, // MOVED: Break before Phase 2 starts
+        phaseBreak: true,
         citation: '189:2.4',
         content: {
           quote: '"This huge stone began slowly to roll away from the entrance of the tomb without any visible means to account for such motion."',
@@ -211,14 +211,14 @@ export default function TombTimeline() {
         }
       },
 
-      // PHASE 3: BEYOND THE TOMB (phase break BEFORE this)
+      // PHASE 3: BEYOND THE TOMB
       {
         id: 'tomb-scene',
         type: 'slide',
         time: null,
         label: 'The Tomb Scene',
         phase: 'phase3',
-        phaseBreak: true, // MOVED: Break before Phase 3 starts
+        phaseBreak: true,
         citation: '189:4.6',
         content: {
           quote: '"In the recess of stone where they had laid Jesus, Mary saw only the folded napkin where his head had rested and the bandages wherewith he had been wrapped lying intact and as they had rested on the stone before the celestial hosts removed the body. The grave sheet lay just as it had been placed, near the foot of the burial niche."',
@@ -319,21 +319,14 @@ export default function TombTimeline() {
 
   // Get active phase based on selected slide (default to phase1 if nothing selected)
   const getActivePhase = () => {
-    if (!selectedSlide) return 'phase1' // Default: light "The 36 Hours"
+    if (!selectedSlide) return 'phase1' // Default: "The 36 Hours"
     return selectedSlide.phase
   }
 
   // Get phase color for selected event
   const getPhaseColor = (phaseId) => {
     const phase = presentationData.phases.find(p => p.id === phaseId)
-    return phase?.color || '#22c55e'
-  }
-
-  // Calculate phase bar segment heights based on slide count
-  const getPhaseHeight = (phaseId) => {
-    const slideCount = presentationData.slides.filter(s => s.phase === phaseId && s.type !== 'day-header').length
-    const totalSlides = presentationData.slides.filter(s => s.type !== 'day-header').length
-    return (slideCount / totalSlides) * 100
+    return phase?.color || '#3b82f6'
   }
 
   return (
@@ -357,55 +350,62 @@ export default function TombTimeline() {
         {/* Main Content */}
         <div className="absolute inset-0 flex gap-6 p-6 pt-16">
 
-          {/* Left Side - Phase Bar + Timeline-TOC */}
-          <div className="flex gap-4" style={{ width: '340px' }}>
+          {/* Left Side - Phase Bar + Event List */}
+          <div className="flex gap-6" style={{ width: '360px' }}>
 
-            {/* Phase Bar with labels inside - CLICKABLE */}
-            <div className="w-5 flex flex-col rounded-full overflow-hidden bg-slate-800 relative">
-              {presentationData.phases.map((phase) => {
+            {/* Phase Bar - Redesigned: square, gray default, colored when active */}
+            <div className="w-8 flex flex-col bg-slate-600 relative" style={{
+              marginTop: '32px',   // Start at "Friday" level
+              marginBottom: '24px'  // End near "Conclusion"
+            }}>
+              {presentationData.phases.map((phase, index) => {
                 const isActive = getActivePhase() === phase.id
-                const height = getPhaseHeight(phase.id)
+                const heightPercent = 100 / presentationData.phases.length
 
                 return (
-                  <div
-                    key={phase.id}
-                    onClick={() => handlePhaseClick(phase.id)}
-                    className="relative transition-all duration-300 cursor-pointer"
-                    style={{
-                      height: `${height}%`,
-                      backgroundColor: isActive ? phase.color : '#475569',
-                      opacity: isActive ? 1 : 0.5,
-                      boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
-                    }}
-                  >
-                    {/* Phase label rotated inside bar - LARGER TEXT */}
+                  <div key={phase.id} className="relative">
+                    {/* Black divider between segments (except before first) */}
+                    {index > 0 && (
+                      <div className="absolute top-0 left-0 right-0 h-0.5 bg-black"></div>
+                    )}
+
                     <div
-                      className="absolute inset-0 flex items-center justify-center"
+                      onClick={() => handlePhaseClick(phase.id)}
+                      className="transition-all duration-300 cursor-pointer flex items-center justify-center"
                       style={{
-                        writingMode: 'vertical-rl',
-                        textOrientation: 'mixed',
-                        transform: 'rotate(180deg)',
-                        fontSize: '16px', // 50% bigger (was 11px)
-                        fontWeight: 700,
-                        letterSpacing: phase.id === 'phase2' ? '0.02em' : '0.05em', // Tighter for "Tomb Operations"
-                        color: '#000000',
-                        textTransform: 'uppercase'
+                        height: `${heightPercent}%`,
+                        backgroundColor: isActive ? phase.color : '#64748b', // Gray or phase color
+                        boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
                       }}
                     >
-                      {phase.name}
+                      {/* Phase label rotated inside bar */}
+                      <div
+                        style={{
+                          writingMode: 'vertical-rl',
+                          textOrientation: 'mixed',
+                          transform: 'rotate(180deg)',
+                          fontSize: '16px',
+                          fontWeight: 700,
+                          letterSpacing: phase.id === 'phase2' ? '0.02em' : '0.05em',
+                          color: '#000000',
+                          textTransform: 'uppercase'
+                        }}
+                      >
+                        {phase.name}
+                      </div>
                     </div>
                   </div>
                 )
               })}
             </div>
 
-            {/* Timeline-TOC List - Wave-Energy style with BISECTING vertical line */}
-            <div className="flex-1 relative overflow-hidden">
-              <div className="space-y-0 text-xs" style={{ fontFamily: 'ui-monospace, monospace' }}>
-                {presentationData.slides.map((slide, index) => {
+            {/* Event List - Days above events, bullets instead of dashes, times on right */}
+            <div className="flex-1 overflow-hidden" style={{ fontFamily: 'ui-monospace, monospace' }}>
+              <div className="space-y-0 text-xs">
+                {presentationData.slides.map((slide) => {
                   if (slide.type === 'day-header') {
                     return (
-                      <div key={slide.id} className="text-gray-400 font-bold mt-3 mb-1 text-sm">
+                      <div key={slide.id} className="text-gray-300 font-bold mt-4 mb-1.5 text-sm pl-2">
                         {slide.label}
                       </div>
                     )
@@ -414,45 +414,40 @@ export default function TombTimeline() {
                   const isSelected = selectedSlide?.id === slide.id
                   const hasTime = slide.time !== null
                   const phaseColor = getPhaseColor(slide.phase)
-
-                  // Check for phase break (manual marker) - NO HORIZONTAL LINE
                   const hasPhaseBreak = slide.phaseBreak === true
 
                   return (
                     <div key={slide.id}>
-                      {/* Phase break - spacing only, NO line */}
+                      {/* Phase break - spacing only */}
                       {hasPhaseBreak && <div className="my-4"></div>}
 
                       <div
                         onClick={() => handleSlideClick(slide)}
-                        className="cursor-pointer hover:text-gray-300 transition-colors flex items-center py-0.5 relative"
+                        className="cursor-pointer hover:text-gray-300 transition-colors flex items-center gap-2 py-0.5"
                       >
-                        {/* Vertical line BISECTING the tick marks (centered) */}
-                        <div
-                          className="absolute top-0 bottom-0 w-0.5 bg-slate-700"
-                          style={{ left: '78px' }} // Positioned to bisect 20px tick
-                        ></div>
+                        {/* Time (if exists) */}
+                        {hasTime && (
+                          <span
+                            className="w-20 text-right transition-colors text-xs"
+                            style={{ color: isSelected ? phaseColor : '#64748b' }}
+                          >
+                            {slide.time}
+                          </span>
+                        )}
+                        {!hasTime && <span className="w-20"></span>}
 
-                        {/* Time (left of line) */}
-                        <span
-                          className="w-16 text-right transition-colors text-xs"
-                          style={{ color: isSelected ? phaseColor : '#64748b' }}
-                        >
-                          {hasTime ? slide.time : ''}
-                        </span>
-
-                        {/* Tick mark (horizontal dash BISECTED by line) */}
+                        {/* Bullet - small circle that fills when selected */}
                         <div
-                          className="h-0.5 transition-all"
+                          className="transition-all rounded-full flex-shrink-0"
                           style={{
-                            width: isSelected ? '20px' : '16px',
-                            backgroundColor: isSelected ? phaseColor : '#64748b',
-                            marginLeft: '68px', // Start 10px left of line center
-                            marginRight: '2px'
+                            width: '6px',
+                            height: '6px',
+                            backgroundColor: isSelected ? phaseColor : 'transparent',
+                            border: `1.5px solid ${isSelected ? phaseColor : '#64748b'}`
                           }}
                         />
 
-                        {/* Label (right of tick) */}
+                        {/* Label */}
                         <span
                           className="flex-1 transition-colors text-xs"
                           style={{
@@ -470,7 +465,7 @@ export default function TombTimeline() {
             </div>
           </div>
 
-          {/* Right Side - Content Area (NO COPYRIGHT FOOTER) */}
+          {/* Right Side - Content Area */}
           <div className="flex-1 flex flex-col">
             {selectedSlide ? (
               <div className="flex-1 flex items-center justify-center px-8">
