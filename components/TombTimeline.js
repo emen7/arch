@@ -22,7 +22,7 @@ export default function TombTimeline() {
       {
         id: 'death-on-cross',
         type: 'slide',
-        time: '~3:00 PM',
+        time: '~3:00\u00A0PM',
         label: 'Death on the Cross',
         phase: 'phase1',
         citation: '187:5.5',
@@ -48,7 +48,7 @@ export default function TombTimeline() {
       {
         id: 'burial-procession',
         type: 'slide',
-        time: '4:30 PM',
+        time: '4:30\u00A0PM',
         label: 'Burial Procession',
         phase: 'phase1',
         citation: '187:6.2',
@@ -90,7 +90,7 @@ export default function TombTimeline() {
       {
         id: 'adjuster-declaration',
         type: 'slide',
-        time: '~12:00 AM',
+        time: '~12:00\u00A0AM',
         label: 'Adjuster Declaration',
         phase: 'phase1',
         citation: '189:0.2',
@@ -106,7 +106,7 @@ export default function TombTimeline() {
       {
         id: 'paradise-beings',
         type: 'slide',
-        time: '2:45 AM',
+        time: '2:45\u00A0AM',
         label: 'Paradise Beings',
         phase: 'phase1',
         citation: '189:1.1',
@@ -132,7 +132,7 @@ export default function TombTimeline() {
       {
         id: 'morontia-resurrection',
         type: 'slide',
-        time: '3:02 AM',
+        time: '3:02\u00A0AM',
         label: 'Morontia Resurrection',
         phase: 'phase1',
         citation: '189:1.1',
@@ -227,7 +227,7 @@ export default function TombTimeline() {
       {
         id: 'the-women',
         type: 'slide',
-        time: '3:30 AM',
+        time: '3:30\u00A0AM',
         label: 'The Women',
         phase: 'phase3',
         citation: '189:4.1',
@@ -266,8 +266,8 @@ export default function TombTimeline() {
       {
         id: 'archangel-circuit',
         type: 'slide',
-        time: '4:30 AM',
-        label: 'Archangel Circuit Activation',
+        time: '4:30\u00A0AM',
+        label: 'Archangel Circuit',
         phase: 'phase3',
         citation: '189:3.2',
         content: {
@@ -309,17 +309,22 @@ export default function TombTimeline() {
     setSelectedSlide(slide)
   }
 
-  // Get active phase based on selected slide
+  // Get active phase based on selected slide (default to phase1 if nothing selected)
   const getActivePhase = () => {
-    if (!selectedSlide) return null
+    if (!selectedSlide) return 'phase1' // Default: light "The 36 Hours"
     return selectedSlide.phase
   }
 
-  // Calculate phase bar segment heights
+  // Calculate phase bar segment heights based on slide count
   const getPhaseHeight = (phaseId) => {
     const slideCount = presentationData.slides.filter(s => s.phase === phaseId && s.type !== 'day-header').length
     const totalSlides = presentationData.slides.filter(s => s.type !== 'day-header').length
     return (slideCount / totalSlides) * 100
+  }
+
+  // Get phase info
+  const getPhaseInfo = (phaseId) => {
+    return presentationData.phases.find(p => p.id === phaseId)
   }
 
   return (
@@ -328,202 +333,215 @@ export default function TombTimeline() {
       color: '#e2e8f0',
       overflow: 'hidden'
     }}>
-      <div className="w-[95vw] h-[95vh] max-w-[1920px] max-h-[1080px] flex gap-8 p-8 relative">
+      {/* Fixed 16:9 container */}
+      <div className="relative" style={{
+        width: '95vw',
+        maxWidth: '1920px',
+        aspectRatio: '16/9'
+      }}>
 
-        {/* Title - Top Center */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 text-gray-400 text-lg font-semibold tracking-wider">
+        {/* Title - Top Right */}
+        <div className="absolute top-6 right-8 text-gray-400 text-base font-semibold tracking-wider">
           {presentationData.title}
         </div>
 
-        {/* Left Side - Phase Bar + Timeline-TOC */}
-        <div className="w-[300px] flex gap-3 mt-16">
+        {/* Main Content */}
+        <div className="absolute inset-0 flex gap-6 p-6 pt-16">
 
-          {/* Phase Bar */}
-          <div className="w-3 flex flex-col rounded-full overflow-hidden bg-slate-800">
-            {presentationData.phases.map((phase) => {
-              const isActive = getActivePhase() === phase.id
-              const height = getPhaseHeight(phase.id)
+          {/* Left Side - Phase Bar + Timeline-TOC */}
+          <div className="flex gap-4" style={{ width: '340px' }}>
 
-              return (
-                <div
-                  key={phase.id}
-                  className="transition-all duration-300"
-                  style={{
-                    height: `${height}%`,
-                    backgroundColor: isActive ? phase.color : '#475569',
-                    opacity: isActive ? 1 : 0.5,
-                    boxShadow: isActive ? `0 0 12px ${phase.color}60` : 'none'
-                  }}
-                  title={phase.name}
-                />
-              )
-            })}
-          </div>
-
-          {/* Timeline-TOC List */}
-          <div className="flex-1 overflow-y-auto" style={{ fontFamily: 'ui-monospace, monospace' }}>
-            <div className="space-y-0.5 text-sm">
-              {presentationData.slides.map((slide) => {
-                if (slide.type === 'day-header') {
-                  return (
-                    <div key={slide.id} className="text-gray-400 font-bold mt-4 mb-1 text-base">
-                      {slide.label}
-                    </div>
-                  )
-                }
-
-                const isSelected = selectedSlide?.id === slide.id
-                const hasTime = slide.time !== null
+            {/* Phase Bar with labels inside */}
+            <div className="w-5 flex flex-col rounded-full overflow-hidden bg-slate-800 relative">
+              {presentationData.phases.map((phase) => {
+                const isActive = getActivePhase() === phase.id
+                const height = getPhaseHeight(phase.id)
 
                 return (
                   <div
-                    key={slide.id}
-                    onClick={() => handleSlideClick(slide)}
-                    className="cursor-pointer hover:text-gray-300 transition-colors leading-tight py-0.5"
+                    key={phase.id}
+                    className="relative transition-all duration-300"
+                    style={{
+                      height: `${height}%`,
+                      backgroundColor: isActive ? phase.color : '#475569',
+                      opacity: isActive ? 1 : 0.5,
+                      boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
+                    }}
                   >
-                    {hasTime ? (
-                      // Line with time
-                      <div className="flex items-start">
-                        <span
-                          className="w-16 inline-block transition-colors"
-                          style={{ color: isSelected ? '#22c55e' : '#64748b' }}
-                        >
-                          {slide.time}
-                        </span>
-                        <span
-                          className="transition-colors"
-                          style={{ color: isSelected ? '#22c55e' : '#64748b' }}
-                        >
-                          -+-{' '}
-                        </span>
-                        <span
-                          className="flex-1 transition-colors"
-                          style={{
-                            color: isSelected ? '#22c55e' : '#94a3b8',
-                            fontWeight: isSelected ? 600 : 400
-                          }}
-                        >
-                          {slide.label}
-                        </span>
-                      </div>
-                    ) : (
-                      // Line without time (indented)
-                      <div className="flex items-start">
-                        <span className="w-16 inline-block"></span>
-                        <span
-                          className="transition-colors"
-                          style={{ color: isSelected ? '#22c55e' : '#64748b' }}
-                        >
-                          -+-{' '}
-                        </span>
-                        <span
-                          className="flex-1 transition-colors"
-                          style={{
-                            color: isSelected ? '#22c55e' : '#94a3b8',
-                            fontWeight: isSelected ? 600 : 400
-                          }}
-                        >
-                          {slide.label}
-                        </span>
-                      </div>
-                    )}
+                    {/* Phase label rotated inside bar */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      style={{
+                        writingMode: 'vertical-rl',
+                        textOrientation: 'mixed',
+                        fontSize: '9px',
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                        color: isActive ? '#ffffff' : '#94a3b8',
+                        textTransform: 'uppercase'
+                      }}
+                    >
+                      {phase.name}
+                    </div>
                   </div>
                 )
               })}
             </div>
+
+            {/* Timeline-TOC List - Wave-Energy style */}
+            <div className="flex-1 relative overflow-hidden">
+              <div className="space-y-0 text-xs" style={{ fontFamily: 'ui-monospace, monospace' }}>
+                {presentationData.slides.map((slide, index) => {
+                  if (slide.type === 'day-header') {
+                    return (
+                      <div key={slide.id} className="text-gray-400 font-bold mt-3 mb-1 text-sm">
+                        {slide.label}
+                      </div>
+                    )
+                  }
+
+                  const isSelected = selectedSlide?.id === slide.id
+                  const hasTime = slide.time !== null
+
+                  // Check if this is first slide of new phase (add spacing)
+                  const prevSlide = presentationData.slides[index - 1]
+                  const isNewPhase = prevSlide && prevSlide.phase !== slide.phase && prevSlide.type !== 'day-header'
+
+                  return (
+                    <div key={slide.id} className={isNewPhase ? 'mt-3' : ''}>
+                      <div
+                        onClick={() => handleSlideClick(slide)}
+                        className="cursor-pointer hover:text-gray-300 transition-colors flex items-center py-0.5 relative"
+                      >
+                        {/* Vertical line (absolute) */}
+                        <div className="absolute left-[68px] top-0 bottom-0 w-0.5 bg-slate-700"></div>
+
+                        {/* Time (left of line) */}
+                        <span
+                          className="w-16 text-right transition-colors text-xs"
+                          style={{ color: isSelected ? '#22c55e' : '#64748b' }}
+                        >
+                          {hasTime ? slide.time : ''}
+                        </span>
+
+                        {/* Tick mark (horizontal dash from line) */}
+                        <div
+                          className="h-0.5 transition-all mx-1"
+                          style={{
+                            width: isSelected ? '20px' : '16px',
+                            backgroundColor: isSelected ? '#22c55e' : '#64748b'
+                          }}
+                        />
+
+                        {/* Label (right of tick) */}
+                        <span
+                          className="flex-1 transition-colors text-xs"
+                          style={{
+                            color: isSelected ? '#22c55e' : '#94a3b8',
+                            fontWeight: isSelected ? 600 : 400
+                          }}
+                        >
+                          {slide.label}
+                        </span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Right Side - Content Area */}
-        <div className="flex-1 flex flex-col mt-16 pb-16">
-          {selectedSlide ? (
-            <div className="flex-1 flex items-center justify-center">
-              <div className="max-w-[700px] w-full space-y-6">
+          {/* Right Side - Content Area */}
+          <div className="flex-1 flex flex-col pb-12">
+            {selectedSlide ? (
+              <div className="flex-1 flex items-center justify-center px-8">
+                <div className="max-w-[700px] w-full space-y-6">
 
-                {/* Slide Title */}
-                <div className="text-gray-400 text-3xl font-semibold mb-8">
-                  {selectedSlide.label}
-                </div>
-
-                {/* Content based on slide type */}
-                {selectedSlide.content.infographic ? (
-                  // Infographic placeholder
-                  <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-12 text-center">
-                    <div className="text-6xl mb-4">📊</div>
-                    <div className="text-gray-400 text-xl font-semibold mb-2">
-                      {selectedSlide.content.infographic === 'accelerated-time' ? 'Accelerated Time Infographic' : 'Dissolution Infographic'}
-                    </div>
-                    <div className="text-slate-400 text-sm">
-                      {selectedSlide.content.description}
-                    </div>
-                    {selectedSlide.content.quote && (
-                      <div className="mt-6 text-slate-300 italic text-sm">
-                        {selectedSlide.content.quote}
-                      </div>
-                    )}
+                  {/* Slide Title */}
+                  <div className="text-gray-400 text-3xl font-semibold mb-8">
+                    {selectedSlide.label}
                   </div>
-                ) : (
-                  <>
-                    {/* Quote Box */}
-                    {selectedSlide.content.quote && (
-                      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
-                        <div className="text-slate-300 text-base leading-relaxed italic mb-4">
-                          {selectedSlide.content.quote}
-                        </div>
-                        {selectedSlide.citation && (
-                          <div className="text-right text-sm text-slate-500">
-                            — {selectedSlide.citation}
-                          </div>
-                        )}
-                      </div>
-                    )}
 
-                    {/* Description */}
-                    {selectedSlide.content.description && (
-                      <div className="text-slate-400 text-base leading-relaxed">
+                  {/* Content based on slide type */}
+                  {selectedSlide.content.infographic ? (
+                    // Infographic placeholder
+                    <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-12 text-center">
+                      <div className="text-6xl mb-4">📊</div>
+                      <div className="text-gray-400 text-xl font-semibold mb-2">
+                        {selectedSlide.content.infographic === 'accelerated-time' ? 'Accelerated Time Infographic' : 'Dissolution Infographic'}
+                      </div>
+                      <div className="text-slate-400 text-sm">
                         {selectedSlide.content.description}
                       </div>
-                    )}
-
-                    {/* Image Placeholder */}
-                    {selectedSlide.content.imageCaption && (
-                      <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-8 text-center">
-                        <div className="text-4xl mb-3">🖼️</div>
-                        <div className="text-slate-500 text-sm">
-                          Image: {selectedSlide.content.imageCaption}
+                      {selectedSlide.content.quote && (
+                        <div className="mt-6 text-slate-300 italic text-sm">
+                          {selectedSlide.content.quote}
                         </div>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-          ) : (
-            // Welcome screen
-            <div className="flex-1 flex items-center justify-center">
-              <div className="text-center max-w-md">
-                <div className="text-6xl mb-6">⏰</div>
-                <div className="text-gray-400 text-2xl font-semibold mb-4">
-                  Accelerated Time of the Tomb
-                </div>
-                <div className="text-slate-300 text-base leading-relaxed">
-                  Click any event in the timeline to begin the presentation.
-                </div>
-                <div className="mt-6 text-slate-500 text-sm">
-                  {presentationData.slides.filter(s => s.type !== 'day-header').length} slides
-                </div>
-              </div>
-            </div>
-          )}
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      {/* Quote Box */}
+                      {selectedSlide.content.quote && (
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                          <div className="text-slate-300 text-base leading-relaxed italic mb-4">
+                            {selectedSlide.content.quote}
+                          </div>
+                          {selectedSlide.citation && (
+                            <div className="text-right text-sm text-slate-500">
+                              — {selectedSlide.citation}
+                            </div>
+                          )}
+                        </div>
+                      )}
 
-          {/* Controls */}
-          <div className="absolute bottom-8 right-8 text-right">
-            <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
-              NAVIGATION
-            </div>
-            <div className="text-slate-500 text-xs leading-relaxed">
-              <div>Click timeline events</div>
-              <div>Phase bar shows progress</div>
+                      {/* Description */}
+                      {selectedSlide.content.description && (
+                        <div className="text-slate-400 text-base leading-relaxed">
+                          {selectedSlide.content.description}
+                        </div>
+                      )}
+
+                      {/* Image Placeholder */}
+                      {selectedSlide.content.imageCaption && (
+                        <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-8 text-center">
+                          <div className="text-4xl mb-3">🖼️</div>
+                          <div className="text-slate-500 text-sm">
+                            Image: {selectedSlide.content.imageCaption}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            ) : (
+              // Welcome screen
+              <div className="flex-1 flex items-center justify-center">
+                <div className="text-center max-w-md">
+                  <div className="text-6xl mb-6">⏰</div>
+                  <div className="text-gray-400 text-2xl font-semibold mb-4">
+                    Accelerated Time of the Tomb
+                  </div>
+                  <div className="text-slate-300 text-base leading-relaxed">
+                    Click any event in the timeline to begin the presentation.
+                  </div>
+                  <div className="mt-6 text-slate-500 text-sm">
+                    {presentationData.slides.filter(s => s.type !== 'day-header').length} slides
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Navigation Controls */}
+            <div className="absolute bottom-6 right-8 text-right">
+              <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
+                NAVIGATION
+              </div>
+              <div className="text-slate-500 text-xs leading-relaxed">
+                <div>Click timeline events</div>
+                <div>Phase bar shows progress</div>
+              </div>
             </div>
           </div>
         </div>
