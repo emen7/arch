@@ -6,6 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Next.js 14 site for publishing Urantia Book research reports. The site features:
 - Research reports with academic-style citations and formatting
+- Interactive presentations and infographics (timeline navigators, visualizations)
 - A glossary system for terms and concepts
 - Monochrome design with light/dark theme support
 - Static content with markdown rendering
@@ -34,6 +35,57 @@ Reports are dynamically routed through `/app/reports/[id]/page.js`:
 2. Add metadata entry to the `reports` object in `app/reports/[id]/page.js`
 3. Add card to home page report list in `app/page.js`
 
+### Interactive Presentations & Infographics
+
+Interactive presentation components (like TombTimeline, Wave-Energy Manifestations) require different considerations than static reports:
+
+**Standard Requirements:**
+- **16:9 aspect ratio** - Fixed container for Zoom/PowerPoint compatibility
+  - Use: `aspectRatio: '16/9'` with `width: '95vw'` and `maxWidth: '1920px'`
+- **No scrollbars** - All content must fit within fixed dimensions
+- **Presentation pages** accessed via `/presentations/[name]` route
+
+**Component Structure Pattern:**
+- Left side: Navigation/Timeline (25-30% width)
+  - Phase indicators (vertical bars, colored segments)
+  - Event/slide lists (clickable, with active state highlighting)
+  - Day/section headers for organization
+- Right side: Content display (70-75% width)
+  - Slide content, quotes, infographics
+  - Image placeholders initially
+  - Clean, centered layout
+
+**Phase-Based Navigation:**
+- Multiple phases with distinct colors (see Wave-Energy as template)
+- Phase bar indicates current position
+- Clickable segments jump to first event of phase
+- Active phase changes color, inactive stays neutral gray
+- Black dividers between phase segments for clarity
+
+**Event/Slide Lists:**
+- Times on left or right of indicators (maintain consistency)
+- Bullet indicators: small circles (6px) that fill when selected
+- Selected items glow in phase color (cyan, orange, etc.)
+- Hard spaces (`\u00A0`) to prevent time/AM-PM wrapping
+- Day headers positioned above their events, not inline
+
+**Color Coding:**
+- Use phase-specific colors for active elements
+- Default/inactive: gray tones
+- Selected: bright phase color (azure blue, orange, etc.)
+- Maintain readability: black text on colored backgrounds
+
+**Placeholder Content:**
+- Image placeholders: dashed border boxes with emoji + caption
+- Infographic placeholders: indicate special content type
+- Quote boxes: semi-transparent backgrounds
+- All placeholders should be clear about what will be added
+
+**Template Components:**
+- Wave-Energy Manifestations (`app/wave-energy/page.js`) - vertical scale pattern
+- TombTimeline (`components/TombTimeline.js`) - phase-based presentation navigator
+- Use these as structural reference for new interactive components
+
 ### Glossary System
 
 The glossary (`/app/glossary/page.js`) renders markdown from `public/docs/glossary-formatted.md`:
@@ -52,11 +104,17 @@ Dark mode implementation uses Tailwind's `dark:` modifier with class-based toggl
 
 ### Styling Conventions
 
-**Monochrome design principle:**
+**Monochrome design principle (for reports/static content):**
 - Light theme: 3 shades of light gray (#F8F9FA, #E9ECEF, #DEE2E6)
 - Dark theme: 3 shades of dark gray (#1A1D23, #25292F, #343A42)
 - Text colors: Standard and muted variants for each theme
 - No color accents - use only grayscale
+
+**Interactive presentations use color:**
+- Phase-specific colors (azure blue, orange) for navigation and emphasis
+- Dark gradient backgrounds for presentation mode
+- Colored highlights for selected/active states
+- This is an exception to the monochrome rule for static content
 
 **Typography:**
 - Max width constraint: `max-w-[65ch]` (65 characters) for optimal readability
@@ -165,17 +223,37 @@ const scrollToSection = (e, sectionId) => {
 - After pushing to main branch, Vercel automatically deploys within 1-2 minutes
 - Test new features at revelationary.net after deployment completes
 
+**Iterative Development Process:**
+- Make incremental commits for each logical improvement
+- Commit messages should explain the "why" behind changes, not just "what" changed
+- Push after each refinement for live testing
+- Pattern: implement → commit → push → review → refine
+- User feedback drives iteration - embrace complete redesigns when user indicates structural changes
+- Preserve commit history documenting the evolution of components
+
+**Component Iteration Philosophy:**
+- User-driven iteration is expected and valuable, not a sign of initial failure
+- When user feedback indicates major changes, embrace complete redesigns
+- Template components (Wave-Energy, TombTimeline) serve as architectural patterns
+- User preferences override initial implementation decisions
+- Document major design decisions in commit messages for future reference
+- Each iteration should solve a specific user-identified issue
+
 ## File Locations
 
 - Report content components: `app/reports/[id]/content/`
+- Presentation components: `app/presentations/[name]/` or standalone in `components/`
 - Shared components: `components/`
 - Public markdown files: `public/docs/`
 - Report images: `public/images/[report-name]/`
 - Source documents (not deployed): `docs/`
+- Urantia Book database: `public/data/ub-database.json`
 
 ## Notes
 
 - The `/about` page exists but is not linked in navigation (not yet written)
 - The `/test` page is for development only
-- All pages maintain consistent 65ch width and monochrome theme
+- All pages maintain consistent 65ch width and monochrome theme (except interactive presentations)
 - New reports should follow the established citation and formatting patterns
+- Interactive presentations prioritize functionality and user experience over strict monochrome adherence
+- The UB database (`public/data/ub-database.json`) contains full text for quote verification and citation lookup
