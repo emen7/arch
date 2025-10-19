@@ -11,7 +11,7 @@ export default function TombTimeline() {
 
     phases: [
       { id: 'phase1', name: 'The 36 Hours', color: '#3b82f6' },      // Azure Blue
-      { id: 'phase2', name: 'Dissolution', color: '#f97316' },       // Orange (renamed)
+      { id: 'phase2', name: 'Dissolution', color: '#f97316' },       // Orange
       { id: 'phase3', name: 'Beyond the Tomb', color: '#3b82f6' }    // Azure Blue
     ],
 
@@ -77,6 +77,7 @@ export default function TombTimeline() {
         time: null,
         label: 'Tomb Sealed',
         phase: 'phase1',
+        dayBreak: true, // Extra spacing before next day
         citation: '187:6.6',
         content: {
           quote: '"These men rolled yet another stone before the tomb and set the seal of Pilate on and around these stones, lest they be disturbed without their knowledge. And these twenty men remained on watch up to the hour of the resurrection."',
@@ -93,6 +94,7 @@ export default function TombTimeline() {
         time: '~12:00\u00A0AM',
         label: 'Adjuster Declaration',
         phase: 'phase1',
+        dayBreak: true, // Extra spacing before next day
         citation: '189:0.2',
         content: {
           quote: '"Not one of you can do aught to assist your Creator-father in the return to life. As a mortal of the realm he has experienced mortal death; as the Sovereign of a universe he still lives. That which you observe is the mortal transit of Jesus of Nazareth from life in the flesh to life in the morontia."',
@@ -156,14 +158,27 @@ export default function TombTimeline() {
         }
       },
 
-      // PHASE 2: DISSOLUTION (renamed from Tomb Operations)
+      // PHASE 2: DISSOLUTION
+      {
+        id: 'archangel-request',
+        type: 'slide',
+        time: null,
+        label: 'Archangel Request',
+        phase: 'phase2',
+        phaseBreak: true,
+        citation: '189:2.1',
+        content: {
+          quote: '"We may not participate in the morontia resurrection of the bestowal experience of Michael our sovereign, but we would have his mortal remains put in our custody for immediate dissolution."',
+          description: 'The chief of archangels requests custody of the physical body.',
+          imageCaption: 'Archangel request'
+        }
+      },
       {
         id: 'stone-rolling',
         type: 'slide',
         time: null,
         label: 'Stone Rolling',
         phase: 'phase2',
-        phaseBreak: true,
         citation: '189:2.4',
         content: {
           quote: '"This huge stone began slowly to roll away from the entrance of the tomb without any visible means to account for such motion."',
@@ -350,56 +365,35 @@ export default function TombTimeline() {
         {/* Main Content */}
         <div className="absolute inset-0 flex gap-6 p-6 pt-16">
 
-          {/* Left Side - Phase Bar + Event List */}
-          <div className="flex gap-6" style={{ width: '360px' }}>
+          {/* Left Side - Phase Labels (text only) + Event List */}
+          <div className="flex gap-6" style={{ width: '400px' }}>
 
-            {/* Phase Bar - Redesigned: square, gray default, colored when active */}
-            <div className="w-8 flex flex-col bg-slate-600 relative" style={{
-              marginTop: '32px',   // Start at "Friday" level
-              marginBottom: '24px'  // End near "Conclusion"
-            }}>
-              {presentationData.phases.map((phase, index) => {
+            {/* Phase Labels - Text only, gray when inactive, colored when active */}
+            <div className="flex flex-col justify-center gap-8" style={{ width: '120px' }}>
+              {presentationData.phases.map((phase) => {
                 const isActive = getActivePhase() === phase.id
-                const heightPercent = 100 / presentationData.phases.length
 
                 return (
-                  <div key={phase.id} className="relative">
-                    {/* Black divider between segments (except before first) */}
-                    {index > 0 && (
-                      <div className="absolute top-0 left-0 right-0 h-0.5 bg-black"></div>
-                    )}
-
-                    <div
-                      onClick={() => handlePhaseClick(phase.id)}
-                      className="transition-all duration-300 cursor-pointer flex items-center justify-center"
-                      style={{
-                        height: `${heightPercent}%`,
-                        backgroundColor: isActive ? phase.color : '#64748b', // Gray or phase color
-                        boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
-                      }}
-                    >
-                      {/* Phase label rotated inside bar */}
-                      <div
-                        style={{
-                          writingMode: 'vertical-rl',
-                          textOrientation: 'mixed',
-                          transform: 'rotate(180deg)',
-                          fontSize: '16px',
-                          fontWeight: 700,
-                          letterSpacing: phase.id === 'phase2' ? '0.02em' : '0.05em',
-                          color: '#000000',
-                          textTransform: 'uppercase'
-                        }}
-                      >
-                        {phase.name}
-                      </div>
-                    </div>
+                  <div
+                    key={phase.id}
+                    onClick={() => handlePhaseClick(phase.id)}
+                    className="cursor-pointer transition-all duration-300 text-center"
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      letterSpacing: '0.05em',
+                      color: isActive ? phase.color : '#64748b',
+                      textTransform: 'uppercase',
+                      textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none'
+                    }}
+                  >
+                    {phase.name}
                   </div>
                 )
               })}
             </div>
 
-            {/* Event List - Days above events, bullets instead of dashes, times on right */}
+            {/* Event List - Days above events, bullets, times on right */}
             <div className="flex-1 overflow-hidden" style={{ fontFamily: 'ui-monospace, monospace' }}>
               <div className="space-y-0 text-xs">
                 {presentationData.slides.map((slide) => {
@@ -415,11 +409,14 @@ export default function TombTimeline() {
                   const hasTime = slide.time !== null
                   const phaseColor = getPhaseColor(slide.phase)
                   const hasPhaseBreak = slide.phaseBreak === true
+                  const hasDayBreak = slide.dayBreak === true
 
                   return (
                     <div key={slide.id}>
                       {/* Phase break - spacing only */}
                       {hasPhaseBreak && <div className="my-4"></div>}
+                      {/* Day break - extra spacing between days */}
+                      {hasDayBreak && <div className="my-6"></div>}
 
                       <div
                         onClick={() => handleSlideClick(slide)}
