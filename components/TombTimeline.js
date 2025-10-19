@@ -148,7 +148,6 @@ export default function TombTimeline() {
         time: null,
         label: 'Physical Body Remains',
         phase: 'phase1',
-        phaseBreak: true, // Mark phase transition
         citation: '189:1.2',
         content: {
           quote: '"The physical body still lay there in the sepulchre niche, undisturbed and wrapped in the linen sheet, just as it had been laid to rest by Joseph and his associates on Friday afternoon."',
@@ -157,13 +156,14 @@ export default function TombTimeline() {
         }
       },
 
-      // PHASE 2: TOMB OPERATIONS
+      // PHASE 2: TOMB OPERATIONS (phase break BEFORE this)
       {
         id: 'stone-rolling',
         type: 'slide',
         time: null,
         label: 'Stone Rolling',
         phase: 'phase2',
+        phaseBreak: true, // MOVED: Break before Phase 2 starts
         citation: '189:2.4',
         content: {
           quote: '"This huge stone began slowly to roll away from the entrance of the tomb without any visible means to account for such motion."',
@@ -203,7 +203,6 @@ export default function TombTimeline() {
         time: null,
         label: 'The Dissolution (IG)',
         phase: 'phase2',
-        phaseBreak: true, // Mark phase transition
         citation: '189:2.8',
         content: {
           infographic: 'dissolution',
@@ -212,13 +211,14 @@ export default function TombTimeline() {
         }
       },
 
-      // PHASE 3: BEYOND THE TOMB
+      // PHASE 3: BEYOND THE TOMB (phase break BEFORE this)
       {
         id: 'tomb-scene',
         type: 'slide',
         time: null,
         label: 'The Tomb Scene',
         phase: 'phase3',
+        phaseBreak: true, // MOVED: Break before Phase 3 starts
         citation: '189:4.6',
         content: {
           quote: '"In the recess of stone where they had laid Jesus, Mary saw only the folded napkin where his head had rested and the bandages wherewith he had been wrapped lying intact and as they had rested on the stone before the celestial hosts removed the body. The grave sheet lay just as it had been placed, near the foot of the burial niche."',
@@ -311,6 +311,12 @@ export default function TombTimeline() {
     setSelectedSlide(slide)
   }
 
+  const handlePhaseClick = (phaseId) => {
+    // Find first slide of this phase
+    const firstSlide = presentationData.slides.find(s => s.phase === phaseId && s.type === 'slide')
+    if (firstSlide) setSelectedSlide(firstSlide)
+  }
+
   // Get active phase based on selected slide (default to phase1 if nothing selected)
   const getActivePhase = () => {
     if (!selectedSlide) return 'phase1' // Default: light "The 36 Hours"
@@ -354,7 +360,7 @@ export default function TombTimeline() {
           {/* Left Side - Phase Bar + Timeline-TOC */}
           <div className="flex gap-4" style={{ width: '340px' }}>
 
-            {/* Phase Bar with labels inside */}
+            {/* Phase Bar with labels inside - CLICKABLE */}
             <div className="w-5 flex flex-col rounded-full overflow-hidden bg-slate-800 relative">
               {presentationData.phases.map((phase) => {
                 const isActive = getActivePhase() === phase.id
@@ -363,7 +369,8 @@ export default function TombTimeline() {
                 return (
                   <div
                     key={phase.id}
-                    className="relative transition-all duration-300"
+                    onClick={() => handlePhaseClick(phase.id)}
+                    className="relative transition-all duration-300 cursor-pointer"
                     style={{
                       height: `${height}%`,
                       backgroundColor: isActive ? phase.color : '#475569',
@@ -371,17 +378,17 @@ export default function TombTimeline() {
                       boxShadow: isActive ? `0 0 12px ${phase.color}80` : 'none'
                     }}
                   >
-                    {/* Phase label rotated inside bar - CORRECTED ROTATION */}
+                    {/* Phase label rotated inside bar - LARGER TEXT */}
                     <div
                       className="absolute inset-0 flex items-center justify-center"
                       style={{
                         writingMode: 'vertical-rl',
                         textOrientation: 'mixed',
-                        transform: 'rotate(180deg)', // Fix upside-down text
-                        fontSize: '11px',
+                        transform: 'rotate(180deg)',
+                        fontSize: '16px', // 50% bigger (was 11px)
                         fontWeight: 700,
-                        letterSpacing: '0.05em',
-                        color: '#000000', // Black text for readability
+                        letterSpacing: phase.id === 'phase2' ? '0.02em' : '0.05em', // Tighter for "Tomb Operations"
+                        color: '#000000',
                         textTransform: 'uppercase'
                       }}
                     >
@@ -392,7 +399,7 @@ export default function TombTimeline() {
               })}
             </div>
 
-            {/* Timeline-TOC List - Wave-Energy style */}
+            {/* Timeline-TOC List - Wave-Energy style with BISECTING vertical line */}
             <div className="flex-1 relative overflow-hidden">
               <div className="space-y-0 text-xs" style={{ fontFamily: 'ui-monospace, monospace' }}>
                 {presentationData.slides.map((slide, index) => {
@@ -408,24 +415,23 @@ export default function TombTimeline() {
                   const hasTime = slide.time !== null
                   const phaseColor = getPhaseColor(slide.phase)
 
-                  // Check for phase break (manual marker)
+                  // Check for phase break (manual marker) - NO HORIZONTAL LINE
                   const hasPhaseBreak = slide.phaseBreak === true
 
                   return (
                     <div key={slide.id}>
-                      {/* Phase break - larger gap with horizontal line */}
-                      {hasPhaseBreak && (
-                        <div className="my-4 flex items-center">
-                          <div className="flex-1 h-px bg-slate-600"></div>
-                        </div>
-                      )}
+                      {/* Phase break - spacing only, NO line */}
+                      {hasPhaseBreak && <div className="my-4"></div>}
 
                       <div
                         onClick={() => handleSlideClick(slide)}
                         className="cursor-pointer hover:text-gray-300 transition-colors flex items-center py-0.5 relative"
                       >
-                        {/* Vertical line (absolute) */}
-                        <div className="absolute left-[68px] top-0 bottom-0 w-0.5 bg-slate-700"></div>
+                        {/* Vertical line BISECTING the tick marks (centered) */}
+                        <div
+                          className="absolute top-0 bottom-0 w-0.5 bg-slate-700"
+                          style={{ left: '78px' }} // Positioned to bisect 20px tick
+                        ></div>
 
                         {/* Time (left of line) */}
                         <span
@@ -435,12 +441,14 @@ export default function TombTimeline() {
                           {hasTime ? slide.time : ''}
                         </span>
 
-                        {/* Tick mark (horizontal dash from line) */}
+                        {/* Tick mark (horizontal dash BISECTED by line) */}
                         <div
-                          className="h-0.5 transition-all mx-1"
+                          className="h-0.5 transition-all"
                           style={{
                             width: isSelected ? '20px' : '16px',
-                            backgroundColor: isSelected ? phaseColor : '#64748b'
+                            backgroundColor: isSelected ? phaseColor : '#64748b',
+                            marginLeft: '68px', // Start 10px left of line center
+                            marginRight: '2px'
                           }}
                         />
 
