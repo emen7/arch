@@ -289,11 +289,10 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="flex items-center justify-center" style={{
+    <div className="w-full h-full flex items-center justify-center" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0',
-      overflow: 'hidden',
-      height: '100vh'
+      overflow: 'hidden'
     }}>
       {/* Small Screen Overlay */}
       {isSmallScreen && (
