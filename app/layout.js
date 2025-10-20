@@ -44,15 +44,13 @@ export default function RootLayout({ children }) {
                 const savedScroll = localStorage.getItem('app-scroll-position');
 
                 // Clean up: If saved route is a presentation, clear it (one-time migration)
-                if (savedRoute && (savedRoute.startsWith('/presentations/') || savedRoute === '/wave-energy' || savedRoute === '/wave-test')) {
+                const isPresentationRoute = savedRoute && (savedRoute.startsWith('/presentations/') || savedRoute === '/wave-energy' || savedRoute === '/wave-test');
+                if (isPresentationRoute) {
                   localStorage.removeItem('app-last-route');
                   localStorage.removeItem('app-scroll-position');
-                  return; // Don't restore
-                }
-
-                // Only restore if we're on home page (app just opened)
-                if (savedRoute && savedRoute !== '/' && window.location.pathname === '/') {
-                  // Navigate to saved route
+                  // Don't restore - skip the rest
+                } else if (savedRoute && savedRoute !== '/' && window.location.pathname === '/') {
+                  // Only restore if we're on home page (app just opened)
                   window.location.replace(savedRoute);
                 } else if (savedScroll && window.location.pathname !== '/') {
                   // Restore scroll position for current page
