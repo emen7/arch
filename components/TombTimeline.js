@@ -399,10 +399,11 @@ export default function TombTimeline() {
   const phasePositions = calculatePhasePositions()
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{
+    <div className="flex items-center justify-center" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      height: '100vh'
     }}>
       {/* Fixed 16:9 container */}
       <div className="relative" style={{
@@ -414,13 +415,6 @@ export default function TombTimeline() {
         {/* Title - Top Right */}
         <div className="absolute top-6 right-8 text-gray-400 text-base font-semibold tracking-wider">
           {presentationData.title}
-        </div>
-
-        {/* Site Link - Bottom Right */}
-        <div className="absolute bottom-6 right-8 text-gray-500 text-sm" style={{ fontFamily: 'ui-monospace, monospace' }}>
-          <a href="https://revelationary.net" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
-            revelationary.net
-          </a>
         </div>
 
         {/* Main Content */}

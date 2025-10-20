@@ -289,10 +289,11 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{
+    <div className="flex items-center justify-center" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      height: '100vh'
     }}>
       {/* Small Screen Overlay */}
       {isSmallScreen && (
@@ -326,7 +327,7 @@ export default function WaveEnergyPage() {
         ← Home
       </Link>
 
-      <div className="w-[95vw] h-[95vh] max-w-[1920px] max-h-[1080px] flex gap-12 p-8 relative">
+      <div className="w-[95vw] max-w-[1920px] flex gap-12 p-8 relative" style={{ aspectRatio: '16/9' }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
@@ -421,7 +422,7 @@ export default function WaveEnergyPage() {
         </div>
 
         {/* Right Side */}
-        <div className="flex-1 flex flex-col relative pb-20">
+        <div className="flex-1 flex flex-col relative">
           <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
               {/* Navigation Links */}

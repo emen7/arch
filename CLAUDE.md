@@ -43,7 +43,11 @@ Interactive presentation components (like TombTimeline, Wave-Energy Manifestatio
 - **16:9 aspect ratio** - Fixed container for Zoom/PowerPoint compatibility
   - Use: `aspectRatio: '16/9'` with `width: '95vw'` and `maxWidth: '1920px'`
 - **No scrollbars** - All content must fit within fixed dimensions
-- **Presentation pages** accessed via `/presentations/[name]` route
+- **No copyright notices or footers** - Infographics must be pure 16:9 content only
+  - Do NOT include "revelationary.net" links, copyright notices, or footer elements
+  - Use `height: '100vh'` instead of `min-h-screen` to prevent extra gray space
+  - Remove any bottom padding that creates space below the 16:9 container
+- **Presentation pages** accessed via `/presentations/[name]` route or standalone routes
 
 **Component Structure Pattern:**
 - Left side: Navigation/Timeline (25-30% width)
