@@ -167,9 +167,9 @@ export default function Home() {
           {/* Lab test link */}
           <div className="mt-4">
             <Link
-              href="/reports/accelerated-time-test"
+              href="/presentations/tomb-timeline"
               className="inline-block text-2xl opacity-30 hover:opacity-100 transition-opacity"
-              title="Test Lab"
+              title="Tomb Timeline Presentation"
             >
               🧪
             </Link>
