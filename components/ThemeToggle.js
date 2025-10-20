@@ -8,9 +8,16 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true)
-    // Check current theme - default to dark unless explicitly set to light
-    const savedTheme = localStorage.getItem('theme')
-    const currentlyDark = savedTheme === 'light' ? false : true
+    // Check current theme - default to dark
+    let savedTheme = localStorage.getItem('theme')
+
+    // If no theme set, default to dark
+    if (!savedTheme) {
+      localStorage.setItem('theme', 'dark')
+      savedTheme = 'dark'
+    }
+
+    const currentlyDark = savedTheme !== 'light'
     setIsDark(currentlyDark)
   }, [])
 

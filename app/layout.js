@@ -24,9 +24,16 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = localStorage.getItem('theme');
-                // Default to dark theme unless explicitly set to light
-                const isDark = theme === 'light' ? false : true;
+                let theme = localStorage.getItem('theme');
+
+                // One-time migration: If no theme preference exists, set to dark
+                if (!theme) {
+                  localStorage.setItem('theme', 'dark');
+                  theme = 'dark';
+                }
+
+                // Apply theme
+                const isDark = theme !== 'light';
                 if (isDark) {
                   document.documentElement.classList.add('dark');
                 }
