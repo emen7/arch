@@ -10,9 +10,9 @@ export default function TombTimeline() {
     title: 'ACCELERATED TIME OF THE TOMB',
 
     phases: [
-      { id: 'phase1', name: 'The 36 Hours', color: '#3b82f6' },      // Azure Blue
-      { id: 'phase2', name: 'Tomb Operations', color: '#f97316' },   // Orange
-      { id: 'phase3', name: 'Beyond the Tomb', color: '#3b82f6' }    // Azure Blue
+      { id: 'phase1', name: 'The Thirty Six Hours', color: '#22c55e' },  // Green
+      { id: 'phase2', name: 'Tomb Operations', color: '#f97316' },       // Orange
+      { id: 'phase3', name: 'Beyond the Tomb', color: '#22c55e' }        // Green
     ],
 
     slides: [
@@ -86,14 +86,13 @@ export default function TombTimeline() {
       },
 
       // Saturday
-      { id: 'day-saturday', type: 'day-header', label: 'Saturday', phase: 'phase1' },
+      { id: 'day-saturday', type: 'day-header', label: 'Saturday', phase: 'phase1', dayBreak: true },
       {
-        id: 'adjuster-declaration',
+        id: 'divine-declaration',
         type: 'slide',
         time: '~12:00\u00A0AM',
-        label: 'Adjuster Declaration',
+        label: 'Divine Declaration',
         phase: 'phase1',
-        dayBreak: true, // Extra spacing before next day
         citation: '189:0.2',
         content: {
           quote: '"Not one of you can do aught to assist your Creator-father in the return to life. As a mortal of the realm he has experienced mortal death; as the Sovereign of a universe he still lives. That which you observe is the mortal transit of Jesus of Nazareth from life in the flesh to life in the morontia."',
@@ -147,7 +146,7 @@ export default function TombTimeline() {
         id: 'physical-body-remains',
         type: 'slide',
         time: null,
-        label: 'Physical Body Remains',
+        label: 'The Physical Body',
         phase: 'phase1',
         citation: '189:1.2',
         content: {
@@ -222,6 +221,19 @@ export default function TombTimeline() {
           infographic: 'dissolution',
           description: 'Visualization of instantaneous elemental disintegration.',
           quote: '"The mortal remains of Jesus underwent the same natural process of elemental disintegration as characterizes all human bodies on earth except that, in point of time, this natural mode of dissolution was greatly accelerated, hastened to that point where it became well-nigh instantaneous."'
+        }
+      },
+      {
+        id: 'midwayer-ig',
+        type: 'slide',
+        time: null,
+        label: 'Midwayer (IG)',
+        phase: 'phase2',
+        citation: '189:4.6',
+        content: {
+          infographic: 'midwayer',
+          description: 'Interactive visualization of midwayer manipulation of burial cloths.',
+          quote: '"In the recess of stone where they had laid Jesus, Mary saw only the folded napkin where his head had rested and the bandages wherewith he had been wrapped lying intact and as they had rested on the stone before the celestial hosts removed the body."'
         }
       },
 
@@ -340,8 +352,38 @@ export default function TombTimeline() {
   // Get phase color for selected event
   const getPhaseColor = (phaseId) => {
     const phase = presentationData.phases.find(p => p.id === phaseId)
-    return phase?.color || '#3b82f6'
+    return phase?.color || '#22c55e'
   }
+
+  // Calculate dynamic phase label positions based on event distribution
+  const calculatePhasePositions = () => {
+    const allSlides = presentationData.slides
+    const positions = {}
+
+    presentationData.phases.forEach(phase => {
+      // Get all slides (not day-headers) for this phase
+      const phaseSlides = allSlides.filter(s => s.phase === phase.id && s.type === 'slide')
+
+      if (phaseSlides.length === 0) {
+        positions[phase.id] = 50 // Default to middle if no slides
+        return
+      }
+
+      // Find indices in the full slides array
+      const firstIndex = allSlides.indexOf(phaseSlides[0])
+      const lastIndex = allSlides.indexOf(phaseSlides[phaseSlides.length - 1])
+      const middleIndex = (firstIndex + lastIndex) / 2
+
+      // Convert to percentage (rough approximation)
+      // Account for day headers and spacing
+      const totalItems = allSlides.length
+      positions[phase.id] = (middleIndex / totalItems) * 100
+    })
+
+    return positions
+  }
+
+  const phasePositions = calculatePhasePositions()
 
   return (
     <div className="min-h-screen flex items-center justify-center" style={{
@@ -367,70 +409,35 @@ export default function TombTimeline() {
           {/* Left Side - Phase Labels (rotated vertical) + Event List */}
           <div className="flex gap-2" style={{ width: '340px' }}>
 
-            {/* Phase Labels - Rotated 90deg counterclockwise, centered on events */}
+            {/* Phase Labels - Rotated 90deg counterclockwise, dynamically centered on events */}
             <div className="relative flex-shrink-0" style={{ width: '24px', height: '100%' }}>
-              {/* Phase 1: The 36 Hours - centered on phase1 events */}
-              <div
-                onClick={() => handlePhaseClick('phase1')}
-                className="absolute cursor-pointer transition-all duration-300"
-                style={{
-                  top: '10%',
-                  left: '50%',
-                  transform: 'translateX(-50%) rotate(-90deg)',
-                  transformOrigin: 'center',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  color: getActivePhase() === 'phase1' ? '#3b82f6' : '#64748b',
-                  textTransform: 'uppercase',
-                  textShadow: getActivePhase() === 'phase1' ? '0 0 8px #3b82f660' : 'none',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                The 36 Hours
-              </div>
+              {presentationData.phases.map((phase) => {
+                const isActive = getActivePhase() === phase.id
+                const topPosition = `${phasePositions[phase.id]}%`
 
-              {/* Phase 2: Tomb Operations - centered on phase2 events */}
-              <div
-                onClick={() => handlePhaseClick('phase2')}
-                className="absolute cursor-pointer transition-all duration-300"
-                style={{
-                  top: '52%',
-                  left: '50%',
-                  transform: 'translateX(-50%) rotate(-90deg)',
-                  transformOrigin: 'center',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  color: getActivePhase() === 'phase2' ? '#f97316' : '#64748b',
-                  textTransform: 'uppercase',
-                  textShadow: getActivePhase() === 'phase2' ? '0 0 8px #f9731660' : 'none',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Tomb Operations
-              </div>
-
-              {/* Phase 3: Beyond the Tomb - centered on phase3 events */}
-              <div
-                onClick={() => handlePhaseClick('phase3')}
-                className="absolute cursor-pointer transition-all duration-300"
-                style={{
-                  top: '82%',
-                  left: '50%',
-                  transform: 'translateX(-50%) rotate(-90deg)',
-                  transformOrigin: 'center',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  color: getActivePhase() === 'phase3' ? '#3b82f6' : '#64748b',
-                  textTransform: 'uppercase',
-                  textShadow: getActivePhase() === 'phase3' ? '0 0 8px #3b82f660' : 'none',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Beyond the Tomb
-              </div>
+                return (
+                  <div
+                    key={phase.id}
+                    onClick={() => handlePhaseClick(phase.id)}
+                    className="absolute cursor-pointer transition-all duration-300"
+                    style={{
+                      top: topPosition,
+                      left: '50%',
+                      transform: 'translateX(-50%) rotate(-90deg)',
+                      transformOrigin: 'center',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      letterSpacing: '0.05em',
+                      color: isActive ? phase.color : '#64748b',
+                      textTransform: 'uppercase',
+                      textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {phase.name}
+                  </div>
+                )
+              })}
             </div>
 
             {/* Event List - Days above events, bullets, times on right */}
