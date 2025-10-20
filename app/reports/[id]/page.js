@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import ReadAloud from '@/components/ReadAloud'
 import JosephsTombContent from './content/josephs-tomb'
-import AcceleratedTimeContent from './content/accelerated-time'
+import AcceleratedTimeContent from './content/accelerated-time-REVISED3'
 import NuclearIsleContent from './content/nuclear-isle'
 import CircuitArchitectureContent from './content/circuit-architecture'
 import HavonaChairsContent from './content/havona-chairs'
@@ -109,6 +109,16 @@ export default function ReportPage({ params }) {
             {!report.publication && params.id !== 'nuclear-isle' && params.id !== 'circuit-architecture' && params.id !== 'havona-chairs' && (
               <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
                 For the Urantia Science Symposium 2025
+              </p>
+            )}
+            {params.id === 'accelerated-time-tomb' && (
+              <p className="mt-3">
+                <a
+                  href="#revision-history"
+                  className="inline-block px-3 py-1 text-sm font-semibold bg-light-border dark:bg-dark-border text-text-light dark:text-text-dark rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                  Revised: See Change Log at bottom
+                </a>
               </p>
             )}
           </header>

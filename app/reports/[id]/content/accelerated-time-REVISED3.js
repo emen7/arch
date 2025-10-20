@@ -1133,7 +1133,7 @@ export default function AcceleratedTimeContent() {
         </p>
 
         {/* Document Changelog */}
-        <div className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+        <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
           <p className="font-semibold mb-3">Document Revision History</p>
           <ol className="list-decimal ml-6 space-y-2">
             <li>
