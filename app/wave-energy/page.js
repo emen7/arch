@@ -8,18 +8,12 @@ export default function WaveEnergyPage() {
   const textAreaRef = useRef(null)
   const titleRef = useRef(null)
   const sphereContainerRef = useRef(null)
-  const containerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
-  const [scale, setScale] = useState(1)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
-
-  // Fixed card dimensions (16:9 at 1920x1080)
-  const CARD_WIDTH = 1920
-  const CARD_HEIGHT = 1080
 
   const texts = {
     p0: [
@@ -101,28 +95,23 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Calculate scale to fit viewport
+  // Detect small screens (phones) - tablets and desktop OK
   useEffect(() => {
-    const calculateScale = () => {
-      if (!containerRef.current) return
-
-      const viewportWidth = window.innerWidth
-      const viewportHeight = window.innerHeight
-
-      // Calculate scale based on which dimension is more constrained
-      const scaleX = (viewportWidth - 32) / CARD_WIDTH // 32px = padding
-      const scaleY = (viewportHeight - 32) / CARD_HEIGHT
-      const newScale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 1
-
-      setScale(newScale)
-
-      // Check if scaled card would be too small (similar to phone detection)
-      setIsSmallScreen(newScale < 0.5)
+    const checkScreenSize = () => {
+      // Screen width less than 1024px is considered too small (phones)
+      // iPads and larger tablets (typically 1024px+) will work fine
+      setIsSmallScreen(window.innerWidth < 1024)
     }
 
-    calculateScale()
-    window.addEventListener('resize', calculateScale)
-    return () => window.removeEventListener('resize', calculateScale)
+    // Initial check
+    checkScreenSize()
+
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize)
+    }
   }, [])
 
   // Center text box vertically between title and sphere canvas
@@ -300,14 +289,10 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-full flex items-center justify-center"
-      style={{
-        background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
-        color: '#e2e8f0'
-      }}
-    >
+    <div className="w-full h-full flex items-center justify-center p-4" style={{
+      background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
+      color: '#e2e8f0'
+    }}>
       {/* Small Screen Overlay */}
       {isSmallScreen && (
         <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
@@ -340,16 +325,10 @@ export default function WaveEnergyPage() {
         ← Home
       </Link>
 
-      {/* Fixed-size 16:9 card (1920x1080) that scales as a single unit */}
-      <div
-        className="relative flex gap-12 p-8"
-        style={{
-          width: `${CARD_WIDTH}px`,
-          height: `${CARD_HEIGHT}px`,
-          transform: `scale(${scale})`,
-          transformOrigin: 'center center'
-        }}
-      >
+      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
+      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8" style={{
+        aspectRatio: '16/9'
+      }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">

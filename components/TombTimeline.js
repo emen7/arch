@@ -1,36 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 
 export default function TombTimeline() {
   const [selectedSlide, setSelectedSlide] = useState(null)
-  const [scale, setScale] = useState(1)
-  const containerRef = useRef(null)
-
-  // Fixed card dimensions (16:9 at 1920x1080)
-  const CARD_WIDTH = 1920
-  const CARD_HEIGHT = 1080
-
-  // Calculate scale to fit viewport
-  useEffect(() => {
-    const calculateScale = () => {
-      if (!containerRef.current) return
-
-      const viewportWidth = window.innerWidth
-      const viewportHeight = window.innerHeight
-
-      // Calculate scale based on which dimension is more constrained
-      const scaleX = (viewportWidth - 32) / CARD_WIDTH // 32px = padding
-      const scaleY = (viewportHeight - 32) / CARD_HEIGHT
-      const newScale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 1
-
-      setScale(newScale)
-    }
-
-    calculateScale()
-    window.addEventListener('resize', calculateScale)
-    return () => window.removeEventListener('resize', calculateScale)
-  }, [])
 
   // Presentation structure: phases, days, and slides
   const presentationData = {
@@ -426,24 +399,14 @@ export default function TombTimeline() {
   const phasePositions = calculatePhasePositions()
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-full flex items-center justify-center"
-      style={{
-        background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
-        color: '#e2e8f0'
-      }}
-    >
-      {/* Fixed-size 16:9 card (1920x1080) that scales as a single unit */}
-      <div
-        className="relative"
-        style={{
-          width: `${CARD_WIDTH}px`,
-          height: `${CARD_HEIGHT}px`,
-          transform: `scale(${scale})`,
-          transformOrigin: 'center center'
-        }}
-      >
+    <div className="w-full h-full flex items-center justify-center p-4" style={{
+      background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
+      color: '#e2e8f0'
+    }}>
+      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
+      <div className="relative w-full max-w-full max-h-full" style={{
+        aspectRatio: '16/9'
+      }}>
 
         {/* Title - Top Right */}
         <div className="absolute top-6 right-8 text-gray-400 text-base font-semibold tracking-wider">
