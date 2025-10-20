@@ -72,7 +72,14 @@ export function useAppState() {
 
   // Save route when pathname changes
   useEffect(() => {
-    saveRoute(pathname);
+    // Exclude presentation/infographic routes from being saved
+    const isPresentationRoute = pathname.startsWith('/presentations/') ||
+                                pathname === '/wave-energy' ||
+                                pathname === '/wave-test';
+
+    if (!isPresentationRoute) {
+      saveRoute(pathname);
+    }
 
     // Clear state if user is on home page
     // (they navigated here explicitly, so don't restore this)
