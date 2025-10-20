@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
             __html: `
               try {
                 const theme = localStorage.getItem('theme');
-                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const isDark = theme === 'dark' || (!theme && systemDark);
+                // Default to dark theme unless explicitly set to light
+                const isDark = theme === 'light' ? false : true;
                 if (isDark) {
                   document.documentElement.classList.add('dark');
                 }
