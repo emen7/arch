@@ -325,10 +325,9 @@ export default function WaveEnergyPage() {
         ← Home
       </Link>
 
-      {/* 16:9 Card - maintains layout with minimum width, horizontal scroll if needed */}
+      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
       <div className="relative w-full max-w-full max-h-full flex gap-12 p-8" style={{
-        aspectRatio: '16/9',
-        minWidth: '1400px'
+        aspectRatio: '16/9'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
