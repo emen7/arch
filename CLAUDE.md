@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 14 site for publishing Urantia Book research reports. The site features:
+This is a Next.js 15 site for publishing Urantia Book research reports. The site features:
 - Research reports with academic-style citations and formatting
 - Interactive presentations and infographics (timeline navigators, visualizations)
 - A glossary system for terms and concepts
@@ -252,6 +252,49 @@ const scrollToSection = (e, sectionId) => {
 - Report images: `public/images/[report-name]/`
 - Source documents (not deployed): `docs/`
 - Urantia Book database: `public/data/ub-database.json`
+
+## Troubleshooting
+
+### Localhost Development Server Issues
+
+If `npm run dev` hangs at "Starting..." or becomes unresponsive:
+
+1. **Check for stale Node processes:**
+   ```bash
+   tasklist | findstr "node"
+   netstat -ano | findstr "3000"
+   ```
+
+2. **Clean restart process:**
+   - Close all terminal windows running `npm run dev` (this kills Node processes without requiring admin privileges)
+   - Delete the build cache: `rm -rf .next`
+   - Delete node_modules if there's a version mismatch: `rm -rf node_modules && npm install`
+   - Start fresh: `npm run dev`
+
+3. **Version conflicts:**
+   - If you see "Mismatching @next/swc version" errors, the `.next` cache has old version data
+   - Solution: Delete `.next` folder and restart dev server
+   - This happens after updating Next.js versions
+
+4. **File naming issues:**
+   - IMPORTANT: Avoid spaces and parentheses in filenames, especially for content components
+   - Bad: `accelerated-time-REVISED (3).js`
+   - Good: `accelerated-time-REVISED3.js`
+   - JavaScript imports don't handle special characters in filenames well
+
+### Common Hydration Warnings
+
+Browser extensions (Grammarly, etc.) can cause harmless hydration warnings:
+```
+A tree hydrated but some attributes of the server rendered HTML didn't match
+```
+These warnings about `data-gr-ext-installed` or similar attributes are safe to ignore - they're caused by browser extensions modifying the DOM, not our code.
+
+### Vercel Deployment
+
+- If Vercel deploys are queued longer than usual, check https://www.vercel-status.com/
+- Vercel performs clean builds, so local cache issues won't affect deployment
+- Test routes at https://revelationary.net after deployment completes
 
 ## Notes
 
