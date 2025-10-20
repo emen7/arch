@@ -457,6 +457,30 @@ export default function WaveEnergyPage() {
               <div className="text-slate-300 text-base leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
+
+              {/* Dot Indicators */}
+              {pages.length > 1 && (
+                <div className="flex justify-center gap-2 mt-6">
+                  {pages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setTextPage(index)}
+                      className="transition-all"
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: index === textPage ? '#94a3b8' : '#475569',
+                        opacity: index === textPage ? 1 : 0.5,
+                        cursor: 'pointer',
+                        border: 'none',
+                        padding: 0
+                      }}
+                      aria-label={`Go to page ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Human Application */}
