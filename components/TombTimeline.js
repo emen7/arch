@@ -433,7 +433,52 @@ export default function TombTimeline() {
             <div className="relative flex-shrink-0" style={{ width: '24px', height: '100%' }}>
               {presentationData.phases.map((phase) => {
                 const isActive = getActivePhase() === phase.id
-                const topPosition = `${phasePositions[phase.id]}%`
+                const basePosition = phasePositions[phase.id]
+
+                // Adjust positioning for each phase
+                let topPosition
+                if (phase.id === 'phase1') {
+                  // Move "The Thirty Six Hours" up by adjusting offset
+                  topPosition = `calc(${basePosition}% - 30px)`
+                } else if (phase.id === 'phase3') {
+                  // Move "Beyond the Tomb" up significantly
+                  topPosition = `calc(${basePosition}% - 45px)`
+                } else {
+                  topPosition = `${basePosition}%`
+                }
+
+                // Custom letter spacing for phase1
+                const letterSpacing = phase.id === 'phase1' ? '0.13em' : '0.05em'
+
+                // Special rendering for phase3 (two-line label)
+                if (phase.id === 'phase3') {
+                  return (
+                    <div
+                      key={phase.id}
+                      onClick={() => handlePhaseClick(phase.id)}
+                      className="absolute cursor-pointer transition-all duration-300"
+                      style={{
+                        top: topPosition,
+                        left: '50%',
+                        transform: 'translateX(-50%) rotate(-90deg)',
+                        transformOrigin: 'center',
+                        fontSize: '11px',
+                        fontWeight: 700,
+                        letterSpacing: '0.05em',
+                        color: isActive ? phase.color : '#64748b',
+                        textTransform: 'uppercase',
+                        textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        gap: '2px'
+                      }}
+                    >
+                      <span>Beyond</span>
+                      <span>The Tomb</span>
+                    </div>
+                  )
+                }
 
                 return (
                   <div
@@ -447,7 +492,7 @@ export default function TombTimeline() {
                       transformOrigin: 'center',
                       fontSize: '11px',
                       fontWeight: 700,
-                      letterSpacing: '0.05em',
+                      letterSpacing: letterSpacing,
                       color: isActive ? phase.color : '#64748b',
                       textTransform: 'uppercase',
                       textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
