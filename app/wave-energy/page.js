@@ -289,10 +289,9 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{
+    <div className="w-full h-full flex items-center justify-center p-4" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
-      color: '#e2e8f0',
-      overflow: 'hidden'
+      color: '#e2e8f0'
     }}>
       {/* Small Screen Overlay */}
       {isSmallScreen && (
@@ -326,12 +325,9 @@ export default function WaveEnergyPage() {
         ← Home
       </Link>
 
-      {/* Fixed 16:9 container - scales to fit viewport while maintaining aspect ratio */}
-      <div className="flex gap-12 p-8 relative" style={{
-        width: '100vw',
-        height: '56.25vw', // 16:9 ratio (9/16 = 0.5625)
-        maxWidth: '177.78vh', // When height limited (16/9 = 1.7778)
-        maxHeight: '100vh'
+      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
+      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8" style={{
+        aspectRatio: '16/9'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
