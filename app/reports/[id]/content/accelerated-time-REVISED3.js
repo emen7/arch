@@ -1127,10 +1127,6 @@ export default function AcceleratedTimeContent() {
         </p>
 
         <p className="mt-8 font-semibold">Researcher: David <span aria-label="Noofer">Neufer</span></p>
-        <p className="text-sm italic">
-          For a detailed geographic analysis of the tomb location, see the companion study,
-          "Joseph's Tomb: Evidence of Location."
-        </p>
 
         {/* Document Changelog */}
         <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">

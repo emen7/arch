@@ -56,7 +56,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const report = reports[params.id]
+  const { id } = await params
+  const report = reports[id]
   if (!report) return {}
 
   return {
@@ -65,8 +66,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default function ReportPage({ params }) {
-  const report = reports[params.id]
+export default async function ReportPage({ params }) {
+  const { id } = await params
+  const report = reports[id]
 
   if (!report) {
     notFound()
@@ -90,7 +92,7 @@ export default function ReportPage({ params }) {
             <h1 className="text-3xl font-bold mb-3 mt-0 text-text-light dark:text-text-dark">
               {report.title}
             </h1>
-            <p className={`text-2xl mb-4 ${params.id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
+            <p className={`text-2xl mb-4 ${id === 'havona-chairs' ? 'font-bold text-text-light dark:text-text-dark' : 'text-text-muted-light dark:text-text-muted-dark italic'}`}>
               {report.subtitle}
             </p>
             <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
@@ -106,12 +108,12 @@ export default function ReportPage({ params }) {
                 {report.publication}
               </p>
             )}
-            {!report.publication && params.id !== 'nuclear-isle' && params.id !== 'circuit-architecture' && params.id !== 'havona-chairs' && (
+            {!report.publication && id !== 'nuclear-isle' && id !== 'circuit-architecture' && id !== 'havona-chairs' && (
               <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
                 For the Urantia Science Symposium 2025
               </p>
             )}
-            {params.id === 'accelerated-time-tomb' && (
+            {id === 'accelerated-time-tomb' && (
               <p className="mt-3">
                 <a
                   href="#revision-history"
@@ -139,10 +141,13 @@ export default function ReportPage({ params }) {
       </div>
 
           {/* Footer */}
-          <footer className="mt-16 pt-8 border-t border-light-border dark:border-dark-border">
-            <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-              End of Report
-            </p>
+          <footer className="mt-16 pt-8 border-t border-light-border dark:border-dark-border text-center">
+            <a
+              href="#"
+              className="text-sm text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors underline"
+            >
+              Return to Top
+            </a>
           </footer>
         </article>
       </main>
