@@ -27,10 +27,16 @@ export default function RootLayout({ children }) {
                 const theme = localStorage.getItem('theme');
                 const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 const isDark = theme === 'dark' || (!theme && systemDark);
+                console.log('Theme Debug:', { theme, systemDark, isDark });
                 if (isDark) {
                   document.documentElement.classList.add('dark');
+                  console.log('Dark class added to html');
+                } else {
+                  console.log('Light theme - no dark class');
                 }
-              } catch (e) {}
+              } catch (e) {
+                console.error('Theme script error:', e);
+              }
 
               // PWA State Restoration - runs immediately before React hydration
               try {
