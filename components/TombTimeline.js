@@ -435,22 +435,13 @@ export default function TombTimeline() {
                 const isActive = getActivePhase() === phase.id
                 const basePosition = phasePositions[phase.id]
 
-                // Adjust positioning for each phase
-                let topPosition
-                if (phase.id === 'phase1') {
-                  // Move "The Thirty Six Hours" up by adjusting offset
-                  topPosition = `calc(${basePosition}% - 30px)`
-                } else if (phase.id === 'phase3') {
-                  // Move "Beyond the Tomb" up significantly
-                  topPosition = `calc(${basePosition}% - 45px)`
-                } else {
-                  topPosition = `${basePosition}%`
-                }
+                // Use base position - aligns label start with final event
+                const topPosition = `${basePosition}%`
 
                 // Custom letter spacing for phase1
                 const letterSpacing = phase.id === 'phase1' ? '0.13em' : '0.05em'
 
-                // Special rendering for phase3 (two-line label)
+                // Special rendering for phase3 (two-line label: "BEYOND" / "THE TOMB")
                 if (phase.id === 'phase3') {
                   return (
                     <div
@@ -461,21 +452,18 @@ export default function TombTimeline() {
                         top: topPosition,
                         left: '50%',
                         transform: 'translateX(-50%) rotate(-90deg)',
-                        transformOrigin: 'center',
+                        transformOrigin: 'left center',
                         fontSize: '11px',
                         fontWeight: 700,
                         letterSpacing: '0.05em',
                         color: isActive ? phase.color : '#64748b',
                         textTransform: 'uppercase',
                         textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        gap: '2px'
+                        lineHeight: '1.4'
                       }}
                     >
-                      <span>Beyond</span>
-                      <span>The Tomb</span>
+                      <div>Beyond</div>
+                      <div>The Tomb</div>
                     </div>
                   )
                 }
