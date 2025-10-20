@@ -102,7 +102,7 @@ export default function TombTimeline() {
       },
 
       // Sunday
-      { id: 'day-sunday', type: 'day-header', label: 'Sunday', phase: 'phase1' },
+      { id: 'day-sunday', type: 'day-header', label: 'Sunday', phase: 'phase1', dayBreak: true },
       {
         id: 'paradise-beings',
         type: 'slide',
@@ -195,6 +195,20 @@ export default function TombTimeline() {
           quote: '"The Jewish guards fled to their homes, later reporting to their captain at the temple. The Roman soldiers fled to the fortress of Antonia, reporting to the centurion as soon as he came on duty."',
           description: 'Terrified guards abandon their posts.',
           imageCaption: 'Guards fleeing'
+        }
+      },
+      {
+        id: 'wave-energy-manifestations-ig',
+        type: 'slide',
+        time: null,
+        label: 'Wave-Energy Manifestations (IG)',
+        phase: 'phase2',
+        citation: '42:5.14',
+        content: {
+          infographic: 'wave-energy',
+          description: 'Interactive visualization of the 100 octaves of wave-energy manifestations.',
+          quote: '"In Orvonton it has never been possible naturally to assemble over one hundred orbital electrons in one atomic system."',
+          link: '/reports/wave-energy-manifestations'
         }
       },
       {
@@ -356,6 +370,7 @@ export default function TombTimeline() {
   }
 
   // Calculate dynamic phase label positions based on event distribution
+  // Label START positioned at the FINAL event of each phase
   const calculatePhasePositions = () => {
     const allSlides = presentationData.slides
     const positions = {}
@@ -369,15 +384,13 @@ export default function TombTimeline() {
         return
       }
 
-      // Find indices in the full slides array
-      const firstIndex = allSlides.indexOf(phaseSlides[0])
-      const lastIndex = allSlides.indexOf(phaseSlides[phaseSlides.length - 1])
-      const middleIndex = (firstIndex + lastIndex) / 2
+      // Find the LAST event index in the full slides array
+      const lastSlide = phaseSlides[phaseSlides.length - 1]
+      const lastIndex = allSlides.indexOf(lastSlide)
 
-      // Convert to percentage (rough approximation)
-      // Account for day headers and spacing
+      // Convert to percentage (label start aligned to final event)
       const totalItems = allSlides.length
-      positions[phase.id] = (middleIndex / totalItems) * 100
+      positions[phase.id] = (lastIndex / totalItems) * 100
     })
 
     return positions
@@ -401,6 +414,13 @@ export default function TombTimeline() {
         {/* Title - Top Right */}
         <div className="absolute top-6 right-8 text-gray-400 text-base font-semibold tracking-wider">
           {presentationData.title}
+        </div>
+
+        {/* Site Link - Bottom Right */}
+        <div className="absolute bottom-6 right-8 text-gray-500 text-sm" style={{ fontFamily: 'ui-monospace, monospace' }}>
+          <a href="https://revelationary.net" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
+            revelationary.net
+          </a>
         </div>
 
         {/* Main Content */}
@@ -445,9 +465,14 @@ export default function TombTimeline() {
               <div className="space-y-0 text-xs">
                 {presentationData.slides.map((slide) => {
                   if (slide.type === 'day-header') {
+                    const hasDayBreak = slide.dayBreak === true
                     return (
-                      <div key={slide.id} className="text-gray-300 font-bold mt-4 mb-1.5 text-sm pl-2">
-                        {slide.label}
+                      <div key={slide.id}>
+                        {/* Extra spacing before day header if flagged */}
+                        {hasDayBreak && <div className="my-6"></div>}
+                        <div className="font-bold mt-4 mb-1.5 text-sm pl-2" style={{ color: '#a78bfa' }}>
+                          {slide.label}
+                        </div>
                       </div>
                     )
                   }
@@ -522,21 +547,43 @@ export default function TombTimeline() {
 
                   {/* Content based on slide type */}
                   {selectedSlide.content.infographic ? (
-                    // Infographic placeholder
-                    <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-12 text-center">
-                      <div className="text-6xl mb-4">📊</div>
-                      <div className="text-gray-400 text-xl font-semibold mb-2">
-                        {selectedSlide.content.infographic === 'accelerated-time' ? 'Accelerated Time Infographic' : 'Dissolution Infographic'}
-                      </div>
-                      <div className="text-slate-400 text-sm">
-                        {selectedSlide.content.description}
-                      </div>
-                      {selectedSlide.content.quote && (
-                        <div className="mt-6 text-slate-300 italic text-sm">
-                          {selectedSlide.content.quote}
+                    // Infographic placeholder or link
+                    selectedSlide.content.link ? (
+                      <a href={selectedSlide.content.link} target="_blank" rel="noopener noreferrer" className="block">
+                        <div className="bg-slate-800/30 border-2 border-slate-600 rounded-xl p-12 text-center hover:border-slate-500 transition-all cursor-pointer">
+                          <div className="text-6xl mb-4">🔗</div>
+                          <div className="text-gray-400 text-xl font-semibold mb-2">
+                            {selectedSlide.label}
+                          </div>
+                          <div className="text-slate-400 text-sm mb-4">
+                            {selectedSlide.content.description}
+                          </div>
+                          <div className="text-blue-400 text-sm font-semibold">
+                            Click to view interactive infographic →
+                          </div>
+                          {selectedSlide.content.quote && (
+                            <div className="mt-6 text-slate-300 italic text-sm">
+                              {selectedSlide.content.quote}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
+                      </a>
+                    ) : (
+                      <div className="bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl p-12 text-center">
+                        <div className="text-6xl mb-4">📊</div>
+                        <div className="text-gray-400 text-xl font-semibold mb-2">
+                          {selectedSlide.label}
+                        </div>
+                        <div className="text-slate-400 text-sm">
+                          {selectedSlide.content.description}
+                        </div>
+                        {selectedSlide.content.quote && (
+                          <div className="mt-6 text-slate-300 italic text-sm">
+                            {selectedSlide.content.quote}
+                          </div>
+                        )}
+                      </div>
+                    )
                   ) : (
                     <>
                       {/* Quote Box */}
