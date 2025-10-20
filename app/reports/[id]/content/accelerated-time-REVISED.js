@@ -1,0 +1,1148 @@
+'use client'
+
+import Citation from '@/components/Citation'
+
+// Helper function to scroll to section with proper offset
+// Uses same pattern as glossary: measure sticky element + buffer
+const scrollToSection = (e, sectionId) => {
+  e.preventDefault()
+  const element = document.getElementById(sectionId)
+  if (!element) return
+
+  // Measure the sticky header (which includes Home nav + Report title + TTS when present)
+  const stickyHeader = document.querySelector('header.sticky')
+  const stickyHeight = stickyHeader ? stickyHeader.offsetHeight : 93
+
+  // Small buffer like glossary uses (glossary uses 10px)
+  const buffer = 10
+
+  const totalOffset = stickyHeight + buffer
+
+  const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+  const offsetPosition = elementPosition - totalOffset
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  })
+}
+
+export default function AcceleratedTimeContent() {
+  return (
+    <>
+      <section className="mb-12">
+        <h2>Abstract</h2>
+        <p>
+          This case study examines the matter-energy transformation of Jesus' physical body
+          through "accelerated time." The report works across three domains: (1) the
+          revealed timeline and administrative sequence from burial through dissolution, (2)
+          the ultimatonic physics underlying temporal acceleration and controlled energy
+          release, and (3) forensic correspondence between revealed wound descriptions
+          and evidence documented on the Shroud of Turin.
+        </p>
+        <p>
+          We look at how thought-directed control of ultimatons can create a timeacceleration chamber within a human body. This containment can, through
+          harmonic intention, compress millennia into one second or less. By spinning the
+          body's ultimatons faster and faster, capable beings made this respected form into a
+          temporal void.
+        </p>
+        <p>
+          The calculated energy release (6.3 × 10²⁰ joules) would require perfect
+          containment and expert handling. It appears that this was not only a dissolution
+          process. This burial was designed to resemble a traditional burial, but burials
+          typically involve leaving a body. This one would not. Did Gabriel authorize a fullbody image oxidized on cloth as a substitute? Recent laser replication experiments
+          have found that a 12-nanosecond UV emission at 193-nm wavelength replicates
+          shroud image characteristics. Full replication is beyond human experimental
+          energy requirements, but it is not a problem for Master Physical Controllers.
+        </p>
+        <p>
+          With the Urantia Book as a trusted database of information, we can open the doors
+          to understanding the mysteries of the tangentially revealed.
+        </p>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="table-of-contents">Table of Contents</h2>
+        <nav className="ml-6 space-y-2 text-sm">
+          <div>
+            <a href="#section-1" onClick={(e) => scrollToSection(e, 'section-1')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Section 1: Friday - The Preparation
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#death-and-aftermath" onClick={(e) => scrollToSection(e, 'death-and-aftermath')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Death and Its Aftermath</a></li>
+              <li><a href="#josephs-bold-request" onClick={(e) => scrollToSection(e, 'josephs-bold-request')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Joseph's Bold Request</a></li>
+              <li><a href="#confrontation-at-golgotha" onClick={(e) => scrollToSection(e, 'confrontation-at-golgotha')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Confrontation at Golgotha</a></li>
+              <li><a href="#burial-procession" onClick={(e) => scrollToSection(e, 'burial-procession')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Burial Procession</a></li>
+              <li><a href="#preparation-of-body" onClick={(e) => scrollToSection(e, 'preparation-of-body')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Preparation of the Body</a></li>
+              <li><a href="#womens-vigil" onClick={(e) => scrollToSection(e, 'womens-vigil')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Women's Vigil</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-2" onClick={(e) => scrollToSection(e, 'section-2')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Section 2: Saturday - The Mandate
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#guards-arrive" onClick={(e) => scrollToSection(e, 'guards-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Guards Arrive</a></li>
+              <li><a href="#silent-sabbath" onClick={(e) => scrollToSection(e, 'silent-sabbath')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Silent Sabbath</a></li>
+              <li><a href="#midnight-declaration" onClick={(e) => scrollToSection(e, 'midnight-declaration')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Midnight Declaration</a></li>
+              <li><a href="#anxious-expectancy" onClick={(e) => scrollToSection(e, 'anxious-expectancy')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Anxious Expectancy</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-3" onClick={(e) => scrollToSection(e, 'section-3')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Section 3: Sunday - Resurrection and Dissolution
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#paradise-personalities-arrive" onClick={(e) => scrollToSection(e, 'paradise-personalities-arrive')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Paradise Personalities Arrive</a></li>
+              <li><a href="#morontia-resurrection" onClick={(e) => scrollToSection(e, 'morontia-resurrection')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Morontia Resurrection</a></li>
+              <li><a href="#request-for-dissolution" onClick={(e) => scrollToSection(e, 'request-for-dissolution')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Request for Dissolution</a></li>
+              <li><a href="#stone-rolled-away" onClick={(e) => scrollToSection(e, 'stone-rolled-away')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Stone Rolled Away</a></li>
+              <li><a href="#dissolution-accomplished" onClick={(e) => scrollToSection(e, 'dissolution-accomplished')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Dissolution Accomplished</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-4" onClick={(e) => scrollToSection(e, 'section-4')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Section 4: The Physics of Accelerated Time
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#ultimaton-foundation" onClick={(e) => scrollToSection(e, 'ultimaton-foundation')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Ultimaton Foundation</a></li>
+              <li><a href="#operational-capabilities" onClick={(e) => scrollToSection(e, 'operational-capabilities')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Operational Capabilities</a></li>
+              <li><a href="#controlled-dissolution" onClick={(e) => scrollToSection(e, 'controlled-dissolution')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Controlled Dissolution</a></li>
+              <li><a href="#archangel-circuit-activation" onClick={(e) => scrollToSection(e, 'archangel-circuit-activation')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Archangel Circuit Activation</a></li>
+              <li><a href="#physics-assessment" onClick={(e) => scrollToSection(e, 'physics-assessment')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Assessment</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#section-5" onClick={(e) => scrollToSection(e, 'section-5')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Section 5: Physical Documentation
+            </a>
+            <ul className="ml-6 mt-1 space-y-1">
+              <li><a href="#burial-configuration" onClick={(e) => scrollToSection(e, 'burial-configuration')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The Burial Configuration</a></li>
+              <li><a href="#discovery-at-dawn" onClick={(e) => scrollToSection(e, 'discovery-at-dawn')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Discovery at Dawn</a></li>
+              <li><a href="#wound-correspondence" onClick={(e) => scrollToSection(e, 'wound-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Wound Correspondence Analysis</a></li>
+              <li><a href="#scientific-analysis" onClick={(e) => scrollToSection(e, 'scientific-analysis')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Scientific Analysis of the Shroud</a></li>
+              <li><a href="#uv-correspondence" onClick={(e) => scrollToSection(e, 'uv-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">The UV Correspondence</a></li>
+              <li><a href="#cloth-positioning" onClick={(e) => scrollToSection(e, 'cloth-positioning')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Cloth Positioning and Operational Sequence</a></li>
+              <li><a href="#assessment-of-correspondence" onClick={(e) => scrollToSection(e, 'assessment-of-correspondence')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer">Assessment of Correspondence</a></li>
+            </ul>
+          </div>
+          <div>
+            <a href="#epilogue" onClick={(e) => scrollToSection(e, 'epilogue')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Epilogue: Human Discovery
+            </a>
+          </div>
+          <div>
+            <a href="#methodology" onClick={(e) => scrollToSection(e, 'methodology')} className="text-[#3B82C8] dark:text-[#60A5FA] hover:underline font-semibold cursor-pointer">
+              Methodology and Conclusion
+            </a>
+          </div>
+        </nav>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="section-1">Section 1: Friday - The Preparation</h2>
+
+        <h3 id="death-and-aftermath" className="text-2xl font-semibold mt-8 mb-4">The Death and Its Aftermath</h3>
+        <p>
+          Just before three o'clock on Friday afternoon, April 7, AD 30, Jesus of Nazareth died
+          on the cross at Golgotha. "It was just before three o'clock when Jesus, with a loud
+          voice, cried out, 'It is finished! Father, into your hands I commend my spirit.' And
+          when he had thus spoken, he bowed his head and gave up the life struggle"<Citation num={1} />. "In
+          the midst of the darkness of the sandstorm, about half past three o'clock, David
+          Zebedee sent out the last of the messengers carrying the news of the Master's
+          death"<Citation num={2} />. While universe intelligences "shuddered at the shocking spectacle,"<Citation num={3} />
+          practical matters demanded immediate attention.
+        </p>
+        <p>
+          The rulers of the Jews had planned to cast Jesus' body into Gehenna's open burial
+          pits—the customary fate for crucifixion victims<Citation num={4} />. But two members of the
+          Sanhedrin had other intentions.
+        </p>
+
+        <h3 id="josephs-bold-request" className="text-2xl font-semibold mt-8 mb-4">Joseph's Bold Request</h3>
+        <p>
+          Joseph of Arimathea, accompanied by Nicodemus, went directly to Pilate. These
+          former Sanhedrists, whose faith in Jesus had long been suspected by their
+          colleagues, now became "the most outspoken disciples of Jesus in all Jerusalem"<Citation num={5} />.
+          Joseph carried a large sum of money, prepared to pay whatever might be required
+          to obtain possession of the body. Pilate, however, refused payment. "When he
+          heard the request, he quickly signed the order which authorized Joseph to proceed
+          to Golgotha and take immediate and full possession of the Master's body"<Citation num={6} />.
+        </p>
+
+        <h3 id="confrontation-at-golgotha" className="text-2xl font-semibold mt-8 mb-4">Confrontation at Golgotha</h3>
+        <p>
+          When Joseph and Nicodemus arrived at Golgotha, they found soldiers removing
+          Jesus from the cross. At the same time, representatives of the Sanhedrin stood
+          watch, ensuring the body would go to the criminal burial pits. Joseph presented
+          Pilate's order to the centurion, triggering immediate protest.
+        </p>
+        <p>
+          "The Jews raised a tumult and clamored for its possession. In their raving they
+          sought violently to take possession of the body"<Citation num={7} />. The centurion responded
+          decisively—four soldiers with drawn swords took position around Jesus' body.
+          After restoring order, the centurion read Pilate's permit aloud, then stepped aside,
+          telling Joseph: "This body is yours to do with as you see fit. I and my soldiers will
+          stand by to see that no man interferes"<Citation num={8} />.
+        </p>
+
+        <h3 id="burial-procession" className="text-2xl font-semibold mt-8 mb-4">The Burial Procession</h3>
+        <p>
+          At approximately half past four o'clock, the burial procession departed Golgotha.
+          The body, wrapped in a linen sheet, was carried by four men: Joseph, Nicodemus,
+          John, and the Roman centurion<Citation num={9} />. The faithful women from Galilee followed behind.
+        </p>
+        <p>
+          They proceeded to "Joseph's new family tomb, hewn out of solid rock, located a
+          short distance north of Golgotha and across the road leading to Samaria"<Citation num={10} />. No one
+          had ever lain in this tomb. Joseph believed Jesus would rise from the dead;
+          Nicodemus remained doubtful.
+        </p>
+
+        <h3 id="preparation-of-body" className="text-2xl font-semibold mt-8 mb-4">Preparation of the Body</h3>
+        <p>
+          The tomb chamber measured about ten feet square. Working hurriedly as the
+          Sabbath approached, Joseph and Nicodemus prepared the body according to
+          Jewish custom for embalming. "Joseph and Nicodemus had brought with them
+          large quantities of myrrh and aloes, and they now wrapped the body with
+          bandages saturated with these solutions"<Citation num={11} />.
+        </p>
+        <p>
+          When the embalming was complete, they tied a napkin about the face, wrapped the
+          body in a linen sheet, and reverently placed it on a shelf in the tomb. The centurion
+          then signaled his soldiers to help roll the doorstone into position before the
+          entrance.
+        </p>
+
+        <h3 id="womens-vigil" className="text-2xl font-semibold mt-8 mb-4">The Women's Vigil</h3>
+        <p>
+          While the men worked, the women from Galilee—Mary Magdalene, Mary the wife
+          of Clopas, Martha, another sister of Jesus' mother, and Rebecca of Sepphoris—
+          watched from hiding nearby<Citation num={12} />. They observed everything: where the Master was
+          laid, how the stone sealed the entrance, the gathering darkness of approaching
+          Sabbath.
+        </p>
+        <p>
+          These women agreed among themselves that Jesus had not been properly
+          prepared for burial. They would return to Joseph's home, rest over the Sabbath,
+          prepare additional spices and ointments, then come back Sunday morning to
+          complete their ministry to the Master's body.
+        </p>
+        <p>
+          As darkness fell over Jerusalem that Friday evening, the mortal remains of Jesus of
+          Nazareth lay undisturbed in Joseph's tomb, wrapped in linen, the great stone
+          sealed in place. The city settled into Sabbath stillness.
+        </p>
+        <p>
+          Few among Jesus' followers truly believed or understood his promise to rise on the
+          third day. His enemies, however, remembered it well.
+        </p>
+
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p><strong>Urantia Book Citations:</strong> ¹187:5.5 | ²187:6.1 | ³187:6.3 | ⁴188:0.2 | ⁵188:1.2 | ⁶188:0.3 | ⁷188:1.1 | ⁸188:1.1 | ⁹188:1.3 | ¹⁰188:1.2 | ¹¹188:1.4 | ¹²188:1.7</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="section-2">Section 2: Saturday - The Mandate</h2>
+
+        <h3 id="guards-arrive" className="text-2xl font-semibold mt-8 mb-4">The Guards Arrive</h3>
+        <p>
+          Early Saturday morning, the temple authorities acted on their fears. "The chief
+          priests, Pharisees, and Sadducees recalled that they had received reports of his
+          saying he would rise from the dead"<Citation num={1} />. A committee of Sanhedrists visited Pilate,
+          requesting guards for the tomb.
+        </p>
+        <p>
+          Pilate provided ten soldiers under the command of a captain. The Jews added ten
+          of their own guards. Together, these twenty men proceeded to Joseph's tomb
+          where they "rolled yet another stone before the tomb and set the seal of Pilate on
+          and around these stones"<Citation num={2} />. There they would remain through the Sabbath,
+          unaware that the body they guarded had no further connection with the
+          personality of Jesus.
+        </p>
+
+        <h3 id="silent-sabbath" className="text-2xl font-semibold mt-8 mb-4">The Silent Sabbath</h3>
+        <p>
+          Throughout Saturday, the mortal body of Jesus lay undisturbed in Joseph's tomb.
+          The revelation states: "We can narrate the burial of the Son of Man and put in this
+          record the events associated with his resurrection, but we cannot supply much
+          information of an authentic nature about what really transpired during this epoch
+          of about thirty-six hours"<Citation num={3} />.
+        </p>
+        <p>
+          The assembled celestial hosts waited. Jesus' Personalized Adjuster maintained
+          command of all universe personalities gathered on Urantia<Citation num={4} />. This same divine
+          Monitor who had guided Jesus through his mortal life now held sovereign
+          authority over the waiting observers.
+        </p>
+
+        <h3 id="midnight-declaration" className="text-2xl font-semibold mt-8 mb-4">The Midnight Declaration</h3>
+        <p>
+          Shortly after midnight, as Saturday gave way to Sunday, the Personalized Adjuster
+          addressed the assembled hosts:
+        </p>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
+          "Not one of you can do aught to assist your Creator-father in the return to life. As a
+          mortal of the realm he has experienced mortal death; as the Sovereign of a
+          universe he still lives. That which you observe is the mortal transit of Jesus of
+          Nazareth from life in the flesh to life in the morontia. The spirit transit of this Jesus was completed at the time I separated myself from
+          his personality and became your temporary director. Your Creator-father has
+          elected to pass through the whole of the experience of his mortal creatures, from
+          birth on the material worlds, on through natural death and the resurrection of the
+          morontia, into the status of true spirit existence. A certain phase of this experience
+          you are about to observe, but you may not participate in it. A Creator Son has within himself the power to bestow himself in the likeness of
+          any of his created sons; he has within himself the power to lay down his
+          observable life and to take it up again; and he has this power because of the direct
+          command of the Paradise Father, and I know whereof I speak"<Citation num={567} />.
+        </blockquote>
+
+        <h3 id="anxious-expectancy" className="text-2xl font-semibold mt-8 mb-4">Anxious Expectancy</h3>
+        <p>
+          "When they heard the Personalized Adjuster so speak, they all assumed the
+          attitude of anxious expectancy, from Gabriel down to the most humble cherubim"<Citation num={8} />.
+          They understood now: the resurrection would occur through Creator prerogatives
+          alone. They could observe but not assist.
+        </p>
+        <p>
+          As the early hours of Sunday approached, the stage was set. The body lay in the
+          tomb. The guards maintained their posts. The celestial hosts waited. Soon, Paradise
+          personalities would arrive with purposes known only to themselves.
+        </p>
+
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p><strong>Urantia Book Citations:</strong> ¹188:2.1 | ²188:2.3 | ³188:0.1 | ⁴188:3.4 | ⁵189:0.2 | ⁶189:0.2 | ⁷189:0.2 | ⁸189:0.3</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="section-3">Section 3: Sunday - Resurrection and Dissolution</h2>
+
+        <h3 id="paradise-personalities-arrive" className="text-2xl font-semibold mt-8 mb-4">Paradise Personalities Arrive</h3>
+        <p>
+          At two forty-five Sunday morning, April 9, AD 30, seven unidentified Paradise
+          personalities arrived and "immediately deployed themselves about the tomb"<Citation num={1} />.
+          These beings from Paradise took positions around the sepulchre. Their purpose
+          remained undisclosed to all other universe personalities present.
+        </p>
+        <p>
+          Shortly after, "intense vibrations of commingled material and morontia activities
+          began to issue from Joseph's new tomb"<Citation num={2} />. These vibrations emanated during Jesus'
+          self-resurrection process—physical phenomena that would later be described in
+          Matthew's Gospel as an earthquake.
+        </p>
+
+        <h3 id="morontia-resurrection" className="text-2xl font-semibold mt-8 mb-4">The Morontia Resurrection</h3>
+        <p>
+          At two minutes past three o'clock, "the resurrected morontia form and personality
+          of Jesus of Nazareth came forth from the tomb"<Citation num={3} />.
+        </p>
+        <p>
+          The physical body remained behind, "still lying there in the sepulchre niche,
+          undisturbed and wrapped in the linen sheet, just as it had been laid to rest by
+          Joseph and his associates on Friday afternoon"<Citation num={4} />. The stone before the entrance
+          remained in place. Pilate's seal was unbroken. The guards continued at their posts,
+          likely agitated by the vibrations, unaware that "the object of their vigil had risen to
+          a new and higher form of existence."
+        </p>
+        <p>
+          Jesus had achieved morontia resurrection through his own Creator prerogatives,
+          exactly as the Personalized Adjuster had declared. The Paradise personalities who
+          witnessed this transit immediately "signalized their intention of immediate
+          departure for Uversa"<Citation num={5} />.
+        </p>
+
+        <h3 id="request-for-dissolution" className="text-2xl font-semibold mt-8 mb-4">The Request for Dissolution</h3>
+        <p>
+          At ten minutes past three, as the resurrected Jesus, now outside the sealed tomb,
+          fraternized with assembled morontia personalities from Satania's mansion worlds,
+          the chief of archangels approached Gabriel with a specific request:
+        </p>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
+          "We may not participate in the morontia resurrection of the bestowal experience
+          of Michael our sovereign, but we would have his mortal remains put in our custody
+          for immediate dissolution. We do not propose to employ our technique of
+          dematerialization; we merely wish to invoke the process of accelerated time"<Citation num={6} />.
+        </blockquote>
+
+        <p>
+          The archangels sought to spare the celestial hosts from "enduring the sight of the
+          slow decay of the human form of the Creator and Upholder of a universe." Speaking
+          for all Nebadon's celestial intelligences, he requested "a mandate giving me the
+          custody of the mortal body of Jesus of Nazareth and empowering us to proceed
+          with its immediate dissolution."
+        </p>
+        <p>
+          Gabriel conferred with the senior Most High of Edentia, who was present for these
+          events. After this consultation, Gabriel granted the requested authorization. With
+          custody of the physical remains now transferred from Joseph of Arimathea to the
+          chief of archangels, preparations for the dissolution began.
+        </p>
+
+        <h3 id="stone-rolled-away" className="text-2xl font-semibold mt-8 mb-4">The Stone Rolled Away</h3>
+        <p>
+          The chief of archangels "summoned to his assistance many of his fellows, together
+          with a numerous host of the representatives of all orders of celestial
+          personalities"<Citation num={7} />. With the aid of Urantia midwayers, they proceeded to take
+          possession of Jesus' physical body.
+        </p>
+        <p>
+          The body could not be removed from the tomb—"it was a purely material creation;
+          it was physical and literal"<Citation num={8} />. The morontia form had passed through the sealed
+          sepulchre without disturbing it, but the dissolution operation required the tomb to
+          be opened.
+        </p>
+        <p>
+          By mandate of certain secondary midwayers, the great stone began to roll away
+          from the entrance. The Roman and Jewish guards on duty watched in terror as
+          "this huge stone began slowly to roll away from the entrance of the tomb without
+          any visible means to account for such motion"<Citation num={9} />.
+        </p>
+        <p>
+          The guards "were seized with fear and panic." Without waiting to look into the
+          tomb, they fled. The Jewish guards ran to their homes, later reporting to their
+          captain at the temple. The Roman soldiers fled to the fortress of Antonia, reporting
+          to the Centurion upon his arrival on duty.
+        </p>
+
+        <h3 id="dissolution-accomplished" className="text-2xl font-semibold mt-8 mb-4">The Dissolution Accomplished</h3>
+        <p>
+          With the tomb open and the guards fled, the assembled celestial personalities
+          proceeded with the dissolution. Between authorization at 3:10 AM and completion
+          shortly thereafter, the operation transformed Jesus' physical body through the
+          process of accelerated time.
+        </p>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
+          "The mortal remains of Jesus underwent the same natural process of elemental
+          disintegration as characterizes all human bodies on earth except that, in point of
+          time, this natural mode of dissolution was greatly accelerated, hastened to that
+          point where it became well-nigh instantaneous"<Citation num={10} />.
+        </blockquote>
+        <p>
+          The physical body had been converted to its constituent energies. The burial cloths
+          remained in position—"the bandages wherewith he had been wrapped lying intact
+          and as they had rested on the stone before the celestial hosts removed the body"<Citation num={11} />.
+          The napkin that had covered his face area lay separately, "rolled up in a place by
+          itself."
+        </p>
+        <p>
+          The tomb operation was completed rapidly. The morontia Jesus had departed the
+          chamber to begin his ascending career. The physical body had returned to its
+          elemental energies. Only the empty cloths remained as testimony to what had
+          occurred.
+        </p>
+
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p><strong>Urantia Book Citations:</strong> ¹189:1.1 | ²189:1.1 | ³189:1.1 | ⁴189:1.2 | ⁵189:1.5 | ⁶189:2.1 | ⁷189:2.3 | ⁸189:2.4 | ⁹189:2.4 | ¹⁰189:2.8 | ¹¹189:4.6</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="section-4">Section 4: The Physics of Accelerated Time</h2>
+        <p>
+          The archangel chief's request at 3:10 AM revealed a choice between the standard
+          dematerialization technique and a variant specifically designed for this situation:
+          "We do not propose to employ our technique of dematerialization; we merely wish
+          to invoke the process of accelerated time"<Citation num={1} />. The standard dematerialization
+          technique would not suffice. Accelerated time dematerialization would maintain
+          natural law while compressing temporal duration.
+        </p>
+        <p>
+          Gabriel authorized this special request, understanding its implications: "The
+          mortal remains of Jesus underwent the same natural process of elemental
+          disintegration as characterizes all human bodies on earth except that, in point of
+          time, this natural mode of dissolution was greatly accelerated, hastened to that
+          point where it became well-nigh instantaneous"<Citation num={2} />. The abandoned physical form would decompose
+          naturally—tissues breaking down, molecules dissociating, atoms reducing to
+          fundamental particles. The Master Son's former mortal body became a temporal containment where time itself
+          would alter, compressing geological ages into moments.
+        </p>
+
+        <h3 id="ultimaton-foundation" className="text-2xl font-semibold mt-8 mb-4">The Ultimaton Foundation</h3>
+        <p>
+          The mechanism for such temporal compression involves ultimatons, those
+          fundamental particles of which one hundred constitute each electron and many
+          more make up each nucleus. These particles possess extraordinary capabilities
+          that Master Physical Controllers routinely employ in their operations. As the
+          revelation explains, "The ultimatons are capable of accelerating revolutionary
+          velocity to the point of partial antigravity behavior, but they cannot, independent
+          of force organizers or power directors, attain the critical escape velocity of
+          deindividuation, return to the puissant-energy stage"<Citation num={3} />.
+        </p>
+        <p>
+          This technical description illuminates the operational pathway. When ultimatonic
+          revolutionary velocities accelerate, the particles progress through successive
+          energy states—from the body's electronic stage of matter upward through short space rays,
+          ultimatonic rays, and infraultimatonic rays, ultimately achieving complete
+          deindividuation where matter returns to puissant energy. Paper 42 maps these
+          transitions through the octaves of wave energy, providing the theoretical
+          framework for understanding how matter transforms during accelerated
+          dissolution.
+        </p>
+        <p>
+          The revelation establishes a fundamental principle underlying these operations:
+          "Mind universally dominates matter, even as it is in turn responsive to the ultimate
+          overcontrol of spirit"<Citation num={4} />. Master Physical Controllers exemplify this principle
+          continuously, without rest or play—they are conscious beings who direct physical
+          reality through thought-energy modulation rather than mechanical manipulation,
+          much like how a singer can shatter a glass without force, only through vibration.
+          Using their living technology, these beings can synchronize acceleration across the
+          trillions of ultimatons within a human body.
+        </p>
+
+        <h3 id="operational-capabilities" className="text-2xl font-semibold mt-8 mb-4">Operational Capabilities</h3>
+        <p className="text-sm italic mb-4">
+          The following analysis correlates revealed capabilities with tomb requirements,
+          offering reasoned inference about how beings with documented abilities would
+          accomplish the required result.
+        </p>
+        
+        {/* MPC Orders and Roles Table - Mobile Responsive */}
+        <div className="overflow-x-auto mb-6">
+          <table className="min-w-full border-collapse border border-light-border dark:border-dark-border">
+            <thead>
+              <tr className="bg-background-secondary-light dark:bg-background-secondary-dark">
+                <th className="border border-light-border dark:border-dark-border px-4 py-3 text-left font-semibold">
+                  MPC Order
+                </th>
+                <th className="border border-light-border dark:border-dark-border px-4 py-3 text-left font-semibold">
+                  Primary Function
+                </th>
+                <th className="border border-light-border dark:border-dark-border px-4 py-3 text-left font-semibold">
+                  Tomb Operation Role
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>1. Mechanical Controllers</strong><Citation num={6} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Possess "living endowment of antigravity in excess of all other beings." Most powerful controllers on inhabited worlds.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Initiate and sustain the temporal void by synchronizing ultimatonic revolutionary velocities throughout the body's atomic structure, generating localized antigravity conditions.
+                </td>
+              </tr>
+              <tr className="bg-background-secondary-light dark:bg-background-secondary-dark">
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>2. Energy Transformers</strong><Citation num={16} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Living energy switches with absolute control over energy flow. Can exude or absorb energy at will. Personal agents of power directors.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Direct energy pathways during dissolution, acting as "railroad switches" to route massive energy release safely. Control which wavelengths escape (gamma/UV emission) and which remain contained.
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>3. Energy Transmitters</strong><Citation num={14} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  "Marvelous dispatchers of energy as it is manifested on the individual worlds." Dispatch and route energy through planetary circuits.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Safely distribute converted energy through established planetary circuits, potentially channeling it toward the archangel circuit activation at 4:30 AM.
+                </td>
+              </tr>
+              <tr className="bg-background-secondary-light dark:bg-background-secondary-dark">
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>4. Primary Associators</strong><Citation num={13} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  "Masterly energy conservators and custodians." Build up and organize energy into matter. Energy storage specialists.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Store and conserve the massive energy release (6.3×10²⁰ joules), ensuring none is wasted. May convert released energy into reserve form for circuit establishment.
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>5. Secondary Dissociators</strong><Citation num={10} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Possess "enormous antigravity endowment." Called "the alchemists of space and the wonder-workers of time." Break down matter into component energies.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Facilitate ultimaton deindividuation—the critical transition where matter returns to puissant energy state. Guide particles through the escape velocity threshold normally achieved only in dying suns.
+                </td>
+              </tr>
+              <tr className="bg-background-secondary-light dark:bg-background-secondary-dark">
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>6. <span aria-label="FRAN-duh-lanks">Frandalanks</span></strong><Citation num={5} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  "Living and automatic presence, pressure, and velocity gauges" that register all thirty forms of universe energy. Include <span aria-label="KRON-ol-deks">chronoldeks</span> for time measurement with "ultimacy of precision."
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Monitor and measure all energy parameters throughout the operation. Chronoldeks track the temporal differential between accelerated void time and external tomb time, ensuring precise control and timing.
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  <strong>7. Morontia Power Supervisors</strong><Citation num={17} />
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Bridge physical and morontia realms. Coordinate energy transformations across material/spiritual boundaries.
+                </td>
+                <td className="border border-light-border dark:border-dark-border px-4 py-3">
+                  Ensure the dissolution of physical remains does not interfere with Jesus' morontia form, which had already departed. Maintain boundary integrity between material dissolution and morontia reality.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The revelation provides the theoretical foundation for this coordinated operation: "Time
+          and space are inseparable only in the time-space creations"<Citation num={8} />, and gravity affects
+          temporal perception<sup>ᵃ</sup>. By removing gravitational influence through antigravity
+          generation, the controllers create conditions where time progresses at radically
+          different rates. Within this void, billions of years of natural decomposition could
+          occur while mere moments passed in the surrounding tomb.
+        </p>
+
+        <h3 id="controlled-dissolution" className="text-2xl font-semibold mt-8 mb-4">The Controlled Dissolution</h3>
+        <p>
+          During the dissolution process, the Master Physical Controllers exercised complete control over
+          the matter-energy conversion. As atomic structures underwent transition within the temporal void,
+          the controllers permitted controlled release of electromagnetic radiation for documentary purposes.
+        </p>
+        <p>
+          The fundamental mechanism operates at the electronic level: "When electrons pass from higher to
+          lower energy levels of orbital revolution, quanta are always given off" (42:5.6). As electrons
+          dropped from orbital stability during dissolution, the controllers permitted quanta to release at
+          specific wavelengths.
+        </p>
+        <p>
+          <strong>Primary Hypothesis:</strong> The controllers allowed emission at the energy level immediately
+          adjacent to the electronic stage—gamma rays (stage 5 in the wave-energy hierarchy).<sup>ᶜ</sup> These
+          photons would interact with the burial cloth through Compton scattering and direct radiolysis<sup>ᵈ</sup>,
+          producing oxidative discoloration of the outermost cellulose fibers without thermal damage or deep
+          penetration.
+        </p>
+        <p>
+          <strong>Alternative Hypothesis:</strong> The controllers could have modulated electron transitions to
+          produce lower-energy quanta, stepping down through X-rays to ultraviolet (stage 7). Far-UV photons
+          would oxidize the linen through photochemical reaction—a well-documented process in textile chemistry.
+        </p>
+        <p>
+          For mere nanoseconds, the transforming body served as a controlled radiation source. This was not
+          accidental overflow from overwhelming energy, but conscious documentation. The temporal void contained
+          energies that would otherwise cause planetary devastation—complete matter-energy conversion of a
+          70-kilogram mass yields approximately 6.3×10²⁰ joules, equivalent to 1.5 billion megatons TNT<sup>ᵇ</sup>.
+          Yet only approximately 400 kilojoules escaped during that brief emission pulse, precisely calibrated to
+          oxidize surface fibers without fabric destruction or image overexposure.
+        </p>
+        <p>
+          Secondary Dissociators—those beings of "enormous antigravity endowment"
+          whom the revelation calls "the alchemists of space and the wonder-workers of
+          time"<Citation num={10} />—facilitated the final transition. As ultimatons achieved "the critical escape
+          velocity of deindividuation"<Citation num={11} />, matter returned to its puissant energy state. This
+          process, which naturally occurs only during "the terminal disruptions of suns"<Citation num={12} />,
+          was achieved locally through thought-directed operations.
+        </p>
+        <p>
+          Primary Associators—those "masterly energy conservators and custodians"<Citation num={13} />—
+          would store this massive energy release. Energy Transmitters, described as
+          "marvelous dispatchers of energy as manifested on the individual worlds"<Citation num={14} />, could
+          then distribute the energy safely through established planetary circuits or reserve
+          it for a special purpose. Universal economy wastes nothing—even the material
+          form of the Creator Son was transformed into useful energy.
+        </p>
+
+        <h3 id="archangel-circuit-activation" className="text-2xl font-semibold mt-8 mb-4">The Archangel Circuit Activation</h3>
+        <p>
+          Seventy-five minutes after the dissolution, at 4:30 AM, "the circuit of the
+          archangels then operated for the first time from Urantia"<Citation num={15} />. This timing raises an
+          intriguing possibility. The body's possession had passed from the Romans under
+          Pilate to Joseph of Arimathea, and then by Gabriel's executive order to the
+          archangels for dissolution. Having been granted this custody, the archangels may
+          have directed the massive energy from Jesus's dissolved body—properly
+          channeled and transmuted—toward establishing the archangel circuit, the
+          permanent communication link between our isolated world and universe
+          administration.
+        </p>
+        <p>
+          This presents a beautiful possibility: Jesus' abandoned physical body, having served
+          its purpose of demonstrating the Master Son's full mortal experience, may have been transformed into lasting spiritual infrastructure. If
+          true, the empty tomb represents transformation. Matter was converted to energy,
+          potentially reformed as the permanent archangel circuit that will serve Urantia
+          and Nebadon throughout future ages.
+        </p>
+
+        <h3 id="physics-assessment" className="text-2xl font-semibold mt-8 mb-4">Assessment</h3>
+        <p>
+          The tomb operation exemplifies the administration of an ordered universe,
+          achieving divine purposes through cosmic law. Every aspect—from the archangel's
+          initial request through Gabriel's authorization to the coordinated action of
+          specialized celestial beings—demonstrates understanding of universe physics
+          applied with precision and purpose.
+        </p>
+        <p>
+          The technical details reveal cosmic engineering of the highest order. Beings with
+          thought-directed control of fundamental particles compressed geological
+          timescales into seconds. They managed energies equivalent to thousands of
+          hydrogen bombs while permitting only the gentlest electromagnetic whisper to
+          escape as documentary evidence. They transformed a potential catastrophe into a
+          controlled process, dissolution into a planetary infrastructure, and an ending into a
+          beginning.
+        </p>
+        <p>
+          The accelerated time of the tomb shows that even extraordinary universe
+          events operate within universal law. No physical principle was violated,
+          Cosmic rule was maintained. Time compressed and maintained its nature. Matter transformed and conserved its energy. The body dissolved and it left its story on fabric. Through it all, the universal truth remained constant: mind controls matter, spirit ennobles life, and death precedes transition.
+        </p>
+
+        {/* Citations - hidden from TTS */}
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p><strong>Urantia Book Citations:</strong> ¹189:2.1 | ²189:2.8 | ³42:6.3 | ⁴42:12.14 | ⁵29:4.37 | ⁶29:4.19 | ⁷42:6.3 | ⁸15:6.13 | ⁹42:5.9 | ¹⁰29:4.35 | ¹¹42:6.3 | ¹²41:7.14 | ¹³29:4.32 | ¹⁴29:4.27 | ¹⁵189:3.2 | ¹⁶29:4.24 | ¹⁷29:4.38</p>
+        </div>
+
+        {/* Notations - readable by TTS */}
+        <div className="mt-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="mb-2"><strong>Notations:</strong></p>
+          <p className="mt-2">a. Contemporary physicist David Wiltshire's timescape cosmology demonstrates this principle, showing that cosmic voids experience accelerated time relative to matter-dense regions—with clock rates varying by 38% or more. See: Wiltshire, D.L. (2007), "Cosmic clocks, cosmic variance and cosmic averages," <em>New J. Phys.</em> 9, 377. David Wiltshire's TimeScape cosmological model demonstrates that a clock in a cosmic void runs 38% faster than in gravitational wells. The tomb operation would require an extreme case where this differential approaches infinity, which is achievable through complete antigravity generation at the ultimatonic level.</p>
+          <p className="mt-2">b. Using Einstein's mass-energy equivalence E=mc², where m=70kg and c=299,792,458 m/s. This energy release equals approximately 30 million times the largest nuclear device ever tested.</p>
+          <p className="mt-2">c. Gamma rays occupy stage 5 of the wave-energy manifestations described in Paper 42, section 5. As the revelation states: "Gamma rays—those emanations which characterize the spontaneous dissociation of atomic matter. The best illustration of this form of electronic activity is in the phenomena associated with radium disintegration" (42:5.7). During controlled dissolution, electrons dropping from stable orbitals would release quanta at the nearest available wave-energy manifestation to the electronic stage.</p>
+          <p className="mt-2">d. Compton scattering occurs when a photon collides with an electron, transferring part of its energy to the electron and scattering at a lower energy. This process is the dominant mechanism for gamma ray interaction with organic matter. The scattered electrons then produce secondary ionization, creating the oxidative chemistry that discolors cellulose surface layers. Direct radiolysis involves high-energy photons breaking chemical bonds without requiring intermediate particles, producing similar oxidative effects through a different pathway.</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="section-5">Section 5: Physical Documentation</h2>
+        <p className="text-sm italic mb-4">
+          The revelation does not mention the Shroud of Turin or any image on burial cloths.
+          This section examines whether characteristics of the Turin Shroud align with the
+          revealed wound descriptions and the electromagnetic effects presented in Section 4.
+        </p>
+
+        <h3 id="burial-configuration" className="text-2xl font-semibold mt-8 mb-4">The Burial Configuration</h3>
+        <p>
+          Joseph and Nicodemus prepared the body according to Jewish custom: "They now
+          wrapped the body with bandages saturated with these solutions. When the
+          embalming was completed, they tied a napkin about the face, wrapped the
+          body in a linen sheet, and reverently placed it on a shelf in the tomb"<Citation num={1} />.
+        </p>
+        <p>Multiple cloths were involved:</p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Inner bandages (othonia) wrapping the body with myrrh and aloes</li>
+          <li>A face napkin (soudarion) tied about the head</li>
+          <li>A long outer shroud (sindon) covering the entire body, front and back</li>
+        </ul>
+        <p className="mt-4">
+          This layered arrangement creates a critical question: If dissolution occurred with
+          all cloths in place, any electromagnetic signature would appear primarily on the
+          inner bandages, not the outer shroud. So, how did the image end up on the shroud?
+        </p>
+
+        <h3 id="discovery-at-dawn" className="text-2xl font-semibold mt-8 mb-4">Discovery at Dawn</h3>
+        <p>
+          When Mary Magdalene entered the empty sepulchre on Sunday morning, she
+          found:
+        </p>
+        <blockquote className="border-l-2 border-[#3B82C8] dark:border-[#60A5FA] bg-[#F8FBFF] dark:bg-[#252A30] pl-6 pr-4 py-4 my-6">
+          "In the recess of stone where they had laid Jesus, Mary saw only the folded napkin
+          where his head had rested and the bandages wherewith he had been wrapped lying intact
+          and as they had rested on the stone before the celestial hosts removed the body"<Citation num={2} />.
+        </blockquote>
+        <p>The scene presented an apparent physical impossibility:</p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Bandages maintained their wrapped configuration without a body inside</li>
+          <li>The napkin was deliberately "rolled up in a place by itself"</li>
+          <li>The covering sheet lay "at the foot of the burial niche"</li>
+        </ul>
+        <p className="mt-4">
+          The bandages remained "apparently intact" despite the body's absence—an
+          inexplicable physical condition.
+        </p>
+
+        <h3 id="wound-correspondence" className="text-2xl font-semibold mt-8 mb-4">Wound Correspondence Analysis</h3>
+        <p>
+          The Shroud of Turin bears the image of a crucified man displaying wounds that
+          correspond precisely to the Urantia Papers' descriptions:
+        </p>
+
+        <div className="my-8 overflow-x-auto">
+          <table className="min-w-full border border-light-border dark:border-dark-border text-sm">
+            <thead className="bg-light-card dark:bg-dark-card">
+              <tr>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Wound Type</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Urantia Book Description</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Shroud of Turin Evidence</th>
+                <th className="px-4 py-2 border border-light-border dark:border-dark-border text-left">Forensic Significance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Scourging</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Abusive scourgings"<Citation num={3} /> "Knotted whips"<Citation num={4} /></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Over 100 marks in dumbbell pattern characteristic of Roman flagrum (Faccini 2008<sup>ᵃ</sup>). Blood chemistry shows elevated bilirubin consistent with severe trauma (Fanti 2024<sup>ᵇ</sup>)</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Specific flagrum pattern documented through modern forensic analysis</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Crown of Thorns</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"Plaiting a crown of thorns, they placed it upon his brow"<Citation num={5} /> "His face bloodstained"<Citation num={6} /></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Approximately 30 puncture wounds around the entire head circumference, with flow patterns consistent with upright and supine positions</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Full cap configuration covering the entire scalp</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Hand/Wrist Nailing</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"They nailed his hands to the wood"<Citation num={7} /><sup>ᶜ</sup></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Wound through the wrist area (Space of Destot). Thumb retraction is visible from median nerve damage (Zugibe 2005<sup>ᵈ</sup>).</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Anatomically correct for supporting body weight</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Spear Wound</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">"One of the soldiers pierced his left side with his spear"<Citation num={8} /></td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Wound visible on image's right side (correctly showing Jesus's left side)<sup>ᵉ</sup>. Blood and clear fluid separation evident.</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Post-mortem wound with serum separation</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Death Posture</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Crucifixion descriptions (Paper 187)</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Rigor mortis maintained in crucifixion position. Shoulder displacement from suspension.</td>
+                <td className="px-4 py-2 border border-light-border dark:border-dark-border">Physiologically accurate positioning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="scientific-analysis" className="text-2xl font-semibold mt-8 mb-4">Scientific Analysis of the Shroud</h3>
+        <p>
+          The 1978 Shroud of Turin Research Project (STURP) and subsequent
+          investigations documented characteristics that defy conventional explanation:
+        </p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">Image Properties</h4>
+        <p>The STURP team's official summary stated unequivocally: "No pigments, paints, dyes or stains have been found on the fibrils" (STURP Team 1981<sup>ᶠ</sup>). This finding, confirmed through multiple independent analyses (Heller & Adler 1981<sup>ᵍ</sup>; Schwalbe & Rogers 1982<sup>ʰ</sup>), eliminates the role of artistic creation.</p>
+
+        <p className="mt-4">Critical characteristics include:</p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Image affects only the outermost 200 nanometers of surface fibrils</li>
+          <li>Coloration limited to the primary cell wall layer</li>
+          <li>No penetration beyond single fiber depth (Fanti et al. 2010<sup>ⁱ</sup>)</li>
+          <li>Three-dimensional information encoded in image intensity</li>
+          <li>Intensity varies inversely with cloth-body distance (Jackson, Jumper & Ercoline 1984<sup>ʲ</sup>)</li>
+          <li>No directional marks or application methods</li>
+        </ul>
+
+        <p className="mt-4">The image results from oxidation and dehydration of cellulose, with the chromophore consisting of conjugated carbonyl groups formed through chemical alteration (Heller & Adler 1981<sup>ᵏ</sup>).</p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">Blood Evidence</h4>
+        <p>Forensic analysis established:</p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Real human blood type AB (Heller & Adler 1981<sup>ˡ</sup>)</li>
+          <li>Blood contacted the cloth before image formation</li>
+          <li>No image exists beneath bloodstains</li>
+          <li>Protease enzyme testing confirmed blood preceded image (Heller & Adler 1981<sup>ᵐ</sup>)</li>
+          <li>Creatinine-ferritin nanoparticles (20-100nm) with ferrihydrite cores indicate multiple severe injuries (Carlino et al. 2017<sup>ⁿ</sup>)</li>
+          <li>Elevated bilirubin from extreme trauma keeps blood red rather than turning brown as old blood normally does (Fanti 2024<sup>ᵒ</sup>)</li>
+        </ul>
+
+        <p className="mt-4">This "blood first, image second" sequencing suggests that the cloth received blood during burial, and then the image formed through a different mechanism.</p>
+
+        <h3 id="uv-correspondence" className="text-2xl font-semibold mt-8 mb-4">The UV Correspondence</h3>
+        <p>
+          Recent experiments by Di Lazzaro and colleagues at ENEA achieved breakthrough
+          replication of Shroud-like characteristics using vacuum ultraviolet radiation:
+        </p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>ArF excimer laser at a 193-nanometer wavelength</li>
+          <li>Produced 0.2 micrometer coloration depth matching the Shroud precisely</li>
+          <li>Created a yellow-sepia hue identical to the Shroud coloration</li>
+          <li>Limited effects on the primary cell wall, leaving the fiber medulla unaffected</li>
+          <li>Required 34 trillion watts for 12 nanoseconds (Di Lazzaro et al. 2010<sup>ᵖ</sup>)</li>
+        </ul>
+        <p className="mt-4">
+          The researchers concluded: "The total radiation power required to color a linen
+          surface corresponding to a human body makes impossible the reproduction of the
+          Turin Shroud image by using a single laser"—impossible for human technology,
+          but trivial for beings managing complete matter-energy conversion.
+        </p>
+        <p className="mt-4">
+          This experiment corresponds precisely to the UV emission phase (octave 47)
+          during ultimaton acceleration described in Section 4. The 12-nanosecond pulse
+          required only 400 kilojoules—0.0000000000065% of the energy available from
+          dissolution.
+        </p>
+
+        <h3 id="cloth-positioning" className="text-2xl font-semibold mt-8 mb-4">Cloth Positioning and Operational Sequence</h3>
+        <p>
+          The revelation states the "celestial hosts removed the body" while the bandages
+          remained "intact and as they had rested on the stone"<Citation num={9} />. This presents a physical
+          paradox—removing the body without unwrapping it.
+        </p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">Matter Manipulation Protocol</h4>
+        <p>
+          The midwayers, who rolled away the stone, possessed capabilities for
+          sophisticated matter manipulation. Rather than physically unwrapping the
+          bandages, they could have:
+        </p>
+        <ol className="list-decimal ml-8 space-y-3 mt-4 pl-5">
+          <li>
+            <strong>Made bandages temporarily permeable</strong> - allowing the body to phase
+            through while bandages maintained position on the shelf
+          </li>
+          <li>
+            <strong>Suspended the shroud-wrapped body</strong> - positioning it away from walls
+            and the shelf for optimal imaging geometry and controlled energy
+            distribution from the void containment — either inside or outside the
+            tomb
+          </li>
+          <li>
+            <strong>Maintained proper tension</strong> - holding shroud corners to create the flat
+            surface necessary for coherent electromagnetic imaging
+          </li>
+        </ol>
+        <p className="mt-4">
+          The body retained the burial positioning Joseph and Nicodemus had arranged—
+          hands crossed, proper repose maintained. This suspension served dual purposes:
+          it created ideal imaging conditions and ensured safe energy flow patterns that
+          wouldn't damage the tomb structures.
+        </p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">The Dissolution Event and Void Collapse</h4>
+        <p>
+          During the 12-nanosecond UV emission phase, the suspended configuration
+          enabled:
+        </p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Direct contact between the body surface and the shroud</li>
+          <li>Consistent cloth-body distance for three-dimensional encoding</li>
+          <li>Absence of lateral distortion from gravity</li>
+          <li>Clear front and back imaging without side wrapping effects</li>
+          <li>Controlled energy distribution preventing structural damage</li>
+        </ul>
+        <p className="mt-4">
+          Following dissolution, the temporal void collapsed, likely creating strong
+          atmospheric effects. The midwayers, still holding the shroud, would have buffered
+          these forces through their matter-manipulation abilities. The rushing wind from
+          the void collapse, if it occurred within the tomb, may have displaced the
+          lightweight face napkin from its position.
+        </p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">Post-Dissolution Arrangement</h4>
+        <p>
+          The midwayers could have inverted the shroud, revealing the electromagnetic
+          image now permanently oxidized into the linen fibers. After verification by the
+          celestial beings, they implemented the final arrangement:
+        </p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Shroud placed "at the foot of the burial niche"</li>
+          <li>Displaced napkin retrieved, deliberately "rolled up in a place by itself"</li>
+          <li>Bandages left in their original wrapped configuration on the shelf</li>
+        </ul>
+        <p className="mt-4">
+          This operational sequence explains the inexplicable scene Mary discovered—
+          bandages maintaining their wrapped configuration despite body removal, a
+          deliberately rolled napkin, a displaced shroud, and a missing body.
+        </p>
+
+        <h4 className="text-xl font-semibold mt-6 mb-3">Chain of Possession</h4>
+        <p>
+          The body's administrative custody progressed through proper channels:
+        </p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Jesus himself → Roman guards (by crucifixion authority)</li>
+          <li>Roman guards → Joseph of Arimathea (by Pilate's written order)</li>
+          <li>Joseph → Archangels (by Gabriel's authorization at 3:10 AM)</li>
+        </ul>
+        <p className="mt-4">
+          The archangels retained possession through dissolution, converting physical
+          matter to energy. Seventy-five minutes later, "the circuit of the archangels then
+          operated for the first time from Urantia"<Citation num={10} />. We cannot know for certain, but this
+          first operation from Urantia suggests that the dissolution energy didn't merely
+          dissipate but was instead incorporated into the permanent universe
+          infrastructure—the body's essence transformed into lasting cosmic architecture.
+        </p>
+
+        <h3 id="assessment-of-correspondence" className="text-2xl font-semibold mt-8 mb-4">Assessment of Correspondence</h3>
+        <p>
+          The Shroud of Turin exhibits characteristics that correspond precisely to:
+        </p>
+        <ul className="list-disc ml-8 space-y-2 mt-4 pl-5">
+          <li>Every major wound type described in the Urantia Papers</li>
+          <li>Blood chemistry consistent with severe trauma and crucifixion</li>
+          <li>Image formation through brief, intense UV radiation</li>
+          <li>Surface oxidation limited to 200 nanometers depth</li>
+          <li>Three-dimensional encoding of body contours</li>
+          <li>Blood-image sequencing indicating burial authenticity</li>
+        </ul>
+        <p className="mt-4">
+          Whether this constitutes the actual burial shroud remains undetermined. What
+          stands documented is that if celestial beings managing the dissolution of Jesus' mortal remains chose to
+          preserve electromagnetic documentation through controlled UV emission, the resulting
+          artifact would exhibit exactly the characteristics found on the Shroud of Turin.
+        </p>
+        <p className="mt-4">
+          The correspondence extends to details unknown before modern forensic testing—
+          anatomically accurate wrist wounds, precise blood chemistry, detailed flagrum
+          patterns, and punctures from a full crown of thorns. These correlations between
+          revealed text and measurable evidence suggest either a remarkable coincidence or
+          intentional documentation preserved through the revealed physics of accelerated
+          time.
+        </p>
+
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="mb-3"><strong>Urantia Book Citations:</strong> ¹188:1.4 | ²189:4.6 | ³187:2.7 | ⁴187:2.9 | ⁵187:2.9 | ⁶187:1.1 | ⁷187:2.10 | ⁸187:5.6 | ⁹189:4.6 | ¹⁰189:3.2</p>
+
+          <details className="mt-4">
+            <summary className="cursor-pointer font-semibold hover:text-text-light dark:hover:text-text-dark">
+              <strong>Scientific References</strong> (more)
+            </summary>
+            <div className="mt-3 space-y-2 pl-4">
+              <p>a. Faccini, B. (2008). "The flagellation of Christ according to the Turin Shroud." In <em>Proceedings of the International Workshop on the Scientific Approach to the Acheiropoietos Images</em>. ENEA Frascati.</p>
+              <p>b. Fanti, G. (2024). "Blood Chemistry Analysis on the Shroud of Turin." <em>Heritage</em>, 7(1), 412-428.</p>
+              <p>c. The Greek word χεῖρας (cheiras) in the Urantia Papers' source texts can refer to either hands or wrists, as ancient Greek did not distinguish these anatomically separate structures with different terms. The Shroud wound placement through the carpal bones demonstrates anatomical accuracy for weight-bearing crucifixion mechanics.</p>
+              <p>d. Zugibe, F. (2005). <em>The Crucifixion of Jesus: A Forensic Inquiry</em>. M. Evans & Company.</p>
+              <p>e. The Shroud image is a negative, showing a mirror-reversed view. What appears as the right side on the cloth represents Jesus' left side.</p>
+              <p>f. STURP Team (1981). "Summary of Scientific Findings." <em>Shroud of Turin Research Project</em>.</p>
+              <p>g. Heller, J.H., & Adler, A.D. (1981). "A chemical investigation of the Shroud of Turin." <em>Canadian Society of Forensic Science Journal</em>, 14(3), 81-103.</p>
+              <p>h. Schwalbe, L.A., & Rogers, R.N. (1982). "Physics and chemistry of the Shroud of Turin: A summary of the 1978 investigation." <em>Analytica Chimica Acta</em>, 135(1), 3-49.</p>
+              <p>i. Fanti, G., Lattarulo, F., & Monaro, O. (2010). "Evidences for testing hypotheses about the body image formation of the Turin Shroud." In <em>Proceedings of the International Workshop on the Scientific Approach to the Acheiropoietos Images</em>. ENEA Frascati.</p>
+              <p>j. Jackson, J.P., Jumper, E.J., & Ercoline, W.R. (1984). "Correlation of image intensity on the Turin Shroud with the 3-D structure of a human body shape." <em>Applied Optics</em>, 23(14), 2244-2270.</p>
+              <p>k. Heller, J.H., & Adler, A.D. (1981). "A chemical investigation of the Shroud of Turin." <em>Canadian Society of Forensic Science Journal</em>, 14(3), 81-103.</p>
+              <p>l. Heller, J.H., & Adler, A.D. (1981). "Blood on the Shroud of Turin." <em>Applied Optics</em>, 19(16), 2742-2744.</p>
+              <p>m. Heller, J.H., & Adler, A.D. (1981). "A chemical investigation of the Shroud of Turin." <em>Canadian Society of Forensic Science Journal</em>, 14(3), 81-103.</p>
+              <p>n. Carlino, E., Ghiberti, O., Pezzati, L., & Baraldi, P. (2017). "Atomic resolution studies detect new biologic evidences on the Turin Shroud." <em>PLoS ONE</em>, 12(6), e0180487.</p>
+              <p>o. Fanti, G. (2024). "Blood Chemistry Analysis on the Shroud of Turin." <em>Heritage</em>, 7(1), 412-428.</p>
+              <p>p. Di Lazzaro, P., Murra, D., Santoni, A., Nichelatti, E., & Baldacchini, G. (2010). "Deep ultraviolet radiation simulates the image formation process of the Turin Shroud." <em>Journal of Imaging Science and Technology</em>, 54(4), 040302-1-040302-8.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="epilogue">Epilogue: Human Discovery</h2>
+        <p>
+          At half past three o'clock that Sunday morning, five women approached the tomb
+          in Joseph's garden carrying embalming lotions. They had agreed among
+          themselves that Jesus "had not been properly prepared for burial"<Citation num={1} /> and came to
+          complete their ministry to the Master's body.
+        </p>
+        <p>
+          Mary Magdalene ventured first into the open sepulchre and saw the rolled napkin
+          where his head had rested, the intact bandages maintaining their wrapped form,
+          and the burial sheet at the foot of the niche. The body was gone.
+        </p>
+        <p>
+          In her distress, Mary addressed a figure she thought might be the garden's
+          caretaker: "Where have you taken the Master? Where have they laid him? Tell us
+          that we may go and get him"<Citation num={2} />.
+        </p>
+        <p>
+          The figure spoke: "Whom do you seek?"
+        </p>
+        <p>
+          When Mary explained they sought Jesus who had been laid in Joseph's tomb, the
+          stranger asked, "Did not this Jesus tell you, even in Galilee, that he would die, but
+          that he would rise again?"
+        </p>
+        <p>
+          Still unrecognized in his morontia form, the Master then "addressed the Magdalene
+          with a familiar voice, saying, 'Mary'"<Citation num={3} />.
+        </p>
+        <p>
+          That single word connected. She rushed toward him, exclaiming, "My Lord, and my
+          Master!"
+        </p>
+        <p>
+          "Touch me not, Mary," Jesus said, "for I am not as you knew me in the flesh. In this
+          form will I tarry with you for a season before I ascend to the Father"<Citation num={4} />.
+        </p>
+        <p>
+          The technical precision documented in this study—the accelerated time, the
+          controlled energy release, the electromagnetic imaging—all served this moment.
+          The sovereign Master Son, having achieved full universe authority and completed his bestowal mission, left behind mortal remains that the universe administration dissolved with exquisite care. They managed cosmic energies with such
+          sophistication to preserve both the reality of death and the certainty of
+          resurrection. The empty bandages testified to genuine dissolution. The image on
+          the Shroud reveals the physical body of a man who lived, died, and was
+          transformed.
+        </p>
+        <p>
+          Mary's recognition came not through physical evidence but through personal
+          knowing—a voice speaking her name. Yet the physical evidence remained for
+          those who would come later, seeking to understand what occurred between
+          Friday's burial and Sunday's dawn. The celestial hosts left testimony in oxidized
+          linen and empty wrappings. Whether Mary noticed the image on the shroud in that
+          moment of stress remains unknown—to her, it may have been simply a displaced
+          cloth. This evidence was preserved for future discovery. When she heard her
+          friend speak her name, Mary's discovery came through her heart: the knowledge
+          that death is only the beginning.
+        </p>
+
+        <div aria-hidden="true" className="mt-8 pt-4 border-t border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p><strong>Urantia Book Citations:</strong> ¹188:1.7 | ²189:4.13 | ³189:4.13 | ⁴189:4.13</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 id="methodology">Methodology and Conclusion</h2>
+        <p>
+          The Urantia Papers hold words composed by knowledgeable beings to help us
+          learn. They know things we don't know because we can't. There is no test for the
+          location of Paradise if there is no revelation of its existence. This report uses the
+          papers as a database of revealed knowledge. It explores a revealed topic—the
+          dissolution of Jesus' physical body—and studies it deeply to deduce the underlying
+          mechanics reasonably.
+        </p>
+        <p>
+          Students of the Urantia Book soon learn that search engines are very helpful with
+          topic comprehension. They compile data from across all 196 papers, revealing
+          patterns that sequential reading might miss. Artificial Intelligence extends the
+          original search engine into an expanded research engine. Beyond assembling
+          keywords, it can coordinate key concepts with its remarkable pattern-matching
+          capabilities.
+        </p>
+        <p>
+          Claude AI MAX helped to create this report. I provided the full Urantia Book
+          context by uploading text files for each paper, which filled the allowable context to
+          around 80%. The AI had easy access to the entire database of revealed content. It
+          was instructed to act as a research advisor. My prompts and the non-living but
+          intelligent advisor's responses led to enlightening discussions that refined the
+          topic of Accelerated Time of the Tomb.
+        </p>
+        <p>
+          The revelation's genius is in its "intelligent assembly and co-ordination of related
+          data." (48:6.30) They leave it to us to unfold the mysteries of what they left
+          unrevealed. The archangel didn't explain how accelerated time worked—just that
+          they would invoke it. Paper 42 provides the physics. Paper 29 describes the beings
+          capable of accomplishing it. My role was to connect these pieces. The AI's role was
+          to hold all the pieces in memory and to place them into the narrative properly.
+        </p>
+        <p>
+          This methodology treats revelation as data to be examined rather than doctrine to
+          be defended. If the physics doesn't work or the forensics don't align, the hypothesis
+          fails. However, when there is alignment—and it aligns remarkably in this case
+          study—we gain insight into how revealed science and observational science covalidate.
+        </p>
+
+        <p className="mt-8 font-semibold">Researcher: David <span aria-label="Noofer">Neufer</span></p>
+        <p className="text-sm italic">
+          For a detailed geographic analysis of the tomb location, see the companion study,
+          "Joseph's Tomb: Evidence of Location."
+        </p>
+
+        {/* Document Changelog */}
+        <div className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="font-semibold mb-3">Document Revision History</p>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>
+              <strong>November 2025 - Revision 1:</strong> Added Master Physical Controller operational capabilities table in Section 4, detailing the seven orders of MPCs and their specific roles in the tomb dissolution process.
+            </li>
+            <li>
+              <strong>November 2025 - Revision 1:</strong> Corrected Section 4 ultimaton transition physics to accurately reflect upward progression through wave-energy octaves (from electronic stage through short space rays, ultimatonic rays, infraultimatonic rays to puissant energy deindividuation), replacing the previous incorrect downward progression through visible light and UV.
+            </li>
+            <li>
+              <strong>November 2025 - Revision 1:</strong> Revised image formation hypothesis in Section 4 to present two alternative mechanisms: (1) Primary hypothesis of gamma ray emission from electron orbital transitions, and (2) Alternative hypothesis of UV emission through modulated electron transitions. Replaced single UV-based explanation with this dual-hypothesis framework.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </>
+  )
+}
