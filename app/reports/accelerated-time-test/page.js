@@ -1,7 +1,6 @@
 import Header from '@/components/Header'
 import ReadAloud from '@/components/ReadAloud'
-// Temporarily using original to test if timeout is content-specific
-import AcceleratedTimeRevised from '../[id]/content/accelerated-time'
+import AcceleratedTimeRevised from '../[id]/content/accelerated-time-REVISED3'
 
 export const metadata = {
   title: 'Accelerated Time (REVISED TEST) - Revelationary',
