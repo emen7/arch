@@ -26,15 +26,14 @@ export default function RootLayout({ children }) {
               try {
                 let theme = localStorage.getItem('theme');
 
-                // One-time migration: If no theme preference exists, set to dark
-                if (!theme) {
-                  localStorage.setItem('theme', 'dark');
+                // Default to dark if no theme preference exists
+                if (theme === null || theme === undefined) {
                   theme = 'dark';
+                  localStorage.setItem('theme', 'dark');
                 }
 
                 // Apply theme
-                const isDark = theme !== 'light';
-                if (isDark) {
+                if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
                 }
               } catch (e) {}

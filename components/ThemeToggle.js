@@ -12,12 +12,12 @@ export default function ThemeToggle() {
     let savedTheme = localStorage.getItem('theme')
 
     // If no theme set, default to dark
-    if (!savedTheme) {
+    if (savedTheme === null || savedTheme === undefined) {
       localStorage.setItem('theme', 'dark')
       savedTheme = 'dark'
     }
 
-    const currentlyDark = savedTheme !== 'light'
+    const currentlyDark = savedTheme === 'dark'
     setIsDark(currentlyDark)
   }, [])
 
