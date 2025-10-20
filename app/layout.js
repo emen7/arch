@@ -37,6 +37,13 @@ export default function RootLayout({ children }) {
                 const savedRoute = localStorage.getItem('app-last-route');
                 const savedScroll = localStorage.getItem('app-scroll-position');
 
+                // Clean up: If saved route is a presentation, clear it (one-time migration)
+                if (savedRoute && (savedRoute.startsWith('/presentations/') || savedRoute === '/wave-energy' || savedRoute === '/wave-test')) {
+                  localStorage.removeItem('app-last-route');
+                  localStorage.removeItem('app-scroll-position');
+                  return; // Don't restore
+                }
+
                 // Only restore if we're on home page (app just opened)
                 if (savedRoute && savedRoute !== '/' && window.location.pathname === '/') {
                   // Navigate to saved route
