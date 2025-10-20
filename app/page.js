@@ -164,6 +164,16 @@ export default function Home() {
           <p className="text-sm italic text-text-muted-light dark:text-text-muted-dark">
             "There is an artistry in the intelligent assembly and co-ordination of related data..." (48:6.30)
           </p>
+          {/* Lab test link */}
+          <div className="mt-4">
+            <Link
+              href="/reports/accelerated-time-test"
+              className="inline-block text-2xl opacity-30 hover:opacity-100 transition-opacity"
+              title="Test Lab"
+            >
+              🧪
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />
