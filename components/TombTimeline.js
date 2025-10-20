@@ -403,9 +403,10 @@ export default function TombTimeline() {
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0'
     }}>
-      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
+      {/* 16:9 Card - maintains layout with minimum width, horizontal scroll if needed */}
       <div className="relative w-full max-w-full max-h-full" style={{
-        aspectRatio: '16/9'
+        aspectRatio: '16/9',
+        minWidth: '1400px'
       }}>
 
         {/* Title - Top Right */}
