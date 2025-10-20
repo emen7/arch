@@ -24,16 +24,10 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                let theme = localStorage.getItem('theme');
-
-                // Default to dark if no theme preference exists
-                if (theme === null || theme === undefined) {
-                  theme = 'dark';
-                  localStorage.setItem('theme', 'dark');
-                }
-
-                // Apply theme
-                if (theme === 'dark') {
+                const theme = localStorage.getItem('theme');
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = theme === 'dark' || (!theme && systemDark);
+                if (isDark) {
                   document.documentElement.classList.add('dark');
                 }
               } catch (e) {}
