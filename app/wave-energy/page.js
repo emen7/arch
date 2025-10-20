@@ -326,7 +326,13 @@ export default function WaveEnergyPage() {
         ← Home
       </Link>
 
-      <div className="w-[95vw] max-w-[1920px] flex gap-12 p-8 relative" style={{ aspectRatio: '16/9' }}>
+      {/* Fixed 16:9 container - scales to fit viewport while maintaining aspect ratio */}
+      <div className="flex gap-12 p-8 relative" style={{
+        width: '100vw',
+        height: '56.25vw', // 16:9 ratio (9/16 = 0.5625)
+        maxWidth: '177.78vh', // When height limited (16/9 = 1.7778)
+        maxHeight: '100vh'
+      }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">

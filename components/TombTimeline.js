@@ -404,11 +404,12 @@ export default function TombTimeline() {
       color: '#e2e8f0',
       overflow: 'hidden'
     }}>
-      {/* Fixed 16:9 container */}
+      {/* Fixed 16:9 container - scales to fit viewport while maintaining aspect ratio */}
       <div className="relative" style={{
-        width: '95vw',
-        maxWidth: '1920px',
-        aspectRatio: '16/9'
+        width: '100vw',
+        height: '56.25vw', // 16:9 ratio (9/16 = 0.5625)
+        maxWidth: '177.78vh', // When height limited (16/9 = 1.7778)
+        maxHeight: '100vh'
       }}>
 
         {/* Title - Top Right */}
