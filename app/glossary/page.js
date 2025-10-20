@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export default function GlossaryPage() {
   const [content, setContent] = useState('')
@@ -155,6 +156,7 @@ export default function GlossaryPage() {
           </ReactMarkdown>
         </div>
       </article>
+      <Footer />
       </div>
     </>
   )

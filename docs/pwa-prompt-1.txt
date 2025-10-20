@@ -1,0 +1,28 @@
+My intent is that the PWA have a working Urantia Book for linking to from the presentations and online versions. So readers can examine the quotes in context. These can even be a pullup drawer or something. We can defer. But I can easily supply the full UB into the repo, if you tell me where to put it. It is almost mandatory if you are to verify quote accuracy and use proper italics. DISCUSS.
+
+Here are my notes on the latest commit.
+
+Visuals Version:
+
+S1: Your title is an improvement over my original
+S2: We don't say 'investigation'. Too evocative. Use 'exploration' here. Other synonyms will work as we go to mix it up. Like: inquiry, assessment, review... Analysis is too AI, no offense. 
+S3: This likely will be animated in some way, with a different font, but uniform for subject transitions.
+S4: We should use quotation marks for quotations. - The title should be a different shade or color, that works well with cyan, but is not cyan. 
+S5: See S4
+S6: This might be interesting if the left column was right aligned. For symmetry. 
+S7: Generally ok
+
+Audio:
+
+We must use the power of silence. This mustn't sound rushed. We can have a musical background (optional on the web). These voices should pause longer between sentences. Even longer between when needed. Like after a colon. Know how people talk. Be pause aware. These lessons can be meditative and mentally stimulating. It can't be rushed.
+
+S1: Should be longer. Let the viewer acclimate to what they are about to experience. Attune to the music, when we apply it.
+S2: It does not read what the slide shows. 
+S3: Extremely abrupt transition. It should not be spoken. This is our standard transition slide. Animated. Gives a rest from the previous lesson.
+S4: The M voice should read the title. Not rushed right into the F voice quote.
+S5: See S4
+S6: Nobody is reading the slide. F voice appears to be reading a long quote, which is fine, but if she is reading it, we should be seeing that quote. The actual Slide 6 is a list of characteristics and capabilities. M voice material (unless a verbatim listing from the book.) To do this slide properly M voice reads this, F voice reads the quote below. (But not the citation.)
+S7: F voice is reading another quote, though I don't know if it is accurate.
+
+
+

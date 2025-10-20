@@ -31,7 +31,9 @@
       "Bash(timeout /t 10)",
       "Bash(node scripts/generate-audio.js:*)",
       "Bash(node scripts/parse-ub.js:*)",
-      "Bash(node scripts/verify-quotes.js:*)"
+      "Bash(node scripts/verify-quotes.js:*)",
+      "Bash(node scripts/find-correct-citations.js:*)",
+      "Bash(node -e:*)"
     ],
     "deny": [],
     "ask": []
