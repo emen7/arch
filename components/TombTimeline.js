@@ -427,10 +427,10 @@ export default function TombTimeline() {
                   key={phase.id}
                   className="relative rounded transition-all duration-300"
                   style={{
-                    backgroundColor: '#1e293b',
+                    backgroundColor: 'transparent',
                     border: `2px solid ${isActive ? `${phase.color}80` : '#475569'}`,
                     boxShadow: isActive ? `0 0 16px ${phase.color}30` : 'none',
-                    padding: '12px 16px 12px 12px'
+                    padding: '12px 16px 12px 48px'
                   }}
                 >
                   {/* Events for this phase */}
@@ -504,16 +504,16 @@ export default function TombTimeline() {
                 })}
                   </div>
 
-                  {/* Phase label at bottom right, rotated vertically */}
+                  {/* Phase label centered vertically on left edge, rotated */}
                   <div
                     onClick={() => handlePhaseClick(phase.id)}
                     className="absolute cursor-pointer transition-all duration-300"
                     style={{
-                      bottom: '8px',
-                      right: '8px',
-                      transform: 'rotate(-90deg)',
-                      transformOrigin: 'right bottom',
-                      fontSize: '11px',
+                      top: '50%',
+                      left: '12px',
+                      transform: 'translateY(-50%) rotate(-90deg)',
+                      transformOrigin: 'center',
+                      fontSize: '15px',
                       fontWeight: 700,
                       letterSpacing: '0.1em',
                       color: phase.color,
