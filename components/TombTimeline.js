@@ -416,68 +416,52 @@ export default function TombTimeline() {
         {/* Main Content */}
         <div className="absolute inset-0 flex gap-2 p-6 pt-16 pr-8">
 
-          {/* Left Side - Phase Labels (rotated vertical) + Event List */}
-          <div className="flex gap-2" style={{ width: '340px' }}>
+          {/* Left Side - Phase Cards + Event List */}
+          <div className="flex gap-3" style={{ width: '380px' }}>
 
-            {/* Phase Labels - Rotated 90deg counterclockwise, dynamically centered on events */}
-            <div className="relative flex-shrink-0" style={{ width: '24px', height: '100%' }}>
+            {/* Phase Cards - Stacked vertically with labels at bottom */}
+            <div className="flex flex-col gap-6 flex-shrink-0" style={{ width: '60px' }}>
               {presentationData.phases.map((phase) => {
                 const isActive = getActivePhase() === phase.id
-                const basePosition = phasePositions[phase.id]
+                const phaseSlides = presentationData.slides.filter(s => s.phase === phase.id)
 
-                // Use base position - aligns label start with final event
-                const topPosition = `${basePosition}%`
-
-                // Custom letter spacing for phase1
-                const letterSpacing = phase.id === 'phase1' ? '0.13em' : '0.05em'
-
-                // Special rendering for phase3 (two-line label: "BEYOND" / "THE TOMB")
-                if (phase.id === 'phase3') {
-                  return (
-                    <div
-                      key={phase.id}
-                      onClick={() => handlePhaseClick(phase.id)}
-                      className="absolute cursor-pointer transition-all duration-300"
-                      style={{
-                        top: topPosition,
-                        left: '50%',
-                        transform: 'translateX(-50%) rotate(-90deg)',
-                        transformOrigin: 'left center',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.05em',
-                        color: isActive ? phase.color : '#64748b',
-                        textTransform: 'uppercase',
-                        textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
-                        lineHeight: '1.4'
-                      }}
-                    >
-                      <div>Beyond</div>
-                      <div>The Tomb</div>
-                    </div>
-                  )
-                }
+                // Calculate card height based on number of items in this phase
+                // Each slide ~20px, day headers ~24px, spacing between
+                const slideCount = phaseSlides.filter(s => s.type === 'slide').length
+                const dayHeaderCount = phaseSlides.filter(s => s.type === 'day-header').length
+                const estimatedHeight = (slideCount * 20) + (dayHeaderCount * 28) + 20
 
                 return (
                   <div
                     key={phase.id}
                     onClick={() => handlePhaseClick(phase.id)}
-                    className="absolute cursor-pointer transition-all duration-300"
+                    className="relative cursor-pointer transition-all duration-300 rounded"
                     style={{
-                      top: topPosition,
-                      left: '50%',
-                      transform: 'translateX(-50%) rotate(-90deg)',
-                      transformOrigin: 'center',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: letterSpacing,
-                      color: isActive ? phase.color : '#64748b',
-                      textTransform: 'uppercase',
-                      textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
-                      whiteSpace: 'nowrap'
+                      minHeight: `${estimatedHeight}px`,
+                      backgroundColor: isActive ? `${phase.color}15` : '#1e293b',
+                      border: `2px solid ${isActive ? phase.color : '#334155'}`,
+                      boxShadow: isActive ? `0 0 12px ${phase.color}40` : 'none'
                     }}
                   >
-                    {phase.name}
+                    {/* Phase label at bottom, rotated vertically */}
+                    <div
+                      className="absolute transition-all duration-300"
+                      style={{
+                        bottom: '12px',
+                        left: '50%',
+                        transform: 'translateX(-50%) rotate(-90deg)',
+                        transformOrigin: 'center bottom',
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                        color: isActive ? phase.color : '#64748b',
+                        textTransform: 'uppercase',
+                        textShadow: isActive ? `0 0 8px ${phase.color}80` : 'none',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      {phase.id === 'phase3' ? 'BEYOND' : phase.name}
+                    </div>
                   </div>
                 )
               })}
