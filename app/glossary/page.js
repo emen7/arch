@@ -62,6 +62,13 @@ export default function GlossaryPage() {
     })
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <>
       <Header />
@@ -157,6 +164,26 @@ export default function GlossaryPage() {
           >
             {content}
           </ReactMarkdown>
+        </div>
+
+        {/* Scroll to Top Link */}
+        <div className="mt-8 text-center">
+          <button
+            onClick={scrollToTop}
+            className="text-sm text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer"
+          >
+            ↑ Scroll to Top
+          </button>
+        </div>
+
+        {/* Document Changelog */}
+        <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="font-semibold mb-3">Document Revision History</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li>
+              <strong>October 21, 2025 at 10:50 PM:</strong> Complete revision. Removed hypothetical elements and refined concept descriptions.
+            </li>
+          </ol>
         </div>
       </article>
       <Footer />

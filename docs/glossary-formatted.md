@@ -238,12 +238,6 @@ The spectrum of force-energy manifestations organized into one hundred octaves, 
 
 This glossary defines terms essential to understanding the tomb dissolution event as described in the Urantia Papers. All entries derive directly from revealed text, maintaining fidelity to disclosed cosmology while clarifying technical terminology for systematic study.
 
-For the complete study employing these terms, see: *Accelerated Time of the Tomb: A Case Study in Revealed Physics*.
-
-**Citation Format:** (paper:section.paragraph)  
-**Source Authority:** The Urantia Book (1955)  
+**Source Authority:** The Urantia Book (1955)
 **Researcher:** David Neufer
 
----
-
-*Glossary Complete*
