@@ -202,14 +202,14 @@ export default function TombTimeline() {
         id: 'wave-energy-manifestations-ig',
         type: 'slide',
         time: null,
-        label: 'Wave-Energy Manifestations (IG)',
+        label: 'Wave-Energy (IG)',
         phase: 'phase2',
         citation: '42:5.14',
         content: {
           infographic: 'wave-energy',
           description: 'Interactive visualization of the 100 octaves of wave-energy manifestations.',
           quote: '"In Orvonton it has never been possible naturally to assemble over one hundred orbital electrons in one atomic system."',
-          link: '/reports/wave-energy-manifestations'
+          link: '/wave-energy'
         }
       },
       {
