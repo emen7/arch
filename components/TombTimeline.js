@@ -422,7 +422,7 @@ export default function TombTimeline() {
         <div className="absolute inset-0 flex gap-2 p-4 pt-12 pr-6">
 
           {/* Left Side - Phase Cards stacked vertically, each containing its events */}
-          <div className="flex flex-col gap-2" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
+          <div className="flex flex-col gap-1" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
             {presentationData.phases.map((phase) => {
               const isActive = getActivePhase() === phase.id
               const phaseSlides = presentationData.slides.filter(s => s.phase === phase.id)
@@ -430,12 +430,10 @@ export default function TombTimeline() {
               return (
                 <div
                   key={phase.id}
-                  className="relative rounded transition-all duration-300 flex"
+                  className="relative transition-all duration-300 flex"
                   style={{
                     backgroundColor: 'transparent',
-                    border: `2px solid ${isActive ? `${phase.color}80` : '#475569'}`,
-                    boxShadow: isActive ? `0 0 16px ${phase.color}30` : 'none',
-                    padding: '8px 12px 8px 8px'
+                    padding: '6px 8px 6px 8px'
                   }}
                 >
                   {/* Phase label column - narrow, left edge */}
@@ -451,9 +449,9 @@ export default function TombTimeline() {
                         fontSize: '13px',
                         fontWeight: 700,
                         letterSpacing: '0.1em',
-                        color: phase.color,
+                        color: isActive ? phase.color : '#64748b',
                         textTransform: 'uppercase',
-                        textShadow: `0 0 12px ${phase.color}80`,
+                        textShadow: isActive ? `0 0 12px ${phase.color}80` : 'none',
                         whiteSpace: 'nowrap'
                       }}
                     >
