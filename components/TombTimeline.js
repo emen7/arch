@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import PresentationFooter from './PresentationFooter'
 
 export default function TombTimeline() {
   const [selectedSlide, setSelectedSlide] = useState(null)
@@ -641,6 +642,9 @@ export default function TombTimeline() {
             )}
           </div>
         </div>
+
+        {/* Footer Navigation */}
+        <PresentationFooter currentPage="timeline" />
       </div>
     </div>
   )
