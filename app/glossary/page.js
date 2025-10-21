@@ -62,12 +62,6 @@ export default function GlossaryPage() {
     })
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
 
   return (
     <>
@@ -176,12 +170,12 @@ export default function GlossaryPage() {
 
         {/* Scroll to Top Link */}
         <div className="mt-8 text-center">
-          <button
-            onClick={scrollToTop}
-            className="text-sm text-[#3B82C8] dark:text-[#60A5FA] hover:underline cursor-pointer"
+          <a
+            href="#"
+            className="text-sm text-[#3B82C8] dark:text-[#60A5FA] hover:underline"
           >
-            ↑ Scroll to Top
-          </button>
+            Scroll Top
+          </a>
         </div>
 
         {/* Document Changelog */}
