@@ -33,7 +33,14 @@
       "Bash(node scripts/parse-ub.js:*)",
       "Bash(node scripts/verify-quotes.js:*)",
       "Bash(node scripts/find-correct-citations.js:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(npm run build)",
+      "Bash(mkdir -p \"app/reports/accelerated-time-test\")",
+      "Bash(wc -l \"app/reports/[id]/content/accelerated-time-REVISED (3).js\")",
+      "Bash(git ls-tree d7e4b7e --name-only app/reports/[id]/content/)",
+      "Bash(tasklist)",
+      "Bash(timeout /t 2)",
+      "Bash(timeout /t 5)"
     ],
     "deny": [],
     "ask": []
