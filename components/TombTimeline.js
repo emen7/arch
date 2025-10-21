@@ -627,7 +627,6 @@ export default function TombTimeline() {
               // Welcome screen
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center max-w-md">
-                  <div className="text-6xl mb-6">⏰</div>
                   <div className="text-gray-400 text-2xl font-semibold mb-4">
                     Accelerated Time of the Tomb
                   </div>
