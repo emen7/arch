@@ -123,6 +123,14 @@ export default function GlossaryPage() {
           <p className="text-base text-text-muted-light dark:text-text-muted-dark">
             This reference tool describes technical terms and processes from the Urantia Papers relevant to the tomb dissolution event.
           </p>
+          <p className="mt-3">
+            <a
+              href="#revision-history"
+              className="inline-block px-3 py-1 text-sm font-semibold bg-light-border dark:bg-dark-border text-text-light dark:text-text-dark rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              Change Log
+            </a>
+          </p>
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none
