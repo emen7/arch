@@ -2,6 +2,14 @@
 // Format: "Paper:Section.Paragraph" -> { paper, section }
 
 export const ubCitations = {
+  "29:4.1": {
+    paper: "The Universe Power Directors",
+    section: "The Master Physical Controllers"
+  },
+  "29:4.4": {
+    paper: "The Universe Power Directors",
+    section: "The Master Physical Controllers"
+  },
   "29:4.13": {
     paper: "The Universe Power Directors",
     section: "The Master Physical Controllers"
@@ -13,6 +21,10 @@ export const ubCitations = {
   "29:4.19": {
     paper: "The Universe Power Directors",
     section: "The Master Physical Controllers"
+  },
+  "29:4.20": {
+    paper: "The Universe Power Directors",
+    section: "The Master Physical Controllers - Mechanical Controllers"
   },
   "29:4.36": {
     paper: "The Universe Power Directors",

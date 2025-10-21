@@ -1,16 +1,20 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import { Suspense, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import SlideDeck from '../../../components/SlideDeck'
 import TitleSlide from '../../../components/slides/TitleSlide'
 import TextSlide from '../../../components/slides/TextSlide'
 import BeingInfoSlide from '../../../components/slides/BeingInfoSlide'
 
-function PresentationContent() {
-  const searchParams = useSearchParams()
-  const autoPlay = searchParams.get('autoplay') === 'true'
+export default function SymposiumPresentation() {
+  const [autoPlay, setAutoPlay] = useState(false)
   const [timingData, setTimingData] = useState(null)
+
+  // Get autoplay parameter from URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setAutoPlay(params.get('autoplay') === 'true')
+  }, [])
 
   // Load timing data
   useEffect(() => {
@@ -146,13 +150,5 @@ function PresentationContent() {
       autoPlay={autoPlay}
       timingData={autoPlay ? timingData : null}
     />
-  )
-}
-
-export default function SymposiumPresentation() {
-  return (
-    <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading presentation...</div>}>
-      <PresentationContent />
-    </Suspense>
   )
 }

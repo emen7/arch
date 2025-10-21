@@ -416,77 +416,26 @@ export default function TombTimeline() {
         {/* Main Content */}
         <div className="absolute inset-0 flex gap-2 p-6 pt-16 pr-8">
 
-          {/* Left Side - Phase Labels (rotated vertical) + Event List */}
-          <div className="flex gap-2" style={{ width: '340px' }}>
+          {/* Left Side - Phase Cards stacked vertically, each containing its events */}
+          <div className="flex flex-col gap-4" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
+            {presentationData.phases.map((phase) => {
+              const isActive = getActivePhase() === phase.id
+              const phaseSlides = presentationData.slides.filter(s => s.phase === phase.id)
 
-            {/* Phase Labels - Rotated 90deg counterclockwise, dynamically centered on events */}
-            <div className="relative flex-shrink-0" style={{ width: '24px', height: '100%' }}>
-              {presentationData.phases.map((phase) => {
-                const isActive = getActivePhase() === phase.id
-                const basePosition = phasePositions[phase.id]
-
-                // Use base position - aligns label start with final event
-                const topPosition = `${basePosition}%`
-
-                // Custom letter spacing for phase1
-                const letterSpacing = phase.id === 'phase1' ? '0.13em' : '0.05em'
-
-                // Special rendering for phase3 (two-line label: "BEYOND" / "THE TOMB")
-                if (phase.id === 'phase3') {
-                  return (
-                    <div
-                      key={phase.id}
-                      onClick={() => handlePhaseClick(phase.id)}
-                      className="absolute cursor-pointer transition-all duration-300"
-                      style={{
-                        top: topPosition,
-                        left: '50%',
-                        transform: 'translateX(-50%) rotate(-90deg)',
-                        transformOrigin: 'left center',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.05em',
-                        color: isActive ? phase.color : '#64748b',
-                        textTransform: 'uppercase',
-                        textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
-                        lineHeight: '1.4'
-                      }}
-                    >
-                      <div>Beyond</div>
-                      <div>The Tomb</div>
-                    </div>
-                  )
-                }
-
-                return (
-                  <div
-                    key={phase.id}
-                    onClick={() => handlePhaseClick(phase.id)}
-                    className="absolute cursor-pointer transition-all duration-300"
-                    style={{
-                      top: topPosition,
-                      left: '50%',
-                      transform: 'translateX(-50%) rotate(-90deg)',
-                      transformOrigin: 'center',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: letterSpacing,
-                      color: isActive ? phase.color : '#64748b',
-                      textTransform: 'uppercase',
-                      textShadow: isActive ? `0 0 8px ${phase.color}60` : 'none',
-                      whiteSpace: 'nowrap'
-                    }}
-                  >
-                    {phase.name}
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Event List - Days above events, bullets, times on right */}
-            <div className="flex-1 overflow-hidden" style={{ fontFamily: 'ui-monospace, monospace' }}>
-              <div className="space-y-0 text-xs">
-                {presentationData.slides.map((slide) => {
+              return (
+                <div
+                  key={phase.id}
+                  className="relative rounded transition-all duration-300"
+                  style={{
+                    backgroundColor: '#1e293b',
+                    border: `2px solid ${isActive ? `${phase.color}80` : '#475569'}`,
+                    boxShadow: isActive ? `0 0 16px ${phase.color}30` : 'none',
+                    padding: '12px 16px 12px 12px'
+                  }}
+                >
+                  {/* Events for this phase */}
+                  <div className="space-y-0 text-xs pr-8">
+                    {phaseSlides.map((slide) => {
                   if (slide.type === 'day-header') {
                     const hasDayBreak = slide.dayBreak === true
                     return (
@@ -553,8 +502,31 @@ export default function TombTimeline() {
                     </div>
                   )
                 })}
-              </div>
-            </div>
+                  </div>
+
+                  {/* Phase label at bottom right, rotated vertically */}
+                  <div
+                    onClick={() => handlePhaseClick(phase.id)}
+                    className="absolute cursor-pointer transition-all duration-300"
+                    style={{
+                      bottom: '8px',
+                      right: '8px',
+                      transform: 'rotate(-90deg)',
+                      transformOrigin: 'right bottom',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      letterSpacing: '0.1em',
+                      color: phase.color,
+                      textTransform: 'uppercase',
+                      textShadow: isActive ? `0 0 12px ${phase.color}80` : 'none',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {phase.id === 'phase3' ? 'BEYOND' : phase.name}
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
           {/* Right Side - Content Area */}
