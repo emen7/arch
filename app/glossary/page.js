@@ -107,11 +107,14 @@ export default function GlossaryPage() {
       {/* Content */}
       <article className="container mx-auto px-4 py-8 max-w-[65ch]">
         <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-          <h1 className="text-3xl font-bold mb-3 text-text-light dark:text-text-dark">
-            Glossary for Reports
+          <h1 className="text-3xl font-bold mb-2 text-text-light dark:text-text-dark">
+            Glossary & Concept Guide
           </h1>
+          <p className="text-lg text-gray-400 dark:text-gray-500 mb-3">
+            Accelerated Time of the Tomb
+          </p>
           <p className="text-base text-text-muted-light dark:text-text-muted-dark">
-            This Glossary relates to the Tomb Operation Reports. <span className="text-green-700 dark:text-green-400">(H)</span> indicates hypothesis not directly stated in the revelation.
+            This reference tool describes technical terms and processes from the Urantia Papers relevant to the tomb dissolution event.
           </p>
         </header>
 

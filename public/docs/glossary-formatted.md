@@ -1,11 +1,4 @@
-# Glossary & Concept Guide
-## Accelerated Time of the Tomb
-
-*A reference tool defining technical terms and processes from the Urantia Papers relevant to the tomb dissolution event.*
-
----
-
-## Section A
+## A
 
 **Accelerated Time**  
 A localized space condition wherein natural processes occur at vastly compressed temporal rates through Master Physical Controller operations. During the tomb dissolution, this process maintained natural law while compressing geological timescales into moments.
@@ -34,7 +27,7 @@ Administrative coordinators for all orders of Master Physical Controllers, servi
 
 ---
 
-## Section B
+## B
 
 **Burial Cloths**  
 The linen wrappings and bandages that contained Jesus' body during burial and remained undisturbed after the dissolution.
@@ -43,7 +36,7 @@ The linen wrappings and bandages that contained Jesus' body during burial and re
 
 ---
 
-## Section C
+## C
 
 **Celestial Personalities**  
 The assembled universe beings who witnessed and participated in the tomb operations, representing all orders of cosmic intelligence.
@@ -62,7 +55,7 @@ A Paradise order of divine sonship with inherent power to bestow itself in the l
 
 ---
 
-## Section D
+## D
 
 **Deindividuation**  
 The process whereby ultimatons return to their pre-material energy state when accelerated beyond critical escape velocity.
@@ -76,7 +69,7 @@ The complete conversion of material substance into energy through established ce
 
 ---
 
-## Section E
+## E
 
 **Elemental Disintegration**  
 The natural process of material decomposition wherein complex structures break down into constituent elements and fundamental particles.
@@ -90,7 +83,7 @@ Master Physical Controllers who serve as living conductors and dispatchers of en
 
 ---
 
-## Section F
+## F
 
 **Frandalanks**  
 Living mechanisms created to serve as automatic presence, pressure, and velocity gauges for all forms of universe force-energy.
@@ -99,7 +92,7 @@ Living mechanisms created to serve as automatic presence, pressure, and velocity
 
 ---
 
-## Section G
+## G
 
 **Gabriel**  
 The Bright and Morning Star of Nebadon, chief executive of the local universe who authorized the dissolution of Jesus' mortal remains.
@@ -113,7 +106,7 @@ The site of crucifixion located just north of Jerusalem where Jesus died at 3:00
 
 ---
 
-## Section J
+## J
 
 **Joseph of Arimathea**  
 A wealthy member of the Sanhedrin who requested Jesus' body from Pilate and provided his new family tomb for the burial.
@@ -127,7 +120,7 @@ The new rock-hewn sepulcher in Joseph's garden where Jesus' body was laid and wh
 
 ---
 
-## Section M
+## M
 
 **Master Physical Controllers**  
 The mobile subordinates of Supreme Power Centers who direct energy operations at planetary and system levels through seven specialized orders.
@@ -156,7 +149,7 @@ The constellation executive whom Gabriel consulted before authorizing the tomb d
 
 ---
 
-## Section N
+## N
 
 **Nicodemus**  
 A wealthy Pharisee and member of the Sanhedrin who assisted Joseph in preparing Jesus' body for burial with large quantities of myrrh and aloes.
@@ -165,7 +158,7 @@ A wealthy Pharisee and member of the Sanhedrin who assisted Joseph in preparing 
 
 ---
 
-## Section P
+## P
 
 **Paradise Personalities**  
 Seven unidentified beings from Paradise who arrived at 2:45 AM Sunday and deployed themselves around the tomb to witness Jesus' resurrection.
@@ -194,7 +187,7 @@ The pre-material energy state to which ultimatons return when achieving deindivi
 
 ---
 
-## Section S
+## S
 
 **Secondary Dissociators**  
 Master Physical Controllers of enormous antigravity endowment, designated as "the alchemists of space and the wonder-workers of time."
@@ -213,7 +206,7 @@ Seven beings created by the Seven Master Spirits who regulate physical energy th
 
 ---
 
-## Section U
+## U
 
 **Ultimatons**  
 The first measurable form of energy, fundamental particles of which one hundred comprise each electron.
@@ -232,7 +225,7 @@ The hierarchical organization managing cosmic operations through coordinated act
 
 ---
 
-## Section W
+## W
 
 **Wave Energy**  
 The spectrum of force-energy manifestations organized into one hundred octaves, from ultimatonic frequencies through electromagnetic radiation to gravita.
