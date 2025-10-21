@@ -419,10 +419,10 @@ export default function TombTimeline() {
         </div>
 
         {/* Main Content */}
-        <div className="absolute inset-0 flex gap-2 p-6 pt-16 pr-8">
+        <div className="absolute inset-0 flex gap-2 p-4 pt-12 pr-6">
 
           {/* Left Side - Phase Cards stacked vertically, each containing its events */}
-          <div className="flex flex-col gap-4" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
+          <div className="flex flex-col gap-2" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
             {presentationData.phases.map((phase) => {
               const isActive = getActivePhase() === phase.id
               const phaseSlides = presentationData.slides.filter(s => s.phase === phase.id)
@@ -435,7 +435,7 @@ export default function TombTimeline() {
                     backgroundColor: 'transparent',
                     border: `2px solid ${isActive ? `${phase.color}80` : '#475569'}`,
                     boxShadow: isActive ? `0 0 16px ${phase.color}30` : 'none',
-                    padding: '12px 16px 12px 48px'
+                    padding: '8px 12px 8px 48px'
                   }}
                 >
                   {/* Events for this phase */}
@@ -446,8 +446,8 @@ export default function TombTimeline() {
                     return (
                       <div key={slide.id}>
                         {/* Extra spacing before day header if flagged */}
-                        {hasDayBreak && <div className="my-6"></div>}
-                        <div className="font-bold mt-4 mb-1.5 text-sm pl-2" style={{ color: '#a78bfa' }}>
+                        {hasDayBreak && <div className="my-3"></div>}
+                        <div className="font-bold mt-2 mb-1 text-sm pl-2" style={{ color: '#a78bfa' }}>
                           {slide.label}
                         </div>
                       </div>
@@ -463,9 +463,9 @@ export default function TombTimeline() {
                   return (
                     <div key={slide.id}>
                       {/* Phase break - spacing only */}
-                      {hasPhaseBreak && <div className="my-4"></div>}
+                      {hasPhaseBreak && <div className="my-2"></div>}
                       {/* Day break - extra spacing between days */}
-                      {hasDayBreak && <div className="my-6"></div>}
+                      {hasDayBreak && <div className="my-3"></div>}
 
                       <div
                         onClick={() => handleSlideClick(slide)}
@@ -509,13 +509,13 @@ export default function TombTimeline() {
                 })}
                   </div>
 
-                  {/* Phase label centered vertically on left edge, rotated */}
+                  {/* Phase label centered vertically, aligned with event text, rotated */}
                   <div
                     onClick={() => handlePhaseClick(phase.id)}
                     className="absolute cursor-pointer transition-all duration-300"
                     style={{
                       top: '50%',
-                      left: '12px',
+                      left: '140px',
                       transform: 'translateY(-50%) rotate(-90deg)',
                       transformOrigin: 'center',
                       fontSize: '15px',
@@ -523,11 +523,11 @@ export default function TombTimeline() {
                       letterSpacing: '0.1em',
                       color: phase.color,
                       textTransform: 'uppercase',
-                      textShadow: isActive ? `0 0 12px ${phase.color}80` : 'none',
+                      textShadow: `0 0 12px ${phase.color}80`,
                       whiteSpace: 'nowrap'
                     }}
                   >
-                    {phase.id === 'phase3' ? 'BEYOND' : phase.name}
+                    {phase.id === 'phase3' ? 'BEYOND THE TOMB' : phase.name}
                   </div>
                 </div>
               )
