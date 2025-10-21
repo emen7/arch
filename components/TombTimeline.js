@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import PresentationFooter from './PresentationFooter'
 
 export default function TombTimeline() {
   const [selectedSlide, setSelectedSlide] = useState(null)
@@ -201,14 +202,14 @@ export default function TombTimeline() {
         id: 'wave-energy-manifestations-ig',
         type: 'slide',
         time: null,
-        label: 'Wave-Energy Manifestations (IG)',
+        label: 'Wave-Energy (IG)',
         phase: 'phase2',
         citation: '42:5.14',
         content: {
           infographic: 'wave-energy',
           description: 'Interactive visualization of the 100 octaves of wave-energy manifestations.',
           quote: '"In Orvonton it has never been possible naturally to assemble over one hundred orbital electrons in one atomic system."',
-          link: '/reports/wave-energy-manifestations'
+          link: '/wave-energy'
         }
       },
       {
@@ -399,12 +400,17 @@ export default function TombTimeline() {
   const phasePositions = calculatePhasePositions()
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4" style={{
+    <div className="flex items-center justify-center" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
-      color: '#e2e8f0'
+      color: '#e2e8f0',
+      height: '100vh',
+      width: '100vw',
+      overflow: 'hidden'
     }}>
-      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full" style={{
+      {/* 16:9 Container - Fixed aspect ratio for Zoom/PowerPoint compatibility */}
+      <div className="relative" style={{
+        width: '95vw',
+        maxWidth: '1920px',
         aspectRatio: '16/9'
       }}>
 
@@ -414,10 +420,10 @@ export default function TombTimeline() {
         </div>
 
         {/* Main Content */}
-        <div className="absolute inset-0 flex gap-2 p-6 pt-16 pr-8">
+        <div className="absolute inset-0 flex gap-2 p-4 pt-12 pr-6">
 
           {/* Left Side - Phase Cards stacked vertically, each containing its events */}
-          <div className="flex flex-col gap-4" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
+          <div className="flex flex-col gap-1" style={{ width: '340px', fontFamily: 'ui-monospace, monospace' }}>
             {presentationData.phases.map((phase) => {
               const isActive = getActivePhase() === phase.id
               const phaseSlides = presentationData.slides.filter(s => s.phase === phase.id)
@@ -425,24 +431,46 @@ export default function TombTimeline() {
               return (
                 <div
                   key={phase.id}
-                  className="relative rounded transition-all duration-300"
+                  className="relative transition-all duration-300 flex"
                   style={{
-                    backgroundColor: '#1e293b',
-                    border: `2px solid ${isActive ? `${phase.color}80` : '#475569'}`,
-                    boxShadow: isActive ? `0 0 16px ${phase.color}30` : 'none',
-                    padding: '12px 16px 12px 12px'
+                    backgroundColor: 'transparent',
+                    padding: '6px 8px 6px 8px'
                   }}
                 >
-                  {/* Events for this phase */}
-                  <div className="space-y-0 text-xs pr-8">
+                  {/* Phase label column - narrow, left edge */}
+                  <div className="relative flex-shrink-0" style={{ width: '30px' }}>
+                    <div
+                      onClick={() => handlePhaseClick(phase.id)}
+                      className="absolute cursor-pointer transition-all duration-300"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%) rotate(-90deg)',
+                        transformOrigin: 'center',
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        letterSpacing: '0.1em',
+                        color: isActive ? phase.color : '#64748b',
+                        textTransform: 'uppercase',
+                        textShadow: isActive ? `0 0 12px ${phase.color}80` : 'none',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      {phase.id === 'phase3' ? 'BEYOND THE TOMB' : phase.name}
+                    </div>
+                  </div>
+
+                  {/* Events column - main content */}
+                  <div className="flex-1">
+                  <div className="space-y-0 text-xs">
                     {phaseSlides.map((slide) => {
                   if (slide.type === 'day-header') {
                     const hasDayBreak = slide.dayBreak === true
                     return (
                       <div key={slide.id}>
                         {/* Extra spacing before day header if flagged */}
-                        {hasDayBreak && <div className="my-6"></div>}
-                        <div className="font-bold mt-4 mb-1.5 text-sm pl-2" style={{ color: '#a78bfa' }}>
+                        {hasDayBreak && <div className="my-3"></div>}
+                        <div className="font-bold mt-2 mb-1 text-sm pl-2" style={{ color: '#a78bfa' }}>
                           {slide.label}
                         </div>
                       </div>
@@ -458,9 +486,9 @@ export default function TombTimeline() {
                   return (
                     <div key={slide.id}>
                       {/* Phase break - spacing only */}
-                      {hasPhaseBreak && <div className="my-4"></div>}
+                      {hasPhaseBreak && <div className="my-2"></div>}
                       {/* Day break - extra spacing between days */}
-                      {hasDayBreak && <div className="my-6"></div>}
+                      {hasDayBreak && <div className="my-3"></div>}
 
                       <div
                         onClick={() => handleSlideClick(slide)}
@@ -503,26 +531,6 @@ export default function TombTimeline() {
                   )
                 })}
                   </div>
-
-                  {/* Phase label at bottom right, rotated vertically */}
-                  <div
-                    onClick={() => handlePhaseClick(phase.id)}
-                    className="absolute cursor-pointer transition-all duration-300"
-                    style={{
-                      bottom: '8px',
-                      right: '8px',
-                      transform: 'rotate(-90deg)',
-                      transformOrigin: 'right bottom',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '0.1em',
-                      color: phase.color,
-                      textTransform: 'uppercase',
-                      textShadow: isActive ? `0 0 12px ${phase.color}80` : 'none',
-                      whiteSpace: 'nowrap'
-                    }}
-                  >
-                    {phase.id === 'phase3' ? 'BEYOND' : phase.name}
                   </div>
                 </div>
               )
@@ -619,7 +627,6 @@ export default function TombTimeline() {
               // Welcome screen
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center max-w-md">
-                  <div className="text-6xl mb-6">⏰</div>
                   <div className="text-gray-400 text-2xl font-semibold mb-4">
                     Accelerated Time of the Tomb
                   </div>
@@ -634,6 +641,9 @@ export default function TombTimeline() {
             )}
           </div>
         </div>
+
+        {/* Footer Navigation */}
+        <PresentationFooter currentPage="timeline" />
       </div>
     </div>
   )

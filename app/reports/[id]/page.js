@@ -119,7 +119,7 @@ export default async function ReportPage({ params }) {
                   href="#revision-history"
                   className="inline-block px-3 py-1 text-sm font-semibold bg-light-border dark:bg-dark-border text-text-light dark:text-text-dark rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                 >
-                  Revised: See Change Log at bottom
+                  Change Log
                 </a>
               </p>
             )}
