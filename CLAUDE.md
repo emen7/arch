@@ -35,6 +35,60 @@ Reports are dynamically routed through `/app/reports/[id]/page.js`:
 2. Add metadata entry to the `reports` object in `app/reports/[id]/page.js`
 3. Add card to home page report list in `app/page.js`
 
+### AMU Research Reports
+
+Architecture of the Master Universe research content represents the site's core mission: comprehensive documentation of revealed cosmology. These reports differ from symposium case studies in scope and longevity - they evolve over years as understanding deepens.
+
+**Content Structure:**
+- Topical organization with clear headings (cosmological concepts, structures, mechanics)
+- Can evolve from simple topical headings to sectioned structure as content grows
+- Table of Contents for longer reports (using scrollToSection pattern from accelerated-time.js)
+- Changelog button in header area linking to revision history at document end
+
+**Citation System - Two Tiers:**
+
+*Primary: Urantia Book Citations*
+- UB citations are always the primary source authority
+- Group all UB citations together at section/report end
+- Format: `¹187:5.5 | ²188:2.3 | ³189:4.6`
+- Use `<Citation num={n} />` component for in-text superscript numbers
+- Pattern:
+```jsx
+<div aria-hidden="true" className="mt-12 pt-6 border-t...">
+  <p className="mb-2 font-semibold"><strong>Urantia Book Citations:</strong></p>
+  <p className="leading-relaxed">
+    ¹187:5.5 | ²188:2.3 | ³189:4.6 | ...
+  </p>
+</div>
+```
+
+*Secondary: Non-UB References*
+- Scientific papers, external research, supporting documentation
+- Placed below UB citations in separate section
+- Can link to PDFs stored in `public/references/` or external URLs
+- Format for mobile viewing when possible
+- Section heading: "References" or "Additional Sources"
+
+**Multi-Paragraph UB Quotes:**
+- When presenting consecutive paragraphs from UB text, preserve paragraph spacing structure
+- UB text uses coded gaps: btn (no gap), bts (small gap), btl (large gap), bte (extra large gap)
+- For intentional gaps between quoted paragraphs, use centered diamond: `<p className="text-center my-6">◆</p>`
+- Preserve italics exactly as they appear in source text
+- This maintains the revelators' intended flow and conceptual grouping
+
+**Changelog Format:**
+- Tracks online document evolution only (not research development history)
+- First entry typically: "Initial draft - [date]"
+- Subsequent entries note substantive changes to published content
+- Positioned at document end, linked via button in header area
+- Pattern similar to glossary changelog button
+
+**Site Placement:**
+- Listed in "Revelation Research" section on home page
+- Distinct from "Tomb Operations" (symposium-specific content)
+- Alongside interactive visualizations (Wave-Energy, etc.)
+- These form the permanent, evolving documentation of AMU architecture
+
 ### Interactive Presentations & Infographics
 
 Interactive presentation components (like TombTimeline, Wave-Energy Manifestations) require different considerations than static reports:
