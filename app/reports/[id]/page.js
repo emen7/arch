@@ -7,6 +7,7 @@ import AcceleratedTimeContent from './content/accelerated-time-REVISED3'
 import NuclearIsleContent from './content/nuclear-isle'
 import CircuitArchitectureContent from './content/circuit-architecture'
 import HavonaChairsContent from './content/havona-chairs'
+import MumResolvesAnomaliesContent from './content/mum-resolves-anomalies'
 
 // Report data structure
 const reports = {
@@ -46,6 +47,13 @@ const reports = {
     readTime: '8 min read',
     ContentComponent: HavonaChairsContent,
     publication: 'Originally published in the Urantia Fellowship\'s Mini-Messenger, April 1, 2025',
+  },
+  'mum-resolves-anomalies': {
+    title: 'Master Universe Model Resolves Key Cosmological Mysteries',
+    subtitle: 'A Unified Framework for Contemporary Anomalies',
+    date: 'October 2025',
+    readTime: '12 min read',
+    ContentComponent: MumResolvesAnomaliesContent,
   },
 }
 

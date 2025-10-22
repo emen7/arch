@@ -17,6 +17,14 @@ export default function Home() {
 
   const revelationReports = [
     {
+      id: 'mum-resolves-anomalies',
+      title: 'Master Universe Model Resolves Key Cosmological Mysteries',
+      subtitle: 'A Unified Framework for Contemporary Anomalies',
+      description: 'How the Master Universe Model addresses persistent cosmological puzzles through a unified theoretical approach.',
+      date: 'October 2025',
+      readTime: '12 min read',
+    },
+    {
       id: 'circuit-architecture',
       title: 'Complete Circuit Architecture',
       subtitle: 'The Revealed Cosmology',
