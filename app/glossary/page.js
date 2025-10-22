@@ -62,6 +62,7 @@ export default function GlossaryPage() {
     })
   }
 
+
   return (
     <>
       <Header />
@@ -107,11 +108,22 @@ export default function GlossaryPage() {
       {/* Content */}
       <article className="container mx-auto px-4 py-8 max-w-[65ch]">
         <header className="mb-12 pb-8 border-b border-light-border dark:border-dark-border">
-          <h1 className="text-3xl font-bold mb-3 text-text-light dark:text-text-dark">
-            Glossary for Reports
+          <h1 className="text-3xl font-bold mb-2 text-text-light dark:text-text-dark">
+            Glossary & Concept Guide
           </h1>
+          <p className="text-lg text-gray-400 dark:text-gray-500 mb-3">
+            Accelerated Time of the Tomb
+          </p>
           <p className="text-base text-text-muted-light dark:text-text-muted-dark">
-            This Glossary relates to the Tomb Operation Reports. <span className="text-green-700 dark:text-green-400">(H)</span> indicates hypothesis not directly stated in the revelation.
+            This reference tool describes technical terms and processes from the Urantia Papers relevant to the tomb dissolution event.
+          </p>
+          <p className="mt-3">
+            <a
+              href="#revision-history"
+              className="inline-block px-3 py-1 text-sm font-semibold bg-light-border dark:bg-dark-border text-text-light dark:text-text-dark rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              Change Log
+            </a>
           </p>
         </header>
 
@@ -154,6 +166,26 @@ export default function GlossaryPage() {
           >
             {content}
           </ReactMarkdown>
+        </div>
+
+        {/* Scroll to Top Link */}
+        <div className="mt-8 text-center">
+          <a
+            href="#"
+            className="text-sm text-[#3B82C8] dark:text-[#60A5FA] hover:underline"
+          >
+            Scroll Top
+          </a>
+        </div>
+
+        {/* Document Changelog */}
+        <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+          <p className="font-semibold mb-3">Document Revision History</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li>
+              <strong>October 21, 2025 at 10:50 PM:</strong> Complete revision. Removed hypothetical elements and refined concept descriptions.
+            </li>
+          </ol>
         </div>
       </article>
       <Footer />
