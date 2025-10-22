@@ -1,12 +1,22 @@
 export default function MumResolvesAnomaliesContent() {
   return (
     <>
+      {/* Change Log Button */}
+      <div className="mb-8">
+        <a
+          href="#changelog"
+          className="inline-block px-3 py-1 text-sm font-semibold bg-light-border dark:bg-dark-border text-text-light dark:text-text-dark rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          Change Log
+        </a>
+      </div>
+
       <section className="mb-12">
         <h2>Overview</h2>
         <p>
-          The Master Universe Model (MUM) offers a comprehensive framework that addresses several
-          persistent anomalies in contemporary cosmology through a unified theoretical approach
-          rather than piecemeal solutions.
+          Revealed cosmology, as expressed in the Master Universe Model (MUM), offers a comprehensive
+          framework that addresses several persistent anomalies in contemporary cosmology through a
+          unified theoretical approach rather than piecemeal solutions.
         </p>
       </section>
 

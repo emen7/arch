@@ -49,7 +49,7 @@ const reports = {
     publication: 'Originally published in the Urantia Fellowship\'s Mini-Messenger, April 1, 2025',
   },
   'mum-resolves-anomalies': {
-    title: 'Master Universe Model Resolves Key Cosmological Mysteries',
+    title: 'Revealed Cosmology Resolves Key Scientific Mysteries',
     subtitle: 'A Unified Framework for Contemporary Anomalies',
     date: 'October 2025',
     readTime: '12 min read',
