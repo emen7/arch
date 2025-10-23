@@ -189,17 +189,17 @@ export default function GlossaryPage() {
           </a>
         </div>
 
-        {/* Document Changelog */}
+        {/* Change Log */}
         <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
-          <p className="font-semibold mb-3">Document Revision History</p>
-          <ol className="list-decimal ml-6 space-y-2">
+          <p className="font-semibold mb-3">Change Log</p>
+          <ul className="list-disc ml-6 space-y-2">
             <li>
               <strong>October 23, 2025:</strong> Content refinement and format alterations.
             </li>
             <li>
               <strong>October 21, 2025 at 10:50 PM:</strong> Complete revision. Removed hypothetical elements and refined concept descriptions.
             </li>
-          </ol>
+          </ul>
         </div>
       </article>
       <Footer />
