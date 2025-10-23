@@ -111,11 +111,11 @@ export default function GlossaryPage() {
           <h1 className="text-3xl font-bold mb-2 text-text-light dark:text-text-dark">
             Glossary & Concept Guide
           </h1>
-          <p className="text-lg text-gray-400 dark:text-gray-500 mb-3">
-            Accelerated Time of the Tomb
+          <p className="text-xl font-semibold text-text-light dark:text-text-dark mb-3">
+            For: Accelerated Time of the Tomb
           </p>
           <p className="text-base text-text-muted-light dark:text-text-muted-dark">
-            This reference tool describes technical terms and processes from the Urantia Papers relevant to the tomb dissolution event.
+            This reference tool describes technical terms and processes from the Urantia Papers relevant to the hypothesized tomb dissolution operations.
           </p>
           <p className="mt-3">
             <a
