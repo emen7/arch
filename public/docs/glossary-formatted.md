@@ -46,12 +46,12 @@ The assembled universe beings who witnessed and participated in the tomb operati
 **Chronoldeks**  
 Specialized frandalanks that register time in addition to energy presence, providing temporal monitoring capabilities for universe operations.
 
-> "The frandalanks that register time in addition to quantitative and qualitative energy presence are called chronoldeks" (29:4.37). These living instruments would have monitored temporal parameters during the dissolution, tracking both normal spacetime and the accelerated time within the tomb chamber.
+> "The frandalanks that register time in addition to quantitative and qualitative energy presence are called chronoldeks" (29:4.37). These living instruments would have monitored temporal parameters during the dissolution, tracking both normal time-space and the accelerated time within the tomb chamber.
 
 **Creator Son**  
-A Paradise order of divine sonship with inherent power to bestow itself in the likeness of created beings and to resurrect by its own authority.
+A Paradise order of divine sonship with inherent power to bestow themselves in the likeness of created beings and to resurrect by their own authority.
 
-> "Not one of you can do aught to assist your Creator-father in the return to life. As a mortal of the realm he has experienced mortal death; as the Sovereign of a universe he still lives" (189:0.2). Jesus achieved morontia resurrection at 3:02 AM through his own Creator prerogatives, independent of celestial assistance.
+> "A Creator Son has within himself the power to bestow himself in the likeness of any of his created sons; he has within himself the power to lay down his observable life and to take it up again" (189:0.2). This authority derives directly from the Paradise Father's command and enabled Jesus to achieve morontia resurrection at 3:02 AM through his own Creator prerogatives, independent of celestial assistance.
 
 ---
 
@@ -62,10 +62,10 @@ The process whereby ultimatons return to their pre-material energy state when ac
 
 > "Ultimatons are capable of accelerating revolutionary velocity to the point of partial antigravity behavior, but they cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage" (42:6.3). During the tomb dissolution, Master Physical Controllers enabled ultimatons to achieve this critical velocity, converting material atoms back to puissant energy.
 
-**Dematerialization**  
-The complete conversion of material substance into energy through established celestial techniques, bypassing natural temporal processes.
+**Dematerialization (Technique of)**  
+A celestial method for matter-to-energy conversion that bypasses natural decomposition processes.
 
-> The archangel chief explicitly distinguished approaches: "We do not propose to employ our technique of dematerialization; we merely wish to invoke the process of accelerated time" (189:2.1). Standard dematerialization achieves instantaneous matter-energy conversion, as when Melchizedek "disappeared from among men" (93:9.1) without temporal transition.
+> The archangels possess a technique of dematerialization which they chose not to employ at the tomb. The archangel chief stated: "We do not propose to employ our technique of dematerialization; we merely wish to invoke the process of accelerated time" (189:2.1). Dematerialization bypasses natural decomposition entirely, while accelerated time—their chosen method—maintains natural decomposition but compresses temporal duration.
 
 ---
 
@@ -181,9 +181,9 @@ Master Physical Controllers described as masterly energy conservators who manipu
 > Primary Associators are "those exceedingly interesting and invaluable beings who are such masterly energy conservators and custodians" (29:4.32). During the tomb dissolution, these beings would have conserved and stored the massive energy release from matter-energy conversion.
 
 **Puissant Energy**  
-The pre-material energy state to which ultimatons return when achieving deindividuation through critical escape velocity.
+The first stage of emergent energy, characterized as powerful-directional, mass-movemented, and mighty-tensioned force.
 
-> Ultimatons "cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage" (42:6.3). During the dissolution, Master Physical Controllers enabled ultimatons to achieve this return to pure energy state.
+> This "mighty-tensioned, and forcible-reacting energy" represents "gigantic energy systems set in motion by the activities of the primary force organizers" (42:2.11). Ultimatons "cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage" (42:6.3). During the dissolution, Master Physical Controllers enabled ultimatons to achieve this return to pure energy state.
 
 ---
 
@@ -197,21 +197,23 @@ Master Physical Controllers of enormous antigravity endowment, designated as "th
 **Shroud of Turin**  
 Physical artifact exhibiting image and blood evidence corresponding to wounds and burial configuration described in the Urantia Papers.
 
-> The Shroud exhibits characteristics consistent with brief UV radiation exposure during dissolution: surface oxidation limited to 200 nanometers depth, three-dimensional body contour encoding, and blood evidence corresponding to crucifixion wounds. Whether this constitutes the actual burial cloth remains scientifically undetermined, though forensic correspondence between revealed text and measurable evidence merits systematic investigation.
+> The Shroud exhibits characteristics consistent with brief electromagnetic radiation exposure during dissolution: surface oxidation limited to 200 nanometers depth, three-dimensional body contour encoding, and blood evidence corresponding to crucifixion wounds. Whether this constitutes the actual burial cloth remains scientifically undetermined, though forensic correspondence between revealed text and measurable evidence merits systematic investigation.
 
 **Supreme Power Centers**  
-Seven beings created by the Seven Master Spirits who regulate physical energy throughout the grand universe.
+Billions of specialized beings functioning as living switching stations that regulate physical energy throughout the grand universe.
 
-> "The Seven Supreme Power Directors are the physical-energy regulators of the grand universe" (29:0.2). While not directly participating in tomb operations, their created subordinates—the Master Physical Controllers—executed the dissolution under established cosmic protocols.
+> Origin: Created by the Seven Supreme Power Directors in association with the Seven Master Spirits (29:2.1).
+
+> These beings "are endowed with Third-Source personality and disclose unquestioned volitional capacity of a high order" (29:2.9), serving as "the intellect of the power system of the grand universe." They function in seven specialized groups from Havona Centers down to System Centers. While Supreme Power Centers did not directly participate in tomb operations, their subordinates—the Master Physical Controllers—executed the dissolution under established cosmic protocols.
 
 ---
 
 ## U
 
 **Ultimatons**  
-The first measurable form of energy, fundamental particles of which one hundred comprise each electron.
+The fundamental particles of physical creation; the first measurable form of energy.
 
-> "The ultimaton, the first measurable form of energy, has Paradise as its nucleus" (42:1.2). These particles possess "three varieties of motion: mutual resistance to cosmic force, individual revolutions of antigravity potential, and the intraelectronic positions of the one hundred mutually interassociated ultimatons" (42:6.4). During dissolution, Master Physical Controllers accelerated ultimatonic revolutionary velocities toward critical escape thresholds.
+> "The ultimaton, the first measurable form of energy, has Paradise as its nucleus" (42:1.2). These particles exhibit three varieties of motion: "mutual resistance to cosmic force, individual revolutions of antigravity potential, and the intraelectronic positions of the one hundred mutually interassociated ultimatons" (42:6.4)—meaning their positional relationships when organized into material particles. One hundred ultimatons comprise an electron through mutual attraction (42:6.5). During dissolution, Master Physical Controllers accelerated ultimaton revolutionary velocities toward critical escape thresholds where matter transforms to energy.
 
 **Ultimatonic Revolutionary Velocity**  
 The axial spin rate of ultimatons that determines their energy state, gravitational response, and material properties.
@@ -241,4 +243,3 @@ This glossary defines terms essential to understanding the tomb dissolution even
 **Source Authority:** The Urantia Book (1955)
 
 **Researcher:** David Neufer
-
