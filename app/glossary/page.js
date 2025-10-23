@@ -127,7 +127,7 @@ export default function GlossaryPage() {
           </p>
         </header>
 
-        <div className="prose prose-xl md:prose-lg dark:prose-invert max-w-none
+        <div className="prose prose-xl lg:prose-lg dark:prose-invert max-w-none
                         prose-headings:text-text-light dark:prose-headings:text-text-dark
                         prose-p:text-text-light dark:prose-p:text-text-dark
                         prose-a:text-text-light dark:prose-a:text-text-dark prose-a:underline hover:prose-a:text-black dark:hover:prose-a:text-white

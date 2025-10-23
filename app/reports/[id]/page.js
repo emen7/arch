@@ -126,7 +126,7 @@ export default async function ReportPage({ params }) {
           </header>
 
       {/* Report Content */}
-      <div id="report-content" className="prose prose-xl md:prose-lg dark:prose-invert max-w-none
+      <div id="report-content" className="prose prose-xl lg:prose-lg dark:prose-invert max-w-none
                       prose-headings:text-text-light dark:prose-headings:text-text-dark
                       prose-h2:scroll-mt-[180px] prose-h3:scroll-mt-[180px]
                       prose-h3:text-[#3B82C8] dark:prose-h3:text-[#60A5FA]
