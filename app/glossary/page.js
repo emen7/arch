@@ -194,6 +194,9 @@ export default function GlossaryPage() {
           <p className="font-semibold mb-3">Document Revision History</p>
           <ol className="list-decimal ml-6 space-y-2">
             <li>
+              <strong>October 23, 2025:</strong> Content refinement and format alterations.
+            </li>
+            <li>
               <strong>October 21, 2025 at 10:50 PM:</strong> Complete revision. Removed hypothetical elements and refined concept descriptions.
             </li>
           </ol>

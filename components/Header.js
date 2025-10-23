@@ -1,22 +1,32 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
 import AppSettings from './AppSettings'
 
 export default function Header({ title, ttsControls }) {
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
+
   return (
     <header className="sticky top-0 z-50 bg-light-bg dark:bg-dark-bg">
       <nav className="container mx-auto px-4 py-3 max-w-[65ch] border-b border-light-border dark:border-dark-border">
         {/* First Line: Home + Icons */}
         <div className="flex items-center justify-between">
-          {/* Left: Home Button */}
-          <Link
-            href="/"
-            className="text-xl font-semibold text-text-light dark:text-text-dark hover:text-black dark:hover:text-white no-underline"
-          >
-            Home
-          </Link>
+          {/* Left: Home Button or Text */}
+          {isHomePage ? (
+            <span className="text-xl font-semibold text-[#3B82C8] dark:text-[#60A5FA]">
+              Home
+            </span>
+          ) : (
+            <Link
+              href="/"
+              className="text-xl font-semibold text-text-light dark:text-text-dark hover:text-black dark:hover:text-white no-underline"
+            >
+              Home
+            </Link>
+          )}
 
           {/* Right: Theme + Settings Icons */}
           <div className="flex items-center gap-3">
