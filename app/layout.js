@@ -1,5 +1,6 @@
 import './globals.css'
 import AppStateManager from '../components/AppStateManager'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata = {
   title: 'Architecture of the Master Universe | Revelationary Research',
@@ -68,6 +69,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark">
         <AppStateManager />
         {children}
+        <Analytics />
       </body>
     </html>
   )
