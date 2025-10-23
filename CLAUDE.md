@@ -150,6 +150,27 @@ Report images are stored in `public/images/[report-name]/`:
 - Citation blocks appear at section ends with format: `¹187:1.4 | ²188:2.3 | ³189:4.6`
 - Scientific references can use collapsible `<details>` elements for long lists
 
+**Change Logs:**
+- Use heading "Change Log" (not "Document Revision History")
+- Use bulleted list (`<ul>` with `list-disc`), not numbered list
+- List changes in reverse chronological order (newest first)
+- Format: `**Date:** Description of change.`
+- Pattern:
+```jsx
+{/* Change Log */}
+<div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
+  <p className="font-semibold mb-3">Change Log</p>
+  <ul className="list-disc ml-6 space-y-2">
+    <li>
+      <strong>October 23, 2025:</strong> Content refinement and format alterations.
+    </li>
+    <li>
+      <strong>October 21, 2025:</strong> Initial publication.
+    </li>
+  </ul>
+</div>
+```
+
 **TTS/ARIA Accessibility for Citations and Notations:**
 - IMPORTANT: Citation lists must be hidden from TTS using `aria-hidden="true"`
 - Explanatory notations should be kept readable by TTS (do NOT hide with aria-hidden)

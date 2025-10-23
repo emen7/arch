@@ -1128,10 +1128,10 @@ export default function AcceleratedTimeContent() {
 
         <p className="mt-8 font-semibold">Researcher: David <span aria-label="Noofer">Neufer</span></p>
 
-        {/* Document Changelog */}
+        {/* Change Log */}
         <div id="revision-history" className="mt-12 pt-8 border-t-2 border-light-border dark:border-dark-border text-sm text-text-muted-light dark:text-text-muted-dark">
-          <p className="font-semibold mb-3">Document Revision History</p>
-          <ol className="list-decimal ml-6 space-y-2">
+          <p className="font-semibold mb-3">Change Log</p>
+          <ul className="list-disc ml-6 space-y-2">
             <li>
               <strong>October 20, 2025 at 05:49 PM:</strong> Added Master Physical Controller operational capabilities table in Section 4, detailing the seven orders of MPCs and their specific roles in the tomb dissolution process.
             </li>
@@ -1144,7 +1144,7 @@ export default function AcceleratedTimeContent() {
             <li>
               <strong>October 20, 2025 at 05:49 PM:</strong> Updated Section 5 to align with Section 4's dual-hypothesis framework. Retitled subsection from "The UV Correspondence" to "Electromagnetic Radiation Correspondence" and reframed UV laser experimental data as demonstrating oxidation effects compatible with either gamma ray or UV emission mechanisms. Removed references to "octave 47" and "ultimaton acceleration during UV phase."
             </li>
-          </ol>
+          </ul>
         </div>
       </section>
     </>
