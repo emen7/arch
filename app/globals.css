@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile font size override for content areas */
+@media (max-width: 640px) {
+  .glossary-content.prose,
+  .report-content.prose {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+  .glossary-content.prose p,
+  .report-content.prose p {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+}
+
 body {
   background-color: #f8f9fa;
   color: #212529;
