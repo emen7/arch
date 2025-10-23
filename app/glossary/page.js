@@ -135,7 +135,7 @@ export default function GlossaryPage() {
                         prose-li:text-text-light dark:prose-li:text-text-dark
                         prose-blockquote:text-text-muted-light dark:prose-blockquote:text-text-muted-dark
                         prose-blockquote:border-l-4 prose-blockquote:border-[#3B82C8] dark:prose-blockquote:border-[#60A5FA]
-                        prose-blockquote:pl-4 prose-blockquote:italic
+                        prose-blockquote:pl-4 prose-blockquote:my-4 prose-blockquote:italic prose-blockquote:bg-[#F8FBFF] dark:prose-blockquote:bg-[#1E2126]
                         prose-code:text-text-light dark:prose-code:text-text-dark
                         [&_p]:mb-4 [&_p]:leading-relaxed
                         prose-h2:scroll-mt-[120px]">

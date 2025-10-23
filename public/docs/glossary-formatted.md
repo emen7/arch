@@ -10,7 +10,7 @@ The condition achieved when ultimatonic revolutionary velocity accelerates to pa
 
 > "Ultimatons are capable of accelerating revolutionary velocity to the point of partial antigravity behavior, but they cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage" (42:6.3). "Ultimatons have three varieties of motion: mutual resistance to cosmic force, individual revolutions of antigravity potential, and the intraelectronic positions of the one hundred mutually interassociated ultimatons" (42:6.4).
 
-**Archangel (Chief of)**  
+**Archangel (Chief of)**
 The senior administrator of the angels of the resurrection who requested custody of Jesus' mortal remains for dissolution through accelerated time.
 
 > At 3:10 AM, "the chief of archangels—the angels of the resurrection—approached Gabriel and asked for the mortal body of Jesus. Said the chief of the archangels: 'We may not participate in the morontia resurrection of the bestowal experience of Michael our sovereign, but we would have his mortal remains put in our custody for immediate dissolution'" (189:2.1). "After the chief of archangels had been granted this request, he summoned to his assistance many of his fellows, together with a numerous host of the representatives of all orders of celestial personalities" (189:2.3).

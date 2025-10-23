@@ -40,7 +40,9 @@
       "Bash(git ls-tree d7e4b7e --name-only app/reports/[id]/content/)",
       "Bash(tasklist)",
       "Bash(timeout /t 2)",
-      "Bash(timeout /t 5)"
+      "Bash(timeout /t 5)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)"
     ],
     "deny": [],
     "ask": []
