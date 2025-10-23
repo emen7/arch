@@ -163,6 +163,16 @@ export default function GlossaryPage() {
                 }
                 return <strong {...props}>{children}</strong>
               },
+              blockquote: ({ node, children, ...props }) => {
+                return (
+                  <blockquote
+                    className="border-l-4 border-[#3B82C8] dark:border-[#60A5FA] pl-4 my-4 italic bg-[#F8FBFF] dark:bg-[#1E2126] text-text-muted-light dark:text-text-muted-dark"
+                    {...props}
+                  >
+                    {children}
+                  </blockquote>
+                )
+              },
             }}
           >
             {content}
