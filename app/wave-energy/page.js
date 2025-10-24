@@ -172,9 +172,9 @@ export default function WaveEnergyPage() {
     const draw = () => {
       ctx.clearRect(0, 0, 160, 160)
 
-      // Grid
-      ctx.strokeStyle = '#475569'
-      ctx.lineWidth = 0.3
+      // Grid - more visible but still dimmed compared to text
+      ctx.strokeStyle = '#64748b'
+      ctx.lineWidth = 0.5
       for (let i = 0; i < 160; i += 20) {
         ctx.beginPath()
         ctx.moveTo(i, 0)
@@ -335,21 +335,39 @@ export default function WaveEnergyPage() {
         </div>
       )}
 
-      {/* Home Link */}
-      <Link
-        href="/"
-        className="fixed top-4 left-4 text-sm text-gray-400 hover:text-gray-200 transition-colors z-10"
-      >
-        ← Home
-      </Link>
+      {/* Header Navigation */}
+      <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10">
+        {/* Project Title */}
+        <div className="text-slate-400 text-sm tracking-wider font-light">
+          ACCELERATED TIME OF THE TOMB
+        </div>
+
+        {/* Horizontal Links */}
+        <div className="flex items-center gap-6 text-sm">
+          <Link
+            href="/"
+            className="text-slate-500 hover:text-slate-300 transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/wave-energy"
+            className="text-slate-400 font-medium"
+          >
+            Wave-Energy
+          </Link>
+          <span className="text-slate-600">|</span>
+          <span className="text-slate-600 text-xs tracking-wide">PRESENTATIONS</span>
+        </div>
+      </div>
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8" style={{
+      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8 pt-16" style={{
         aspectRatio: '16/9'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
+          <div ref={titleRef} className="text-gray-300 text-xl font-semibold tracking-wider mb-8 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
@@ -369,17 +387,17 @@ export default function WaveEnergyPage() {
 
             {/* Scale */}
             <div className="relative h-full">
-              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-slate-700"></div>
+              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-slate-600"></div>
               <div>
                 {data.map((d, i) => (
                   <div
                     key={d.n}
-                    className="absolute left-0 flex items-center cursor-pointer -translate-y-1/2"
+                    className="absolute left-0 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
                     style={{ top: `${(d.n / 10) * 100}%` }}
                     onClick={() => setStepAndReset(d.n)}
                   >
                     <div
-                      className="w-8 text-right text-lg font-mono transition-colors"
+                      className="w-8 text-right text-lg font-mono transition-colors font-semibold"
                       style={{ color: step === d.n ? d.col : '#64748b' }}
                     >
                       {d.n}
@@ -394,7 +412,7 @@ export default function WaveEnergyPage() {
                     <div
                       className="text-sm whitespace-nowrap transition-colors"
                       style={{
-                        color: step === d.n ? d.col : '#64748b',
+                        color: step === d.n ? d.col : '#94a3b8',
                         fontWeight: step === d.n ? 600 : 400
                       }}
                     >
@@ -421,7 +439,7 @@ export default function WaveEnergyPage() {
             {/* Sphere */}
             <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
               <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
-              <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
+              <div className="text-slate-300 text-sm tracking-wider text-center leading-tight font-medium">
                 {step === 0 ? (
                   <>PRE OR POST<br />ULTIMATON</>
                 ) : (
@@ -433,9 +451,9 @@ export default function WaveEnergyPage() {
             {/* Pause Button */}
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-slate-800 border border-slate-600 rounded-lg text-slate-300 px-4 py-2 text-xs cursor-pointer hover:bg-slate-700 transition-colors"
+              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-slate-800/80 border border-slate-600/70 rounded-lg text-slate-300 px-4 py-2 text-xs cursor-pointer hover:bg-slate-700 hover:border-slate-500 transition-all shadow-lg"
             >
-              {isPaused ? 'Resume' : 'Pause'}
+              {isPaused ? '▶ Resume' : '⏸ Pause'}
             </button>
           </div>
         </div>
@@ -443,7 +461,7 @@ export default function WaveEnergyPage() {
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
           <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
+            <div className="bg-slate-800/60 border border-slate-600/70 rounded-xl p-8 max-w-[600px] w-[90%] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
                 <div className="flex justify-between mb-4 text-xs tracking-wider">
@@ -467,12 +485,12 @@ export default function WaveEnergyPage() {
               )}
 
               {/* Title */}
-              <div className="text-gray-400 text-2xl font-semibold mb-6">
+              <div className="text-gray-300 text-2xl font-semibold mb-6 tracking-wide">
                 {currentData.name}
               </div>
 
               {/* Text */}
-              <div className="text-slate-300 text-base leading-relaxed">
+              <div className="text-slate-200 text-base leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
@@ -503,19 +521,19 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-4 text-gray-400 text-sm leading-relaxed max-w-[536px]">
-                <span className="font-bold text-green-500">Human Application: </span>
-                <span className="italic">{currentHumanUse}</span>
+              <div className="mt-4 text-slate-400 text-sm leading-relaxed max-w-[536px] bg-slate-900/40 border border-slate-700/50 rounded-lg px-4 py-3">
+                <span className="font-semibold text-emerald-400">Human Application: </span>
+                <span className="italic text-slate-300">{currentHumanUse}</span>
               </div>
             )}
           </div>
 
           {/* Controls */}
-          <div className="absolute bottom-0 right-0 text-right">
-            <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
+          <div className="absolute bottom-0 right-0 text-right bg-slate-900/30 border border-slate-700/40 rounded-lg px-4 py-3">
+            <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase font-semibold">
               CONTROLS
             </div>
-            <div className="text-slate-500 text-xs leading-relaxed">
+            <div className="text-slate-400 text-xs leading-relaxed space-y-1">
               <div>↑↓ Arrow keys - Navigate</div>
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
