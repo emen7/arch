@@ -87,6 +87,9 @@ export default function LectionaryReading({ params }) {
 
             {/* Quick Jump Links & TTS */}
             <div className="flex items-center gap-4 text-sm">
+              <a href="#" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium">
+                Top
+              </a>
               <a href="#first-reading" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Reading 1
               </a>
@@ -112,14 +115,6 @@ export default function LectionaryReading({ params }) {
 
       <main className="container mx-auto px-4 pt-32 pb-8 max-w-[65ch]">
         <article className="font-serif">
-          {/* Back Link */}
-          <Link
-            href="/lectionary"
-            className="inline-block mb-6 text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline"
-          >
-            ← Back to Lectionary
-          </Link>
-
           {/* Hero Image - Show placeholder or actual image */}
           <div className="mb-8 rounded-lg overflow-hidden shadow-lg bg-[#F5F7FA] dark:bg-[#2D3748] border-2 border-[#E2E8F0] dark:border-[#4A5568]">
             {reading.heroImage && reading.heroImage.src ? (
@@ -246,16 +241,6 @@ export default function LectionaryReading({ params }) {
                 </section>
               )
             })}
-          </div>
-
-          {/* Back to Top */}
-          <div className="mt-12 text-center">
-            <a
-              href="#"
-              className="inline-block px-6 py-3 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors font-medium"
-            >
-              ↑ Back to Top
-            </a>
           </div>
         </article>
       </main>
