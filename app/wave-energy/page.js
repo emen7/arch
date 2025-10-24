@@ -11,7 +11,6 @@ export default function WaveEnergyPage() {
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
@@ -95,12 +94,6 @@ export default function WaveEnergyPage() {
   const txtKey = `p${currentData.n}`
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
-
-  // Detect mobile devices only
-  useEffect(() => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    setIsMobileDevice(isMobile)
-  }, [])
 
   // Calculate container dimensions to maintain 16:9 ratio
   useEffect(() => {
@@ -309,32 +302,6 @@ export default function WaveEnergyPage() {
       background: '#000000',
       color: '#e2e8f0'
     }}>
-      {/* Mobile Device Overlay - only show for actual mobile devices */}
-      {isMobileDevice && (
-        <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">💻</div>
-          <div className="text-2xl font-semibold mb-6 text-gray-200">
-            Desktop or Tablet Required
-          </div>
-          <div className="text-lg text-gray-300 max-w-md mb-4">
-            This interactive visualization is designed for larger screens.
-          </div>
-          <div className="text-base text-gray-400 max-w-md mb-8">
-            Please view on:
-          </div>
-          <div className="text-lg text-gray-300 space-y-2 mb-8">
-            <div>• Desktop or laptop computer</div>
-            <div>• iPad or tablet (landscape mode)</div>
-          </div>
-          <Link
-            href="/"
-            className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
-          >
-            ← Return to Home
-          </Link>
-        </div>
-      )}
-
       {/* Header Navigation */}
       <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10">
         {/* Project Title */}
