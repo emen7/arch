@@ -5,13 +5,12 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
-  const containerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
-  const [scale, setScale] = useState(1)
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -120,24 +119,21 @@ export default function WaveEnergyPage() {
   // Calculate container dimensions to maintain 16:9 ratio
   useEffect(() => {
     const updateDimensions = () => {
-      const viewportWidth = window.innerWidth * 0.95
-      const viewportHeight = window.innerHeight * 0.95
+      const baseWidth = 1920
+      const baseHeight = 1080
+      const viewportWidth = window.innerWidth
+      const viewportHeight = window.innerHeight
 
-      // Calculate dimensions maintaining 16:9 ratio
-      let width = viewportWidth
-      let height = width / (16 / 9)
+      // Calculate scale to fit viewport while maintaining 16:9
+      const scaleX = viewportWidth / baseWidth
+      const scaleY = viewportHeight / baseHeight
+      const scale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
 
-      // If height exceeds viewport, constrain by height instead
-      if (height > viewportHeight) {
-        height = viewportHeight
-        width = height * (16 / 9)
-      }
+      // Calculate actual dimensions after scaling
+      const width = baseWidth * scale
+      const height = baseHeight * scale
 
-      // Cap at 1920x1080 (never scale up beyond design size)
-      width = Math.min(width, 1920)
-      height = Math.min(height, 1080)
-
-      setScale(width / 1920) // Scale relative to base width
+      setDimensions({ width, height, scale })
     }
 
     updateDimensions()
@@ -282,7 +278,7 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4" style={{
+    <div className="w-full h-full flex items-center justify-center" style={{
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0'
     }}>
@@ -326,15 +322,21 @@ export default function WaveEnergyPage() {
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
       <div
-        ref={containerRef}
-        className="relative flex gap-12 pt-0 pb-8 px-8"
+        className="relative"
         style={{
-          width: '1920px',
-          height: '1080px',
-          transform: `scale(${scale})`,
-          transformOrigin: 'center center'
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`
         }}
       >
+        <div
+          className="absolute inset-0 flex gap-12 pt-0 pb-8 px-8"
+          style={{
+            width: '1920px',
+            height: '1080px',
+            transform: `scale(${dimensions.scale})`,
+            transformOrigin: 'top left'
+          }}
+        >
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
@@ -531,6 +533,7 @@ export default function WaveEnergyPage() {
               <Link href="/" className="hover:text-gray-300 transition-colors">revelationary.net</Link>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
