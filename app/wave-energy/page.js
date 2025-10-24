@@ -352,7 +352,7 @@ export default function WaveEnergyPage() {
         <div className="w-[420px] flex flex-col justify-end">
           <div className="relative" style={{ height: '750px' }}>
             {/* Title */}
-            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-2xl font-semibold tracking-wider uppercase">
+            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-2xl font-semibold tracking-wider uppercase whitespace-nowrap">
               WAVE-ENERGY MANIFESTATIONS
             </div>
 
