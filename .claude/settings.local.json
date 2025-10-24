@@ -42,7 +42,10 @@
       "Bash(timeout /t 2)",
       "Bash(timeout /t 5)",
       "Bash(git checkout:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(node scripts/parse-lectionary.js:*)",
+      "Bash(node scripts/process-all-lectionary.js:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

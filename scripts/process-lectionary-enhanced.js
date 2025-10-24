@@ -71,19 +71,22 @@ async function processLectionaryDoc(filePath, slug) {
       continue;
     }
 
-    // Extract hero image
+    // Extract hero image (mammoth has already saved it)
     if (p.includes('<img') && !lectionary.heroImage) {
       const srcMatch = p.match(/src="([^"]+)"/);
+      const altMatch = p.match(/alt="([^"]+)"/);
+
       if (srcMatch) {
         lectionary.heroImage = {
           src: srcMatch[1],
+          alt: altMatch ? altMatch[1] : '',
           caption: ''
         };
 
-        // Next paragraph might be caption
+        // Next paragraph might be caption (artist info)
         if (i + 1 < paragraphs.length) {
           const nextText = paragraphs[i + 1].replace(/<[^>]+>/g, '').trim();
-          if (nextText && !nextText.startsWith('Reading') && !nextText.startsWith('Introductory')) {
+          if (nextText && !nextText.startsWith('Reading') && !nextText.startsWith('Introductory') && !nextText.startsWith('Initial')) {
             lectionary.heroImage.caption = nextText;
             i++; // Skip next paragraph
           }

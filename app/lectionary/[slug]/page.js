@@ -151,7 +151,7 @@ export default function LectionaryReading({ params }) {
           </header>
 
           {/* Sections */}
-          <div className="space-y-8 lectionary-content">
+          <div id="report-content" className="space-y-8 lectionary-content">
             {reading.sections.map((section, idx) => {
               // Skip "Replaced" sections
               if (section.heading && /^Replaced/i.test(section.heading)) {

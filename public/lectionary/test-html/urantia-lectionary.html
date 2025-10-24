@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urantia Book Lectionary - Weekly Sunday Readings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #8b4513;
+            --text-color: #333;
+            --light-bg: #f7f5f2;
+            --border-color: #d4c5b9;
+            --link-color: #4a6fa5;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #34495e);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: white;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .date-selector {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .date-selector button {
+            background: var(--link-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .date-selector button:hover {
+            background: #3a5f95;
+        }
+
+        .current-date {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .quick-links a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .quick-links a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .sunday-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .sunday-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sunday-header .date {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .sunday-header .theme {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .artwork-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .artwork-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .artwork-caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+
+        .reading-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .reading-section h3 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .reading-source {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .reading-text {
+            margin: 1.5rem 0;
+        }
+
+        .reading-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .verse-number {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 0.3em;
+        }
+
+        .responsorial {
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .response {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 0.5rem 0;
+        }
+
+        .reflection {
+            background: #f0f4f8;
+            border-left: 4px solid var(--link-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .reflection h4 {
+            color: var(--link-color);
+            margin-bottom: 0.5rem;
+            font-style: normal;
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer a {
+            color: #a0c4ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+            }
+
+            .quick-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .reading-section {
+                padding: 1.5rem;
+            }
+
+            .sunday-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .beatitude-list {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .beatitude-list li {
+            margin: 0.8rem 0;
+            color: var(--text-color);
+        }
+
+        .alleluia-section {
+            text-align: center;
+            background: var(--light-bg);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .alleluia-section .response {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Urantia Book Lectionary</h1>
+            <p class="subtitle">Weekly Sunday Readings from The Urantia Book</p>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="nav-content">
+            <div class="date-selector">
+                <button onclick="previousWeek()">← Previous Week</button>
+                <span class="current-date">February 23, 2025</span>
+                <button onclick="nextWeek()">Next Week →</button>
+            </div>
+            <div class="quick-links">
+                <a href="#first-reading">First Reading</a>
+                <a href="#psalm">Psalm</a>
+                <a href="#second-reading">Second Reading</a>
+                <a href="#gospel">Gospel</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="sunday-header">
+            <h2>Seventh Sunday in Ordinary Time</h2>
+            <p class="date">February 23, 2025 - Year C</p>
+            <p class="theme">The Positive Nature of Jesus's Teaching</p>
+        </div>
+
+        <div class="artwork-section">
+            <div class="artwork-placeholder">
+                [Artwork: The Good Samaritan by Rembrandt]
+            </div>
+            <p class="artwork-caption">
+                <strong>Rembrandt van Rijn (1606-1669)</strong><br>
+                The Good Samaritan Looks After the Wounded Man<br>
+                Pen and Brush Drawing, 1644
+            </p>
+        </div>
+
+        <section class="reading-section">
+            <h4>Introductory Reflection</h4>
+            <div class="reflection">
+                <p>This Rembrandt delicate pen and brush drawing illustrates the positive, pro-active nature of Jesus's teaching as is emphasized in all four readings for today. Luke's gospel serves as a springboard to understand Jesus' positive Urantia attitude towards the difficulties of this world. Jesus advised we turn the other cheek when you cannot think of something better to do in the moment.</p>
+                <p>Here the "busy" but despised Samaritan first sees the wounded man, then dismounts, and here assesses the man's condition, before bringing the man to an inn for care that he pays for in advance, promising to pay any extra on his return. Significantly, Rembrandt chose to omit the priest and Levite from the background, and put his focus on the Samaritan's positive action.</p>
+            </div>
+        </section>
+
+        <section id="first-reading" class="reading-section">
+            <h3>First Reading</h3>
+            <p class="reading-source">Urantia, Part IV. The Life and Teachings of Jesus<br>
+            Paper 159 - The Decapolis Tour, Section 5. The Positive Nature of Jesus' Religion</p>
+            
+            <div class="reading-text">
+                <p><span class="verse-number">159:5.1</span> At Philadelphia, where James was working, Jesus taught the disciples about the positive nature of the gospel of the kingdom. When, in the course of his remarks, he intimated that some parts of the Scripture were more truth-containing than others and admonished his hearers to feed their souls upon the best of the spiritual food, James interrupted the Master, asking: "Would you be good enough, Master, to suggest to us how we may choose the better passages from the Scriptures for our personal edification?" And Jesus replied: "Yes, James, when you read the Scriptures look for those eternally true and divinely beautiful teachings, such as:</p>
+
+                <p><span class="verse-number">159:5.2-6</span></p>
+                <ul class="beatitude-list">
+                    <li>"Create in me a clean heart, O Lord.</li>
+                    <li>"The Lord is my shepherd; I shall not want.</li>
+                    <li>"You should love your neighbor as yourself.</li>
+                    <li>"For I, the Lord your God, will hold your right hand, saying, fear not; I will help you.</li>
+                    <li>"Neither shall the nations learn war any more."</li>
+                </ul>
+
+                <p><span class="verse-number">159:5.7</span> And this is illustrative of the way Jesus, day by day, appropriated the cream of the Hebrew scriptures for the instruction of his followers and for inclusion in the teachings of the new gospel of the kingdom...</p>
+
+                <p><span class="verse-number">159:5.8</span> Jesus put the spirit of positive action into the passive doctrines of the Jewish religion. In the place of negative compliance with ceremonial requirements, Jesus enjoined the positive doing of that which his new religion required of those who accepted it. Jesus' religion consisted not merely in <em>believing,</em> but in actually <em>doing,</em> those things which the gospel required.</p>
+            </div>
+
+            <div class="reflection">
+                <h4>Reflection</h4>
+                <p>Jesus's five selections from the Hebrew Bible certainly feed our souls and adjust our attitude towards life. "The worship of God and the service of man became the sum and substance of his religion."</p>
+            </div>
+        </section>
+
+        <section id="psalm" class="reading-section">
+            <h3>Responsorial Psalm</h3>
+            <p class="reading-source">Psalm 103:1-2, 3-4, 8, 10, 12-13</p>
+            
+            <div class="responsorial">
+                <p class="response">R. "You are compassionate, generous beyond limits."</p>
+                
+                <p>"Be wild, O my soul, for the Source of Wisdom; let all my insides praise the Holy Name. Be wild, O my soul, for the Source of Wonder; don't let me forget all your kindness and help."</p>
+                <p class="response">R. "You are compassionate, generous beyond limits."</p>
+                
+                <p>"The one who forgives all my wrongdoings, who heals me from sickness, who rescues my life from the abyss -- who wraps me around with love and devotion."</p>
+                <p class="response">R. "You are compassionate, generous beyond limits."</p>
+                
+                <p>"You are compassionate, generous beyond limit, quieting my anger, abounding in love. You do not requite us according to our errors, do not demand from us in proportion to our wrongs."</p>
+                <p class="response">R. "You are compassionate, generous beyond limits."</p>
+                
+                <p>"Just as the eastern horizon is far removed from the west, so does the Creator distance us from our transgression. Just as a mother has compassion for her child, so do you have compassion for those who hold you in awe."</p>
+                <p class="response">R. "You are compassionate, generous beyond limits."</p>
+            </div>
+
+            <div class="reflection">
+                <h4>Reflection</h4>
+                <p>"Be wild, O my soul, for the Source of Wisdom; let all my insides praise the Holy Name." is one of Pamela Greenberg's most unusual, but refreshingly translations appropriate for the restatement of Jesus's teaching found in Urantia.</p>
+            </div>
+        </section>
+
+        <section id="second-reading" class="reading-section">
+            <h3>Second Reading</h3>
+            <p class="reading-source">Urantia, Part IV. The Life and Teachings of Jesus<br>
+            Paper 159 - The Decapolis Tour, Section 5. The Positive Nature of Jesus' Religion</p>
+            
+            <div class="reading-text">
+                <p><span class="verse-number">159:5.9</span> Jesus did not hesitate to appropriate the better half of a Scripture while he repudiated the lesser portion. His great exhortation, "Love your neighbor as yourself," he took from the Scripture which reads: "You shall not take vengeance against the children of your people, but you shall love your neighbor as yourself." Jesus appropriated the positive portion of this Scripture while rejecting the negative part. He even opposed negative or purely passive nonresistance.</p>
+
+                <p>Said he: "When an enemy smites you on one cheek, do not stand there dumb and passive but in positive attitude turn the other; that is, do the best thing possible actively to lead your brother in error away from the evil paths into the better ways of righteous living." Jesus required his followers to react positively and aggressively to every life situation.</p>
+
+                <p><span class="verse-number">159:5.11-14</span> When Jesus instructed his apostles that they should, when one unjustly took away the coat, offer the other garment, he referred not so much to a literal second coat as to the idea of doing something <em>positive</em> to save the wrongdoer in the place of the olden advice to retaliate—"an eye for an eye" and so on. Jesus abhorred the idea either of retaliation or of becoming just a passive sufferer or victim of injustice. On this occasion he taught them the three ways of contending with, and resisting, evil:</p>
+
+                <ol class="beatitude-list">
+                    <li>To return evil for evil—the positive but unrighteous method.</li>
+                    <li>To suffer evil without complaint and without resistance—the <em>purely negative method.</em></li>
+                    <li>To return good for evil, to assert the will so as to become master of the situation, to overcome evil with good—the positive and righteous method.</li>
+                </ol>
+            </div>
+
+            <div class="reflection">
+                <h4>Reflection</h4>
+                <p>Ironically, a portion of this second reading "The Jews had heard of a God who would forgive repentant sinners and try to forget their misdeeds" may be referring to Psalm 103:12a above. As part of explaining Jesus's call for a creative, positive, personal response to evil, Urantia 159:5:16 states Jesus was the first to speak of a God "who went in search of lost sheep," another positive response to evil and the misfortunes of this life.</p>
+            </div>
+        </section>
+
+        <section class="alleluia-section">
+            <h3>Alleluia</h3>
+            <p class="reading-source">Urantia 140:3.17</p>
+            <p class="response">R. Alleluia, alleluia.</p>
+            <p>"You are commissioned to save men, not to judge them."</p>
+            <p class="response">R. Alleluia, alleluia.</p>
+        </section>
+
+        <section id="gospel" class="reading-section">
+            <h3>Gospel</h3>
+            <p class="reading-source">Urantia, Part IV. The Life and Teachings of Jesus<br>
+            Paper 140 - The Ordination of the Twelve, Section 3. The Ordination Sermon</p>
+            
+            <div class="reading-text">
+                <p><span class="verse-number">140:3.14</span> "I am sending you out into the world to represent me and to act as ambassadors of my Father's kingdom, and as you go forth to proclaim the glad tidings, put your trust in the Father whose messengers you are. Do not forcibly resist injustice; put not your trust in the arm of the flesh. If your neighbor smites you on the right cheek, turn to him the other also. Be willing to suffer injustice rather than to go to law among yourselves. In kindness and with mercy minister to all who are in distress and in need.</p>
+
+                <p><span class="verse-number">140:3.15</span> "I say to you: Love your enemies, do good to those who hate you, bless those who curse you, and pray for those who despitefully use you. And whatsoever you believe that I would do to men, do you also to them.</p>
+
+                <p><span class="verse-number">140:3.16</span> "Your Father in heaven makes the sun to shine on the evil as well as upon the good; likewise he sends rain on the just and the unjust. You are the sons of God; even more, you are now the ambassadors of my Father's kingdom. Be merciful, even as God is merciful, and in the eternal future of the kingdom you shall be perfect, even as your heavenly Father is perfect.</p>
+
+                <p><span class="verse-number">140:3.17</span> "You are commissioned to save men, not to judge them. At the end of your earth life you will all expect mercy; therefore do I require of you during your mortal life that you show mercy to all of your brethren in the flesh. Make not the mistake of trying to pluck a mote out of your brother's eye when there is a beam in your own eye. Having first cast the beam out of your own eye, you can the better see to cast the mote out of your brother's eye.</p>
+            </div>
+
+            <div class="reflection">
+                <h4>Reflection</h4>
+                <p>This Urantia passage comes shortly after the presentation of the Beatitudes. This passage, reflected in Luke's gospel for today, is more focused, giving insight as to what attitude and type of actions to pursue in our search for our Heavenly Father through living the teachings of Jesus.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Urantia Book Lectionary © 2025</p>
+            <p>Visit <a href="https://masteruniverse.org">masteruniverse.org</a> and <a href="https://revelationary.net">revelationary.net</a></p>
+            <p>The Urantia Book passages are used with permission</p>
+        </div>
+    </footer>
+
+    <script>
+        function previousWeek() {
+            alert('Navigate to previous week - February 16, 2025');
+            // In a real implementation, this would load the previous week's content
+        }
+
+        function nextWeek() {
+            alert('Navigate to next week - March 2, 2025');
+            // In a real implementation, this would load the next week's content
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Lectionary content - normal size on desktop, larger on mobile */
+/* Lectionary content - normal size on desktop, slightly larger on mobile */
 .lectionary-content {
   font-size: 1rem;
   line-height: 1.7;
@@ -11,16 +11,24 @@
 /* Mobile font size override for content areas */
 @media (max-width: 640px) {
   .glossary-content.prose,
-  .report-content.prose,
-  .lectionary-content {
+  .report-content.prose {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
   }
   .glossary-content.prose p,
-  .report-content.prose p,
-  .lectionary-content p {
+  .report-content.prose p {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
+  }
+
+  /* Lectionary uses more moderate mobile sizing */
+  .lectionary-content {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+  }
+  .lectionary-content p {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
   }
 }
 
