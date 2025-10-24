@@ -128,14 +128,14 @@ export default function WaveEnergyPage() {
       const textAreaRect = textAreaRef.current.getBoundingClientRect()
 
       // Calculate available vertical space
-      const availableTop = titleRect.bottom + 32 // Title bottom + margin
+      const availableTop = titleRect.bottom + 16 // Title bottom + margin
       const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
       const availableHeight = availableBottom - availableTop
       const textBoxHeight = textAreaRect.height
 
-      // Center the text box in available space, then raise by 35%
+      // Center the text box in available space, then raise by 50%
       const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.35 // Raise by 35% of available space
+      const raiseAmount = availableHeight * 0.50 // Raise by 50% of available space
       const finalPosition = centerPosition - raiseAmount
 
       // Apply the position (ensure it doesn't go above minimum)
@@ -344,12 +344,12 @@ export default function WaveEnergyPage() {
       </Link>
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-2 pb-8 px-8" style={{
+      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-0 pb-8 px-8" style={{
         aspectRatio: '16/9'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
+          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
