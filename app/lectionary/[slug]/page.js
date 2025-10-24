@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Header from '../../../components/Header'
+import LectionaryHeader from '../../../components/LectionaryHeader'
 import ReadAloud from '../../../components/ReadAloud'
 
 export default function LectionaryReading({ params }) {
@@ -33,7 +33,7 @@ export default function LectionaryReading({ params }) {
   if (!reading) {
     return (
       <>
-        <Header />
+        <LectionaryHeader />
         <main className="container mx-auto px-4 py-8 max-w-[65ch]">
           <p className="text-text-muted-light dark:text-text-muted-dark">Loading...</p>
         </main>
@@ -48,7 +48,7 @@ export default function LectionaryReading({ params }) {
 
   return (
     <>
-      <Header title={reading.title} />
+      <LectionaryHeader title={reading.title} />
 
       {/* Sticky Navigation Bar */}
       <nav className="sticky top-[57px] z-40 bg-[#f5ebdf] dark:bg-[#2a2520] border-b-2 border-[#d4c5b9] dark:border-[#4a3f35] shadow-sm">

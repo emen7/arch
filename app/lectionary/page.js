@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Header from '../../components/Header'
+import LectionaryHeader from '../../components/LectionaryHeader'
 
 export const metadata = {
-  title: 'Urantia Lectionary | Revelationary Research',
+  title: 'Urantia Lectionary',
   description: 'Sunday readings from The Urantia Book following the liturgical calendar.',
 }
 
@@ -23,7 +23,7 @@ export default async function LectionaryIndex() {
 
   return (
     <>
-      <Header title="Urantia Lectionary" />
+      <LectionaryHeader />
       <main className="container mx-auto px-4 py-8 max-w-5xl">
         <article>
           {/* Page Header */}
