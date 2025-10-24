@@ -255,7 +255,7 @@ export default function WaveEnergyPage() {
 
   return (
     <div className="w-full h-full flex items-center justify-center" style={{
-      background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
+      background: '#000000',
       color: '#e2e8f0'
     }}>
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
@@ -272,19 +272,20 @@ export default function WaveEnergyPage() {
             width: '1920px',
             height: '1080px',
             transform: `scale(${dimensions.scale})`,
-            transformOrigin: 'top left'
+            transformOrigin: 'top left',
+            background: '#1a1a1a'
           }}
         >
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
+          <div className="text-gray-400 text-2xl font-semibold tracking-wider mb-4 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
           <div className="relative flex-1">
             {/* Logarithmic Scale Label - Rotated */}
             <div
-              className="absolute text-slate-500 text-[13px] tracking-wide whitespace-nowrap"
+              className="absolute text-gray-400 text-sm tracking-wide whitespace-nowrap"
               style={{
                 left: '2px',
                 top: '50%',
@@ -307,8 +308,8 @@ export default function WaveEnergyPage() {
                     onClick={() => setStepAndReset(d.n)}
                   >
                     <div
-                      className="w-8 text-right text-lg font-mono transition-colors"
-                      style={{ color: step === d.n ? d.col : '#64748b' }}
+                      className="w-10 text-right text-2xl font-mono transition-colors"
+                      style={{ color: step === d.n ? d.col : '#9ca3af' }}
                     >
                       {d.n}
                     </div>
@@ -316,13 +317,13 @@ export default function WaveEnergyPage() {
                       className="h-0.5 mx-2 transition-all"
                       style={{
                         width: step === d.n ? '32px' : '24px',
-                        backgroundColor: step === d.n ? d.col : '#64748b'
+                        backgroundColor: step === d.n ? d.col : '#9ca3af'
                       }}
                     ></div>
                     <div
-                      className="text-sm whitespace-nowrap transition-colors"
+                      className="text-base whitespace-nowrap transition-colors"
                       style={{
-                        color: step === d.n ? d.col : '#64748b',
+                        color: step === d.n ? d.col : '#9ca3af',
                         fontWeight: step === d.n ? 600 : 400
                       }}
                     >
@@ -335,7 +336,7 @@ export default function WaveEnergyPage() {
 
             {/* Relative Spin Rates Label - Rotated */}
             <div
-              className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
+              className="absolute text-gray-400 text-sm tracking-wide whitespace-nowrap"
               style={{
                 left: '220px',
                 top: '80%',
@@ -349,7 +350,7 @@ export default function WaveEnergyPage() {
             {/* Sphere */}
             <div className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
               <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
-              <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
+              <div className="text-gray-400 text-base tracking-wider text-center leading-tight">
                 {step === 0 ? (
                   <>PRE OR POST<br />ULTIMATON</>
                 ) : (
@@ -361,7 +362,7 @@ export default function WaveEnergyPage() {
             {/* Pause Button */}
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-slate-800 border border-slate-600 rounded-lg text-slate-300 px-4 py-2 text-xs cursor-pointer hover:bg-slate-700 transition-colors"
+              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-neutral-800 border border-neutral-600 rounded-lg text-gray-300 px-4 py-2 text-sm cursor-pointer hover:bg-neutral-700 transition-colors"
             >
               {isPaused ? 'Resume' : 'Pause'}
             </button>
@@ -371,14 +372,14 @@ export default function WaveEnergyPage() {
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
           <div className="absolute top-[15%] -left-[15%] right-[15%] flex flex-col items-center">
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
+            <div className="bg-neutral-800/60 border border-neutral-600 rounded-xl p-8 max-w-[600px] w-[90%]">
               {/* Navigation Links */}
               {pages.length > 1 && (
-                <div className="flex justify-between mb-4 text-xs tracking-wider">
+                <div className="flex justify-between mb-4 text-sm tracking-wider">
                   {textPage > 0 && (
                     <span
                       onClick={handlePrevPage}
-                      className="text-slate-500 cursor-pointer hover:text-gray-400 transition-colors uppercase"
+                      className="text-gray-400 cursor-pointer hover:text-gray-300 transition-colors uppercase"
                     >
                       Prev
                     </span>
@@ -386,7 +387,7 @@ export default function WaveEnergyPage() {
                   {textPage < pages.length - 1 && (
                     <span
                       onClick={handleNextPage}
-                      className="text-slate-500 cursor-pointer hover:text-gray-400 transition-colors uppercase ml-auto"
+                      className="text-gray-400 cursor-pointer hover:text-gray-300 transition-colors uppercase ml-auto"
                     >
                       Next
                     </span>
@@ -395,12 +396,12 @@ export default function WaveEnergyPage() {
               )}
 
               {/* Title */}
-              <div className="text-gray-400 text-2xl font-semibold mb-6">
+              <div className="text-gray-300 text-3xl font-semibold mb-6">
                 {currentData.name}
               </div>
 
               {/* Text */}
-              <div className="text-slate-300 text-base leading-relaxed">
+              <div className="text-gray-300 text-lg leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
@@ -431,7 +432,7 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-4 text-gray-400 text-sm leading-relaxed max-w-[536px]">
+              <div className="mt-4 text-gray-400 text-base leading-relaxed max-w-[536px]">
                 <span className="font-bold text-green-500">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
@@ -440,10 +441,10 @@ export default function WaveEnergyPage() {
 
           {/* Controls */}
           <div className="absolute bottom-16 right-0 text-right">
-            <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
+            <div className="text-gray-400 text-xs tracking-wider mb-2 uppercase">
               CONTROLS
             </div>
-            <div className="text-slate-500 text-xs leading-relaxed">
+            <div className="text-gray-400 text-sm leading-relaxed">
               <div>↑↓ Arrow keys - Navigate</div>
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
@@ -453,22 +454,22 @@ export default function WaveEnergyPage() {
 
           {/* Navigation Links */}
           <div className="absolute bottom-0 right-0 text-right">
-            <div className="text-slate-500 text-xs leading-relaxed">
-              <Link href="/" className="hover:text-gray-300 transition-colors">Presentations</Link>
+            <div className="text-gray-400 text-sm leading-relaxed">
+              <Link href="/" className="hover:text-gray-200 transition-colors">Presentations</Link>
               <span className="mx-1">|</span>
-              <Link href="/presentations/tomb-intro" className="hover:text-gray-300 transition-colors">Intro</Link>
+              <Link href="/presentations/tomb-intro" className="hover:text-gray-200 transition-colors">Intro</Link>
               <span className="mx-1">|</span>
-              <Link href="/presentations/tomb-timeline" className="hover:text-gray-300 transition-colors">Timeline</Link>
+              <Link href="/presentations/tomb-timeline" className="hover:text-gray-200 transition-colors">Timeline</Link>
               <span className="mx-1">|</span>
-              <Link href="/" className="hover:text-gray-300 transition-colors">MPC</Link>
+              <Link href="/" className="hover:text-gray-200 transition-colors">MPC</Link>
               <span className="mx-1">|</span>
-              <Link href="/" className="hover:text-gray-300 transition-colors">Midwayers</Link>
+              <Link href="/" className="hover:text-gray-200 transition-colors">Midwayers</Link>
               <span className="mx-1">|</span>
-              <Link href="/" className="hover:text-gray-300 transition-colors">Tomb Ops</Link>
+              <Link href="/" className="hover:text-gray-200 transition-colors">Tomb Ops</Link>
               <span className="mx-1">|</span>
-              <Link href="/presentations/tomb-conclusion" className="hover:text-gray-300 transition-colors">Conclusion</Link>
+              <Link href="/presentations/tomb-conclusion" className="hover:text-gray-200 transition-colors">Conclusion</Link>
               <span className="mx-1">|</span>
-              <Link href="/" className="hover:text-gray-300 transition-colors">revelationary.net</Link>
+              <Link href="/" className="hover:text-gray-200 transition-colors">revelationary.net</Link>
             </div>
           </div>
         </div>
