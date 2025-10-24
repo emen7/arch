@@ -48,10 +48,12 @@ export default function LectionaryReading({ params }) {
 
   return (
     <>
-      <LectionaryHeader title={reading.title} />
+      {/* Fixed Header + Navigation */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <LectionaryHeader title={reading.title} />
 
-      {/* Sticky Navigation Bar */}
-      <nav className="sticky top-[60px] z-40 bg-[#F5F7FA] dark:bg-[#2D3748] border-b-2 border-[#E2E8F0] dark:border-[#4A5568] shadow-sm">
+        {/* Navigation Bar */}
+        <nav className="bg-[#F5F7FA] dark:bg-[#2D3748] border-b-2 border-[#E2E8F0] dark:border-[#4A5568] shadow-sm">
         <div className="container mx-auto px-4 py-3 max-w-5xl">
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Prev/Next Navigation */}
@@ -105,9 +107,10 @@ export default function LectionaryReading({ params }) {
             </div>
           </div>
         </div>
-      </nav>
+        </nav>
+      </div>
 
-      <main className="container mx-auto px-4 py-8 max-w-[65ch]">
+      <main className="container mx-auto px-4 pt-32 pb-8 max-w-[65ch]">
         <article className="font-serif">
           {/* Back Link */}
           <Link

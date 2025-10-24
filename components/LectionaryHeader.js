@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle'
 
 export default function LectionaryHeader({ title }) {
   return (
-    <header className="sticky top-0 z-50 bg-light-bg dark:bg-dark-bg border-b-2 border-light-border dark:border-dark-border">
+    <header className="bg-light-bg dark:bg-dark-bg border-b-2 border-light-border dark:border-dark-border">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
           {/* Branding */}
