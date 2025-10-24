@@ -11,7 +11,6 @@ export default function WaveEnergyPage() {
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
@@ -96,26 +95,10 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Detect small screens and mobile devices
+  // Detect mobile devices only
   useEffect(() => {
-    const checkScreenSize = () => {
-      // Screen width less than 1024px is considered too small
-      setIsSmallScreen(window.innerWidth < 1024)
-
-      // Detect if on a mobile device (phone/tablet) vs desktop
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      setIsMobileDevice(isMobile)
-    }
-
-    // Initial check
-    checkScreenSize()
-
-    // Listen for resize events
-    window.addEventListener('resize', checkScreenSize)
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize)
-    }
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    setIsMobileDevice(isMobile)
   }, [])
 
   // Center text box vertically between title and sphere canvas
@@ -297,35 +280,23 @@ export default function WaveEnergyPage() {
       background: 'linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a)',
       color: '#e2e8f0'
     }}>
-      {/* Small Screen Overlay */}
-      {isSmallScreen && (
+      {/* Mobile Device Overlay - only show for actual mobile devices */}
+      {isMobileDevice && (
         <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">{isMobileDevice ? '💻' : '↔️'}</div>
+          <div className="text-6xl mb-6">💻</div>
           <div className="text-2xl font-semibold mb-6 text-gray-200">
-            {isMobileDevice ? 'Desktop or Tablet Required' : 'Please Widen Your Window'}
+            Desktop or Tablet Required
           </div>
           <div className="text-lg text-gray-300 max-w-md mb-4">
-            {isMobileDevice ? (
-              'This interactive visualization is designed for larger screens.'
-            ) : (
-              'This visualization requires a minimum width of 1024 pixels.'
-            )}
+            This interactive visualization is designed for larger screens.
           </div>
-          {isMobileDevice ? (
-            <>
-              <div className="text-base text-gray-400 max-w-md mb-8">
-                Please view on:
-              </div>
-              <div className="text-lg text-gray-300 space-y-2 mb-8">
-                <div>• Desktop or laptop computer</div>
-                <div>• iPad or tablet (landscape mode)</div>
-              </div>
-            </>
-          ) : (
-            <div className="text-base text-gray-400 max-w-md mb-8">
-              Expand your browser window to view this content.
-            </div>
-          )}
+          <div className="text-base text-gray-400 max-w-md mb-8">
+            Please view on:
+          </div>
+          <div className="text-lg text-gray-300 space-y-2 mb-8">
+            <div>• Desktop or laptop computer</div>
+            <div>• iPad or tablet (landscape mode)</div>
+          </div>
           <Link
             href="/"
             className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
@@ -361,11 +332,12 @@ export default function WaveEnergyPage() {
         </div>
       </div>
 
-      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative flex gap-12 p-8 pt-16" style={{
-        aspectRatio: '16/9',
-        width: '95vw',
-        maxWidth: '1920px'
+      {/* Fixed 16:9 container - scales to fit viewport while maintaining aspect ratio */}
+      <div className="flex gap-12 p-8 pt-16 relative" style={{
+        width: '100vw',
+        height: '56.25vw', // 16:9 ratio (9/16 = 0.5625)
+        maxWidth: '177.78vh', // When height limited (16/9 = 1.7778)
+        maxHeight: '100vh'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
