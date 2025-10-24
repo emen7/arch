@@ -12,6 +12,7 @@ export default function WaveEnergyPage() {
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -95,12 +96,15 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Detect small screens (phones) - tablets and desktop OK
+  // Detect small screens and mobile devices
   useEffect(() => {
     const checkScreenSize = () => {
-      // Screen width less than 1024px is considered too small (phones)
-      // iPads and larger tablets (typically 1024px+) will work fine
+      // Screen width less than 1024px is considered too small
       setIsSmallScreen(window.innerWidth < 1024)
+
+      // Detect if on a mobile device (phone/tablet) vs desktop
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobileDevice(isMobile)
     }
 
     // Initial check
@@ -296,18 +300,32 @@ export default function WaveEnergyPage() {
       {/* Small Screen Overlay */}
       {isSmallScreen && (
         <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">💻</div>
-          <div className="text-2xl font-semibold mb-6 text-gray-200">Desktop or Tablet Required</div>
+          <div className="text-6xl mb-6">{isMobileDevice ? '💻' : '↔️'}</div>
+          <div className="text-2xl font-semibold mb-6 text-gray-200">
+            {isMobileDevice ? 'Desktop or Tablet Required' : 'Please Widen Your Window'}
+          </div>
           <div className="text-lg text-gray-300 max-w-md mb-4">
-            This interactive visualization is designed for larger screens.
+            {isMobileDevice ? (
+              'This interactive visualization is designed for larger screens.'
+            ) : (
+              'This visualization requires a minimum width of 1024 pixels.'
+            )}
           </div>
-          <div className="text-base text-gray-400 max-w-md mb-8">
-            Please view on:
-          </div>
-          <div className="text-lg text-gray-300 space-y-2 mb-8">
-            <div>• Desktop or laptop computer</div>
-            <div>• iPad or tablet (landscape mode)</div>
-          </div>
+          {isMobileDevice ? (
+            <>
+              <div className="text-base text-gray-400 max-w-md mb-8">
+                Please view on:
+              </div>
+              <div className="text-lg text-gray-300 space-y-2 mb-8">
+                <div>• Desktop or laptop computer</div>
+                <div>• iPad or tablet (landscape mode)</div>
+              </div>
+            </>
+          ) : (
+            <div className="text-base text-gray-400 max-w-md mb-8">
+              Expand your browser window to view this content.
+            </div>
+          )}
           <Link
             href="/"
             className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
