@@ -170,24 +170,24 @@ export default function WaveEnergyPage() {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
-    const centerX = 80
-    const centerY = 80
-    const radius = 55
+    const centerX = 120
+    const centerY = 120
+    const radius = 83
 
     const draw = () => {
-      ctx.clearRect(0, 0, 160, 160)
+      ctx.clearRect(0, 0, 240, 240)
 
       // Grid - more visible but still dimmed compared to text
       ctx.strokeStyle = '#64748b'
-      ctx.lineWidth = 0.5
-      for (let i = 0; i < 160; i += 20) {
+      ctx.lineWidth = 0.75
+      for (let i = 0; i < 240; i += 30) {
         ctx.beginPath()
         ctx.moveTo(i, 0)
-        ctx.lineTo(i, 160)
+        ctx.lineTo(i, 240)
         ctx.stroke()
         ctx.beginPath()
         ctx.moveTo(0, i)
-        ctx.lineTo(160, i)
+        ctx.lineTo(240, i)
         ctx.stroke()
       }
 
@@ -195,12 +195,12 @@ export default function WaveEnergyPage() {
 
       if (d.sphereCol === 'transparent') {
         ctx.strokeStyle = '#64748b'
-        ctx.lineWidth = 2
+        ctx.lineWidth = 3
         ctx.beginPath()
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2)
         ctx.stroke()
       } else {
-        const g = ctx.createRadialGradient(centerX - 15, centerY - 15, 10, centerX, centerY, radius)
+        const g = ctx.createRadialGradient(centerX - 22, centerY - 22, 15, centerX, centerY, radius)
         const alpha = Math.floor(d.op * 255).toString(16).padStart(2, '0')
         g.addColorStop(0, d.sphereCol + alpha)
         g.addColorStop(1, d.sphereCol + '40')
@@ -235,7 +235,7 @@ export default function WaveEnergyPage() {
           ctx.scale(scale, 1)
 
           ctx.strokeStyle = `rgba(0,0,0,${d.op * 0.9})`
-          ctx.lineWidth = 2.5
+          ctx.lineWidth = 3.75
 
           ctx.beginPath()
           ctx.moveTo(-crossSize, 0)
@@ -323,12 +323,12 @@ export default function WaveEnergyPage() {
           {/* Header Navigation */}
           <div className="flex items-center justify-between mb-6">
             {/* Project Title */}
-            <div className="text-gray-400 text-base tracking-wider">
+            <div className="text-gray-400 text-xl tracking-wider">
               ACCELERATED TIME OF THE TOMB
             </div>
 
             {/* Horizontal Links */}
-            <div className="flex items-center gap-8 text-base">
+            <div className="flex items-center gap-8 text-lg">
               <Link
                 href="/"
                 className="text-gray-500 hover:text-gray-300 transition-colors"
@@ -342,7 +342,7 @@ export default function WaveEnergyPage() {
                 Wave-Energy
               </Link>
               <span className="text-gray-600">|</span>
-              <span className="text-gray-500 text-sm tracking-wide">PRESENTATIONS</span>
+              <span className="text-gray-500 text-base tracking-wide">PRESENTATIONS</span>
             </div>
           </div>
 
@@ -357,7 +357,7 @@ export default function WaveEnergyPage() {
           <div className="relative flex-1">
             {/* Logarithmic Scale Label - Rotated */}
             <div
-              className="absolute text-gray-500 text-base tracking-wide whitespace-nowrap"
+              className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
                 left: '2px',
                 top: '50%',
@@ -380,20 +380,20 @@ export default function WaveEnergyPage() {
                     onClick={() => setStepAndReset(d.n)}
                   >
                     <div
-                      className="w-10 text-right text-2xl font-mono transition-colors font-semibold"
+                      className="w-14 text-right text-4xl font-mono transition-colors font-semibold"
                       style={{ color: step === d.n ? d.col : '#9ca3af' }}
                     >
                       {d.n}
                     </div>
                     <div
-                      className="h-0.5 mx-2 transition-all"
+                      className="h-0.5 mx-3 transition-all"
                       style={{
-                        width: step === d.n ? '36px' : '28px',
+                        width: step === d.n ? '48px' : '36px',
                         backgroundColor: step === d.n ? d.col : '#9ca3af'
                       }}
                     ></div>
                     <div
-                      className="text-lg whitespace-nowrap transition-colors"
+                      className="text-2xl whitespace-nowrap transition-colors"
                       style={{
                         color: step === d.n ? d.col : '#d1d5db',
                         fontWeight: step === d.n ? 600 : 400
@@ -408,9 +408,9 @@ export default function WaveEnergyPage() {
 
             {/* Relative Spin Rates Label - Rotated */}
             <div
-              className="absolute text-gray-500 text-base tracking-wide whitespace-nowrap"
+              className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '220px',
+                left: '280px',
                 top: '80%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
@@ -420,9 +420,9 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
-              <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
-              <div className="text-gray-200 text-lg tracking-wider text-center leading-tight font-semibold">
+            <div ref={sphereContainerRef} className="absolute left-[340px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-3">
+              <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
+              <div className="text-gray-200 text-2xl tracking-wider text-center leading-tight font-semibold">
                 {step === 0 ? (
                   <>PRE OR POST<br />ULTIMATON</>
                 ) : (
@@ -434,7 +434,7 @@ export default function WaveEnergyPage() {
             {/* Pause Button */}
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-neutral-800/90 border border-neutral-600/80 rounded-lg text-gray-200 px-5 py-2.5 text-sm font-medium cursor-pointer hover:bg-neutral-700 hover:border-neutral-500 transition-all shadow-lg"
+              className="absolute left-[560px] top-[80%] translate-y-[135px] bg-neutral-800/90 border border-neutral-600/80 rounded-lg text-gray-200 px-6 py-3 text-base font-medium cursor-pointer hover:bg-neutral-700 hover:border-neutral-500 transition-all shadow-lg"
             >
               {isPaused ? '▶ Resume' : '⏸ Pause'}
             </button>
@@ -444,10 +444,10 @@ export default function WaveEnergyPage() {
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
           <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
-            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-10 max-w-[650px] w-[90%] shadow-2xl">
+            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[90%] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
-                <div className="flex justify-between mb-6 text-sm tracking-wider">
+                <div className="flex justify-between mb-8 text-lg tracking-wider">
                   {textPage > 0 && (
                     <span
                       onClick={handlePrevPage}
@@ -468,26 +468,26 @@ export default function WaveEnergyPage() {
               )}
 
               {/* Title */}
-              <div className="text-gray-100 text-3xl font-semibold mb-8 tracking-wide">
+              <div className="text-gray-100 text-5xl font-semibold mb-10 tracking-wide">
                 {currentData.name}
               </div>
 
               {/* Text */}
-              <div className="text-gray-200 text-lg leading-relaxed">
+              <div className="text-gray-200 text-2xl leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
               {/* Dot Indicators */}
               {pages.length > 1 && (
-                <div className="flex justify-center gap-3 mt-8">
+                <div className="flex justify-center gap-4 mt-10">
                   {pages.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setTextPage(index)}
                       className="transition-all"
                       style={{
-                        width: '10px',
-                        height: '10px',
+                        width: '14px',
+                        height: '14px',
                         borderRadius: '50%',
                         backgroundColor: index === textPage ? '#d1d5db' : '#6b7280',
                         opacity: index === textPage ? 1 : 0.5,
@@ -504,7 +504,7 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-5 text-gray-300 text-base leading-relaxed max-w-[600px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-5 py-4">
+              <div className="mt-6 text-gray-300 text-xl leading-relaxed max-w-[650px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5">
                 <span className="font-semibold text-emerald-400">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
@@ -512,11 +512,11 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* Controls */}
-          <div className="absolute bottom-0 right-0 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-5 py-4">
-            <div className="text-gray-400 text-xs tracking-wider mb-3 uppercase font-semibold">
+          <div className="absolute bottom-0 right-0 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
+            <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
               CONTROLS
             </div>
-            <div className="text-gray-300 text-sm leading-relaxed space-y-1.5">
+            <div className="text-gray-300 text-base leading-relaxed space-y-2">
               <div>↑↓ Arrow keys - Navigate</div>
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
