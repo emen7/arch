@@ -413,7 +413,7 @@ export default function WaveEnergyPage() {
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '340px',
+                left: '375px',
                 top: '80%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
