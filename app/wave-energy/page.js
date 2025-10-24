@@ -133,9 +133,9 @@ export default function WaveEnergyPage() {
       const availableHeight = availableBottom - availableTop
       const textBoxHeight = textAreaRect.height
 
-      // Center the text box in available space, then raise by 10%
+      // Center the text box in available space, then raise by 50%
       const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.10 // Raise by 10% of available space
+      const raiseAmount = availableHeight * 0.50 // Raise by 50% of available space
       const finalPosition = centerPosition - raiseAmount
 
       // Apply the position (ensure it doesn't go above minimum)
@@ -294,7 +294,7 @@ export default function WaveEnergyPage() {
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4" style={{
-      background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
+      background: 'linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a)',
       color: '#e2e8f0'
     }}>
       {/* Small Screen Overlay */}
@@ -362,8 +362,10 @@ export default function WaveEnergyPage() {
       </div>
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8 pt-16" style={{
-        aspectRatio: '16/9'
+      <div className="relative flex gap-12 p-8 pt-16" style={{
+        aspectRatio: '16/9',
+        width: '95vw',
+        maxWidth: '1920px'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
