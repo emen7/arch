@@ -116,9 +116,9 @@ export default function WaveEnergyPage() {
       const availableHeight = availableBottom - availableTop
       const textBoxHeight = textAreaRect.height
 
-      // Center the text box in available space, then raise by 50%
+      // Center the text box in available space, then raise by 35%
       const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.50 // Raise by 50% of available space
+      const raiseAmount = availableHeight * 0.35 // Raise by 35% of available space
       const finalPosition = centerPosition - raiseAmount
 
       // Apply the position (ensure it doesn't go above minimum)
@@ -332,12 +332,9 @@ export default function WaveEnergyPage() {
         </div>
       </div>
 
-      {/* Fixed 16:9 container - scales to fit viewport while maintaining aspect ratio */}
-      <div className="flex gap-12 p-8 pt-16 relative" style={{
-        width: '100vw',
-        height: '56.25vw', // 16:9 ratio (9/16 = 0.5625)
-        maxWidth: '177.78vh', // When height limited (16/9 = 1.7778)
-        maxHeight: '100vh'
+      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
+      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-2 pb-8 px-8" style={{
+        aspectRatio: '16/9'
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
