@@ -61,11 +61,11 @@ export default async function LectionaryIndex() {
                         href={`/lectionary/${reading.slug}`}
                         className="group block"
                       >
-                        <article className="border-2 border-light-border dark:border-dark-border rounded-lg overflow-hidden transition-all hover:border-[#b56d62] dark:hover:border-[#b56d62] hover:shadow-lg h-full">
+                        <article className="border-2 border-light-border dark:border-dark-border rounded-lg overflow-hidden transition-all hover:border-[#4A90E2] dark:hover:border-[#4A90E2] hover:shadow-lg h-full">
                           {/* Date Badge */}
                           <div className="bg-[#f5ebdf] dark:bg-[#2a2520] border-b-2 border-light-border dark:border-dark-border px-4 py-3 flex items-center gap-4">
                             <div className="text-center min-w-[60px]">
-                              <div className="text-3xl font-bold text-[#b56d62]">
+                              <div className="text-3xl font-bold text-[#4A90E2]">
                                 {dayOfMonth}
                               </div>
                               <div className="text-xs uppercase tracking-wide text-text-muted-light dark:text-text-muted-dark">
@@ -73,7 +73,7 @@ export default async function LectionaryIndex() {
                               </div>
                             </div>
                             <div className="flex-1">
-                              <h3 className="text-lg font-semibold text-text-light dark:text-text-dark group-hover:text-[#b56d62] transition-colors leading-tight">
+                              <h3 className="text-lg font-semibold text-text-light dark:text-text-dark group-hover:text-[#4A90E2] transition-colors leading-tight">
                                 {reading.title}
                               </h3>
                             </div>
@@ -100,7 +100,7 @@ export default async function LectionaryIndex() {
           <footer className="mt-16 pt-8 border-t-2 border-light-border dark:border-dark-border text-center">
             <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
               <em>The Urantia Book</em> passages are used with permission.<br />
-              Visit <a href="https://masteruniverse.org" className="text-[#87b4c8] hover:underline">masteruniverse.org</a> for more resources.
+              Visit <a href="https://masteruniverse.org" className="text-[#2C5F8D] hover:underline">masteruniverse.org</a> for more resources.
             </p>
           </footer>
         </article>

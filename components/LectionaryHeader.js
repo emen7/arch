@@ -11,7 +11,7 @@ export default function LectionaryHeader({ title }) {
           {/* Branding */}
           <Link
             href="/lectionary"
-            className="text-xl font-semibold text-[#1e2f48] dark:text-[#e8dcc9] hover:text-[#b56d62] dark:hover:text-[#b56d62] transition-colors"
+            className="text-xl font-semibold text-[#1e2f48] dark:text-[#e8dcc9] hover:text-[#4A90E2] dark:hover:text-[#4A90E2] transition-colors"
           >
             Urantia Lectionary
           </Link>

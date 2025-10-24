@@ -59,7 +59,7 @@ export default function LectionaryReading({ params }) {
               {prevReading ? (
                 <Link
                   href={`/lectionary/${prevReading.slug}`}
-                  className="px-4 py-2 bg-[#87b4c8] hover:bg-[#6a9bb3] text-white rounded transition-colors text-sm font-medium"
+                  className="px-4 py-2 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors text-sm font-medium"
                 >
                   ← Previous Week
                 </Link>
@@ -72,7 +72,7 @@ export default function LectionaryReading({ params }) {
               {nextReading ? (
                 <Link
                   href={`/lectionary/${nextReading.slug}`}
-                  className="px-4 py-2 bg-[#87b4c8] hover:bg-[#6a9bb3] text-white rounded transition-colors text-sm font-medium"
+                  className="px-4 py-2 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors text-sm font-medium"
                 >
                   Next Week →
                 </Link>
@@ -85,16 +85,16 @@ export default function LectionaryReading({ params }) {
 
             {/* Quick Jump Links & TTS */}
             <div className="flex items-center gap-4 text-sm">
-              <a href="#first-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
+              <a href="#first-reading" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Reading 1
               </a>
-              <a href="#psalm" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
+              <a href="#psalm" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Psalm
               </a>
-              <a href="#second-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
+              <a href="#second-reading" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Reading 2
               </a>
-              <a href="#gospel" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
+              <a href="#gospel" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Gospel
               </a>
 
@@ -112,7 +112,7 @@ export default function LectionaryReading({ params }) {
           {/* Back Link */}
           <Link
             href="/lectionary"
-            className="inline-block mb-6 text-[#87b4c8] hover:text-[#6a9bb3] hover:underline"
+            className="inline-block mb-6 text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline"
           >
             ← Back to Lectionary
           </Link>
@@ -128,7 +128,7 @@ export default function LectionaryReading({ params }) {
             ) : (
               <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#e8dcc9] to-[#d4c5b9] dark:from-[#2a2520] dark:to-[#1e1a15]">
                 <div className="text-center px-6">
-                  <svg className="w-24 h-24 mx-auto mb-4 text-[#b56d62] dark:text-[#8b4513] opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-24 h-24 mx-auto mb-4 text-[#4A90E2] dark:text-[#8b4513] opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
@@ -153,7 +153,7 @@ export default function LectionaryReading({ params }) {
             <h1 className="text-4xl font-bold mb-3 text-[#1e2f48] dark:text-[#e8dcc9]">
               {reading.title}
             </h1>
-            <p className="text-lg text-[#b56d62] mb-2">
+            <p className="text-lg text-[#4A90E2] mb-2">
               {reading.date}
             </p>
             {reading.theme && (
@@ -185,7 +185,7 @@ export default function LectionaryReading({ params }) {
                   className="scroll-mt-32 bg-white dark:bg-[#1e2126] rounded-lg p-8 shadow-md border-2 border-[#d4c5b9] dark:border-[#4a3f35]"
                 >
                   {/* Section Heading */}
-                  <h2 className="text-2xl font-bold mb-2 text-[#b56d62] border-b-2 border-[#d4c5b9] dark:border-[#4a3f35] pb-2">
+                  <h2 className="text-2xl font-bold mb-2 text-[#4A90E2] border-b-2 border-[#d4c5b9] dark:border-[#4a3f35] pb-2">
                     {section.heading || (section.type === 'intro-reflection' ? 'Introductory Reflection' : '')}
                   </h2>
 
@@ -198,8 +198,8 @@ export default function LectionaryReading({ params }) {
 
                   {/* Psalm Response */}
                   {section.type === 'psalm' && section.response && (
-                    <div className="bg-[#f5ebdf] dark:bg-[#2a2520] border-l-4 border-[#b56d62] px-4 py-3 mb-4 rounded">
-                      <p className="font-bold text-[#b56d62]">
+                    <div className="bg-[#f5ebdf] dark:bg-[#2a2520] border-l-4 border-[#4A90E2] px-4 py-3 mb-4 rounded">
+                      <p className="font-bold text-[#4A90E2]">
                         R. {section.response}
                       </p>
                     </div>
@@ -213,7 +213,7 @@ export default function LectionaryReading({ params }) {
                         <div
                           key={vIdx}
                           dangerouslySetInnerHTML={{ __html: verse }}
-                          className="text-text-light dark:text-text-dark [&_strong]:text-[#b56d62] [&_strong]:font-bold"
+                          className="text-text-light dark:text-text-dark [&_strong]:text-[#4A90E2] [&_strong]:font-bold"
                         />
                       ))
                     ) : (
@@ -222,7 +222,7 @@ export default function LectionaryReading({ params }) {
                         <div
                           key={pIdx}
                           dangerouslySetInnerHTML={{ __html: paragraph }}
-                          className="text-text-light dark:text-text-dark [&_strong]:font-semibold [&_em]:italic [&_a]:text-[#87b4c8] [&_a]:hover:underline"
+                          className="text-text-light dark:text-text-dark [&_strong]:font-semibold [&_em]:italic [&_a]:text-[#2C5F8D] [&_a]:hover:underline"
                         />
                       ))
                     )}
@@ -230,8 +230,8 @@ export default function LectionaryReading({ params }) {
 
                   {/* Reflection */}
                   {section.reflection && (
-                    <div className="mt-6 bg-[#f0f4f8] dark:bg-[#1a1d23] border-l-4 border-[#87b4c8] px-6 py-4 rounded">
-                      <h3 className="text-lg font-semibold text-[#87b4c8] mb-2">
+                    <div className="mt-6 bg-[#f0f4f8] dark:bg-[#1a1d23] border-l-4 border-[#2C5F8D] px-6 py-4 rounded">
+                      <h3 className="text-lg font-semibold text-[#2C5F8D] mb-2">
                         Reflection
                       </h3>
                       <div
@@ -249,7 +249,7 @@ export default function LectionaryReading({ params }) {
           <div className="mt-12 text-center">
             <a
               href="#"
-              className="inline-block px-6 py-3 bg-[#87b4c8] hover:bg-[#6a9bb3] text-white rounded transition-colors font-medium"
+              className="inline-block px-6 py-3 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors font-medium"
             >
               ↑ Back to Top
             </a>
