@@ -117,29 +117,34 @@ export default function WaveEnergyPage() {
     }
   }, [])
 
-  // Calculate scale to fit viewport while maintaining fixed layout
+  // Calculate container dimensions to maintain 16:9 ratio
   useEffect(() => {
-    const calculateScale = () => {
-      if (!containerRef.current) return
+    const updateDimensions = () => {
+      const viewportWidth = window.innerWidth * 0.95
+      const viewportHeight = window.innerHeight * 0.95
 
-      const baseWidth = 1920 // Base design width
-      const baseHeight = 1080 // Base design height (16:9)
-      const viewportWidth = window.innerWidth * 0.95 // 95vw
-      const viewportHeight = window.innerHeight * 0.95 // Leave some margin
+      // Calculate dimensions maintaining 16:9 ratio
+      let width = viewportWidth
+      let height = width / (16 / 9)
 
-      // Calculate scale to fit both width and height
-      const scaleX = viewportWidth / baseWidth
-      const scaleY = viewportHeight / baseHeight
-      const newScale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
+      // If height exceeds viewport, constrain by height instead
+      if (height > viewportHeight) {
+        height = viewportHeight
+        width = height * (16 / 9)
+      }
 
-      setScale(newScale)
+      // Cap at 1920x1080 (never scale up beyond design size)
+      width = Math.min(width, 1920)
+      height = Math.min(height, 1080)
+
+      setScale(width / 1920) // Scale relative to base width
     }
 
-    calculateScale()
-    window.addEventListener('resize', calculateScale)
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
 
     return () => {
-      window.removeEventListener('resize', calculateScale)
+      window.removeEventListener('resize', updateDimensions)
     }
   }, [])
 
