@@ -5,12 +5,14 @@
 /* Mobile font size override for content areas */
 @media (max-width: 640px) {
   .glossary-content.prose,
-  .report-content.prose {
+  .report-content.prose,
+  article.font-serif {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
   }
   .glossary-content.prose p,
-  .report-content.prose p {
+  .report-content.prose p,
+  article.font-serif p {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
   }
