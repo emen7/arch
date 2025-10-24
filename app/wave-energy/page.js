@@ -5,11 +5,13 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
+  const containerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [scale, setScale] = useState(1)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -112,6 +114,32 @@ export default function WaveEnergyPage() {
 
     return () => {
       window.removeEventListener('resize', checkScreenSize)
+    }
+  }, [])
+
+  // Calculate scale to fit viewport while maintaining fixed layout
+  useEffect(() => {
+    const calculateScale = () => {
+      if (!containerRef.current) return
+
+      const baseWidth = 1920 // Base design width
+      const baseHeight = 1080 // Base design height (16:9)
+      const viewportWidth = window.innerWidth * 0.95 // 95vw
+      const viewportHeight = window.innerHeight * 0.95 // Leave some margin
+
+      // Calculate scale to fit both width and height
+      const scaleX = viewportWidth / baseWidth
+      const scaleY = viewportHeight / baseHeight
+      const newScale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
+
+      setScale(newScale)
+    }
+
+    calculateScale()
+    window.addEventListener('resize', calculateScale)
+
+    return () => {
+      window.removeEventListener('resize', calculateScale)
     }
   }, [])
 
@@ -300,9 +328,16 @@ export default function WaveEnergyPage() {
       </Link>
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-0 pb-8 px-8" style={{
-        aspectRatio: '16/9'
-      }}>
+      <div
+        ref={containerRef}
+        className="relative flex gap-12 pt-0 pb-8 px-8"
+        style={{
+          width: '1920px',
+          height: '1080px',
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center'
+        }}
+      >
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
