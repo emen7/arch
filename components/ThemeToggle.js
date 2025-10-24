@@ -31,19 +31,13 @@ export default function ThemeToggle() {
     return <div className="w-10 h-10" />
   }
 
-  const handleToggle = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    toggleTheme()
-  }
-
   return (
     <button
-      onClick={handleToggle}
-      onTouchEnd={handleToggle}
-      className="p-3 rounded-lg bg-light-card dark:bg-dark-card hover:bg-light-border dark:hover:bg-dark-border transition-colors touch-manipulation"
+      onClick={toggleTheme}
+      className="p-3 rounded-lg bg-light-card dark:bg-dark-card hover:bg-light-border dark:hover:bg-dark-border transition-colors select-none"
       aria-label="Toggle theme"
       type="button"
+      style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
     >
       {isDark ? (
         // Sun icon - click to go light

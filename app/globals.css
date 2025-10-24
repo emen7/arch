@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Lectionary content - normal size on desktop, slightly larger on mobile */
+/* Lectionary content - smaller on desktop (serif renders larger), moderate on mobile */
 .lectionary-content {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 /* Mobile font size override for content areas */
