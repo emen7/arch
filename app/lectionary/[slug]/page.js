@@ -51,7 +51,7 @@ export default function LectionaryReading({ params }) {
       <LectionaryHeader title={reading.title} />
 
       {/* Sticky Navigation Bar */}
-      <nav className="sticky top-[57px] z-40 bg-[#f5ebdf] dark:bg-[#2a2520] border-b-2 border-[#d4c5b9] dark:border-[#4a3f35] shadow-sm">
+      <nav className="sticky top-[57px] z-40 bg-[#F5F7FA] dark:bg-[#2D3748] border-b-2 border-[#E2E8F0] dark:border-[#4A5568] shadow-sm">
         <div className="container mx-auto px-4 py-3 max-w-5xl">
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Prev/Next Navigation */}
@@ -64,7 +64,7 @@ export default function LectionaryReading({ params }) {
                   ← Previous Week
                 </Link>
               ) : (
-                <div className="px-4 py-2 bg-[#d4c5b9] dark:bg-[#4a3f35] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
+                <div className="px-4 py-2 bg-[#E2E8F0] dark:bg-[#4A5568] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
                   ← Previous Week
                 </div>
               )}
@@ -77,7 +77,7 @@ export default function LectionaryReading({ params }) {
                   Next Week →
                 </Link>
               ) : (
-                <div className="px-4 py-2 bg-[#d4c5b9] dark:bg-[#4a3f35] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
+                <div className="px-4 py-2 bg-[#E2E8F0] dark:bg-[#4A5568] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
                   Next Week →
                 </div>
               )}
@@ -118,7 +118,7 @@ export default function LectionaryReading({ params }) {
           </Link>
 
           {/* Hero Image - Show placeholder or actual image */}
-          <div className="mb-8 rounded-lg overflow-hidden shadow-lg bg-[#f5ebdf] dark:bg-[#2a2520] border-2 border-[#d4c5b9] dark:border-[#4a3f35]">
+          <div className="mb-8 rounded-lg overflow-hidden shadow-lg bg-[#F5F7FA] dark:bg-[#2D3748] border-2 border-[#E2E8F0] dark:border-[#4A5568]">
             {reading.heroImage && reading.heroImage.src ? (
               <img
                 src={reading.heroImage.src}
@@ -126,7 +126,7 @@ export default function LectionaryReading({ params }) {
                 className="w-full h-auto"
               />
             ) : (
-              <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#e8dcc9] to-[#d4c5b9] dark:from-[#2a2520] dark:to-[#1e1a15]">
+              <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#E2E8F0] to-[#E2E8F0] dark:from-[#2D3748] dark:to-[#1e1a15]">
                 <div className="text-center px-6">
                   <svg className="w-24 h-24 mx-auto mb-4 text-[#4A90E2] dark:text-[#8b4513] opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -140,7 +140,7 @@ export default function LectionaryReading({ params }) {
 
             {/* Caption - shown for both placeholder and actual image */}
             {(reading.theme || reading.heroImage?.caption) && (
-              <div className="bg-[#f5ebdf] dark:bg-[#2a2520] px-6 py-4 text-center border-t-2 border-[#d4c5b9] dark:border-[#4a3f35]">
+              <div className="bg-[#F5F7FA] dark:bg-[#2D3748] px-6 py-4 text-center border-t-2 border-[#E2E8F0] dark:border-[#4A5568]">
                 <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
                   {reading.heroImage?.caption || reading.theme}
                 </p>
@@ -150,7 +150,7 @@ export default function LectionaryReading({ params }) {
 
           {/* Header */}
           <header className="mb-8 text-center">
-            <h1 className="text-4xl font-bold mb-3 text-[#1e2f48] dark:text-[#e8dcc9]">
+            <h1 className="text-4xl font-bold mb-3 text-[#1e2f48] dark:text-[#E2E8F0]">
               {reading.title}
             </h1>
             <p className="text-lg text-[#4A90E2] mb-2">
@@ -182,10 +182,10 @@ export default function LectionaryReading({ params }) {
                 <section
                   key={idx}
                   id={sectionId}
-                  className="scroll-mt-32 bg-white dark:bg-[#1e2126] rounded-lg p-8 shadow-md border-2 border-[#d4c5b9] dark:border-[#4a3f35]"
+                  className="scroll-mt-32 bg-white dark:bg-[#1e2126] rounded-lg p-8 shadow-md border-2 border-[#E2E8F0] dark:border-[#4A5568]"
                 >
                   {/* Section Heading */}
-                  <h2 className="text-2xl font-bold mb-2 text-[#4A90E2] border-b-2 border-[#d4c5b9] dark:border-[#4a3f35] pb-2">
+                  <h2 className="text-2xl font-bold mb-2 text-[#4A90E2] border-b-2 border-[#E2E8F0] dark:border-[#4A5568] pb-2">
                     {section.heading || (section.type === 'intro-reflection' ? 'Introductory Reflection' : '')}
                   </h2>
 
@@ -198,7 +198,7 @@ export default function LectionaryReading({ params }) {
 
                   {/* Psalm Response */}
                   {section.type === 'psalm' && section.response && (
-                    <div className="bg-[#f5ebdf] dark:bg-[#2a2520] border-l-4 border-[#4A90E2] px-4 py-3 mb-4 rounded">
+                    <div className="bg-[#F5F7FA] dark:bg-[#2D3748] border-l-4 border-[#4A90E2] px-4 py-3 mb-4 rounded">
                       <p className="font-bold text-[#4A90E2]">
                         R. {section.response}
                       </p>

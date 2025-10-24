@@ -63,7 +63,7 @@ export default async function LectionaryIndex() {
                       >
                         <article className="border-2 border-light-border dark:border-dark-border rounded-lg overflow-hidden transition-all hover:border-[#4A90E2] dark:hover:border-[#4A90E2] hover:shadow-lg h-full">
                           {/* Date Badge */}
-                          <div className="bg-[#f5ebdf] dark:bg-[#2a2520] border-b-2 border-light-border dark:border-dark-border px-4 py-3 flex items-center gap-4">
+                          <div className="bg-[#F5F7FA] dark:bg-[#2D3748] border-b-2 border-light-border dark:border-dark-border px-4 py-3 flex items-center gap-4">
                             <div className="text-center min-w-[60px]">
                               <div className="text-3xl font-bold text-[#4A90E2]">
                                 {dayOfMonth}
