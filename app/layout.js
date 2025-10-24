@@ -44,9 +44,11 @@ export default function RootLayout({ children }) {
                 const savedRoute = localStorage.getItem('app-last-route');
                 const savedScroll = localStorage.getItem('app-scroll-position');
 
-                // Clean up: If saved route is a presentation, clear it (one-time migration)
+                // Clean up: If saved route is a presentation or lectionary, clear it (one-time migration)
                 const isPresentationRoute = savedRoute && (savedRoute.startsWith('/presentations/') || savedRoute === '/wave-energy' || savedRoute === '/wave-test');
-                if (isPresentationRoute) {
+                const isLectionaryRoute = savedRoute && savedRoute.startsWith('/lectionary');
+
+                if (isPresentationRoute || isLectionaryRoute) {
                   localStorage.removeItem('app-last-route');
                   localStorage.removeItem('app-scroll-position');
                   // Don't restore - skip the rest

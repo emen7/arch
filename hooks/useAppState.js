@@ -72,12 +72,13 @@ export function useAppState() {
 
   // Save route when pathname changes
   useEffect(() => {
-    // Exclude presentation/infographic routes from being saved
+    // Exclude presentation/infographic and lectionary routes from being saved
     const isPresentationRoute = pathname.startsWith('/presentations/') ||
                                 pathname === '/wave-energy' ||
                                 pathname === '/wave-test';
+    const isLectionaryRoute = pathname.startsWith('/lectionary');
 
-    if (!isPresentationRoute) {
+    if (!isPresentationRoute && !isLectionaryRoute) {
       saveRoute(pathname);
     }
 
