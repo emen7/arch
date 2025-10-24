@@ -2,17 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lectionary content - normal size on desktop, larger on mobile */
+.lectionary-content {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 /* Mobile font size override for content areas */
 @media (max-width: 640px) {
   .glossary-content.prose,
   .report-content.prose,
-  article.font-serif {
+  .lectionary-content {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
   }
   .glossary-content.prose p,
   .report-content.prose p,
-  article.font-serif p {
+  .lectionary-content p {
     font-size: 1.25rem !important;
     line-height: 1.75rem !important;
   }
