@@ -57,49 +57,49 @@ export default function LectionaryReading({ params }) {
         <div className="container mx-auto px-4 py-3 max-w-5xl">
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Prev/Next Navigation */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 text-sm">
               {prevReading ? (
                 <Link
                   href={`/lectionary/${prevReading.slug}`}
-                  className="px-4 py-2 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors text-sm font-medium"
+                  className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium"
                 >
-                  ← Previous Week
+                  ← Previous
                 </Link>
               ) : (
-                <div className="px-4 py-2 bg-[#E2E8F0] dark:bg-[#4A5568] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
-                  ← Previous Week
-                </div>
+                <span className="text-text-muted-light dark:text-text-muted-dark opacity-50">
+                  ← Previous
+                </span>
               )}
 
               {nextReading ? (
                 <Link
                   href={`/lectionary/${nextReading.slug}`}
-                  className="px-4 py-2 bg-[#2C5F8D] hover:bg-[#6CB4E8] text-white rounded transition-colors text-sm font-medium"
+                  className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium"
                 >
-                  Next Week →
+                  Next →
                 </Link>
               ) : (
-                <div className="px-4 py-2 bg-[#E2E8F0] dark:bg-[#4A5568] text-text-muted-light dark:text-text-muted-dark rounded text-sm font-medium opacity-50">
-                  Next Week →
-                </div>
+                <span className="text-text-muted-light dark:text-text-muted-dark opacity-50">
+                  Next →
+                </span>
               )}
             </div>
 
             {/* Quick Jump Links & TTS */}
             <div className="flex items-center gap-4 text-sm">
-              <a href="#" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium">
+              <a href="#" className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium">
                 Top
               </a>
-              <a href="#first-reading" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
+              <a href="#first-reading" className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Reading 1
               </a>
-              <a href="#psalm" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
+              <a href="#psalm" className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Psalm
               </a>
-              <a href="#second-reading" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
+              <a href="#second-reading" className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Reading 2
               </a>
-              <a href="#gospel" className="text-[#2C5F8D] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
+              <a href="#gospel" className="text-[#4A90E2] hover:text-[#6CB4E8] hover:underline font-medium hidden sm:inline">
                 Gospel
               </a>
 
@@ -113,7 +113,7 @@ export default function LectionaryReading({ params }) {
         </nav>
       </div>
 
-      <main className="container mx-auto px-4 pt-32 pb-8 max-w-[65ch]">
+      <main className="container mx-auto px-4 pt-40 pb-8 max-w-[65ch]">
         <article className="font-serif">
           {/* Hero Image - Show placeholder or actual image */}
           <div className="mb-8 rounded-lg overflow-hidden shadow-lg bg-[#F5F7FA] dark:bg-[#2D3748] border-2 border-[#E2E8F0] dark:border-[#4A5568]">
