@@ -524,6 +524,7 @@ export default function WaveEnergyPage() {
             </div>
           </div>
         </div>
+          </div>
         </div>
       </div>
     </div>
