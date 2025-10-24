@@ -12,6 +12,7 @@ export default function WaveEnergyPage() {
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -99,6 +100,34 @@ export default function WaveEnergyPage() {
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     setIsMobileDevice(isMobile)
+  }, [])
+
+  // Calculate container dimensions to maintain 16:9 ratio
+  useEffect(() => {
+    const updateDimensions = () => {
+      const baseWidth = 1920
+      const baseHeight = 1080
+      const viewportWidth = window.innerWidth
+      const viewportHeight = window.innerHeight
+
+      // Calculate scale to fit viewport while maintaining 16:9
+      const scaleX = viewportWidth / baseWidth
+      const scaleY = viewportHeight / baseHeight
+      const scale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
+
+      // Calculate actual dimensions after scaling
+      const width = baseWidth * scale
+      const height = baseHeight * scale
+
+      setDimensions({ width, height, scale })
+    }
+
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+
+    return () => {
+      window.removeEventListener('resize', updateDimensions)
+    }
   }, [])
 
   // Center text box vertically between title and sphere canvas
@@ -276,8 +305,8 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4" style={{
-      background: 'linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a)',
+    <div className="w-full h-full flex items-center justify-center" style={{
+      background: '#000000',
       color: '#e2e8f0'
     }}>
       {/* Mobile Device Overlay - only show for actual mobile devices */}
@@ -332,11 +361,25 @@ export default function WaveEnergyPage() {
         </div>
       </div>
 
-      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-2 pb-8 px-8" style={{
-        aspectRatio: '16/9'
-      }}>
-        {/* Left Side */}
+      {/* 16:9 Card - two-layer wrapper for proper scaling */}
+      <div
+        className="relative"
+        style={{
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          background: '#1a1a1a'
+        }}
+      >
+        <div
+          className="absolute inset-0 flex gap-12 pt-2 pb-8 px-8"
+          style={{
+            width: '1920px',
+            height: '1080px',
+            transform: `scale(${dimensions.scale})`,
+            transformOrigin: 'top left'
+          }}
+        >
+          {/* Left Side */}
         <div className="w-[420px] flex flex-col">
           <div ref={titleRef} className="text-gray-300 text-xl font-semibold tracking-wider mb-8 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
@@ -511,6 +554,7 @@ export default function WaveEnergyPage() {
               <div>Click scale numbers</div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
