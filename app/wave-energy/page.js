@@ -414,7 +414,7 @@ export default function WaveEnergyPage() {
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
                 left: '375px',
-                top: '80%',
+                top: '10%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
               }}
@@ -422,9 +422,26 @@ export default function WaveEnergyPage() {
               Relative Spin Rates
             </div>
 
-            {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[400px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-3">
-              <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
+            {/* ULT Set - Sphere and Play/Pause */}
+            <div ref={sphereContainerRef} className="absolute left-[400px] top-[10%] -translate-y-1/2 flex flex-col items-center gap-3">
+              <div className="relative">
+                <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
+
+                {/* Play/Pause Control - Bottom Right of Grid */}
+                <div
+                  onClick={() => setIsPaused(!isPaused)}
+                  className="absolute bottom-2 right-2 flex flex-col items-center gap-1 cursor-pointer hover:opacity-100 transition-opacity"
+                  style={{ opacity: 0.6 }}
+                >
+                  <div className="text-5xl text-gray-300">
+                    {isPaused ? '▶' : '⏸'}
+                  </div>
+                  <div className="text-base text-gray-300 tracking-wide font-medium">
+                    {isPaused ? 'Play' : 'Pause'}
+                  </div>
+                </div>
+              </div>
+
               <div className="text-gray-200 text-2xl tracking-wider text-center leading-tight font-semibold">
                 {step === 0 ? (
                   <>PRE OR POST<br />ULTIMATON</>
@@ -433,14 +450,6 @@ export default function WaveEnergyPage() {
                 )}
               </div>
             </div>
-
-            {/* Pause Button */}
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[620px] top-[80%] translate-y-[135px] bg-neutral-800/90 border border-neutral-600/80 rounded-lg text-gray-200 px-6 py-3 text-base font-medium cursor-pointer hover:bg-neutral-700 hover:border-neutral-500 transition-all shadow-lg"
-            >
-              {isPaused ? '▶ Resume' : '⏸ Pause'}
-            </button>
           </div>
         </div>
 
