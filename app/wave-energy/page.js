@@ -349,12 +349,13 @@ export default function WaveEnergyPage() {
           {/* Main Content Container */}
           <div className="flex gap-12 h-[calc(100%-60px)]">
           {/* Left Side */}
-        <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-200 text-3xl font-semibold tracking-wider mb-8 flex-shrink-0">
-            WAVE-ENERGY MANIFESTATIONS
-          </div>
+        <div className="w-[420px] flex flex-col justify-end">
+          <div className="relative" style={{ height: '750px' }}>
+            {/* Title */}
+            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-xl font-semibold tracking-wider uppercase">
+              WAVE-ENERGY MANIFESTATIONS
+            </div>
 
-          <div className="relative flex-1">
             {/* Logarithmic Scale Label - Rotated */}
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
@@ -369,40 +370,42 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Scale */}
-            <div className="relative h-full">
-              <div className="absolute left-20 top-0 bottom-0 w-0.5 bg-gray-600"></div>
-              <div>
-                {data.map((d, i) => (
-                  <div
-                    key={d.n}
-                    className="absolute left-8 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
-                    style={{ top: `${(d.n / 10) * 100}%` }}
-                    onClick={() => setStepAndReset(d.n)}
-                  >
+            <div className="absolute inset-0 pt-12">
+              <div className="relative h-full">
+                <div className="absolute left-[90px] top-0 bottom-0 w-0.5 bg-gray-600"></div>
+                <div>
+                  {data.map((d, i) => (
                     <div
-                      className="w-14 text-right text-4xl font-mono transition-colors font-semibold"
-                      style={{ color: step === d.n ? d.col : '#9ca3af' }}
+                      key={d.n}
+                      className="absolute left-8 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
+                      style={{ top: `${(d.n / 10) * 100}%` }}
+                      onClick={() => setStepAndReset(d.n)}
                     >
-                      {d.n}
+                      <div
+                        className="w-14 text-right text-3xl font-mono transition-colors font-semibold"
+                        style={{ color: step === d.n ? d.col : '#9ca3af' }}
+                      >
+                        {d.n}
+                      </div>
+                      <div
+                        className="h-0.5 mx-3 transition-all"
+                        style={{
+                          width: step === d.n ? '48px' : '36px',
+                          backgroundColor: step === d.n ? d.col : '#9ca3af'
+                        }}
+                      ></div>
+                      <div
+                        className="text-xl whitespace-nowrap transition-colors"
+                        style={{
+                          color: step === d.n ? d.col : '#d1d5db',
+                          fontWeight: step === d.n ? 600 : 400
+                        }}
+                      >
+                        {d.name}
+                      </div>
                     </div>
-                    <div
-                      className="h-0.5 mx-3 transition-all"
-                      style={{
-                        width: step === d.n ? '48px' : '36px',
-                        backgroundColor: step === d.n ? d.col : '#9ca3af'
-                      }}
-                    ></div>
-                    <div
-                      className="text-2xl whitespace-nowrap transition-colors"
-                      style={{
-                        color: step === d.n ? d.col : '#d1d5db',
-                        fontWeight: step === d.n ? 600 : 400
-                      }}
-                    >
-                      {d.name}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
