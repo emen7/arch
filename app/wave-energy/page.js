@@ -5,9 +5,6 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
-  const textAreaRef = useRef(null)
-  const titleRef = useRef(null)
-  const sphereContainerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -117,47 +114,6 @@ export default function WaveEnergyPage() {
       window.removeEventListener('resize', checkScreenSize)
     }
   }, [])
-
-  // Center text box vertically between title and sphere canvas
-  useEffect(() => {
-    const positionTextBox = () => {
-      if (!textAreaRef.current || !titleRef.current || !canvasRef.current) return
-
-      const titleRect = titleRef.current.getBoundingClientRect()
-      const canvasRect = canvasRef.current.getBoundingClientRect()
-      const textAreaRect = textAreaRef.current.getBoundingClientRect()
-
-      // Calculate available vertical space
-      const availableTop = titleRect.bottom + 16 // Title bottom + margin
-      const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
-      const availableHeight = availableBottom - availableTop
-      const textBoxHeight = textAreaRect.height
-
-      // Center the text box in available space, then raise by 50%
-      const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.50 // Raise by 50% of available space
-      const finalPosition = centerPosition - raiseAmount
-
-      // Apply the position (ensure it doesn't go above minimum)
-      textAreaRef.current.style.top = `${Math.max(availableTop, finalPosition)}px`
-    }
-
-    // Position on mount and when content changes
-    positionTextBox()
-
-    // Re-position on window resize
-    window.addEventListener('resize', positionTextBox)
-
-    // Multiple delays to ensure DOM is fully rendered (especially after orientation change)
-    const timeoutId1 = setTimeout(positionTextBox, 100)
-    const timeoutId2 = setTimeout(positionTextBox, 300)
-
-    return () => {
-      window.removeEventListener('resize', positionTextBox)
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
-    }
-  }, [step, textPage]) // Re-position when content changes
 
   // Canvas animation
   useEffect(() => {
@@ -349,7 +305,7 @@ export default function WaveEnergyPage() {
       }}>
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
+          <div className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
@@ -419,7 +375,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
+            <div className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
               <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
               <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
                 {step === 0 ? (
@@ -442,7 +398,7 @@ export default function WaveEnergyPage() {
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
-          <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
+          <div className="absolute top-[15%] -left-[15%] right-[15%] flex flex-col items-center">
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
               {/* Navigation Links */}
               {pages.length > 1 && (
