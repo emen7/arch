@@ -95,14 +95,6 @@ export default async function LectionaryIndex() {
               </section>
             ))}
           </div>
-
-          {/* Footer Note */}
-          <footer className="mt-16 pt-8 border-t-2 border-light-border dark:border-dark-border text-center">
-            <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-              <em>The Urantia Book</em> passages are used with permission.<br />
-              Visit <a href="https://masteruniverse.org" className="text-[#2C5F8D] hover:underline">masteruniverse.org</a> for more resources.
-            </p>
-          </footer>
         </article>
       </main>
     </>
