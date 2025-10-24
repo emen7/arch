@@ -312,7 +312,7 @@ export default function WaveEnergyPage() {
         }}
       >
         <div
-          className="absolute inset-0 pt-4 pb-8 px-8"
+          className="absolute inset-0 pt-4 pb-20 px-16"
           style={{
             width: '1920px',
             height: '1080px',
@@ -359,7 +359,7 @@ export default function WaveEnergyPage() {
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '2px',
+                left: '10px',
                 top: '50%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
@@ -370,12 +370,12 @@ export default function WaveEnergyPage() {
 
             {/* Scale */}
             <div className="relative h-full">
-              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-gray-600"></div>
+              <div className="absolute left-20 top-0 bottom-0 w-0.5 bg-gray-600"></div>
               <div>
                 {data.map((d, i) => (
                   <div
                     key={d.n}
-                    className="absolute left-0 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
+                    className="absolute left-8 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
                     style={{ top: `${(d.n / 10) * 100}%` }}
                     onClick={() => setStepAndReset(d.n)}
                   >
@@ -410,7 +410,7 @@ export default function WaveEnergyPage() {
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '280px',
+                left: '340px',
                 top: '80%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
@@ -420,7 +420,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[340px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-3">
+            <div ref={sphereContainerRef} className="absolute left-[400px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-3">
               <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
               <div className="text-gray-200 text-2xl tracking-wider text-center leading-tight font-semibold">
                 {step === 0 ? (
@@ -434,7 +434,7 @@ export default function WaveEnergyPage() {
             {/* Pause Button */}
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[560px] top-[80%] translate-y-[135px] bg-neutral-800/90 border border-neutral-600/80 rounded-lg text-gray-200 px-6 py-3 text-base font-medium cursor-pointer hover:bg-neutral-700 hover:border-neutral-500 transition-all shadow-lg"
+              className="absolute left-[620px] top-[80%] translate-y-[135px] bg-neutral-800/90 border border-neutral-600/80 rounded-lg text-gray-200 px-6 py-3 text-base font-medium cursor-pointer hover:bg-neutral-700 hover:border-neutral-500 transition-all shadow-lg"
             >
               {isPaused ? '▶ Resume' : '⏸ Pause'}
             </button>
@@ -443,7 +443,7 @@ export default function WaveEnergyPage() {
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
-          <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
+          <div ref={textAreaRef} className="absolute -left-[8%] right-[22%] flex flex-col items-center">
             <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[90%] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
