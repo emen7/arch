@@ -8,8 +8,6 @@ export default function WaveEnergyPage() {
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
@@ -93,28 +91,6 @@ export default function WaveEnergyPage() {
   const txtKey = `p${currentData.n}`
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
-
-  // Detect small screens and mobile devices
-  useEffect(() => {
-    const checkScreenSize = () => {
-      // Screen width less than 1024px is considered too small
-      setIsSmallScreen(window.innerWidth < 1024)
-
-      // Detect if on a mobile device (phone/tablet) vs desktop
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      setIsMobileDevice(isMobile)
-    }
-
-    // Initial check
-    checkScreenSize()
-
-    // Listen for resize events
-    window.addEventListener('resize', checkScreenSize)
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize)
-    }
-  }, [])
 
   // Calculate container dimensions to maintain 16:9 ratio
   useEffect(() => {
@@ -282,44 +258,6 @@ export default function WaveEnergyPage() {
       background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
       color: '#e2e8f0'
     }}>
-      {/* Small Screen Overlay */}
-      {isSmallScreen && (
-        <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">{isMobileDevice ? '💻' : '↔️'}</div>
-          <div className="text-2xl font-semibold mb-6 text-gray-200">
-            {isMobileDevice ? 'Desktop or Tablet Required' : 'Please Widen Your Window'}
-          </div>
-          <div className="text-lg text-gray-300 max-w-md mb-4">
-            {isMobileDevice ? (
-              'This interactive visualization is designed for larger screens.'
-            ) : (
-              'This visualization requires a minimum width of 1024 pixels.'
-            )}
-          </div>
-          {isMobileDevice ? (
-            <>
-              <div className="text-base text-gray-400 max-w-md mb-8">
-                Please view on:
-              </div>
-              <div className="text-lg text-gray-300 space-y-2 mb-8">
-                <div>• Desktop or laptop computer</div>
-                <div>• iPad or tablet (landscape mode)</div>
-              </div>
-            </>
-          ) : (
-            <div className="text-base text-gray-400 max-w-md mb-8">
-              Expand your browser window to view this content.
-            </div>
-          )}
-          <Link
-            href="/"
-            className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
-          >
-            ← Return to Home
-          </Link>
-        </div>
-      )}
-
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
       <div
         className="relative"
