@@ -83,20 +83,25 @@ export default function LectionaryReading({ params }) {
               )}
             </div>
 
-            {/* Quick Jump Links */}
+            {/* Quick Jump Links & TTS */}
             <div className="flex items-center gap-4 text-sm">
-              <a href="#first-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium">
+              <a href="#first-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
                 Reading 1
               </a>
-              <a href="#psalm" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium">
+              <a href="#psalm" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
                 Psalm
               </a>
-              <a href="#second-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium">
+              <a href="#second-reading" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
                 Reading 2
               </a>
-              <a href="#gospel" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium">
+              <a href="#gospel" className="text-[#87b4c8] hover:text-[#6a9bb3] hover:underline font-medium hidden sm:inline">
                 Gospel
               </a>
+
+              {/* TTS - Always visible */}
+              <div className="ml-auto sm:ml-0">
+                <ReadAloud />
+              </div>
             </div>
           </div>
         </div>
@@ -112,23 +117,36 @@ export default function LectionaryReading({ params }) {
             ← Back to Lectionary
           </Link>
 
-          {/* Hero Image */}
-          {reading.heroImage && reading.heroImage.src && (
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
+          {/* Hero Image - Show placeholder or actual image */}
+          <div className="mb-8 rounded-lg overflow-hidden shadow-lg bg-[#f5ebdf] dark:bg-[#2a2520] border-2 border-[#d4c5b9] dark:border-[#4a3f35]">
+            {reading.heroImage && reading.heroImage.src ? (
               <img
                 src={reading.heroImage.src}
                 alt={reading.title}
                 className="w-full h-auto"
               />
-              {reading.heroImage.caption && (
-                <div className="bg-[#f5ebdf] dark:bg-[#2a2520] px-6 py-4 text-center border-t-2 border-[#d4c5b9] dark:border-[#4a3f35]">
+            ) : (
+              <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#e8dcc9] to-[#d4c5b9] dark:from-[#2a2520] dark:to-[#1e1a15]">
+                <div className="text-center px-6">
+                  <svg className="w-24 h-24 mx-auto mb-4 text-[#b56d62] dark:text-[#8b4513] opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
-                    {reading.heroImage.caption}
+                    Artwork placeholder
                   </p>
                 </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+
+            {/* Caption - shown for both placeholder and actual image */}
+            {(reading.theme || reading.heroImage?.caption) && (
+              <div className="bg-[#f5ebdf] dark:bg-[#2a2520] px-6 py-4 text-center border-t-2 border-[#d4c5b9] dark:border-[#4a3f35]">
+                <p className="text-sm text-text-muted-light dark:text-text-muted-dark italic">
+                  {reading.heroImage?.caption || reading.theme}
+                </p>
+              </div>
+            )}
+          </div>
 
           {/* Header */}
           <header className="mb-8 text-center">
@@ -143,11 +161,6 @@ export default function LectionaryReading({ params }) {
                 {reading.theme}
               </p>
             )}
-
-            {/* Read Aloud */}
-            <div className="mt-6 flex justify-center">
-              <ReadAloud />
-            </div>
           </header>
 
           {/* Sections */}
