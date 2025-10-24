@@ -264,6 +264,30 @@ const scrollToSection = (e, sectionId) => {
 - Document major design decisions in commit messages for future reference
 - Each iteration should solve a specific user-identified issue
 
+## Git Workflow with Claude Code
+
+Claude Code can only push to branches with specific naming requirements:
+
+**Branch Naming:**
+- Claude can only push to branches named `claude/*` with session ID suffixes
+- Example: `claude/research-app-update-011CURrvGX8go9hrWx9N77nH`
+- The session ID suffix (e.g., `011CURrvGX8go9hrWx9N77nH`) is required for authentication
+- These long names are system-imposed security requirements and cannot be changed
+- Branch names are temporary - delete after merging to main
+
+**Merging to Main:**
+- Claude cannot push directly to `main` branch (403 permission error)
+- Two options for merging:
+  1. **GitHub PR (recommended)**: Claude pushes to `claude/*` branch, then you create/merge PR on GitHub
+     - Commit messages automatically populate PR title and description
+     - Clean merge history
+  2. **Manual merge**: You run `git checkout main && git merge <claude-branch> && git push origin main`
+
+**Why This Workflow:**
+- Security feature prevents accidental direct pushes to main
+- Session IDs authenticate Claude Code sessions
+- Preserves your control over what goes into production
+
 ## File Locations
 
 - Report content components: `app/reports/[id]/content/`
