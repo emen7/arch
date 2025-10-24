@@ -352,7 +352,7 @@ export default function WaveEnergyPage() {
         <div className="w-[420px] flex flex-col justify-end">
           <div className="relative" style={{ height: '750px' }}>
             {/* Title */}
-            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-xl font-semibold tracking-wider uppercase">
+            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-2xl font-semibold tracking-wider uppercase">
               WAVE-ENERGY MANIFESTATIONS
             </div>
 
@@ -370,7 +370,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Scale */}
-            <div className="absolute inset-0 pt-12">
+            <div className="absolute inset-0 pt-20">
               <div className="relative h-full">
                 <div className="absolute left-[90px] top-0 bottom-0 w-0.5 bg-gray-600"></div>
                 <div>
@@ -395,7 +395,7 @@ export default function WaveEnergyPage() {
                         }}
                       ></div>
                       <div
-                        className="text-xl whitespace-nowrap transition-colors"
+                        className="text-3xl whitespace-nowrap transition-colors"
                         style={{
                           color: step === d.n ? d.col : '#d1d5db',
                           fontWeight: step === d.n ? 600 : 400
