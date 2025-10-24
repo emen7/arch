@@ -5,14 +5,13 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
-  const textAreaRef = useRef(null)
-  const titleRef = useRef(null)
-  const sphereContainerRef = useRef(null)
+  const containerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [scale, setScale] = useState(1)
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -118,46 +117,31 @@ export default function WaveEnergyPage() {
     }
   }, [])
 
-  // Center text box vertically between title and sphere canvas
+  // Calculate scale to fit viewport while maintaining fixed layout
   useEffect(() => {
-    const positionTextBox = () => {
-      if (!textAreaRef.current || !titleRef.current || !canvasRef.current) return
+    const calculateScale = () => {
+      if (!containerRef.current) return
 
-      const titleRect = titleRef.current.getBoundingClientRect()
-      const canvasRect = canvasRef.current.getBoundingClientRect()
-      const textAreaRect = textAreaRef.current.getBoundingClientRect()
+      const baseWidth = 1920 // Base design width
+      const baseHeight = 1080 // Base design height (16:9)
+      const viewportWidth = window.innerWidth * 0.95 // 95vw
+      const viewportHeight = window.innerHeight * 0.95 // Leave some margin
 
-      // Calculate available vertical space
-      const availableTop = titleRect.bottom + 32 // Title bottom + margin
-      const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
-      const availableHeight = availableBottom - availableTop
-      const textBoxHeight = textAreaRect.height
+      // Calculate scale to fit both width and height
+      const scaleX = viewportWidth / baseWidth
+      const scaleY = viewportHeight / baseHeight
+      const newScale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
 
-      // Center the text box in available space, then raise by 35%
-      const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.35 // Raise by 35% of available space
-      const finalPosition = centerPosition - raiseAmount
-
-      // Apply the position (ensure it doesn't go above minimum)
-      textAreaRef.current.style.top = `${Math.max(availableTop, finalPosition)}px`
+      setScale(newScale)
     }
 
-    // Position on mount and when content changes
-    positionTextBox()
-
-    // Re-position on window resize
-    window.addEventListener('resize', positionTextBox)
-
-    // Multiple delays to ensure DOM is fully rendered (especially after orientation change)
-    const timeoutId1 = setTimeout(positionTextBox, 100)
-    const timeoutId2 = setTimeout(positionTextBox, 300)
+    calculateScale()
+    window.addEventListener('resize', calculateScale)
 
     return () => {
-      window.removeEventListener('resize', positionTextBox)
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
+      window.removeEventListener('resize', calculateScale)
     }
-  }, [step, textPage]) // Re-position when content changes
+  }, [])
 
   // Canvas animation
   useEffect(() => {
@@ -344,12 +328,19 @@ export default function WaveEnergyPage() {
       </Link>
 
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 pt-2 pb-8 px-8" style={{
-        aspectRatio: '16/9'
-      }}>
+      <div
+        ref={containerRef}
+        className="relative flex gap-12 pt-0 pb-8 px-8"
+        style={{
+          width: '1920px',
+          height: '1080px',
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center'
+        }}
+      >
         {/* Left Side */}
         <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
+          <div className="text-gray-400 text-lg font-semibold tracking-wider mb-4 flex-shrink-0">
             WAVE-ENERGY MANIFESTATIONS
           </div>
 
@@ -419,7 +410,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
+            <div className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
               <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
               <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
                 {step === 0 ? (
@@ -442,7 +433,7 @@ export default function WaveEnergyPage() {
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
-          <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
+          <div className="absolute top-[15%] -left-[15%] right-[15%] flex flex-col items-center">
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
               {/* Navigation Links */}
               {pages.length > 1 && (
