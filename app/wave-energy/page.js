@@ -324,14 +324,6 @@ export default function WaveEnergyPage() {
         </div>
       )}
 
-      {/* Home Link */}
-      <Link
-        href="/"
-        className="fixed top-4 left-4 text-sm text-gray-400 hover:text-gray-200 transition-colors z-10"
-      >
-        ← Home
-      </Link>
-
       {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
       <div
         ref={containerRef}
@@ -507,7 +499,7 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* Controls */}
-          <div className="absolute bottom-0 right-0 text-right">
+          <div className="absolute bottom-16 right-0 text-right">
             <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
               CONTROLS
             </div>
@@ -516,6 +508,27 @@ export default function WaveEnergyPage() {
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
               <div>Click scale numbers</div>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="absolute bottom-0 right-0 text-right">
+            <div className="text-slate-500 text-xs leading-relaxed">
+              <Link href="/" className="hover:text-gray-300 transition-colors">Presentations</Link>
+              <span className="mx-1">|</span>
+              <Link href="/presentations/tomb-intro" className="hover:text-gray-300 transition-colors">Intro</Link>
+              <span className="mx-1">|</span>
+              <Link href="/presentations/tomb-timeline" className="hover:text-gray-300 transition-colors">Timeline</Link>
+              <span className="mx-1">|</span>
+              <Link href="/" className="hover:text-gray-300 transition-colors">MPC</Link>
+              <span className="mx-1">|</span>
+              <Link href="/" className="hover:text-gray-300 transition-colors">Midwayers</Link>
+              <span className="mx-1">|</span>
+              <Link href="/" className="hover:text-gray-300 transition-colors">Tomb Ops</Link>
+              <span className="mx-1">|</span>
+              <Link href="/presentations/tomb-conclusion" className="hover:text-gray-300 transition-colors">Conclusion</Link>
+              <span className="mx-1">|</span>
+              <Link href="/" className="hover:text-gray-300 transition-colors">revelationary.net</Link>
             </div>
           </div>
         </div>
