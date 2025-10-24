@@ -277,105 +277,61 @@ export default function WaveEnergyPage() {
           }}
         >
         {/* Left Side */}
-        <div className="w-[420px] flex flex-col">
-          <div className="text-gray-400 text-2xl font-semibold tracking-wider mb-4 flex-shrink-0">
-            WAVE-ENERGY MANIFESTATIONS
+        <div className="w-[600px] flex flex-col relative">
+          {/* Space for overall title - TBD */}
+          <div className="h-[150px]"></div>
+
+          {/* List Title */}
+          <div className="ml-16 text-gray-300 text-5xl font-semibold tracking-wide mb-8">
+            WAVE-ENERGY<br/>MANIFESTATIONS
           </div>
 
-          <div className="relative flex-1">
-            {/* Logarithmic Scale Label - Rotated */}
-            <div
-              className="absolute text-gray-400 text-sm tracking-wide whitespace-nowrap"
-              style={{
-                left: '2px',
-                top: '50%',
-                transform: 'rotate(-90deg) translateX(-50%)',
-                transformOrigin: 'left center'
-              }}
-            >
-              Logarithmic Scale
-            </div>
-
-            {/* Scale */}
-            <div className="relative h-full">
-              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-slate-700"></div>
-              <div>
-                {data.map((d, i) => (
-                  <div
-                    key={d.n}
-                    className="absolute left-0 flex items-center cursor-pointer -translate-y-1/2"
-                    style={{ top: `${(d.n / 10) * 100}%` }}
-                    onClick={() => setStepAndReset(d.n)}
-                  >
-                    <div
-                      className="w-10 text-right text-2xl font-mono transition-colors"
-                      style={{ color: step === d.n ? d.col : '#9ca3af' }}
-                    >
-                      {d.n}
-                    </div>
-                    <div
-                      className="h-0.5 mx-2 transition-all"
-                      style={{
-                        width: step === d.n ? '32px' : '24px',
-                        backgroundColor: step === d.n ? d.col : '#9ca3af'
-                      }}
-                    ></div>
-                    <div
-                      className="text-base whitespace-nowrap transition-colors"
-                      style={{
-                        color: step === d.n ? d.col : '#9ca3af',
-                        fontWeight: step === d.n ? 600 : 400
-                      }}
-                    >
-                      {d.name}
-                    </div>
-                  </div>
-                ))}
+          {/* Manifestation List - positioned in lower 2/3 */}
+          <div className="ml-16">
+            {data.map((d, i) => (
+              <div
+                key={d.n}
+                className="flex items-center cursor-pointer mb-6"
+                onClick={() => setStepAndReset(d.n)}
+              >
+                <div
+                  className="w-16 text-right text-5xl font-mono transition-colors"
+                  style={{ color: step === d.n ? d.col : '#9ca3af' }}
+                >
+                  {d.n}
+                </div>
+                <div
+                  className="h-1 mx-4 transition-all"
+                  style={{
+                    width: step === d.n ? '48px' : '32px',
+                    backgroundColor: step === d.n ? d.col : '#9ca3af'
+                  }}
+                ></div>
+                <div
+                  className="text-3xl whitespace-nowrap transition-colors"
+                  style={{
+                    color: step === d.n ? d.col : '#9ca3af',
+                    fontWeight: step === d.n ? 600 : 400
+                  }}
+                >
+                  {d.name}
+                </div>
               </div>
-            </div>
-
-            {/* Relative Spin Rates Label - Rotated */}
-            <div
-              className="absolute text-gray-400 text-sm tracking-wide whitespace-nowrap"
-              style={{
-                left: '220px',
-                top: '80%',
-                transform: 'rotate(-90deg) translateX(-50%)',
-                transformOrigin: 'left center'
-              }}
-            >
-              Relative Spin Rates
-            </div>
-
-            {/* Sphere */}
-            <div className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
-              <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
-              <div className="text-gray-400 text-base tracking-wider text-center leading-tight">
-                {step === 0 ? (
-                  <>PRE OR POST<br />ULTIMATON</>
-                ) : (
-                  'ULTIMATON'
-                )}
-              </div>
-            </div>
-
-            {/* Pause Button */}
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-neutral-800 border border-neutral-600 rounded-lg text-gray-300 px-4 py-2 text-sm cursor-pointer hover:bg-neutral-700 transition-colors"
-            >
-              {isPaused ? 'Resume' : 'Pause'}
-            </button>
+            ))}
           </div>
+
+          {/* Padding at bottom */}
+          <div className="h-[80px]"></div>
         </div>
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
-          <div className="absolute top-[15%] -left-[15%] right-[15%] flex flex-col items-center">
-            <div className="bg-neutral-800/60 border border-neutral-600 rounded-xl p-8 max-w-[600px] w-[90%]">
+          {/* Text Box - centered in upper 2/3, above ultimaton */}
+          <div className="absolute top-[15%] left-0 right-[5%] flex flex-col items-center">
+            <div className="bg-neutral-800/60 border border-neutral-600 rounded-xl p-12 w-[85%]">
               {/* Navigation Links */}
               {pages.length > 1 && (
-                <div className="flex justify-between mb-4 text-sm tracking-wider">
+                <div className="flex justify-between mb-6 text-2xl tracking-wider">
                   {textPage > 0 && (
                     <span
                       onClick={handlePrevPage}
@@ -396,26 +352,26 @@ export default function WaveEnergyPage() {
               )}
 
               {/* Title */}
-              <div className="text-gray-300 text-3xl font-semibold mb-6">
+              <div className="text-gray-200 text-5xl font-semibold mb-8">
                 {currentData.name}
               </div>
 
               {/* Text */}
-              <div className="text-gray-300 text-lg leading-relaxed">
+              <div className="text-gray-300 text-3xl leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
               {/* Dot Indicators */}
               {pages.length > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-4 mt-8">
                   {pages.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setTextPage(index)}
                       className="transition-all"
                       style={{
-                        width: '8px',
-                        height: '8px',
+                        width: '16px',
+                        height: '16px',
                         borderRadius: '50%',
                         backgroundColor: index === textPage ? '#94a3b8' : '#475569',
                         opacity: index === textPage ? 1 : 0.5,
@@ -432,19 +388,38 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-4 text-gray-400 text-base leading-relaxed max-w-[536px]">
+              <div className="mt-6 text-gray-400 text-2xl leading-relaxed">
                 <span className="font-bold text-green-500">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
             )}
           </div>
 
+          {/* Ultimaton Sphere - lower middle */}
+          <div className="absolute left-[35%] bottom-[25%] flex flex-col items-center gap-3">
+            <canvas ref={canvasRef} width="200" height="200" className="rounded-lg"></canvas>
+            <div className="text-gray-400 text-2xl tracking-wider text-center leading-tight">
+              {step === 0 ? (
+                <>PRE OR POST<br />ULTIMATON</>
+              ) : (
+                'ULTIMATON'
+              )}
+            </div>
+            {/* Pause Button */}
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="mt-4 bg-neutral-800 border border-neutral-600 rounded-lg text-gray-300 px-6 py-3 text-2xl cursor-pointer hover:bg-neutral-700 transition-colors"
+            >
+              {isPaused ? 'Resume' : 'Pause'}
+            </button>
+          </div>
+
           {/* Controls */}
-          <div className="absolute bottom-16 right-0 text-right">
-            <div className="text-gray-400 text-xs tracking-wider mb-2 uppercase">
+          <div className="absolute bottom-32 right-4 text-right">
+            <div className="text-gray-400 text-xl tracking-wider mb-3 uppercase">
               CONTROLS
             </div>
-            <div className="text-gray-400 text-sm leading-relaxed">
+            <div className="text-gray-400 text-2xl leading-relaxed">
               <div>↑↓ Arrow keys - Navigate</div>
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
@@ -453,8 +428,8 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* Navigation Links */}
-          <div className="absolute bottom-0 right-0 text-right">
-            <div className="text-gray-400 text-sm leading-relaxed">
+          <div className="absolute bottom-4 right-4 text-right">
+            <div className="text-gray-400 text-2xl leading-relaxed">
               <Link href="/" className="hover:text-gray-200 transition-colors">Presentations</Link>
               <span className="mx-1">|</span>
               <Link href="/presentations/tomb-intro" className="hover:text-gray-200 transition-colors">Intro</Link>
