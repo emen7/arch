@@ -7,7 +7,7 @@ export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
   const titleRef = useRef(null)
   const sphereContainerRef = useRef(null)
-  const [step, setStep] = useState(4)
+  const [step, setStep] = useState(10)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
@@ -402,16 +402,13 @@ export default function WaveEnergyPage() {
                 {/* Play/Pause Control - Right of grid, nearly touching */}
                 <div
                   onClick={() => setIsPaused(!isPaused)}
-                  className="absolute bottom-2 flex flex-col items-center gap-1 cursor-pointer transition-opacity"
+                  className="absolute bottom-2 flex items-center justify-center cursor-pointer transition-opacity"
                   style={{
                     left: '242px'
                   }}
                 >
                   <div className="text-5xl text-gray-300">
                     {isPaused ? '▶' : '⏸'}
-                  </div>
-                  <div className="text-base text-gray-300 tracking-wide font-medium">
-                    {isPaused ? 'Play' : 'Pause'}
                   </div>
                 </div>
               </div>
@@ -498,7 +495,7 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-6 text-gray-300 text-2xl leading-relaxed max-w-[780px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5">
+              <div className="mt-6 text-gray-300 leading-relaxed max-w-[780px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5" style={{ fontSize: '27px' }}>
                 <span className="font-semibold text-emerald-400">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
