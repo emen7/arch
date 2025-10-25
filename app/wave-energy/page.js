@@ -323,12 +323,12 @@ export default function WaveEnergyPage() {
           {/* Header Navigation */}
           <div className="flex items-center justify-between mb-6">
             {/* Project Title */}
-            <div className="text-gray-400 text-xl tracking-wider">
+            <div className="text-gray-400 text-4xl tracking-wider">
               ACCELERATED TIME OF THE TOMB
             </div>
 
             {/* Horizontal Links */}
-            <div className="flex items-center gap-8 text-lg">
+            <div className="flex items-center gap-8 text-4xl">
               <Link
                 href="/"
                 className="text-gray-500 hover:text-gray-300 transition-colors"
@@ -342,7 +342,7 @@ export default function WaveEnergyPage() {
                 Wave-Energy
               </Link>
               <span className="text-gray-600">|</span>
-              <span className="text-gray-500 text-base tracking-wide">PRESENTATIONS</span>
+              <span className="text-gray-500 text-3xl tracking-wide">PRESENTATIONS</span>
             </div>
           </div>
 
