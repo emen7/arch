@@ -8,12 +8,14 @@ export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
   const titleRef = useRef(null)
   const sphereContainerRef = useRef(null)
+  const textBoxRef = useRef(null)
   const [step, setStep] = useState(10)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
+  const touchStartX = useRef(null)
 
   const texts = {
     p0: [
@@ -259,6 +261,28 @@ export default function WaveEnergyPage() {
     if (textPage < pages.length - 1) setTextPage(textPage + 1)
   }
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e) => {
+    if (!touchStartX.current) return
+
+    const touchEndX = e.changedTouches[0].clientX
+    const diff = touchStartX.current - touchEndX
+
+    // Swipe left (next)
+    if (diff > 50) {
+      handleNextPage()
+    }
+    // Swipe right (prev)
+    else if (diff < -50) {
+      handlePrevPage()
+    }
+
+    touchStartX.current = null
+  }
+
   return (
     <div className="w-full h-full flex items-start justify-center pt-8" style={{
       background: '#000000',
@@ -381,7 +405,7 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* ULT SET - Wrapper for ultimaton visualization */}
-          <div className="absolute left-[535px] -translate-y-1/2" style={{ top: 'calc(77% - 160px)' }}>
+          <div className="absolute left-[535px]" style={{ bottom: '100px' }}>
             {/* Relative Spin Rates Label - Rotated */}
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
@@ -429,7 +453,12 @@ export default function WaveEnergyPage() {
           transform: 'translate(calc(-50% + 392px), calc(-50% - 70px))'
         }}>
           <div className="flex flex-col items-center">
-            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[840px] w-[840px] shadow-2xl">
+            <div
+              ref={textBoxRef}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[840px] w-[840px] shadow-2xl"
+            >
               {/* Navigation Links */}
               {pages.length > 1 && (
                 <div className="flex justify-between mb-8 text-lg tracking-wider">
@@ -459,8 +488,8 @@ export default function WaveEnergyPage() {
                 </div>
               )}
 
-              {/* Text */}
-              <div className={`text-gray-200 text-3xl leading-relaxed ${textPage === 0 ? 'ml-8' : ''}`}>
+              {/* Text - Right indent on all pages */}
+              <div className="text-gray-200 text-3xl leading-relaxed ml-8">
                 <p>{pages[textPage]}</p>
               </div>
 
