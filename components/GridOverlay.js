@@ -30,8 +30,8 @@ export default function GridOverlay() {
       <div
         className="absolute pointer-events-auto"
         style={{
-          bottom: '40px',
-          left: '40px',
+          bottom: '120px',  // 40px + 80px padding
+          left: '104px',    // 40px + 64px padding
           zIndex: 9999,
           cursor: 'pointer'
         }}
@@ -64,8 +64,14 @@ export default function GridOverlay() {
 
   return (
     <div
-      className="absolute inset-0 pointer-events-none"
-      style={{ zIndex: 9999 }}
+      className="absolute pointer-events-none"
+      style={{
+        top: '16px',    // Account for pt-4 (1rem = 16px)
+        left: '64px',   // Account for px-16 (4rem = 64px)
+        right: '64px',  // Account for px-16 (4rem = 64px)
+        bottom: '80px', // Account for pb-20 (5rem = 80px)
+        zIndex: 9999
+      }}
     >
       {/* Pixel Rulers */}
       {showRulers && (
@@ -74,9 +80,8 @@ export default function GridOverlay() {
           <div
             className="absolute top-0 left-0 right-0 flex items-end"
             style={{
-              height: '30px',
-              background: 'rgba(0, 0, 0, 0.5)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.3)'
+              height: '20px',
+              borderBottom: '1px solid rgba(128, 128, 128, 0.3)'
             }}
           >
             {Array.from({ length: 20 }, (_, i) => i * 100).map((x) => (
@@ -89,17 +94,18 @@ export default function GridOverlay() {
                 <div
                   style={{
                     width: '1px',
-                    height: x % 200 === 0 ? '15px' : '10px',
-                    background: 'rgba(255, 255, 255, 0.5)'
+                    height: x % 200 === 0 ? '8px' : '5px',
+                    background: 'rgba(128, 128, 128, 0.4)'
                   }}
                 />
                 {/* Label every 200px */}
                 {x % 200 === 0 && (
                   <div
                     style={{
-                      fontSize: '30px',
+                      fontSize: '16px',
                       color: 'rgba(128, 128, 128, 0.5)',
-                      marginTop: '2px'
+                      marginTop: '1px',
+                      fontFamily: 'monospace'
                     }}
                   >
                     {x}
@@ -113,9 +119,8 @@ export default function GridOverlay() {
           <div
             className="absolute top-0 left-0 bottom-0 flex flex-col justify-end"
             style={{
-              width: '30px',
-              background: 'rgba(0, 0, 0, 0.5)',
-              borderRight: '1px solid rgba(255, 255, 255, 0.3)'
+              width: '20px',
+              borderRight: '1px solid rgba(128, 128, 128, 0.3)'
             }}
           >
             {Array.from({ length: 11 }, (_, i) => i * 100).map((y) => (
@@ -128,20 +133,21 @@ export default function GridOverlay() {
                 <div
                   style={{
                     height: '1px',
-                    width: y % 200 === 0 ? '15px' : '10px',
-                    background: 'rgba(255, 255, 255, 0.5)'
+                    width: y % 200 === 0 ? '8px' : '5px',
+                    background: 'rgba(128, 128, 128, 0.4)'
                   }}
                 />
                 {/* Label every 200px */}
                 {y % 200 === 0 && (
                   <div
                     style={{
-                      fontSize: '30px',
+                      fontSize: '16px',
                       color: 'rgba(128, 128, 128, 0.5)',
-                      marginLeft: '2px',
+                      marginLeft: '1px',
                       transform: 'rotate(-90deg)',
                       transformOrigin: 'left center',
-                      whiteSpace: 'nowrap'
+                      whiteSpace: 'nowrap',
+                      fontFamily: 'monospace'
                     }}
                   >
                     {y}
