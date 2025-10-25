@@ -212,8 +212,9 @@ export default function GridOverlay() {
               key={`label-${col}${row}`}
               className="absolute"
               style={{
-                left: `${colIndex * COL_WIDTH + 8}px`,
-                top: `${rowIndex * ROW_HEIGHT + 8}px`,
+                left: `${colIndex * COL_WIDTH + COL_WIDTH / 2}px`,
+                top: `${rowIndex * ROW_HEIGHT + ROW_HEIGHT / 2}px`,
+                transform: 'translate(-50%, -50%)',
                 fontSize: '36px',
                 color: 'rgba(128, 128, 128, 0.5)',
                 fontWeight: '600',
