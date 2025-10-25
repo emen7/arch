@@ -79,7 +79,7 @@ export default function WaveEnergyPage() {
     {n:0, name:"Puissant Energy", col:"#ffffff", sphereCol:"transparent", op:0, spd:0},
     {n:1, name:"Infraultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.3, spd:0.9},
     {n:2, name:"Ultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.6, spd:0.7},
-    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:1, spd:0.5},
+    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.8, spd:0.5},
     {n:4, name:"The Electronic Stage", col:"#22c55e", sphereCol:"#22c55e", op:1, spd:0.35},
     {n:5, name:"Gamma Rays", col:"#eab308", sphereCol:"#eab308", op:1, spd:0.25},
     {n:6, name:"X-rays", col:"#f97316", sphereCol:"#f97316", op:1, spd:0.15},
