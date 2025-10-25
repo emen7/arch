@@ -28,12 +28,18 @@ export default function PresentationControls({
         </div>
       )}
 
-      {/* Controls toggle */}
+      {/* Controls toggle with info icon */}
       <div
         onClick={() => setShowControls(!showControls)}
-        className="text-gray-500 text-2xl tracking-wide mb-2 cursor-pointer hover:text-gray-300 transition-colors"
+        className="text-gray-500 text-2xl tracking-wide mb-2 cursor-pointer hover:text-gray-300 transition-colors flex items-center gap-2"
       >
-        CONTROLS
+        <span>CONTROLS</span>
+        <div
+          className="flex items-center justify-center rounded-full border-2 border-gray-500"
+          style={{ width: '24px', height: '24px', fontSize: '16px' }}
+        >
+          i
+        </div>
       </div>
 
       {/* Bottom link bar */}

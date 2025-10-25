@@ -285,7 +285,7 @@ export default function WaveEnergyPage() {
           {/* Header Navigation */}
           <div className="flex items-center justify-between mb-6">
             {/* Project Title */}
-            <div className="text-gray-400 text-4xl tracking-wider">
+            <div className="text-blue-400 text-4xl tracking-wider">
               ACCELERATED TIME OF THE TOMB
             </div>
 
