@@ -8,9 +8,9 @@ export default function GridOverlay() {
 
   // Grid configuration
   const COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
-  const ROWS = [1, 2, 3]
+  const ROWS = [1, 2, 3, 4, 5, 6]
   const COL_WIDTH = 160 // 1920px / 12 columns
-  const ROW_HEIGHT = 360 // 1080px / 3 rows
+  const ROW_HEIGHT = 180 // 1080px / 6 rows
 
   // Toggle with G key
   useEffect(() => {
@@ -30,8 +30,8 @@ export default function GridOverlay() {
       <div
         className="absolute pointer-events-auto"
         style={{
-          bottom: '10px',
-          left: '10px',
+          bottom: '40px',
+          left: '40px',
           zIndex: 9999,
           cursor: 'pointer'
         }}
@@ -42,18 +42,18 @@ export default function GridOverlay() {
           style={{
             width: '16px',
             height: '16px',
-            background: 'rgba(0, 200, 255, 0.2)',
-            border: '1px solid rgba(0, 200, 255, 0.3)',
+            background: 'rgba(128, 128, 128, 0.2)',
+            border: '1px solid rgba(128, 128, 128, 0.3)',
             transform: 'rotate(45deg)',
             transition: 'all 0.2s'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.4)'
-            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.6)'
+            e.currentTarget.style.background = 'rgba(128, 128, 128, 0.4)'
+            e.currentTarget.style.borderColor = 'rgba(128, 128, 128, 0.6)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.2)'
-            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.3)'
+            e.currentTarget.style.background = 'rgba(128, 128, 128, 0.2)'
+            e.currentTarget.style.borderColor = 'rgba(128, 128, 128, 0.3)'
           }}
         />
       </div>
@@ -97,8 +97,8 @@ export default function GridOverlay() {
                 {x % 200 === 0 && (
                   <div
                     style={{
-                      fontSize: '10px',
-                      color: 'rgba(255, 255, 255, 0.6)',
+                      fontSize: '30px',
+                      color: 'rgba(128, 128, 128, 0.5)',
                       marginTop: '2px'
                     }}
                   >
@@ -136,8 +136,8 @@ export default function GridOverlay() {
                 {y % 200 === 0 && (
                   <div
                     style={{
-                      fontSize: '10px',
-                      color: 'rgba(255, 255, 255, 0.6)',
+                      fontSize: '30px',
+                      color: 'rgba(128, 128, 128, 0.5)',
                       marginLeft: '2px',
                       transform: 'rotate(-90deg)',
                       transformOrigin: 'left center',
@@ -208,8 +208,8 @@ export default function GridOverlay() {
               style={{
                 left: `${colIndex * COL_WIDTH + 8}px`,
                 top: `${rowIndex * ROW_HEIGHT + 8}px`,
-                fontSize: '12px',
-                color: 'rgba(0, 200, 255, 0.5)',
+                fontSize: '36px',
+                color: 'rgba(128, 128, 128, 0.5)',
                 fontWeight: '600',
                 fontFamily: 'monospace',
                 textShadow: '0 0 4px rgba(0, 0, 0, 0.8)'
@@ -225,8 +225,8 @@ export default function GridOverlay() {
       <div
         className="absolute pointer-events-auto"
         style={{
-          bottom: '10px',
-          left: '10px',
+          bottom: '40px',
+          left: '40px',
           zIndex: 10000,
           cursor: 'pointer'
         }}
@@ -237,28 +237,30 @@ export default function GridOverlay() {
           style={{
             width: '16px',
             height: '16px',
-            background: 'rgba(0, 200, 255, 0.4)',
-            border: '1px solid rgba(0, 200, 255, 0.6)',
+            background: 'rgba(128, 128, 128, 0.4)',
+            border: '1px solid rgba(128, 128, 128, 0.6)',
             transform: 'rotate(45deg)',
             transition: 'all 0.2s'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.6)'
-            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.8)'
+            e.currentTarget.style.background = 'rgba(128, 128, 128, 0.6)'
+            e.currentTarget.style.borderColor = 'rgba(128, 128, 128, 0.8)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.4)'
-            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.6)'
+            e.currentTarget.style.background = 'rgba(128, 128, 128, 0.4)'
+            e.currentTarget.style.borderColor = 'rgba(128, 128, 128, 0.6)'
           }}
         />
       </div>
 
       {/* Status Indicator */}
       <div
-        className="absolute bottom-4 left-10"
+        className="absolute"
         style={{
+          bottom: '45px',
+          left: '70px',
           fontSize: '10px',
-          color: 'rgba(0, 200, 255, 0.6)',
+          color: 'rgba(128, 128, 128, 0.6)',
           background: 'rgba(0, 0, 0, 0.5)',
           padding: '4px 8px',
           borderRadius: '4px',
