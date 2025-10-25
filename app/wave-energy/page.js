@@ -413,8 +413,8 @@ export default function WaveEnergyPage() {
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '445px',
-                top: '85%',
+                left: '565px',
+                top: '77%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
               }}
@@ -423,7 +423,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* ULT Set - Sphere and Play/Pause */}
-            <div ref={sphereContainerRef} className="absolute left-[470px] top-[85%] -translate-y-1/2 flex flex-col items-center gap-3">
+            <div ref={sphereContainerRef} className="absolute left-[590px] top-[77%] -translate-y-1/2 flex flex-col items-center gap-3">
               <div className="relative">
                 <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
 
