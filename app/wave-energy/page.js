@@ -160,8 +160,9 @@ export default function WaveEnergyPage() {
       } else {
         const g = ctx.createRadialGradient(centerX - 22, centerY - 22, 15, centerX, centerY, radius)
         const alpha = Math.floor(d.op * 255).toString(16).padStart(2, '0')
+        const outerAlpha = d.op === 1 ? alpha : '40'
         g.addColorStop(0, d.sphereCol + alpha)
-        g.addColorStop(1, d.sphereCol + '40')
+        g.addColorStop(1, d.sphereCol + outerAlpha)
         ctx.fillStyle = g
         ctx.beginPath()
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2)
