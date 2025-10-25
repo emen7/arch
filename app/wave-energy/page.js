@@ -5,14 +5,12 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
-  const textAreaRef = useRef(null)
   const titleRef = useRef(null)
   const sphereContainerRef = useRef(null)
   const [step, setStep] = useState(4)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
 
@@ -81,14 +79,14 @@ export default function WaveEnergyPage() {
     {n:0, name:"Puissant Energy", col:"#ffffff", sphereCol:"transparent", op:0, spd:0},
     {n:1, name:"Infraultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.3, spd:0.9},
     {n:2, name:"Ultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.6, spd:0.7},
-    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:1, spd:0.5},
+    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.8, spd:0.5},
     {n:4, name:"The Electronic Stage", col:"#22c55e", sphereCol:"#22c55e", op:1, spd:0.35},
     {n:5, name:"Gamma Rays", col:"#eab308", sphereCol:"#eab308", op:1, spd:0.25},
     {n:6, name:"X-rays", col:"#f97316", sphereCol:"#f97316", op:1, spd:0.15},
     {n:7, name:"Ultraviolet", col:"#8b5cf6", sphereCol:"#8b5cf6", op:1, spd:0.08},
     {n:8, name:"White Light", col:"#ffffff", sphereCol:"#ffffff", op:1, spd:0.04},
-    {n:9, name:"Infrared Rays", col:"#ef4444", sphereCol:"#ef4444", op:0.7, spd:0.02},
-    {n:10, name:"Hertzian Waves", col:"#d946ef", sphereCol:"#d946ef", op:0.6, spd:0.01}
+    {n:9, name:"Infrared Rays", col:"#ef4444", sphereCol:"#ef4444", op:1, spd:0.02},
+    {n:10, name:"Hertzian Waves", col:"#d946ef", sphereCol:"#d946ef", op:1, spd:0.01}
   ]
 
   const currentData = data[step]
@@ -96,68 +94,33 @@ export default function WaveEnergyPage() {
   const pages = texts[txtKey]
   const currentHumanUse = humanUse[txtKey]
 
-  // Detect small screens and mobile devices
+  // Calculate container dimensions to maintain 16:9 ratio
   useEffect(() => {
-    const checkScreenSize = () => {
-      // Screen width less than 1024px is considered too small
-      setIsSmallScreen(window.innerWidth < 1024)
+    const updateDimensions = () => {
+      const baseWidth = 1920
+      const baseHeight = 1080
+      const viewportWidth = window.innerWidth
+      const viewportHeight = window.innerHeight
 
-      // Detect if on a mobile device (phone/tablet) vs desktop
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      setIsMobileDevice(isMobile)
+      // Calculate scale to fit viewport while maintaining 16:9
+      const scaleX = viewportWidth / baseWidth
+      const scaleY = viewportHeight / baseHeight
+      const scale = Math.min(scaleX, scaleY, 1) // Never scale up beyond 100%
+
+      // Calculate actual dimensions after scaling
+      const width = baseWidth * scale
+      const height = baseHeight * scale
+
+      setDimensions({ width, height, scale })
     }
 
-    // Initial check
-    checkScreenSize()
-
-    // Listen for resize events
-    window.addEventListener('resize', checkScreenSize)
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
 
     return () => {
-      window.removeEventListener('resize', checkScreenSize)
+      window.removeEventListener('resize', updateDimensions)
     }
   }, [])
-
-  // Center text box vertically between title and sphere canvas
-  useEffect(() => {
-    const positionTextBox = () => {
-      if (!textAreaRef.current || !titleRef.current || !canvasRef.current) return
-
-      const titleRect = titleRef.current.getBoundingClientRect()
-      const canvasRect = canvasRef.current.getBoundingClientRect()
-      const textAreaRect = textAreaRef.current.getBoundingClientRect()
-
-      // Calculate available vertical space
-      const availableTop = titleRect.bottom + 32 // Title bottom + margin
-      const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
-      const availableHeight = availableBottom - availableTop
-      const textBoxHeight = textAreaRect.height
-
-      // Center the text box in available space, then raise by 10%
-      const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.10 // Raise by 10% of available space
-      const finalPosition = centerPosition - raiseAmount
-
-      // Apply the position (ensure it doesn't go above minimum)
-      textAreaRef.current.style.top = `${Math.max(availableTop, finalPosition)}px`
-    }
-
-    // Position on mount and when content changes
-    positionTextBox()
-
-    // Re-position on window resize
-    window.addEventListener('resize', positionTextBox)
-
-    // Multiple delays to ensure DOM is fully rendered (especially after orientation change)
-    const timeoutId1 = setTimeout(positionTextBox, 100)
-    const timeoutId2 = setTimeout(positionTextBox, 300)
-
-    return () => {
-      window.removeEventListener('resize', positionTextBox)
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
-    }
-  }, [step, textPage]) // Re-position when content changes
 
   // Canvas animation
   useEffect(() => {
@@ -165,24 +128,24 @@ export default function WaveEnergyPage() {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
-    const centerX = 80
-    const centerY = 80
-    const radius = 55
+    const centerX = 120
+    const centerY = 120
+    const radius = 83
 
     const draw = () => {
-      ctx.clearRect(0, 0, 160, 160)
+      ctx.clearRect(0, 0, 240, 240)
 
-      // Grid
-      ctx.strokeStyle = '#475569'
-      ctx.lineWidth = 0.3
-      for (let i = 0; i < 160; i += 20) {
+      // Grid - more visible but still dimmed compared to text
+      ctx.strokeStyle = '#64748b'
+      ctx.lineWidth = 0.75
+      for (let i = 0; i < 240; i += 30) {
         ctx.beginPath()
         ctx.moveTo(i, 0)
-        ctx.lineTo(i, 160)
+        ctx.lineTo(i, 240)
         ctx.stroke()
         ctx.beginPath()
         ctx.moveTo(0, i)
-        ctx.lineTo(160, i)
+        ctx.lineTo(240, i)
         ctx.stroke()
       }
 
@@ -190,15 +153,16 @@ export default function WaveEnergyPage() {
 
       if (d.sphereCol === 'transparent') {
         ctx.strokeStyle = '#64748b'
-        ctx.lineWidth = 2
+        ctx.lineWidth = 3
         ctx.beginPath()
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2)
         ctx.stroke()
       } else {
-        const g = ctx.createRadialGradient(centerX - 15, centerY - 15, 10, centerX, centerY, radius)
+        const g = ctx.createRadialGradient(centerX - 22, centerY - 22, 15, centerX, centerY, radius)
         const alpha = Math.floor(d.op * 255).toString(16).padStart(2, '0')
+        const outerAlpha = d.op === 1 ? alpha : '40'
         g.addColorStop(0, d.sphereCol + alpha)
-        g.addColorStop(1, d.sphereCol + '40')
+        g.addColorStop(1, d.sphereCol + outerAlpha)
         ctx.fillStyle = g
         ctx.beginPath()
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2)
@@ -230,7 +194,7 @@ export default function WaveEnergyPage() {
           ctx.scale(scale, 1)
 
           ctx.strokeStyle = `rgba(0,0,0,${d.op * 0.9})`
-          ctx.lineWidth = 2.5
+          ctx.lineWidth = 3.75
 
           ctx.beginPath()
           ctx.moveTo(-crossSize, 0)
@@ -293,72 +257,70 @@ export default function WaveEnergyPage() {
   }
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4" style={{
-      background: 'linear-gradient(135deg, #020617, #0f172a, #020617)',
+    <div className="w-full h-full flex items-start justify-center pt-8" style={{
+      background: '#000000',
       color: '#e2e8f0'
     }}>
-      {/* Small Screen Overlay */}
-      {isSmallScreen && (
-        <div className="fixed inset-0 bg-slate-900/95 flex flex-col items-center justify-center z-50 p-8 text-center">
-          <div className="text-6xl mb-6">{isMobileDevice ? '💻' : '↔️'}</div>
-          <div className="text-2xl font-semibold mb-6 text-gray-200">
-            {isMobileDevice ? 'Desktop or Tablet Required' : 'Please Widen Your Window'}
-          </div>
-          <div className="text-lg text-gray-300 max-w-md mb-4">
-            {isMobileDevice ? (
-              'This interactive visualization is designed for larger screens.'
-            ) : (
-              'This visualization requires a minimum width of 1024 pixels.'
-            )}
-          </div>
-          {isMobileDevice ? (
-            <>
-              <div className="text-base text-gray-400 max-w-md mb-8">
-                Please view on:
-              </div>
-              <div className="text-lg text-gray-300 space-y-2 mb-8">
-                <div>• Desktop or laptop computer</div>
-                <div>• iPad or tablet (landscape mode)</div>
-              </div>
-            </>
-          ) : (
-            <div className="text-base text-gray-400 max-w-md mb-8">
-              Expand your browser window to view this content.
-            </div>
-          )}
-          <Link
-            href="/"
-            className="px-6 py-3 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition-colors"
-          >
-            ← Return to Home
-          </Link>
-        </div>
-      )}
-
-      {/* Home Link */}
-      <Link
-        href="/"
-        className="fixed top-4 left-4 text-sm text-gray-400 hover:text-gray-200 transition-colors z-10"
+      {/* 16:9 Card - two-layer wrapper for proper scaling */}
+      <div
+        className="relative"
+        style={{
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          background: '#1a1a1a'
+        }}
       >
-        ← Home
-      </Link>
+        <div
+          className="absolute inset-0 pt-4 pb-20 px-16"
+          style={{
+            width: '1920px',
+            height: '1080px',
+            transform: `scale(${dimensions.scale})`,
+            transformOrigin: 'top left'
+          }}
+        >
+          {/* Header Navigation */}
+          <div className="flex items-center justify-between mb-6">
+            {/* Project Title */}
+            <div className="text-gray-400 text-4xl tracking-wider">
+              ACCELERATED TIME OF THE TOMB
+            </div>
 
-      {/* 16:9 Card - scales as a unit, maintains ratio like an image */}
-      <div className="relative w-full max-w-full max-h-full flex gap-12 p-8" style={{
-        aspectRatio: '16/9'
-      }}>
-        {/* Left Side */}
-        <div className="w-[420px] flex flex-col">
-          <div ref={titleRef} className="text-gray-400 text-lg font-semibold tracking-wider mb-8 flex-shrink-0">
-            WAVE-ENERGY MANIFESTATIONS
+            {/* Horizontal Links */}
+            <div className="flex items-center gap-8 text-2xl">
+              <Link
+                href="/"
+                className="text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Start
+              </Link>
+              <span className="text-gray-600">|</span>
+              <Link
+                href="/presentations/tomb-timeline"
+                className="text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Timeline
+              </Link>
+              <span className="text-gray-600">|</span>
+              <span className="text-gray-500 tracking-wide">Tomb Operations</span>
+            </div>
           </div>
 
-          <div className="relative flex-1">
+          {/* Main Content Container */}
+          <div className="flex gap-12 h-[calc(100%-60px)]">
+
+          {/* SCALE SET - Wrapper for entire wave scale visualization */}
+          <div className="absolute left-16 w-[420px]" style={{ bottom: '120px', height: '750px' }}>
+            {/* Title */}
+            <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-2xl font-semibold tracking-wider uppercase whitespace-nowrap">
+              WAVE-ENERGY MANIFESTATIONS
+            </div>
+
             {/* Logarithmic Scale Label - Rotated */}
             <div
-              className="absolute text-slate-500 text-[13px] tracking-wide whitespace-nowrap"
+              className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '2px',
+                left: '10px',
                 top: '50%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
@@ -368,49 +330,61 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Scale */}
-            <div className="relative h-full">
-              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-slate-700"></div>
-              <div>
-                {data.map((d, i) => (
-                  <div
-                    key={d.n}
-                    className="absolute left-0 flex items-center cursor-pointer -translate-y-1/2"
-                    style={{ top: `${(d.n / 10) * 100}%` }}
-                    onClick={() => setStepAndReset(d.n)}
-                  >
+            <div className="absolute inset-0 pt-20">
+              <div className="relative h-full">
+                <div
+                  className="absolute w-0.5 bg-gray-400"
+                  style={{
+                    left: '118px',
+                    top: '-20px',
+                    bottom: '-20px'
+                  }}
+                ></div>
+                <div>
+                  {data.map((d, i) => (
                     <div
-                      className="w-8 text-right text-lg font-mono transition-colors"
-                      style={{ color: step === d.n ? d.col : '#64748b' }}
+                      key={d.n}
+                      className="absolute left-8 flex items-center cursor-pointer -translate-y-1/2 hover:opacity-80 transition-opacity"
+                      style={{ top: `${(d.n / 10) * 100}%` }}
+                      onClick={() => setStepAndReset(d.n)}
                     >
-                      {d.n}
+                      <div
+                        className="w-14 text-right text-3xl font-mono transition-colors font-semibold"
+                        style={{ color: step === d.n ? d.col : '#9ca3af' }}
+                      >
+                        {d.n}
+                      </div>
+                      <div
+                        className="h-0.5 mx-3 transition-all"
+                        style={{
+                          width: step === d.n ? '48px' : '36px',
+                          backgroundColor: step === d.n ? d.col : '#9ca3af'
+                        }}
+                      ></div>
+                      <div
+                        className="text-3xl whitespace-nowrap transition-colors"
+                        style={{
+                          color: step === d.n ? d.col : '#d1d5db',
+                          fontWeight: step === d.n ? 600 : 400
+                        }}
+                      >
+                        {d.name}
+                      </div>
                     </div>
-                    <div
-                      className="h-0.5 mx-2 transition-all"
-                      style={{
-                        width: step === d.n ? '32px' : '24px',
-                        backgroundColor: step === d.n ? d.col : '#64748b'
-                      }}
-                    ></div>
-                    <div
-                      className="text-sm whitespace-nowrap transition-colors"
-                      style={{
-                        color: step === d.n ? d.col : '#64748b',
-                        fontWeight: step === d.n ? 600 : 400
-                      }}
-                    >
-                      {d.name}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
 
+          {/* ULT SET - Wrapper for ultimaton visualization */}
+          <div className="absolute left-[535px] -translate-y-1/2" style={{ top: 'calc(77% - 160px)' }}>
             {/* Relative Spin Rates Label - Rotated */}
             <div
-              className="absolute text-slate-500 text-[11px] tracking-wide whitespace-nowrap"
+              className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '220px',
-                top: '80%',
+                left: '0px',
+                top: '120px',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
               }}
@@ -418,10 +392,29 @@ export default function WaveEnergyPage() {
               Relative Spin Rates
             </div>
 
-            {/* Sphere */}
-            <div ref={sphereContainerRef} className="absolute left-[250px] top-[80%] -translate-y-1/2 flex flex-col items-center gap-2">
-              <canvas ref={canvasRef} width="160" height="160" className="rounded-lg"></canvas>
-              <div className="text-gray-400 text-sm tracking-wider text-center leading-tight">
+            {/* Sphere and Play/Pause */}
+            <div ref={sphereContainerRef} className="absolute left-[25px] flex flex-col items-center gap-3">
+              <div className="relative">
+                <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
+
+                {/* Play/Pause Control - Right of grid, nearly touching */}
+                <div
+                  onClick={() => setIsPaused(!isPaused)}
+                  className="absolute bottom-2 flex flex-col items-center gap-1 cursor-pointer transition-opacity"
+                  style={{
+                    left: '242px'
+                  }}
+                >
+                  <div className="text-5xl text-gray-300">
+                    {isPaused ? '▶' : '⏸'}
+                  </div>
+                  <div className="text-base text-gray-300 tracking-wide font-medium">
+                    {isPaused ? 'Play' : 'Pause'}
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-gray-200 text-2xl tracking-wider text-center leading-tight font-semibold">
                 {step === 0 ? (
                   <>PRE OR POST<br />ULTIMATON</>
                 ) : (
@@ -429,28 +422,21 @@ export default function WaveEnergyPage() {
                 )}
               </div>
             </div>
-
-            {/* Pause Button */}
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="absolute left-[410px] top-[80%] translate-y-[90px] bg-slate-800 border border-slate-600 rounded-lg text-slate-300 px-4 py-2 text-xs cursor-pointer hover:bg-slate-700 transition-colors"
-            >
-              {isPaused ? 'Resume' : 'Pause'}
-            </button>
           </div>
-        </div>
 
-        {/* Right Side */}
-        <div className="flex-1 flex flex-col relative">
-          <div ref={textAreaRef} className="absolute -left-[15%] right-[15%] flex flex-col items-center">
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-8 max-w-[600px] w-[90%]">
+        {/* TEXT BOX SET - Wrapper for main text box and subordinate boxes */}
+        <div className="absolute left-1/2 top-1/2" style={{
+          transform: 'translate(calc(-50% + 392px), calc(-50% - 70px))'
+        }}>
+          <div className="flex flex-col items-center">
+            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[840px] w-[840px] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
-                <div className="flex justify-between mb-4 text-xs tracking-wider">
+                <div className="flex justify-between mb-8 text-lg tracking-wider">
                   {textPage > 0 && (
                     <span
                       onClick={handlePrevPage}
-                      className="text-slate-500 cursor-pointer hover:text-gray-400 transition-colors uppercase"
+                      className="text-gray-400 cursor-pointer hover:text-gray-200 transition-colors uppercase font-medium"
                     >
                       Prev
                     </span>
@@ -458,7 +444,7 @@ export default function WaveEnergyPage() {
                   {textPage < pages.length - 1 && (
                     <span
                       onClick={handleNextPage}
-                      className="text-slate-500 cursor-pointer hover:text-gray-400 transition-colors uppercase ml-auto"
+                      className="text-gray-400 cursor-pointer hover:text-gray-200 transition-colors uppercase font-medium ml-auto"
                     >
                       Next
                     </span>
@@ -466,29 +452,31 @@ export default function WaveEnergyPage() {
                 </div>
               )}
 
-              {/* Title */}
-              <div className="text-gray-400 text-2xl font-semibold mb-6">
-                {currentData.name}
-              </div>
+              {/* Title - Only show on first page */}
+              {textPage === 0 && (
+                <div className="text-5xl font-semibold mb-10 tracking-wide" style={{ color: currentData.col }}>
+                  {currentData.name}
+                </div>
+              )}
 
               {/* Text */}
-              <div className="text-slate-300 text-base leading-relaxed">
+              <div className="text-gray-200 text-3xl leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
               {/* Dot Indicators */}
               {pages.length > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-4 mt-10">
                   {pages.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setTextPage(index)}
                       className="transition-all"
                       style={{
-                        width: '8px',
-                        height: '8px',
+                        width: '14px',
+                        height: '14px',
                         borderRadius: '50%',
-                        backgroundColor: index === textPage ? '#94a3b8' : '#475569',
+                        backgroundColor: index === textPage ? '#d1d5db' : '#6b7280',
                         opacity: index === textPage ? 1 : 0.5,
                         cursor: 'pointer',
                         border: 'none',
@@ -503,24 +491,28 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-4 text-gray-400 text-sm leading-relaxed max-w-[536px]">
-                <span className="font-bold text-green-500">Human Application: </span>
+              <div className="mt-6 text-gray-300 text-2xl leading-relaxed max-w-[780px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5">
+                <span className="font-semibold text-emerald-400">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
             )}
           </div>
+        </div>
 
-          {/* Controls */}
-          <div className="absolute bottom-0 right-0 text-right">
-            <div className="text-slate-500 text-[0.625rem] tracking-wider mb-2 uppercase">
+        {/* CONTROLS SET - Wrapper for keyboard controls display */}
+        <div className="absolute" style={{ bottom: '40px', right: '40px' }}>
+          <div className="text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
+            <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
               CONTROLS
             </div>
-            <div className="text-slate-500 text-xs leading-relaxed">
+            <div className="text-gray-300 text-base leading-relaxed space-y-2">
               <div>↑↓ Arrow keys - Navigate</div>
               <div>0-9 Number keys - Jump</div>
               <div>SPACE - Pause/Resume</div>
               <div>Click scale numbers</div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
