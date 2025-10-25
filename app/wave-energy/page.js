@@ -425,10 +425,10 @@ export default function WaveEnergyPage() {
 
         {/* TEXT BOX SET - Wrapper for main text box and subordinate boxes */}
         <div className="absolute left-1/2 top-1/2" style={{
-          transform: 'translate(calc(-50% + 322px), calc(-50% - 70px))'
+          transform: 'translate(calc(-50% + 392px), calc(-50% - 70px))'
         }}>
           <div className="flex flex-col items-center">
-            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[700px] shadow-2xl">
+            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[840px] w-[840px] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
                 <div className="flex justify-between mb-8 text-lg tracking-wider">
@@ -451,13 +451,15 @@ export default function WaveEnergyPage() {
                 </div>
               )}
 
-              {/* Title */}
-              <div className="text-gray-100 text-5xl font-semibold mb-10 tracking-wide">
-                {currentData.name}
-              </div>
+              {/* Title - Only show on first page */}
+              {textPage === 0 && (
+                <div className="text-5xl font-semibold mb-10 tracking-wide" style={{ color: currentData.col }}>
+                  {currentData.name}
+                </div>
+              )}
 
               {/* Text */}
-              <div className="text-gray-200 text-2xl leading-relaxed">
+              <div className="text-gray-200 text-3xl leading-relaxed">
                 <p>{pages[textPage]}</p>
               </div>
 
@@ -488,7 +490,7 @@ export default function WaveEnergyPage() {
 
             {/* Human Application */}
             {currentHumanUse && textPage === 0 && (
-              <div className="mt-6 text-gray-300 text-xl leading-relaxed max-w-[650px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5">
+              <div className="mt-6 text-gray-300 text-2xl leading-relaxed max-w-[780px] bg-neutral-900/50 border border-neutral-700/60 rounded-lg px-6 py-5">
                 <span className="font-semibold text-emerald-400">Human Application: </span>
                 <span className="italic">{currentHumanUse}</span>
               </div>
