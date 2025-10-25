@@ -337,8 +337,8 @@ export default function WaveEnergyPage() {
               </Link>
               <span className="text-gray-600">|</span>
               <Link
-                href="/wave-energy"
-                className="text-gray-400 font-medium"
+                href="/presentations/tomb-timeline"
+                className="text-gray-500 hover:text-gray-300 transition-colors"
               >
                 Timeline
               </Link>
