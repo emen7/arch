@@ -373,7 +373,7 @@ export default function WaveEnergyPage() {
             {/* Scale */}
             <div className="absolute inset-0 pt-20">
               <div className="relative h-full">
-                <div className="absolute left-[90px] top-0 bottom-0 w-0.5 bg-gray-600"></div>
+                <div className="absolute left-[108px] top-0 bottom-0 w-0.5 bg-gray-600"></div>
                 <div>
                   {data.map((d, i) => (
                     <div
