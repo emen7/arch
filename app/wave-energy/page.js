@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
-  const textAreaRef = useRef(null)
   const titleRef = useRef(null)
   const sphereContainerRef = useRef(null)
   const [step, setStep] = useState(4)
@@ -122,47 +121,6 @@ export default function WaveEnergyPage() {
       window.removeEventListener('resize', updateDimensions)
     }
   }, [])
-
-  // Center text box vertically between title and sphere canvas
-  useEffect(() => {
-    const positionTextBox = () => {
-      if (!textAreaRef.current || !titleRef.current || !canvasRef.current) return
-
-      const titleRect = titleRef.current.getBoundingClientRect()
-      const canvasRect = canvasRef.current.getBoundingClientRect()
-      const textAreaRect = textAreaRef.current.getBoundingClientRect()
-
-      // Calculate available vertical space
-      const availableTop = titleRect.bottom + 32 // Title bottom + margin
-      const availableBottom = canvasRect.top - 20 // Canvas top - margin (not sphere container)
-      const availableHeight = availableBottom - availableTop
-      const textBoxHeight = textAreaRect.height
-
-      // Center the text box in available space, then raise by 35%
-      const centerPosition = availableTop + (availableHeight - textBoxHeight) / 2
-      const raiseAmount = availableHeight * 0.35 // Raise by 35% of available space
-      const finalPosition = centerPosition - raiseAmount
-
-      // Apply the position (ensure it doesn't go above minimum)
-      textAreaRef.current.style.top = `${Math.max(availableTop, finalPosition)}px`
-    }
-
-    // Position on mount and when content changes
-    positionTextBox()
-
-    // Re-position on window resize
-    window.addEventListener('resize', positionTextBox)
-
-    // Multiple delays to ensure DOM is fully rendered (especially after orientation change)
-    const timeoutId1 = setTimeout(positionTextBox, 100)
-    const timeoutId2 = setTimeout(positionTextBox, 300)
-
-    return () => {
-      window.removeEventListener('resize', positionTextBox)
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
-    }
-  }, [step, textPage]) // Re-position when content changes
 
   // Canvas animation
   useEffect(() => {
@@ -465,10 +423,12 @@ export default function WaveEnergyPage() {
             </div>
           </div>
 
-        {/* Right Side */}
-        <div className="flex-1 flex flex-col relative">
-          <div ref={textAreaRef} className="absolute -left-[8%] right-[22%] flex flex-col items-center">
-            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[90%] shadow-2xl">
+        {/* TEXT BOX SET - Wrapper for main text box and subordinate boxes */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{
+          transform: 'translate(calc(-50% + 480px), calc(-50% - 200px))'
+        }}>
+          <div className="flex flex-col items-center">
+            <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[700px] shadow-2xl">
               {/* Navigation Links */}
               {pages.length > 1 && (
                 <div className="flex justify-between mb-8 text-lg tracking-wider">
@@ -534,18 +494,18 @@ export default function WaveEnergyPage() {
               </div>
             )}
           </div>
+        </div>
 
-          {/* Controls */}
-          <div className="absolute bottom-0 right-0 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
-            <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
-              CONTROLS
-            </div>
-            <div className="text-gray-300 text-base leading-relaxed space-y-2">
-              <div>↑↓ Arrow keys - Navigate</div>
-              <div>0-9 Number keys - Jump</div>
-              <div>SPACE - Pause/Resume</div>
-              <div>Click scale numbers</div>
-            </div>
+        {/* Controls */}
+        <div className="absolute bottom-0 right-0 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
+          <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
+            CONTROLS
+          </div>
+          <div className="text-gray-300 text-base leading-relaxed space-y-2">
+            <div>↑↓ Arrow keys - Navigate</div>
+            <div>0-9 Number keys - Jump</div>
+            <div>SPACE - Pause/Resume</div>
+            <div>Click scale numbers</div>
           </div>
         </div>
           </div>
