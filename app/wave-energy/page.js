@@ -10,6 +10,7 @@ export default function WaveEnergyPage() {
   const [step, setStep] = useState(10)
   const [textPage, setTextPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [showControls, setShowControls] = useState(false)
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080, scale: 1 })
   const rotRef = useRef(0)
   const animationRef = useRef(null)
@@ -503,18 +504,36 @@ export default function WaveEnergyPage() {
           </div>
         </div>
 
-        {/* CONTROLS SET - Wrapper for keyboard controls display */}
-        <div className="absolute" style={{ bottom: '40px', right: '40px' }}>
-          <div className="text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
-            <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
-              CONTROLS
+        {/* CONTROLS SET - Wrapper for controls toggle and bottom link bar */}
+        <div className="absolute flex flex-col items-end" style={{ bottom: '40px', right: '40px' }}>
+          {/* Controls content - toggleable */}
+          {showControls && (
+            <div className="mb-4 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
+              <div className="text-gray-300 text-base leading-relaxed space-y-2">
+                <div>↑↓ Arrow keys - Navigate</div>
+                <div>0-9 Number keys - Jump</div>
+                <div>SPACE - Pause/Resume</div>
+                <div>Click scale numbers</div>
+              </div>
             </div>
-            <div className="text-gray-300 text-base leading-relaxed space-y-2">
-              <div>↑↓ Arrow keys - Navigate</div>
-              <div>0-9 Number keys - Jump</div>
-              <div>SPACE - Pause/Resume</div>
-              <div>Click scale numbers</div>
-            </div>
+          )}
+
+          {/* Controls toggle */}
+          <div
+            onClick={() => setShowControls(!showControls)}
+            className="text-gray-500 text-2xl tracking-wide mb-2 cursor-pointer hover:text-gray-300 transition-colors"
+          >
+            CONTROLS
+          </div>
+
+          {/* Bottom link bar */}
+          <div className="flex items-center gap-8 text-2xl">
+            <Link
+              href="/"
+              className="text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              revelationary.net
+            </Link>
           </div>
         </div>
           </div>
