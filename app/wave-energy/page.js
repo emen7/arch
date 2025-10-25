@@ -405,7 +405,7 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* ULT SET - Wrapper for ultimaton visualization */}
-          <div className="absolute left-[535px]" style={{ bottom: '100px' }}>
+          <div className="absolute left-[535px]" style={{ bottom: '250px' }}>
             {/* Relative Spin Rates Label - Rotated */}
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
