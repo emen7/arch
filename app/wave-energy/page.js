@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import PresentationControls from '../../components/PresentationControls'
+import GridOverlay from '../../components/GridOverlay'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
@@ -405,7 +406,7 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* ULT SET - Wrapper for ultimaton visualization */}
-          <div className="absolute left-[535px]" style={{ bottom: '250px' }}>
+          <div className="absolute left-[535px]" style={{ bottom: '400px' }}>
             {/* Relative Spin Rates Label - Rotated */}
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
@@ -535,6 +536,9 @@ export default function WaveEnergyPage() {
 
         {/* CONTROLS SET - Reusable presentation controls component */}
         <PresentationControls bottom="80px" right="80px" />
+
+        {/* Grid Overlay - Development tool (Press G to toggle) */}
+        <GridOverlay />
           </div>
         </div>
       </div>
