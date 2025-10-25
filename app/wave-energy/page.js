@@ -496,16 +496,18 @@ export default function WaveEnergyPage() {
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="absolute bottom-0 right-0 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
-          <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
-            CONTROLS
-          </div>
-          <div className="text-gray-300 text-base leading-relaxed space-y-2">
-            <div>↑↓ Arrow keys - Navigate</div>
-            <div>0-9 Number keys - Jump</div>
-            <div>SPACE - Pause/Resume</div>
-            <div>Click scale numbers</div>
+        {/* CONTROLS SET - Wrapper for keyboard controls display */}
+        <div className="absolute" style={{ bottom: '40px', right: '40px' }}>
+          <div className="text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
+            <div className="text-gray-400 text-sm tracking-wider mb-3 uppercase font-semibold">
+              CONTROLS
+            </div>
+            <div className="text-gray-300 text-base leading-relaxed space-y-2">
+              <div>↑↓ Arrow keys - Navigate</div>
+              <div>0-9 Number keys - Jump</div>
+              <div>SPACE - Pause/Resume</div>
+              <div>Click scale numbers</div>
+            </div>
           </div>
         </div>
           </div>
