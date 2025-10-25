@@ -462,7 +462,7 @@ export default function WaveEnergyPage() {
               )}
 
               {/* Text */}
-              <div className="text-gray-200 text-3xl leading-relaxed">
+              <div className={`text-gray-200 text-3xl leading-relaxed ${textPage === 0 ? 'ml-8' : ''}`}>
                 <p>{pages[textPage]}</p>
               </div>
 
@@ -473,19 +473,24 @@ export default function WaveEnergyPage() {
                     <button
                       key={index}
                       onClick={() => setTextPage(index)}
-                      className="transition-all"
+                      className="transition-all p-3"
                       style={{
-                        width: '14px',
-                        height: '14px',
-                        borderRadius: '50%',
-                        backgroundColor: index === textPage ? '#d1d5db' : '#6b7280',
-                        opacity: index === textPage ? 1 : 0.5,
                         cursor: 'pointer',
                         border: 'none',
-                        padding: 0
+                        background: 'transparent'
                       }}
                       aria-label={`Go to page ${index + 1}`}
-                    />
+                    >
+                      <div
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          borderRadius: '50%',
+                          backgroundColor: index === textPage ? '#d1d5db' : '#6b7280',
+                          opacity: index === textPage ? 1 : 0.5
+                        }}
+                      />
+                    </button>
                   ))}
                 </div>
               )}
