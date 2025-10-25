@@ -425,7 +425,7 @@ export default function WaveEnergyPage() {
 
         {/* TEXT BOX SET - Wrapper for main text box and subordinate boxes */}
         <div className="absolute left-1/2 top-1/2" style={{
-          transform: 'translate(calc(-50% + 242px), calc(-50% - 175px))'
+          transform: 'translate(calc(-50% + 322px), calc(-50% + 10px))'
         }}>
           <div className="flex flex-col items-center">
             <div className="bg-neutral-800/70 border border-neutral-600/80 rounded-xl p-12 max-w-[700px] w-[700px] shadow-2xl">
