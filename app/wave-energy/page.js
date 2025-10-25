@@ -85,8 +85,8 @@ export default function WaveEnergyPage() {
     {n:6, name:"X-rays", col:"#f97316", sphereCol:"#f97316", op:1, spd:0.15},
     {n:7, name:"Ultraviolet", col:"#8b5cf6", sphereCol:"#8b5cf6", op:1, spd:0.08},
     {n:8, name:"White Light", col:"#ffffff", sphereCol:"#ffffff", op:1, spd:0.04},
-    {n:9, name:"Infrared Rays", col:"#ef4444", sphereCol:"#ef4444", op:0.7, spd:0.02},
-    {n:10, name:"Hertzian Waves", col:"#d946ef", sphereCol:"#d946ef", op:0.6, spd:0.01}
+    {n:9, name:"Infrared Rays", col:"#ef4444", sphereCol:"#ef4444", op:1, spd:0.02},
+    {n:10, name:"Hertzian Waves", col:"#d946ef", sphereCol:"#d946ef", op:1, spd:0.01}
   ]
 
   const currentData = data[step]
