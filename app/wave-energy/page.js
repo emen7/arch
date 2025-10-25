@@ -349,9 +349,9 @@ export default function WaveEnergyPage() {
 
           {/* Main Content Container */}
           <div className="flex gap-12 h-[calc(100%-60px)]">
-          {/* Left Side */}
-        <div className="w-[420px] flex flex-col justify-end">
-          <div className="relative" style={{ height: '750px' }}>
+
+          {/* SCALE SET - Wrapper for entire wave scale visualization */}
+          <div className="absolute left-16 bottom-20 w-[420px]" style={{ height: '750px' }}>
             {/* Title */}
             <div ref={titleRef} className="absolute top-0 left-8 text-gray-300 text-2xl font-semibold tracking-wider uppercase whitespace-nowrap">
               WAVE-ENERGY MANIFESTATIONS
@@ -416,13 +416,16 @@ export default function WaveEnergyPage() {
                 </div>
               </div>
             </div>
+          </div>
 
+          {/* ULT SET - Wrapper for ultimaton visualization */}
+          <div className="absolute left-[535px] top-[77%] -translate-y-1/2">
             {/* Relative Spin Rates Label - Rotated */}
             <div
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
-                left: '535px',
-                top: '77%',
+                left: '0px',
+                top: '50%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
               }}
@@ -430,8 +433,8 @@ export default function WaveEnergyPage() {
               Relative Spin Rates
             </div>
 
-            {/* ULT Set - Sphere and Play/Pause */}
-            <div ref={sphereContainerRef} className="absolute left-[560px] top-[77%] -translate-y-1/2 flex flex-col items-center gap-3">
+            {/* Sphere and Play/Pause */}
+            <div ref={sphereContainerRef} className="absolute left-[25px] flex flex-col items-center gap-3">
               <div className="relative">
                 <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
 
@@ -461,7 +464,6 @@ export default function WaveEnergyPage() {
               </div>
             </div>
           </div>
-        </div>
 
         {/* Right Side */}
         <div className="flex-1 flex flex-col relative">
