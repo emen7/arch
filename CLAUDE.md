@@ -86,9 +86,86 @@ Interactive presentation components (like TombTimeline, Wave-Energy Manifestatio
 - All placeholders should be clear about what will be added
 
 **Template Components:**
-- Wave-Energy Manifestations (`app/wave-energy/page.js`) - vertical scale pattern
+- Wave-Energy Manifestations (`app/wave-energy/page.js`) - vertical scale pattern with named wrapper sets
 - TombTimeline (`components/TombTimeline.js`) - phase-based presentation navigator
 - Use these as structural reference for new interactive components
+
+**Named Wrapper Sets - SOP for Graphics & Animations:**
+
+CRITICAL: All graphics and interactive presentations must use named wrapper sets for positioning. This is our Standard Operating Procedure.
+
+**Wrapper Methodology:**
+1. **Each logical component is wrapped in a named div**
+   - Use descriptive UPPERCASE comments: `{/* SCALE SET */}`, `{/* ULT SET */}`, `{/* TEXT BOX SET */}`
+   - Wrapper handles ALL positioning for the entire set
+   - Children use relative positioning within wrapper
+
+2. **Positioning Patterns:**
+   ```jsx
+   // Edge-based positioning (from edges of container)
+   <div className="absolute left-16 bottom-20" style={{ height: '750px' }}>
+     {/* All children positioned relative to this wrapper */}
+   </div>
+
+   // Percentage-based positioning (relative to container size)
+   <div className="absolute left-[535px]" style={{ top: 'calc(77% - 160px)' }}>
+     {/* Calculate adjustments with calc() */}
+   </div>
+
+   // Center-based positioning (for variable-size content)
+   <div className="absolute left-1/2 top-1/2" style={{
+     transform: 'translate(calc(-50% + 480px), calc(-50% - 200px))'
+   }}>
+     {/* Position from center, then offset */}
+   </div>
+
+   // Corner positioning with margins
+   <div className="absolute" style={{ bottom: '40px', right: '40px' }}>
+     {/* Simple offset from corner */}
+   </div>
+   ```
+
+3. **Benefits:**
+   - Move entire set by changing ONE position value
+   - Clear component boundaries and ownership
+   - No complex dynamic positioning logic needed
+   - Easy to understand and maintain
+   - Eliminates positioning bugs from interdependent elements
+
+4. **Wave-Energy Example Sets:**
+   - **SCALE SET** (line ~353): Wave scale with title, labels, vertical line, scale items
+   - **ULT SET** (line ~421): Ultimaton sphere with spin rates label and play/pause control
+   - **TEXT BOX SET** (line ~468): Main content box with optional subordinate boxes (Human Application)
+   - **CONTROLS SET** (line ~500): Keyboard controls display
+
+5. **Moving Wrapped Sets:**
+   ```jsx
+   // To move SCALE SET up 40px:
+   // Change: bottom-20 → bottom: 120px (80px + 40px)
+
+   // To move ULT SET up 80px:
+   // Change: top-[77%] → top: calc(77% - 80px)
+
+   // To move TEXT BOX SET right 480px, up 200px:
+   // Change transform: translate(calc(-50% + 480px), calc(-50% - 200px))
+
+   // To move CONTROLS SET 40px from edges:
+   // Change: bottom: '40px', right: '40px'
+   ```
+
+6. **When Creating New Graphics:**
+   - Identify logical component groups
+   - Create named wrapper for each group
+   - Position wrapper, not individual children
+   - Use comments to clearly mark each set
+   - Document wrapper position in commit messages
+
+7. **Text Box Sizing Considerations:**
+   - Text boxes vary in size (small, long, big)
+   - Always position from the CENTER of the box (or combined boxes)
+   - Use center-based positioning with translate
+   - If subordinate boxes present (like Human Application), position from center of BOTH combined
+   - This allows flexibility for different content sizes while maintaining balance
 
 ### Glossary System
 
