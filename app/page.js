@@ -24,14 +24,6 @@ export default function Home() {
       readTime: '20 min read',
     },
     {
-      id: 'josephs-tomb-location',
-      title: 'Joseph\'s Tomb: Evidence of Location',
-      subtitle: 'A Forensic Reconstruction Through Revelatory Documentation',
-      description: 'A study of revealed information to help identify the place of resurrection. (In Progress)',
-      date: 'November 2025',
-      readTime: '30 min read',
-    },
-    {
       id: 'nuclear-isle',
       title: 'The Nuclear Isle',
       subtitle: 'Understanding Paradise as Nucleus',
