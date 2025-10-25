@@ -414,7 +414,7 @@ export default function WaveEnergyPage() {
               className="absolute text-gray-500 text-xl tracking-wide whitespace-nowrap"
               style={{
                 left: '375px',
-                top: '10%',
+                top: '75%',
                 transform: 'rotate(-90deg) translateX(-50%)',
                 transformOrigin: 'left center'
               }}
@@ -423,15 +423,18 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* ULT Set - Sphere and Play/Pause */}
-            <div ref={sphereContainerRef} className="absolute left-[400px] top-[10%] -translate-y-1/2 flex flex-col items-center gap-3">
+            <div ref={sphereContainerRef} className="absolute left-[400px] top-[75%] -translate-y-1/2 flex flex-col items-center gap-3">
               <div className="relative">
                 <canvas ref={canvasRef} width="240" height="240" className="rounded-lg"></canvas>
 
-                {/* Play/Pause Control - Bottom Right of Grid */}
+                {/* Play/Pause Control - Right of grid, nearly touching */}
                 <div
                   onClick={() => setIsPaused(!isPaused)}
-                  className="absolute bottom-2 right-2 flex flex-col items-center gap-1 cursor-pointer hover:opacity-100 transition-opacity"
-                  style={{ opacity: 0.6 }}
+                  className="absolute bottom-2 flex flex-col items-center gap-1 cursor-pointer hover:opacity-100 transition-opacity"
+                  style={{
+                    opacity: 0.6,
+                    left: '242px'
+                  }}
                 >
                   <div className="text-5xl text-gray-300">
                     {isPaused ? '▶' : '⏸'}
