@@ -290,7 +290,7 @@ export default function WaveEnergyPage() {
             </div>
 
             {/* Horizontal Links */}
-            <div className="flex items-center gap-8 text-2xl">
+            <div className="flex items-center gap-8 text-3xl">
               <Link
                 href="/"
                 className="text-gray-500 hover:text-gray-300 transition-colors"
@@ -505,7 +505,7 @@ export default function WaveEnergyPage() {
         </div>
 
         {/* CONTROLS SET - Wrapper for controls toggle and bottom link bar */}
-        <div className="absolute flex flex-col items-end" style={{ bottom: '40px', right: '40px' }}>
+        <div className="absolute flex flex-col items-end" style={{ bottom: '80px', right: '80px' }}>
           {/* Controls content - toggleable */}
           {showControls && (
             <div className="mb-4 text-right bg-neutral-900/40 border border-neutral-700/50 rounded-lg px-6 py-5">
@@ -527,10 +527,10 @@ export default function WaveEnergyPage() {
           </div>
 
           {/* Bottom link bar */}
-          <div className="flex items-center gap-8 text-2xl">
+          <div className="flex items-center gap-8 text-3xl">
             <Link
               href="/"
-              className="text-gray-500 hover:text-gray-300 transition-colors"
+              className="text-blue-400 hover:text-blue-300 transition-colors"
             >
               revelationary.net
             </Link>
