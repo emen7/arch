@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import PresentationControls from '../../components/PresentationControls'
+import GridOverlay from '../../components/GridOverlay'
 
 export default function WaveEnergyPage() {
   const canvasRef = useRef(null)
@@ -535,6 +536,9 @@ export default function WaveEnergyPage() {
 
         {/* CONTROLS SET - Reusable presentation controls component */}
         <PresentationControls bottom="80px" right="80px" />
+
+        {/* Grid Overlay - Development tool (Press G to toggle) */}
+        <GridOverlay />
           </div>
         </div>
       </div>
