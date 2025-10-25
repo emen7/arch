@@ -16,8 +16,10 @@ export default function WaveEnergyPage() {
 
   const texts = {
     p0: [
-      'This is the powerful-directional, mass-movemented, mighty-tensioned, and forcible-reacting energy—gigantic energy systems set in motion by the activities of the primary force organizers. (42:2.11)|Ultimatons are capable of accelerating revolutionary velocity to the point of partial antigravity behavior, but they cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage. In nature, ultimatons escape the status of physical existence only when participating in the terminal disruption of a cooled-off and dying sun. (42:6.3)',
-      'This primary or puissant energy is not at first definitely responsive to the Paradise-gravity pull. (42:2.11)|Puissant and gravity energies, when regarded collectively, are spoken of on Uversa as ULTIMATA. (42:2.13)'
+      'This is the powerful-directional, mass-movemented, mighty-tensioned, and forcible-reacting energy—gigantic energy systems set in motion by the activities of the primary force organizers. (42:2.11)',
+      'Ultimatons are capable of accelerating revolutionary velocity to the point of partial antigravity behavior, but they cannot, independent of force organizers or power directors, attain the critical escape velocity of deindividuation, return to the puissant-energy stage. In nature, ultimatons escape the status of physical existence only when participating in the terminal disruption of a cooled-off and dying sun. (42:6.3)',
+      'This primary or puissant energy is not at first definitely responsive to the Paradise-gravity pull. (42:2.11)',
+      'Puissant and gravity energies, when regarded collectively, are spoken of on Uversa as ULTIMATA. (42:2.13)'
     ],
     p1: [
       'Infraultimatonic rays—the borderland revolutions of ultimatons as they begin to assume definite form. This is the first stage of emergent energy in which wavelike phenomena can be detected and measured. (42:5.3)'
@@ -79,7 +81,7 @@ export default function WaveEnergyPage() {
     {n:0, name:"Puissant Energy", col:"#ffffff", sphereCol:"transparent", op:0, spd:0},
     {n:1, name:"Infraultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.3, spd:0.9},
     {n:2, name:"Ultimatonic Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.6, spd:0.7},
-    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.8, spd:0.5},
+    {n:3, name:"Short Space Rays", col:"#3b82f6", sphereCol:"#3b82f6", op:0.9, spd:0.5},
     {n:4, name:"The Electronic Stage", col:"#22c55e", sphereCol:"#22c55e", op:1, spd:0.35},
     {n:5, name:"Gamma Rays", col:"#eab308", sphereCol:"#eab308", op:1, spd:0.25},
     {n:6, name:"X-rays", col:"#f97316", sphereCol:"#f97316", op:1, spd:0.15},
