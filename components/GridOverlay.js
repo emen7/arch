@@ -24,7 +24,41 @@ export default function GridOverlay() {
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [])
 
-  if (overlayState === 0) return null
+  if (overlayState === 0) {
+    // Show only the diamond toggle when hidden
+    return (
+      <div
+        className="absolute pointer-events-auto"
+        style={{
+          bottom: '10px',
+          left: '10px',
+          zIndex: 9999,
+          cursor: 'pointer'
+        }}
+        onClick={() => setOverlayState(1)}
+      >
+        {/* Diamond icon */}
+        <div
+          style={{
+            width: '16px',
+            height: '16px',
+            background: 'rgba(0, 200, 255, 0.2)',
+            border: '1px solid rgba(0, 200, 255, 0.3)',
+            transform: 'rotate(45deg)',
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.4)'
+            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.6)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.2)'
+            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.3)'
+          }}
+        />
+      </div>
+    )
+  }
 
   const showRulers = overlayState === 2
 
@@ -187,9 +221,41 @@ export default function GridOverlay() {
         )}
       </div>
 
+      {/* Diamond Toggle Icon */}
+      <div
+        className="absolute pointer-events-auto"
+        style={{
+          bottom: '10px',
+          left: '10px',
+          zIndex: 10000,
+          cursor: 'pointer'
+        }}
+        onClick={() => setOverlayState((prev) => (prev + 1) % 3)}
+      >
+        {/* Diamond icon */}
+        <div
+          style={{
+            width: '16px',
+            height: '16px',
+            background: 'rgba(0, 200, 255, 0.4)',
+            border: '1px solid rgba(0, 200, 255, 0.6)',
+            transform: 'rotate(45deg)',
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.6)'
+            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.8)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(0, 200, 255, 0.4)'
+            e.currentTarget.style.borderColor = 'rgba(0, 200, 255, 0.6)'
+          }}
+        />
+      </div>
+
       {/* Status Indicator */}
       <div
-        className="absolute bottom-4 left-4"
+        className="absolute bottom-4 left-10"
         style={{
           fontSize: '10px',
           color: 'rgba(0, 200, 255, 0.6)',
